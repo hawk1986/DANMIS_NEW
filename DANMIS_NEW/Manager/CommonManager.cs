@@ -20,7 +20,6 @@ namespace DANMIS_NEW.Manager
         readonly IVisualMenuRepository _visualMenuRepository;
         readonly ISystemOptionRepository _systemOptionRepository;
         readonly IFileAttachedRepository _fileAttachedRepository;
-        readonly IBrandDataRepository _brandDataRepository;
 
         public CommonManager(
             IDepartmentRepository departmentRepository,
@@ -30,8 +29,7 @@ namespace DANMIS_NEW.Manager
             IUserRepository userRepository,
             IVisualMenuRepository visualMenuRepository,
             ISystemOptionRepository systemOptionRepository,
-            IFileAttachedRepository fileAttachedRepository,
-            IBrandDataRepository brandDataRepository)
+            IFileAttachedRepository fileAttachedRepository)
         {
             _departmentRepository = departmentRepository;
             _functionRepository = functionRepository;
@@ -41,7 +39,6 @@ namespace DANMIS_NEW.Manager
             _visualMenuRepository = visualMenuRepository;
             _systemOptionRepository = systemOptionRepository;
             _fileAttachedRepository = fileAttachedRepository;
-            _brandDataRepository = brandDataRepository;
         }
 
         /// <summary>
@@ -340,22 +337,6 @@ namespace DANMIS_NEW.Manager
                 var result = new SelectList(SelectListItem, "Value", "Text", value);
                 return result;
             }
-        }
-
-        /// <summary>
-        /// 取得品牌選項的下拉選單
-        /// </summary>
-        /// <param name="category"></param>
-        /// <returns></returns>
-        public SelectList GetBrandList()
-        {
-            var list = new List<SelectListItem>();
-            var options = _brandDataRepository.GetAll().ToList();
-            if (options.Count > 0)
-                list.AddRange(options.Select(x => new SelectListItem { Value = x.BrandName, Text = x.BrandName }));
-            var result = new SelectList(list, "Value", "Text");
-
-            return result;
         }
 
     }

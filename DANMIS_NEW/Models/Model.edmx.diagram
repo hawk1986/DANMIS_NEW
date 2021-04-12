@@ -29,12 +29,6 @@
         <AssociationConnector Association="DbModel.FK_VisualMenu_VisualMenu" />
         <AssociationConnector Association="DbModel.AccessControl" />
         <AssociationConnector Association="DbModel.User2Role" />
-        <EntityTypeShape EntityType="DbModel.WorkfrontImport" Width="1.5" PointX="2.75" PointY="12.75" />
-        <EntityTypeShape EntityType="DbModel.WorkfrontReport" Width="1.5" PointX="4.75" PointY="12.75" />
-        <EntityTypeShape EntityType="DbModel.BadProjectData" Width="1.5" PointX="16.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DbModel.BrandData" Width="1.5" PointX="12.375" PointY="8.75" />
-        <EntityTypeShape EntityType="DbModel.NonChargeable" Width="1.5" PointX="12.375" PointY="11.75" />
-        <EntityTypeShape EntityType="DbModel.ProjectData" Width="1.5" PointX="14.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

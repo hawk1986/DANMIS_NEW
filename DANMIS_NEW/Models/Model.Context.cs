@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DANMIS_NEW.Models
+namespace PRS_New.Models
 {
     using System;
     using System.Data.Entity;
@@ -39,11 +39,5 @@ namespace DANMIS_NEW.Models
         public virtual DbSet<UserProfile> UserProfile { get; set; }
         public virtual DbSet<VisualMenu> VisualMenu { get; set; }
         public virtual DbSet<Skill> Skill { get; set; }
-        public virtual DbSet<WorkfrontImport> WorkfrontImport { get; set; }
-        public virtual DbSet<WorkfrontReport> WorkfrontReport { get; set; }
-        public virtual DbSet<BadProjectData> BadProjectData { get; set; }
-        public virtual DbSet<BrandData> BrandData { get; set; }
-        public virtual DbSet<NonChargeable> NonChargeable { get; set; }
-        public virtual DbSet<ProjectData> ProjectData { get; set; }
     }
 }

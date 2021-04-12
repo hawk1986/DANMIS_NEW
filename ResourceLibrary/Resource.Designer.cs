@@ -2662,7 +2662,7 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
-        ///   查詢類似 Project Register System 的當地語系化字串。
+        ///   查詢類似 Dentsu App 的當地語系化字串。
         /// </summary>
         public static string SystemName {
             get {

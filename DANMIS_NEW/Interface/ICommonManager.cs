@@ -112,11 +112,5 @@ namespace DANMIS_NEW.Interface
         /// <param name="entity"></param>
         SelectList GetOptionSelectListByID(string category, string value);
 
-        /// <summary>
-        /// 取得品牌選項的下拉選單
-        /// </summary>
-        /// <param name="category"></param>
-        /// <returns></returns>
-        SelectList GetBrandList();
     }
 }
