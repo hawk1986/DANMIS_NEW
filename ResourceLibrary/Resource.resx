@@ -813,7 +813,7 @@
   <data name="Info" xml:space="preserve">
     <value>簡介</value>
   </data>
-  <data name="Tel" xml:space="preserve">
+  <data name="TEL" xml:space="preserve">
     <value>電話</value>
   </data>
   <data name="Classify" xml:space="preserve">
@@ -1106,5 +1106,29 @@
   </data>
   <data name="MediaType" xml:space="preserve">
     <value>MediaType</value>
+  </data>
+  <data name="Factory" xml:space="preserve">
+    <value>廠商資料維護</value>
+  </data>
+  <data name="FactoryClass" xml:space="preserve">
+    <value>廠商類別</value>
+  </data>
+  <data name="FactoryName" xml:space="preserve">
+    <value>廠商全名</value>
+  </data>
+  <data name="FactorySetting" xml:space="preserve">
+    <value>廠商資料維護</value>
+  </data>
+  <data name="FactoryShortName" xml:space="preserve">
+    <value>廠商簡稱</value>
+  </data>
+  <data name="FAX" xml:space="preserve">
+    <value>傳真</value>
+  </data>
+  <data name="IDNO" xml:space="preserve">
+    <value>統一編號</value>
+  </data>
+  <data name="IsShow" xml:space="preserve">
+    <value>是否顯示</value>
   </data>
 </root>

@@ -29,6 +29,7 @@
         <AssociationConnector Association="DbModel.FK_VisualMenu_VisualMenu" />
         <AssociationConnector Association="DbModel.AccessControl" />
         <AssociationConnector Association="DbModel.User2Role" />
+        <EntityTypeShape EntityType="DbModel.Factory" Width="1.5" PointX="0.75" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1087,11 +1087,65 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 廠商資料維護 的當地語系化字串。
+        /// </summary>
+        public static string Factory {
+            get {
+                return ResourceManager.GetString("Factory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廠商類別 的當地語系化字串。
+        /// </summary>
+        public static string FactoryClass {
+            get {
+                return ResourceManager.GetString("FactoryClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廠商全名 的當地語系化字串。
+        /// </summary>
+        public static string FactoryName {
+            get {
+                return ResourceManager.GetString("FactoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廠商資料維護 的當地語系化字串。
+        /// </summary>
+        public static string FactorySetting {
+            get {
+                return ResourceManager.GetString("FactorySetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廠商簡稱 的當地語系化字串。
+        /// </summary>
+        public static string FactoryShortName {
+            get {
+                return ResourceManager.GetString("FactoryShortName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 否 的當地語系化字串。
         /// </summary>
         public static string False {
             get {
                 return ResourceManager.GetString("False", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 傳真 的當地語系化字串。
+        /// </summary>
+        public static string FAX {
+            get {
+                return ResourceManager.GetString("FAX", resourceCulture);
             }
         }
         
@@ -1330,6 +1384,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 統一編號 的當地語系化字串。
+        /// </summary>
+        public static string IDNO {
+            get {
+                return ResourceManager.GetString("IDNO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 IG 的當地語系化字串。
         /// </summary>
         public static string IG {
@@ -1524,6 +1587,15 @@ namespace ResourceLibrary {
         public static string IsMajor {
             get {
                 return ResourceManager.GetString("IsMajor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 是否顯示 的當地語系化字串。
+        /// </summary>
+        public static string IsShow {
+            get {
+                return ResourceManager.GetString("IsShow", resourceCulture);
             }
         }
         
@@ -2709,9 +2781,9 @@ namespace ResourceLibrary {
         /// <summary>
         ///   查詢類似 電話 的當地語系化字串。
         /// </summary>
-        public static string Tel {
+        public static string TEL {
             get {
-                return ResourceManager.GetString("Tel", resourceCulture);
+                return ResourceManager.GetString("TEL", resourceCulture);
             }
         }
         

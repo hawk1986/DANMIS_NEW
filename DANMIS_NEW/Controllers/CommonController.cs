@@ -38,15 +38,16 @@ namespace DANMIS_NEW.Controllers
             {
                 switch (functionName)
                 {
-                    case "badProjectData":
+                    case "factory":
                         result = new List<ListOption>
                         {
-                            
-                            new ListOption{ field = "WORK_CARD_NO", title = Resource.WORK_CARD_NO },
-                            new ListOption{ field = "ProjectName", title = Resource.CUST_ABBR },
-                            new ListOption{ field = "ProjectName", title = Resource.PROD_NAME },
-                            new ListOption{ field = "ProjectName", title = Resource.MEDIA_KIND_NAME },
-                            new ListOption{ field = "BrandName", title = Resource.Brand },
+                            new ListOption{ checkbox = false, sortable = false, visible = false },
+                            new ListOption{ field = "FactoryShortName", title = Resource.FactoryShortName },
+                            new ListOption{ field = "TEL", title = Resource.TEL },
+                            new ListOption{ field = "FAX", title = Resource.FAX },
+                            new ListOption{ field = "IDNO", title = Resource.IDNO },
+                            new ListOption{ field = "FactoryClass", title = Resource.FactoryClass },
+                            new ListOption{ field = "ContactPerson", title = Resource.ContactPerson },
                         };
                         break;
                     case "freeFieldSetting":
@@ -86,20 +87,6 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "MenuDisplay", title = Resource.MenuDisplay, formatter = "BitFormatter" },
                         };
                         break;
-                    case "nonChargeable":
-                        result = new List<ListOption>
-                        {
-                            new ListOption{ checkbox = true, sortable = false, visible = true },
-                            new ListOption{ field = "ProjectID", title = Resource.ProjectID },
-                            new ListOption{ field = "ProjectName", title = Resource.ProjectName },
-                            new ListOption{ field = "ProgramName", title = Resource.ProgramName },
-                            new ListOption{ field = "ClientName", title = Resource.ClientName },
-                            new ListOption{ field = "LineofBusiness", title = Resource.LineofBusiness },
-                            new ListOption{ field = "Chargeable", title = Resource.Chargeable },
-                            new ListOption{ field = "ImportType", title = Resource.ImportType },
-                            new ListOption{ field = "ImportDate", title = Resource.ImportDate, formatter = "JsonDateFormatter" },
-                        };
-                        break;
                     case "operateRecord":
                         result = new List<ListOption>
                         {
@@ -111,20 +98,6 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "OperateIP", title = Resource.OperateIP },
                             new ListOption{ field = "OperateUser", title = Resource.OperateUser },
                             new ListOption{ field = "OperateTime", title = Resource.OperateTime, formatter = "JsonTimeFormatter" },
-                        };
-                        break;
-                    case "projectData":
-                        result = new List<ListOption>
-                        {
-                            new ListOption{ checkbox = true, sortable = false, visible = true },
-                            new ListOption{ field = "ProjectID", title = Resource.ProjectID },
-                            new ListOption{ field = "ProjectName", title = Resource.ProjectName },
-                            new ListOption{ field = "ProgramName", title = Resource.ProgramName },
-                            new ListOption{ field = "ClientName", title = Resource.ClientName },
-                            new ListOption{ field = "LineofBusiness", title = Resource.LineofBusiness },
-                            new ListOption{ field = "Chargeable", title = Resource.Chargeable },
-                            new ListOption{ field = "ImportType", title = Resource.ImportType },
-                            new ListOption{ field = "ImportDate", title = Resource.ImportDate, formatter = "JsonDateFormatter" },
                         };
                         break;
                     case "role":
@@ -199,21 +172,7 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "UpdateTime", title = Resource.UpdateTime, formatter = "JsonTimeFormatter" },
                         };
                         break;
-                    case "workfrontReport":
-                        result = new List<ListOption>
-                        {
-                            new ListOption{ checkbox = false, sortable = false, visible = false },
-                            new ListOption{ field = "ProjectID", title = Resource.ProjectID },
-                            new ListOption{ field = "Name", title = Resource.Name },
-                            new ListOption{ field = "Owner", title = Resource.Owner },
-                            new ListOption{ field = "Status", title = Resource.Status },
-                            new ListOption{ field = "GroupName", title = Resource.GroupName },
-                            new ListOption{ field = "IsChargeable", title = Resource.IsChargeable },
-                            new ListOption{ field = "ProjectType", title = Resource.ProjectType },                            
-                            new ListOption{ field = "UpdateUser", title = Resource.UpdateUser },
-                            new ListOption{ field = "UpdateTime", title = Resource.UpdateTime, formatter = "JsonDateFormatter" },
-                        };
-                        break;
+
                 }
             }
 
