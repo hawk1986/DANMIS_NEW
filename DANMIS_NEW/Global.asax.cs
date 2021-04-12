@@ -19,7 +19,7 @@ using Utilities.Extensions;
 
 namespace DANMIS_NEW
 {
-    public class Global : System.Web.HttpApplication
+    public class Global : HttpApplication
     {
         #region IoC Container
         static IWindsorContainer _container;

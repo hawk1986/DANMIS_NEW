@@ -1,0 +1,1100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CUF0004">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+          </Key>
+          <Property Name="CORP_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CORP_NAME" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CUF0015">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="CUST_NO" />
+          </Key>
+          <Property Name="CORP_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CUST_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CUST_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="CUST_ABBR" Type="nvarchar" MaxLength="50" />
+          <Property Name="CUST_NAME_ENG" Type="nvarchar" MaxLength="100" />
+          <Property Name="CUST_AGENCY" Type="nvarchar" MaxLength="20" />
+          <Property Name="CUST_ADDR" Type="nvarchar" MaxLength="255" />
+          <Property Name="INVO_TITLE" Type="nvarchar" MaxLength="50" />
+          <Property Name="INVO_ADDR" Type="nvarchar" MaxLength="255" />
+          <Property Name="INVO_NO" Type="nvarchar" MaxLength="20" />
+          <Property Name="CHIEF_NAME" Type="nvarchar" MaxLength="20" />
+          <Property Name="CAPITAL_AMT" Type="money" />
+          <Property Name="CRED_AMT" Type="money" />
+          <Property Name="CUST_TEL" Type="nvarchar" MaxLength="20" />
+          <Property Name="CUST_TEL2" Type="nvarchar" MaxLength="20" />
+          <Property Name="CUST_FAX" Type="nvarchar" MaxLength="20" />
+          <Property Name="BUSINESS_AMT" Type="money" />
+          <Property Name="CLOSE_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="AC_TYPE" Type="nvarchar" MaxLength="10" />
+          <Property Name="AC_RATE" Type="float" />
+          <Property Name="CASH_DISC_RATE" Type="float" />
+          <Property Name="INTERNATIONAL_TYPE" Type="nvarchar" MaxLength="10" />
+          <Property Name="SOURCE_TYPE" Type="nvarchar" MaxLength="10" />
+          <Property Name="OP_CORP" Type="nvarchar" MaxLength="20" />
+          <Property Name="PAY_DAYS" Type="int" />
+          <Property Name="GROUP_CORP" Type="nvarchar" MaxLength="20" />
+          <Property Name="BU_TEAM" Type="nvarchar" MaxLength="20" />
+          <Property Name="BU_GROUP" Type="nvarchar" MaxLength="20" />
+          <Property Name="DAN_CLIENT" Type="nvarchar" MaxLength="20" />
+          <Property Name="ADVERTISER" Type="nvarchar" MaxLength="20" />
+          <Property Name="GROUP_CLIENT" Type="nvarchar" MaxLength="1" />
+          <Property Name="CLIENT_TAGS" Type="nvarchar" MaxLength="255" />
+          <Property Name="VOUCHER_REMARK" Type="nvarchar" MaxLength="255" />
+          <Property Name="ENTRY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="ENTRY_TIME" Type="datetime" />
+          <Property Name="MODIFY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="MODIFY_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CUF0016">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="CUST_NO" />
+            <PropertyRef Name="PROD" />
+          </Key>
+          <Property Name="CORP_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CUST_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PROD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROD_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="DEPT_NO_GROUP" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROD_TYPE" Type="nvarchar" MaxLength="20" />
+          <Property Name="EFFE_DATE" Type="datetime" />
+          <Property Name="CLOSE_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="BU_CODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="ENTRY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="ENTRY_TIME" Type="datetime" />
+          <Property Name="MODIFY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="MODIFY_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CUF0021">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="BU_CODE" />
+            <PropertyRef Name="DATA_SEQ" />
+          </Key>
+          <Property Name="CORP_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BU_CODE" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BU_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="BU_ABBR" Type="nvarchar" MaxLength="50" />
+          <Property Name="LEADER_EMP_NO" Type="nvarchar" MaxLength="16" />
+          <Property Name="REPORT_CORP" Type="nvarchar" MaxLength="20" />
+          <Property Name="REPORT_TITLE" Type="nvarchar" MaxLength="100" />
+          <Property Name="VOUCHER_REMARK" Type="nvarchar" MaxLength="255" />
+          <Property Name="TRADITIONAL_REBATE" Type="float" />
+          <Property Name="OUTDOOR_REBATE" Type="float" />
+          <Property Name="INTERNET_REBATE" Type="float" />
+          <Property Name="DATA_SEQ" Type="int" Nullable="false" />
+          <Property Name="DEPT_NO" Type="nvarchar" MaxLength="20" />
+          <Property Name="ENTRY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="ENTRY_TIME" Type="datetime" />
+          <Property Name="MODIFY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="MODIFY_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CUF0063">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="BUYER_TEAM" />
+            <PropertyRef Name="DATA_SEQ" />
+          </Key>
+          <Property Name="CORP_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BUYER_TEAM" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BUYER_TEAM_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="BUYER_TEAM_ABBR" Type="nvarchar" MaxLength="100" />
+          <Property Name="BUYER_TEAM_TYPE" Type="nvarchar" MaxLength="20" />
+          <Property Name="LEADER_EMP_NO" Type="nvarchar" MaxLength="16" />
+          <Property Name="CLOSE_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="VOUCHER_REMARK" Type="nvarchar" MaxLength="255" />
+          <Property Name="DATA_SEQ" Type="int" Nullable="false" />
+          <Property Name="EMP_NO" Type="nvarchar" MaxLength="20" />
+          <Property Name="ENTRY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="ENTRY_TIME" Type="datetime" />
+          <Property Name="MODIFY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="MODIFY_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MSF0024">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="ORDER_SEQ" />
+            <PropertyRef Name="MEDIA_KIND" />
+          </Key>
+          <Property Name="CORP_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ORDER_SEQ" Type="int" Nullable="false" />
+          <Property Name="MEDIA_KIND" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MEDIA_KIND_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="MEDIA_TYPE" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MEDIA_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="MEDIA_ABBR" Type="nvarchar" MaxLength="50" />
+          <Property Name="DATA_TABLE" Type="nvarchar" MaxLength="20" />
+          <Property Name="TRADING_TYPE" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PSF0301">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="EMP_NO" />
+          </Key>
+          <Property Name="UNIQ_KEY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CORP_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EMP_NO" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="CARD_TIMES" Type="nvarchar" MaxLength="4" />
+          <Property Name="EMP_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="INCOME_TAX_MARK" Type="nvarchar" MaxLength="1" />
+          <Property Name="ERROR_MARK_Y" Type="nvarchar" MaxLength="1" />
+          <Property Name="DEDUCT_TYPE" Type="nvarchar" MaxLength="10" />
+          <Property Name="EMP_NAME_CHI" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMP_NAME_ENG" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMP_NAME_ABBR" Type="nvarchar" MaxLength="50" />
+          <Property Name="BIRTH_DAY" Type="datetime" />
+          <Property Name="BIRTH_PLACE" Type="nvarchar" MaxLength="50" />
+          <Property Name="SEX" Type="nvarchar" MaxLength="1" />
+          <Property Name="BLOOD_TYPE" Type="nvarchar" MaxLength="6" />
+          <Property Name="BODY_TALL" Type="money" />
+          <Property Name="WEIGHT" Type="money" />
+          <Property Name="ZIP_PERM_ADDR" Type="nvarchar" MaxLength="10" />
+          <Property Name="PERM_ADDR" Type="nvarchar" MaxLength="255" />
+          <Property Name="PERM_TEL" Type="nvarchar" MaxLength="100" />
+          <Property Name="ZIP_CONT_ADDR" Type="nvarchar" MaxLength="10" />
+          <Property Name="CONT_ADDR" Type="nvarchar" MaxLength="255" />
+          <Property Name="CONT_TEL" Type="nvarchar" MaxLength="100" />
+          <Property Name="TEL_NO" Type="nvarchar" MaxLength="100" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="NATIONALITY_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="NATIONALITY" Type="nvarchar" MaxLength="50" />
+          <Property Name="PASSPORT" Type="nvarchar" MaxLength="16" />
+          <Property Name="MILITARY_SERVICE" Type="nvarchar" MaxLength="10" />
+          <Property Name="LEAVE_ARMY_DATE" Type="datetime" />
+          <Property Name="PARTY_MEMBERSHIP" Type="nvarchar" MaxLength="10" />
+          <Property Name="RELIGION" Type="nvarchar" MaxLength="10" />
+          <Property Name="BODY_STATUS_REMK" Type="nvarchar" MaxLength="10" />
+          <Property Name="MARRIAGE_STATUS" Type="nvarchar" MaxLength="1" />
+          <Property Name="SPOUSE_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="BRING_MANS" Type="int" />
+          <Property Name="EMP_TYPE" Type="nvarchar" MaxLength="10" />
+          <Property Name="SALARY_TYPE" Type="nvarchar" MaxLength="1" />
+          <Property Name="TAKE_OFFICE_MODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="TAKE_OFFICE_DATE" Type="datetime" />
+          <Property Name="TRIAL_STOP_DATE" Type="datetime" />
+          <Property Name="TEAM_TAKE_OFFICE_DATE" Type="datetime" />
+          <Property Name="TAKE_WORK_DATE" Type="datetime" />
+          <Property Name="KIND" Type="nvarchar" MaxLength="50" />
+          <Property Name="LEAVE_JOB_DATE" Type="datetime" />
+          <Property Name="STOP_SAL_RETAIN_OFFICE_END" Type="datetime" />
+          <Property Name="SUB_TEL" Type="nvarchar" MaxLength="20" />
+          <Property Name="CORP_EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="LEAVE_JOB_REASON" Type="nvarchar" MaxLength="255" />
+          <Property Name="DEPT_NO_NOW" Type="nvarchar" MaxLength="10" />
+          <Property Name="DEPT_EFFE_DATE_NOW" Type="datetime" />
+          <Property Name="PRO_NOW" Type="nvarchar" MaxLength="100" />
+          <Property Name="PROFESS_TITLE_EFFE_DATE_NOW" Type="datetime" />
+          <Property Name="JOB_STEP_CODE_NOW" Type="nvarchar" MaxLength="10" />
+          <Property Name="JOB_GRADE_CODE_NOW" Type="nvarchar" MaxLength="10" />
+          <Property Name="JOB_STEP_GRADE_EFFE_NOW" Type="datetime" />
+          <Property Name="TAKE_OFFICE_WORK_MM" Type="int" />
+          <Property Name="TAKE_OFFICE_WORK_YY" Type="int" />
+          <Property Name="BRUSH_CARD_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="LABOR_UNION_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="WOMAN_CLUB" Type="nvarchar" MaxLength="1" />
+          <Property Name="CHIEF_EXAM" Type="nvarchar" MaxLength="100" />
+          <Property Name="HEAD_IMG_PATH" Type="image" />
+          <Property Name="AUTOBIO_PATH" Type="image" />
+          <Property Name="RECRUITE_PATH" Type="image" />
+          <Property Name="EMP_SIGN_CHI" Type="image" />
+          <Property Name="EMP_SIGN_ENG" Type="image" />
+          <Property Name="LIVE_PATH" Type="text" />
+          <Property Name="BANK_NO" Type="nvarchar" MaxLength="16" />
+          <Property Name="ACCT_NO" Type="nvarchar" MaxLength="20" />
+          <Property Name="RELA_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="BANK_NO_2" Type="nvarchar" MaxLength="16" />
+          <Property Name="ACCT_NO_2" Type="nvarchar" MaxLength="20" />
+          <Property Name="RELA_NAME_2" Type="nvarchar" MaxLength="100" />
+          <Property Name="LIAISON_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="LIAISON_TEL" Type="nvarchar" MaxLength="100" />
+          <Property Name="LIAISON_ADDR" Type="nvarchar" MaxLength="255" />
+          <Property Name="LIAISON_RELA" Type="nvarchar" MaxLength="20" />
+          <Property Name="LIAISON_EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="GUAR_NAME1" Type="nvarchar" MaxLength="50" />
+          <Property Name="GUAR_ID1" Type="nvarchar" MaxLength="16" />
+          <Property Name="GUAR_RELA1" Type="nvarchar" MaxLength="20" />
+          <Property Name="GUAR_CAREER1" Type="nvarchar" MaxLength="100" />
+          <Property Name="GUAR_TEL1" Type="nvarchar" MaxLength="100" />
+          <Property Name="GUAR_ADDR1" Type="nvarchar" MaxLength="255" />
+          <Property Name="GUAR_EMAIL1" Type="nvarchar" MaxLength="100" />
+          <Property Name="GUAR_NAME2" Type="nvarchar" MaxLength="50" />
+          <Property Name="GUAR_ID2" Type="nvarchar" MaxLength="16" />
+          <Property Name="GUAR_RELA2" Type="nvarchar" MaxLength="20" />
+          <Property Name="GUAR_CAREER2" Type="nvarchar" MaxLength="100" />
+          <Property Name="GUAR_TEL2" Type="nvarchar" MaxLength="100" />
+          <Property Name="GUAR_ADDR2" Type="nvarchar" MaxLength="255" />
+          <Property Name="GUAR_EMAIL2" Type="nvarchar" MaxLength="100" />
+          <Property Name="VOUCHER_REMARK" Type="nvarchar" MaxLength="255" />
+          <Property Name="NOT_EMP_CAL" Type="nvarchar" MaxLength="1" />
+          <Property Name="STAY_LICENSE_NO" Type="nvarchar" MaxLength="20" />
+          <Property Name="SLICENSE_DATE_ST" Type="datetime" />
+          <Property Name="SLICENSE_DATE_END" Type="datetime" />
+          <Property Name="WLICENSE_NO" Type="nvarchar" MaxLength="20" />
+          <Property Name="WLICENSE_DATE_ST" Type="datetime" />
+          <Property Name="WLICENSE_DATE_END" Type="datetime" />
+          <Property Name="AGENCY_CORP" Type="nvarchar" MaxLength="20" />
+          <Property Name="INSURE_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="REST_YY" Type="int" />
+          <Property Name="REST_MM" Type="int" />
+          <Property Name="ENTRY_TYPE" Type="nvarchar" MaxLength="10" />
+          <Property Name="DEPT_BOSS_ALLOW_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="DEPT_BOSS_ALLOW_DATE" Type="datetime" />
+          <Property Name="DEPT_BOSS_ALLOW_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="ENTRY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="ENTRY_TIME" Type="datetime" />
+          <Property Name="MODIFY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="MODIFY_TIME" Type="datetime" />
+          <Property Name="USC_FIELD_CHA_1" Type="nvarchar" MaxLength="20" />
+          <Property Name="USC_FIELD_CHA_2" Type="nvarchar" MaxLength="20" />
+          <Property Name="USC_FIELD_CHA_3" Type="nvarchar" MaxLength="20" />
+          <Property Name="USC_FIELD_CHA_4" Type="nvarchar" MaxLength="20" />
+          <Property Name="USC_FIELD_NUM_1" Type="money" />
+          <Property Name="USC_FIELD_NUM_2" Type="money" />
+          <Property Name="USC_FIELD_DATE_1" Type="datetime" />
+          <Property Name="USC_FIELD_DATE_2" Type="datetime" />
+          <Property Name="FIELD_CHA_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELD_CHA_2" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELD_CHA_3" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELD_CHA_4" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELD_CHA_5" Type="nvarchar" MaxLength="50" />
+          <Property Name="SKIP" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="UUF0001">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="CODE_TYPE" />
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="UNIQ_KEY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CORP_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CODE_TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CODE" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CODE_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="GROUP_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="CLOSE_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="DEL_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="CODE_DESP_1" Type="nvarchar" MaxLength="100" />
+          <Property Name="CODE_DESP_2" Type="nvarchar" MaxLength="100" />
+          <Property Name="CODE_DESP_3" Type="nvarchar" MaxLength="100" />
+          <Property Name="CODE_DESP_4" Type="nvarchar" MaxLength="100" />
+          <Property Name="CODE_DESP_5" Type="nvarchar" MaxLength="100" />
+          <Property Name="CODE_DESP_6" Type="nvarchar" MaxLength="100" />
+          <Property Name="CODE_DESP_7" Type="nvarchar" MaxLength="100" />
+          <Property Name="CODE_DESP_8" Type="nvarchar" MaxLength="100" />
+          <Property Name="CODE_DESP_9" Type="nvarchar" MaxLength="100" />
+          <Property Name="CODE_DESP_10" Type="nvarchar" MaxLength="100" />
+          <Property Name="DEPT_BOSS_ALLOW_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="DEPT_BOSS_ALLOW_DATE" Type="datetime" />
+          <Property Name="DEPT_BOSS_ALLOW_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="ENTRY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="ENTRY_TIME" Type="datetime" />
+          <Property Name="MODIFY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="MODIFY_TIME" Type="datetime" />
+          <Property Name="ENTRY_TYPE" Type="nvarchar" MaxLength="10" />
+          <Property Name="USC_FIELD_CHA_1" Type="nvarchar" MaxLength="20" />
+          <Property Name="USC_FIELD_CHA_2" Type="nvarchar" MaxLength="20" />
+          <Property Name="USC_FIELD_CHA_3" Type="nvarchar" MaxLength="20" />
+          <Property Name="USC_FIELD_CHA_4" Type="nvarchar" MaxLength="20" />
+          <Property Name="USC_FIELD_NUM_1" Type="money" />
+          <Property Name="USC_FIELD_NUM_2" Type="money" />
+          <Property Name="USC_FIELD_DATE_1" Type="datetime" />
+          <Property Name="USC_FIELD_DATE_2" Type="datetime" />
+          <Property Name="FIELD_CHA_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELD_CHA_2" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELD_CHA_3" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELD_CHA_4" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIELD_CHA_5" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WKF0001">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="WORK_CARD_NO" />
+            <PropertyRef Name="DATA_SEQ" />
+          </Key>
+          <Property Name="CORP_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WORK_CARD_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CUST_NO" Type="nvarchar" MaxLength="20" />
+          <Property Name="PROD" Type="nvarchar" MaxLength="50" />
+          <Property Name="CREATE_EMP_NO" Type="nvarchar" MaxLength="16" />
+          <Property Name="MEDIA_KIND" Type="nvarchar" MaxLength="20" />
+          <Property Name="BUYER_TEAM" Type="nvarchar" MaxLength="20" />
+          <Property Name="WORK_CARD_MEDIA_TYPE" Type="nvarchar" MaxLength="20" />
+          <Property Name="CLOSE_DATE" Type="datetime" />
+          <Property Name="GROUP_CARD_NO" Type="nvarchar" MaxLength="20" />
+          <Property Name="AMNET_TERM" Type="nvarchar" MaxLength="20" />
+          <Property Name="VOUCHER_REMARK" Type="nvarchar" MaxLength="255" />
+          <Property Name="DATA_SEQ" Type="int" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" />
+          <Property Name="WORK_STEP" Type="nvarchar" MaxLength="20" />
+          <Property Name="BUDGET" Type="money" />
+          <Property Name="SECTION_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="DATE_ST" Type="datetime" />
+          <Property Name="DATE_END" Type="datetime" />
+          <Property Name="RECEIVE_EMP_NO" Type="nvarchar" MaxLength="16" />
+          <Property Name="DEPUTY_EMP_NO" Type="nvarchar" MaxLength="16" />
+          <Property Name="EXPECT_FINISH_DATE" Type="datetime" />
+          <Property Name="REAL_FINISH_DATE" Type="datetime" />
+          <Property Name="CUE_OK_DATE" Type="datetime" />
+          <Property Name="CANCEL_YN" Type="nvarchar" MaxLength="1" />
+          <Property Name="DETAIL_REMARK" Type="nvarchar" MaxLength="255" />
+          <Property Name="ENTRY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="ENTRY_TIME" Type="datetime" />
+          <Property Name="MODIFY_ID" Type="nvarchar" MaxLength="16" />
+          <Property Name="MODIFY_TIME" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="PSModelStoreContainer">
+          <EntitySet Name="CUF0004" EntityType="Self.CUF0004" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUF0015" EntityType="Self.CUF0015" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUF0016" EntityType="Self.CUF0016" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUF0021" EntityType="Self.CUF0021" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUF0063" EntityType="Self.CUF0063" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MSF0024" EntityType="Self.MSF0024" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PSF0301" EntityType="Self.PSF0301" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UUF0001" EntityType="Self.UUF0001" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WKF0001" EntityType="Self.WKF0001" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CUF0004">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+          </Key>
+          <Property Name="CORP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CORP_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CUF0015">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="CUST_NO" />
+          </Key>
+          <Property Name="CORP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CUST_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CUST_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CUST_ABBR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CUST_NAME_ENG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CUST_AGENCY" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CUST_ADDR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="INVO_TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="INVO_ADDR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="INVO_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CHIEF_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CAPITAL_AMT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CRED_AMT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CUST_TEL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CUST_TEL2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CUST_FAX" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BUSINESS_AMT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CLOSE_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="AC_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AC_RATE" Type="Double" />
+          <Property Name="CASH_DISC_RATE" Type="Double" />
+          <Property Name="INTERNATIONAL_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SOURCE_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OP_CORP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PAY_DAYS" Type="Int32" />
+          <Property Name="GROUP_CORP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BU_TEAM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BU_GROUP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DAN_CLIENT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ADVERTISER" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GROUP_CLIENT" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CLIENT_TAGS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VOUCHER_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_TIME" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="MODIFY_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CUF0016">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="CUST_NO" />
+            <PropertyRef Name="PROD" />
+          </Key>
+          <Property Name="CORP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CUST_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PROD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PROD_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DEPT_NO_GROUP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PROD_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EFFE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CLOSE_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="BU_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_TIME" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="MODIFY_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CUF0021">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="BU_CODE" />
+            <PropertyRef Name="DATA_SEQ" />
+          </Key>
+          <Property Name="CORP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BU_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BU_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BU_ABBR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LEADER_EMP_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="REPORT_CORP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="REPORT_TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VOUCHER_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TRADITIONAL_REBATE" Type="Double" />
+          <Property Name="OUTDOOR_REBATE" Type="Double" />
+          <Property Name="INTERNET_REBATE" Type="Double" />
+          <Property Name="DATA_SEQ" Type="Int32" Nullable="false" />
+          <Property Name="DEPT_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_TIME" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="MODIFY_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CUF0063">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="BUYER_TEAM" />
+            <PropertyRef Name="DATA_SEQ" />
+          </Key>
+          <Property Name="CORP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BUYER_TEAM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BUYER_TEAM_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BUYER_TEAM_ABBR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BUYER_TEAM_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LEADER_EMP_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="CLOSE_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="VOUCHER_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_SEQ" Type="Int32" Nullable="false" />
+          <Property Name="EMP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_TIME" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="MODIFY_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MSF0024">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="ORDER_SEQ" />
+            <PropertyRef Name="MEDIA_KIND" />
+          </Key>
+          <Property Name="CORP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ORDER_SEQ" Type="Int32" Nullable="false" />
+          <Property Name="MEDIA_KIND" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MEDIA_KIND_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MEDIA_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MEDIA_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MEDIA_ABBR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_TABLE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TRADING_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PSF0301">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="EMP_NO" />
+          </Key>
+          <Property Name="UNIQ_KEY" Type="Guid" Nullable="false" />
+          <Property Name="CORP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMP_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CARD_TIMES" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="EMP_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="INCOME_TAX_MARK" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="ERROR_MARK_Y" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DEDUCT_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EMP_NAME_CHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMP_NAME_ENG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMP_NAME_ABBR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BIRTH_DAY" Type="DateTime" Precision="3" />
+          <Property Name="BIRTH_PLACE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SEX" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="BLOOD_TYPE" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="BODY_TALL" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="WEIGHT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ZIP_PERM_ADDR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PERM_ADDR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PERM_TEL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ZIP_CONT_ADDR" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CONT_ADDR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CONT_TEL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TEL_NO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NATIONALITY_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="NATIONALITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PASSPORT" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="MILITARY_SERVICE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="LEAVE_ARMY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="PARTY_MEMBERSHIP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RELIGION" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BODY_STATUS_REMK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MARRIAGE_STATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="SPOUSE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BRING_MANS" Type="Int32" />
+          <Property Name="EMP_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SALARY_TYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="TAKE_OFFICE_MODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TAKE_OFFICE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="TRIAL_STOP_DATE" Type="DateTime" Precision="3" />
+          <Property Name="TEAM_TAKE_OFFICE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="TAKE_WORK_DATE" Type="DateTime" Precision="3" />
+          <Property Name="KIND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LEAVE_JOB_DATE" Type="DateTime" Precision="3" />
+          <Property Name="STOP_SAL_RETAIN_OFFICE_END" Type="DateTime" Precision="3" />
+          <Property Name="SUB_TEL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CORP_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LEAVE_JOB_REASON" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DEPT_NO_NOW" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DEPT_EFFE_DATE_NOW" Type="DateTime" Precision="3" />
+          <Property Name="PRO_NOW" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PROFESS_TITLE_EFFE_DATE_NOW" Type="DateTime" Precision="3" />
+          <Property Name="JOB_STEP_CODE_NOW" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="JOB_GRADE_CODE_NOW" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="JOB_STEP_GRADE_EFFE_NOW" Type="DateTime" Precision="3" />
+          <Property Name="TAKE_OFFICE_WORK_MM" Type="Int32" />
+          <Property Name="TAKE_OFFICE_WORK_YY" Type="Int32" />
+          <Property Name="BRUSH_CARD_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="LABOR_UNION_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="WOMAN_CLUB" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CHIEF_EXAM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HEAD_IMG_PATH" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AUTOBIO_PATH" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RECRUITE_PATH" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="EMP_SIGN_CHI" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="EMP_SIGN_ENG" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LIVE_PATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BANK_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ACCT_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RELA_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BANK_NO_2" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ACCT_NO_2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RELA_NAME_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LIAISON_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LIAISON_TEL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LIAISON_ADDR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LIAISON_RELA" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LIAISON_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_NAME1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_ID1" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_RELA1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_CAREER1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_TEL1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_ADDR1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_EMAIL1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_NAME2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_ID2" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_RELA2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_CAREER2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_TEL2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_ADDR2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GUAR_EMAIL2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VOUCHER_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NOT_EMP_CAL" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="STAY_LICENSE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SLICENSE_DATE_ST" Type="DateTime" Precision="3" />
+          <Property Name="SLICENSE_DATE_END" Type="DateTime" Precision="3" />
+          <Property Name="WLICENSE_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WLICENSE_DATE_ST" Type="DateTime" Precision="3" />
+          <Property Name="WLICENSE_DATE_END" Type="DateTime" Precision="3" />
+          <Property Name="AGENCY_CORP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="INSURE_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="REST_YY" Type="Int32" />
+          <Property Name="REST_MM" Type="Int32" />
+          <Property Name="ENTRY_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DEPT_BOSS_ALLOW_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DEPT_BOSS_ALLOW_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DEPT_BOSS_ALLOW_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_TIME" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="MODIFY_TIME" Type="DateTime" Precision="3" />
+          <Property Name="USC_FIELD_CHA_1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USC_FIELD_CHA_2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USC_FIELD_CHA_3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USC_FIELD_CHA_4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USC_FIELD_NUM_1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="USC_FIELD_NUM_2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="USC_FIELD_DATE_1" Type="DateTime" Precision="3" />
+          <Property Name="USC_FIELD_DATE_2" Type="DateTime" Precision="3" />
+          <Property Name="FIELD_CHA_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD_CHA_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD_CHA_3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD_CHA_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD_CHA_5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SKIP" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UUF0001">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="CODE_TYPE" />
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="UNIQ_KEY" Type="Guid" Nullable="false" />
+          <Property Name="CORP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CODE_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CODE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GROUP_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CLOSE_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DEL_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_5" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_6" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_7" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_8" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_9" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CODE_DESP_10" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DEPT_BOSS_ALLOW_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DEPT_BOSS_ALLOW_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DEPT_BOSS_ALLOW_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_TIME" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="MODIFY_TIME" Type="DateTime" Precision="3" />
+          <Property Name="ENTRY_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="USC_FIELD_CHA_1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USC_FIELD_CHA_2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USC_FIELD_CHA_3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USC_FIELD_CHA_4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="USC_FIELD_NUM_1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="USC_FIELD_NUM_2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="USC_FIELD_DATE_1" Type="DateTime" Precision="3" />
+          <Property Name="USC_FIELD_DATE_2" Type="DateTime" Precision="3" />
+          <Property Name="FIELD_CHA_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD_CHA_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD_CHA_3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD_CHA_4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIELD_CHA_5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WKF0001">
+          <Key>
+            <PropertyRef Name="CORP_NO" />
+            <PropertyRef Name="WORK_CARD_NO" />
+            <PropertyRef Name="DATA_SEQ" />
+          </Key>
+          <Property Name="CORP_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WORK_CARD_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CUST_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PROD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATE_EMP_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="MEDIA_KIND" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BUYER_TEAM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WORK_CARD_MEDIA_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CLOSE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="GROUP_CARD_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AMNET_TERM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VOUCHER_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DATA_SEQ" Type="Int32" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="WORK_STEP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BUDGET" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SECTION_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DATE_ST" Type="DateTime" Precision="3" />
+          <Property Name="DATE_END" Type="DateTime" Precision="3" />
+          <Property Name="RECEIVE_EMP_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="DEPUTY_EMP_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="EXPECT_FINISH_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REAL_FINISH_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CUE_OK_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CANCEL_YN" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="DETAIL_REMARK" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="ENTRY_TIME" Type="DateTime" Precision="3" />
+          <Property Name="MODIFY_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="MODIFY_TIME" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="PSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CUF0004" EntityType="Self.CUF0004" />
+          <EntitySet Name="CUF0015" EntityType="Self.CUF0015" />
+          <EntitySet Name="CUF0016" EntityType="Self.CUF0016" />
+          <EntitySet Name="CUF0021" EntityType="Self.CUF0021" />
+          <EntitySet Name="CUF0063" EntityType="Self.CUF0063" />
+          <EntitySet Name="MSF0024" EntityType="Self.MSF0024" />
+          <EntitySet Name="PSF0301" EntityType="Self.PSF0301" />
+          <EntitySet Name="UUF0001" EntityType="Self.UUF0001" />
+          <EntitySet Name="WKF0001" EntityType="Self.WKF0001" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PSModelStoreContainer" CdmEntityContainer="PSEntities">
+          <EntitySetMapping Name="CUF0004">
+            <EntityTypeMapping TypeName="PSModel.CUF0004">
+              <MappingFragment StoreEntitySet="CUF0004">
+                <ScalarProperty Name="CORP_NO" ColumnName="CORP_NO" />
+                <ScalarProperty Name="CORP_NAME" ColumnName="CORP_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUF0015">
+            <EntityTypeMapping TypeName="PSModel.CUF0015">
+              <MappingFragment StoreEntitySet="CUF0015">
+                <ScalarProperty Name="CORP_NO" ColumnName="CORP_NO" />
+                <ScalarProperty Name="CUST_NO" ColumnName="CUST_NO" />
+                <ScalarProperty Name="CUST_NAME" ColumnName="CUST_NAME" />
+                <ScalarProperty Name="CUST_ABBR" ColumnName="CUST_ABBR" />
+                <ScalarProperty Name="CUST_NAME_ENG" ColumnName="CUST_NAME_ENG" />
+                <ScalarProperty Name="CUST_AGENCY" ColumnName="CUST_AGENCY" />
+                <ScalarProperty Name="CUST_ADDR" ColumnName="CUST_ADDR" />
+                <ScalarProperty Name="INVO_TITLE" ColumnName="INVO_TITLE" />
+                <ScalarProperty Name="INVO_ADDR" ColumnName="INVO_ADDR" />
+                <ScalarProperty Name="INVO_NO" ColumnName="INVO_NO" />
+                <ScalarProperty Name="CHIEF_NAME" ColumnName="CHIEF_NAME" />
+                <ScalarProperty Name="CAPITAL_AMT" ColumnName="CAPITAL_AMT" />
+                <ScalarProperty Name="CRED_AMT" ColumnName="CRED_AMT" />
+                <ScalarProperty Name="CUST_TEL" ColumnName="CUST_TEL" />
+                <ScalarProperty Name="CUST_TEL2" ColumnName="CUST_TEL2" />
+                <ScalarProperty Name="CUST_FAX" ColumnName="CUST_FAX" />
+                <ScalarProperty Name="BUSINESS_AMT" ColumnName="BUSINESS_AMT" />
+                <ScalarProperty Name="CLOSE_YN" ColumnName="CLOSE_YN" />
+                <ScalarProperty Name="AC_TYPE" ColumnName="AC_TYPE" />
+                <ScalarProperty Name="AC_RATE" ColumnName="AC_RATE" />
+                <ScalarProperty Name="CASH_DISC_RATE" ColumnName="CASH_DISC_RATE" />
+                <ScalarProperty Name="INTERNATIONAL_TYPE" ColumnName="INTERNATIONAL_TYPE" />
+                <ScalarProperty Name="SOURCE_TYPE" ColumnName="SOURCE_TYPE" />
+                <ScalarProperty Name="OP_CORP" ColumnName="OP_CORP" />
+                <ScalarProperty Name="PAY_DAYS" ColumnName="PAY_DAYS" />
+                <ScalarProperty Name="GROUP_CORP" ColumnName="GROUP_CORP" />
+                <ScalarProperty Name="BU_TEAM" ColumnName="BU_TEAM" />
+                <ScalarProperty Name="BU_GROUP" ColumnName="BU_GROUP" />
+                <ScalarProperty Name="DAN_CLIENT" ColumnName="DAN_CLIENT" />
+                <ScalarProperty Name="ADVERTISER" ColumnName="ADVERTISER" />
+                <ScalarProperty Name="GROUP_CLIENT" ColumnName="GROUP_CLIENT" />
+                <ScalarProperty Name="CLIENT_TAGS" ColumnName="CLIENT_TAGS" />
+                <ScalarProperty Name="VOUCHER_REMARK" ColumnName="VOUCHER_REMARK" />
+                <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="MODIFY_ID" ColumnName="MODIFY_ID" />
+                <ScalarProperty Name="MODIFY_TIME" ColumnName="MODIFY_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUF0016">
+            <EntityTypeMapping TypeName="PSModel.CUF0016">
+              <MappingFragment StoreEntitySet="CUF0016">
+                <ScalarProperty Name="CORP_NO" ColumnName="CORP_NO" />
+                <ScalarProperty Name="CUST_NO" ColumnName="CUST_NO" />
+                <ScalarProperty Name="PROD" ColumnName="PROD" />
+                <ScalarProperty Name="PROD_NAME" ColumnName="PROD_NAME" />
+                <ScalarProperty Name="DEPT_NO_GROUP" ColumnName="DEPT_NO_GROUP" />
+                <ScalarProperty Name="PROD_TYPE" ColumnName="PROD_TYPE" />
+                <ScalarProperty Name="EFFE_DATE" ColumnName="EFFE_DATE" />
+                <ScalarProperty Name="CLOSE_YN" ColumnName="CLOSE_YN" />
+                <ScalarProperty Name="BU_CODE" ColumnName="BU_CODE" />
+                <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="MODIFY_ID" ColumnName="MODIFY_ID" />
+                <ScalarProperty Name="MODIFY_TIME" ColumnName="MODIFY_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUF0021">
+            <EntityTypeMapping TypeName="PSModel.CUF0021">
+              <MappingFragment StoreEntitySet="CUF0021">
+                <ScalarProperty Name="CORP_NO" ColumnName="CORP_NO" />
+                <ScalarProperty Name="BU_CODE" ColumnName="BU_CODE" />
+                <ScalarProperty Name="BU_NAME" ColumnName="BU_NAME" />
+                <ScalarProperty Name="BU_ABBR" ColumnName="BU_ABBR" />
+                <ScalarProperty Name="LEADER_EMP_NO" ColumnName="LEADER_EMP_NO" />
+                <ScalarProperty Name="REPORT_CORP" ColumnName="REPORT_CORP" />
+                <ScalarProperty Name="REPORT_TITLE" ColumnName="REPORT_TITLE" />
+                <ScalarProperty Name="VOUCHER_REMARK" ColumnName="VOUCHER_REMARK" />
+                <ScalarProperty Name="TRADITIONAL_REBATE" ColumnName="TRADITIONAL_REBATE" />
+                <ScalarProperty Name="OUTDOOR_REBATE" ColumnName="OUTDOOR_REBATE" />
+                <ScalarProperty Name="INTERNET_REBATE" ColumnName="INTERNET_REBATE" />
+                <ScalarProperty Name="DATA_SEQ" ColumnName="DATA_SEQ" />
+                <ScalarProperty Name="DEPT_NO" ColumnName="DEPT_NO" />
+                <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="MODIFY_ID" ColumnName="MODIFY_ID" />
+                <ScalarProperty Name="MODIFY_TIME" ColumnName="MODIFY_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUF0063">
+            <EntityTypeMapping TypeName="PSModel.CUF0063">
+              <MappingFragment StoreEntitySet="CUF0063">
+                <ScalarProperty Name="CORP_NO" ColumnName="CORP_NO" />
+                <ScalarProperty Name="BUYER_TEAM" ColumnName="BUYER_TEAM" />
+                <ScalarProperty Name="BUYER_TEAM_NAME" ColumnName="BUYER_TEAM_NAME" />
+                <ScalarProperty Name="BUYER_TEAM_ABBR" ColumnName="BUYER_TEAM_ABBR" />
+                <ScalarProperty Name="BUYER_TEAM_TYPE" ColumnName="BUYER_TEAM_TYPE" />
+                <ScalarProperty Name="LEADER_EMP_NO" ColumnName="LEADER_EMP_NO" />
+                <ScalarProperty Name="CLOSE_YN" ColumnName="CLOSE_YN" />
+                <ScalarProperty Name="VOUCHER_REMARK" ColumnName="VOUCHER_REMARK" />
+                <ScalarProperty Name="DATA_SEQ" ColumnName="DATA_SEQ" />
+                <ScalarProperty Name="EMP_NO" ColumnName="EMP_NO" />
+                <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="MODIFY_ID" ColumnName="MODIFY_ID" />
+                <ScalarProperty Name="MODIFY_TIME" ColumnName="MODIFY_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MSF0024">
+            <EntityTypeMapping TypeName="PSModel.MSF0024">
+              <MappingFragment StoreEntitySet="MSF0024">
+                <ScalarProperty Name="CORP_NO" ColumnName="CORP_NO" />
+                <ScalarProperty Name="ORDER_SEQ" ColumnName="ORDER_SEQ" />
+                <ScalarProperty Name="MEDIA_KIND" ColumnName="MEDIA_KIND" />
+                <ScalarProperty Name="MEDIA_KIND_NAME" ColumnName="MEDIA_KIND_NAME" />
+                <ScalarProperty Name="MEDIA_TYPE" ColumnName="MEDIA_TYPE" />
+                <ScalarProperty Name="MEDIA_NAME" ColumnName="MEDIA_NAME" />
+                <ScalarProperty Name="MEDIA_ABBR" ColumnName="MEDIA_ABBR" />
+                <ScalarProperty Name="DATA_TABLE" ColumnName="DATA_TABLE" />
+                <ScalarProperty Name="TRADING_TYPE" ColumnName="TRADING_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PSF0301">
+            <EntityTypeMapping TypeName="PSModel.PSF0301">
+              <MappingFragment StoreEntitySet="PSF0301">
+                <ScalarProperty Name="UNIQ_KEY" ColumnName="UNIQ_KEY" />
+                <ScalarProperty Name="CORP_NO" ColumnName="CORP_NO" />
+                <ScalarProperty Name="EMP_NO" ColumnName="EMP_NO" />
+                <ScalarProperty Name="CARD_TIMES" ColumnName="CARD_TIMES" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="INCOME_TAX_MARK" ColumnName="INCOME_TAX_MARK" />
+                <ScalarProperty Name="ERROR_MARK_Y" ColumnName="ERROR_MARK_Y" />
+                <ScalarProperty Name="DEDUCT_TYPE" ColumnName="DEDUCT_TYPE" />
+                <ScalarProperty Name="EMP_NAME_CHI" ColumnName="EMP_NAME_CHI" />
+                <ScalarProperty Name="EMP_NAME_ENG" ColumnName="EMP_NAME_ENG" />
+                <ScalarProperty Name="EMP_NAME_ABBR" ColumnName="EMP_NAME_ABBR" />
+                <ScalarProperty Name="BIRTH_DAY" ColumnName="BIRTH_DAY" />
+                <ScalarProperty Name="BIRTH_PLACE" ColumnName="BIRTH_PLACE" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="BLOOD_TYPE" ColumnName="BLOOD_TYPE" />
+                <ScalarProperty Name="BODY_TALL" ColumnName="BODY_TALL" />
+                <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+                <ScalarProperty Name="ZIP_PERM_ADDR" ColumnName="ZIP_PERM_ADDR" />
+                <ScalarProperty Name="PERM_ADDR" ColumnName="PERM_ADDR" />
+                <ScalarProperty Name="PERM_TEL" ColumnName="PERM_TEL" />
+                <ScalarProperty Name="ZIP_CONT_ADDR" ColumnName="ZIP_CONT_ADDR" />
+                <ScalarProperty Name="CONT_ADDR" ColumnName="CONT_ADDR" />
+                <ScalarProperty Name="CONT_TEL" ColumnName="CONT_TEL" />
+                <ScalarProperty Name="TEL_NO" ColumnName="TEL_NO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="NATIONALITY_YN" ColumnName="NATIONALITY_YN" />
+                <ScalarProperty Name="NATIONALITY" ColumnName="NATIONALITY" />
+                <ScalarProperty Name="PASSPORT" ColumnName="PASSPORT" />
+                <ScalarProperty Name="MILITARY_SERVICE" ColumnName="MILITARY_SERVICE" />
+                <ScalarProperty Name="LEAVE_ARMY_DATE" ColumnName="LEAVE_ARMY_DATE" />
+                <ScalarProperty Name="PARTY_MEMBERSHIP" ColumnName="PARTY_MEMBERSHIP" />
+                <ScalarProperty Name="RELIGION" ColumnName="RELIGION" />
+                <ScalarProperty Name="BODY_STATUS_REMK" ColumnName="BODY_STATUS_REMK" />
+                <ScalarProperty Name="MARRIAGE_STATUS" ColumnName="MARRIAGE_STATUS" />
+                <ScalarProperty Name="SPOUSE_NAME" ColumnName="SPOUSE_NAME" />
+                <ScalarProperty Name="BRING_MANS" ColumnName="BRING_MANS" />
+                <ScalarProperty Name="EMP_TYPE" ColumnName="EMP_TYPE" />
+                <ScalarProperty Name="SALARY_TYPE" ColumnName="SALARY_TYPE" />
+                <ScalarProperty Name="TAKE_OFFICE_MODE" ColumnName="TAKE_OFFICE_MODE" />
+                <ScalarProperty Name="TAKE_OFFICE_DATE" ColumnName="TAKE_OFFICE_DATE" />
+                <ScalarProperty Name="TRIAL_STOP_DATE" ColumnName="TRIAL_STOP_DATE" />
+                <ScalarProperty Name="TEAM_TAKE_OFFICE_DATE" ColumnName="TEAM_TAKE_OFFICE_DATE" />
+                <ScalarProperty Name="TAKE_WORK_DATE" ColumnName="TAKE_WORK_DATE" />
+                <ScalarProperty Name="KIND" ColumnName="KIND" />
+                <ScalarProperty Name="LEAVE_JOB_DATE" ColumnName="LEAVE_JOB_DATE" />
+                <ScalarProperty Name="STOP_SAL_RETAIN_OFFICE_END" ColumnName="STOP_SAL_RETAIN_OFFICE_END" />
+                <ScalarProperty Name="SUB_TEL" ColumnName="SUB_TEL" />
+                <ScalarProperty Name="CORP_EMAIL" ColumnName="CORP_EMAIL" />
+                <ScalarProperty Name="LEAVE_JOB_REASON" ColumnName="LEAVE_JOB_REASON" />
+                <ScalarProperty Name="DEPT_NO_NOW" ColumnName="DEPT_NO_NOW" />
+                <ScalarProperty Name="DEPT_EFFE_DATE_NOW" ColumnName="DEPT_EFFE_DATE_NOW" />
+                <ScalarProperty Name="PRO_NOW" ColumnName="PRO_NOW" />
+                <ScalarProperty Name="PROFESS_TITLE_EFFE_DATE_NOW" ColumnName="PROFESS_TITLE_EFFE_DATE_NOW" />
+                <ScalarProperty Name="JOB_STEP_CODE_NOW" ColumnName="JOB_STEP_CODE_NOW" />
+                <ScalarProperty Name="JOB_GRADE_CODE_NOW" ColumnName="JOB_GRADE_CODE_NOW" />
+                <ScalarProperty Name="JOB_STEP_GRADE_EFFE_NOW" ColumnName="JOB_STEP_GRADE_EFFE_NOW" />
+                <ScalarProperty Name="TAKE_OFFICE_WORK_MM" ColumnName="TAKE_OFFICE_WORK_MM" />
+                <ScalarProperty Name="TAKE_OFFICE_WORK_YY" ColumnName="TAKE_OFFICE_WORK_YY" />
+                <ScalarProperty Name="BRUSH_CARD_YN" ColumnName="BRUSH_CARD_YN" />
+                <ScalarProperty Name="LABOR_UNION_YN" ColumnName="LABOR_UNION_YN" />
+                <ScalarProperty Name="WOMAN_CLUB" ColumnName="WOMAN_CLUB" />
+                <ScalarProperty Name="CHIEF_EXAM" ColumnName="CHIEF_EXAM" />
+                <ScalarProperty Name="HEAD_IMG_PATH" ColumnName="HEAD_IMG_PATH" />
+                <ScalarProperty Name="AUTOBIO_PATH" ColumnName="AUTOBIO_PATH" />
+                <ScalarProperty Name="RECRUITE_PATH" ColumnName="RECRUITE_PATH" />
+                <ScalarProperty Name="EMP_SIGN_CHI" ColumnName="EMP_SIGN_CHI" />
+                <ScalarProperty Name="EMP_SIGN_ENG" ColumnName="EMP_SIGN_ENG" />
+                <ScalarProperty Name="LIVE_PATH" ColumnName="LIVE_PATH" />
+                <ScalarProperty Name="BANK_NO" ColumnName="BANK_NO" />
+                <ScalarProperty Name="ACCT_NO" ColumnName="ACCT_NO" />
+                <ScalarProperty Name="RELA_NAME" ColumnName="RELA_NAME" />
+                <ScalarProperty Name="BANK_NO_2" ColumnName="BANK_NO_2" />
+                <ScalarProperty Name="ACCT_NO_2" ColumnName="ACCT_NO_2" />
+                <ScalarProperty Name="RELA_NAME_2" ColumnName="RELA_NAME_2" />
+                <ScalarProperty Name="LIAISON_NAME" ColumnName="LIAISON_NAME" />
+                <ScalarProperty Name="LIAISON_TEL" ColumnName="LIAISON_TEL" />
+                <ScalarProperty Name="LIAISON_ADDR" ColumnName="LIAISON_ADDR" />
+                <ScalarProperty Name="LIAISON_RELA" ColumnName="LIAISON_RELA" />
+                <ScalarProperty Name="LIAISON_EMAIL" ColumnName="LIAISON_EMAIL" />
+                <ScalarProperty Name="GUAR_NAME1" ColumnName="GUAR_NAME1" />
+                <ScalarProperty Name="GUAR_ID1" ColumnName="GUAR_ID1" />
+                <ScalarProperty Name="GUAR_RELA1" ColumnName="GUAR_RELA1" />
+                <ScalarProperty Name="GUAR_CAREER1" ColumnName="GUAR_CAREER1" />
+                <ScalarProperty Name="GUAR_TEL1" ColumnName="GUAR_TEL1" />
+                <ScalarProperty Name="GUAR_ADDR1" ColumnName="GUAR_ADDR1" />
+                <ScalarProperty Name="GUAR_EMAIL1" ColumnName="GUAR_EMAIL1" />
+                <ScalarProperty Name="GUAR_NAME2" ColumnName="GUAR_NAME2" />
+                <ScalarProperty Name="GUAR_ID2" ColumnName="GUAR_ID2" />
+                <ScalarProperty Name="GUAR_RELA2" ColumnName="GUAR_RELA2" />
+                <ScalarProperty Name="GUAR_CAREER2" ColumnName="GUAR_CAREER2" />
+                <ScalarProperty Name="GUAR_TEL2" ColumnName="GUAR_TEL2" />
+                <ScalarProperty Name="GUAR_ADDR2" ColumnName="GUAR_ADDR2" />
+                <ScalarProperty Name="GUAR_EMAIL2" ColumnName="GUAR_EMAIL2" />
+                <ScalarProperty Name="VOUCHER_REMARK" ColumnName="VOUCHER_REMARK" />
+                <ScalarProperty Name="NOT_EMP_CAL" ColumnName="NOT_EMP_CAL" />
+                <ScalarProperty Name="STAY_LICENSE_NO" ColumnName="STAY_LICENSE_NO" />
+                <ScalarProperty Name="SLICENSE_DATE_ST" ColumnName="SLICENSE_DATE_ST" />
+                <ScalarProperty Name="SLICENSE_DATE_END" ColumnName="SLICENSE_DATE_END" />
+                <ScalarProperty Name="WLICENSE_NO" ColumnName="WLICENSE_NO" />
+                <ScalarProperty Name="WLICENSE_DATE_ST" ColumnName="WLICENSE_DATE_ST" />
+                <ScalarProperty Name="WLICENSE_DATE_END" ColumnName="WLICENSE_DATE_END" />
+                <ScalarProperty Name="AGENCY_CORP" ColumnName="AGENCY_CORP" />
+                <ScalarProperty Name="INSURE_YN" ColumnName="INSURE_YN" />
+                <ScalarProperty Name="REST_YY" ColumnName="REST_YY" />
+                <ScalarProperty Name="REST_MM" ColumnName="REST_MM" />
+                <ScalarProperty Name="ENTRY_TYPE" ColumnName="ENTRY_TYPE" />
+                <ScalarProperty Name="DEPT_BOSS_ALLOW_YN" ColumnName="DEPT_BOSS_ALLOW_YN" />
+                <ScalarProperty Name="DEPT_BOSS_ALLOW_DATE" ColumnName="DEPT_BOSS_ALLOW_DATE" />
+                <ScalarProperty Name="DEPT_BOSS_ALLOW_NAME" ColumnName="DEPT_BOSS_ALLOW_NAME" />
+                <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="MODIFY_ID" ColumnName="MODIFY_ID" />
+                <ScalarProperty Name="MODIFY_TIME" ColumnName="MODIFY_TIME" />
+                <ScalarProperty Name="USC_FIELD_CHA_1" ColumnName="USC_FIELD_CHA_1" />
+                <ScalarProperty Name="USC_FIELD_CHA_2" ColumnName="USC_FIELD_CHA_2" />
+                <ScalarProperty Name="USC_FIELD_CHA_3" ColumnName="USC_FIELD_CHA_3" />
+                <ScalarProperty Name="USC_FIELD_CHA_4" ColumnName="USC_FIELD_CHA_4" />
+                <ScalarProperty Name="USC_FIELD_NUM_1" ColumnName="USC_FIELD_NUM_1" />
+                <ScalarProperty Name="USC_FIELD_NUM_2" ColumnName="USC_FIELD_NUM_2" />
+                <ScalarProperty Name="USC_FIELD_DATE_1" ColumnName="USC_FIELD_DATE_1" />
+                <ScalarProperty Name="USC_FIELD_DATE_2" ColumnName="USC_FIELD_DATE_2" />
+                <ScalarProperty Name="FIELD_CHA_1" ColumnName="FIELD_CHA_1" />
+                <ScalarProperty Name="FIELD_CHA_2" ColumnName="FIELD_CHA_2" />
+                <ScalarProperty Name="FIELD_CHA_3" ColumnName="FIELD_CHA_3" />
+                <ScalarProperty Name="FIELD_CHA_4" ColumnName="FIELD_CHA_4" />
+                <ScalarProperty Name="FIELD_CHA_5" ColumnName="FIELD_CHA_5" />
+                <ScalarProperty Name="SKIP" ColumnName="SKIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UUF0001">
+            <EntityTypeMapping TypeName="PSModel.UUF0001">
+              <MappingFragment StoreEntitySet="UUF0001">
+                <ScalarProperty Name="UNIQ_KEY" ColumnName="UNIQ_KEY" />
+                <ScalarProperty Name="CORP_NO" ColumnName="CORP_NO" />
+                <ScalarProperty Name="CODE_TYPE" ColumnName="CODE_TYPE" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="CODE_NAME" ColumnName="CODE_NAME" />
+                <ScalarProperty Name="GROUP_YN" ColumnName="GROUP_YN" />
+                <ScalarProperty Name="CLOSE_YN" ColumnName="CLOSE_YN" />
+                <ScalarProperty Name="DEL_YN" ColumnName="DEL_YN" />
+                <ScalarProperty Name="CODE_DESP_1" ColumnName="CODE_DESP_1" />
+                <ScalarProperty Name="CODE_DESP_2" ColumnName="CODE_DESP_2" />
+                <ScalarProperty Name="CODE_DESP_3" ColumnName="CODE_DESP_3" />
+                <ScalarProperty Name="CODE_DESP_4" ColumnName="CODE_DESP_4" />
+                <ScalarProperty Name="CODE_DESP_5" ColumnName="CODE_DESP_5" />
+                <ScalarProperty Name="CODE_DESP_6" ColumnName="CODE_DESP_6" />
+                <ScalarProperty Name="CODE_DESP_7" ColumnName="CODE_DESP_7" />
+                <ScalarProperty Name="CODE_DESP_8" ColumnName="CODE_DESP_8" />
+                <ScalarProperty Name="CODE_DESP_9" ColumnName="CODE_DESP_9" />
+                <ScalarProperty Name="CODE_DESP_10" ColumnName="CODE_DESP_10" />
+                <ScalarProperty Name="DEPT_BOSS_ALLOW_YN" ColumnName="DEPT_BOSS_ALLOW_YN" />
+                <ScalarProperty Name="DEPT_BOSS_ALLOW_DATE" ColumnName="DEPT_BOSS_ALLOW_DATE" />
+                <ScalarProperty Name="DEPT_BOSS_ALLOW_NAME" ColumnName="DEPT_BOSS_ALLOW_NAME" />
+                <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="MODIFY_ID" ColumnName="MODIFY_ID" />
+                <ScalarProperty Name="MODIFY_TIME" ColumnName="MODIFY_TIME" />
+                <ScalarProperty Name="ENTRY_TYPE" ColumnName="ENTRY_TYPE" />
+                <ScalarProperty Name="USC_FIELD_CHA_1" ColumnName="USC_FIELD_CHA_1" />
+                <ScalarProperty Name="USC_FIELD_CHA_2" ColumnName="USC_FIELD_CHA_2" />
+                <ScalarProperty Name="USC_FIELD_CHA_3" ColumnName="USC_FIELD_CHA_3" />
+                <ScalarProperty Name="USC_FIELD_CHA_4" ColumnName="USC_FIELD_CHA_4" />
+                <ScalarProperty Name="USC_FIELD_NUM_1" ColumnName="USC_FIELD_NUM_1" />
+                <ScalarProperty Name="USC_FIELD_NUM_2" ColumnName="USC_FIELD_NUM_2" />
+                <ScalarProperty Name="USC_FIELD_DATE_1" ColumnName="USC_FIELD_DATE_1" />
+                <ScalarProperty Name="USC_FIELD_DATE_2" ColumnName="USC_FIELD_DATE_2" />
+                <ScalarProperty Name="FIELD_CHA_1" ColumnName="FIELD_CHA_1" />
+                <ScalarProperty Name="FIELD_CHA_2" ColumnName="FIELD_CHA_2" />
+                <ScalarProperty Name="FIELD_CHA_3" ColumnName="FIELD_CHA_3" />
+                <ScalarProperty Name="FIELD_CHA_4" ColumnName="FIELD_CHA_4" />
+                <ScalarProperty Name="FIELD_CHA_5" ColumnName="FIELD_CHA_5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WKF0001">
+            <EntityTypeMapping TypeName="PSModel.WKF0001">
+              <MappingFragment StoreEntitySet="WKF0001">
+                <ScalarProperty Name="CORP_NO" ColumnName="CORP_NO" />
+                <ScalarProperty Name="WORK_CARD_NO" ColumnName="WORK_CARD_NO" />
+                <ScalarProperty Name="CUST_NO" ColumnName="CUST_NO" />
+                <ScalarProperty Name="PROD" ColumnName="PROD" />
+                <ScalarProperty Name="CREATE_EMP_NO" ColumnName="CREATE_EMP_NO" />
+                <ScalarProperty Name="MEDIA_KIND" ColumnName="MEDIA_KIND" />
+                <ScalarProperty Name="BUYER_TEAM" ColumnName="BUYER_TEAM" />
+                <ScalarProperty Name="WORK_CARD_MEDIA_TYPE" ColumnName="WORK_CARD_MEDIA_TYPE" />
+                <ScalarProperty Name="CLOSE_DATE" ColumnName="CLOSE_DATE" />
+                <ScalarProperty Name="GROUP_CARD_NO" ColumnName="GROUP_CARD_NO" />
+                <ScalarProperty Name="AMNET_TERM" ColumnName="AMNET_TERM" />
+                <ScalarProperty Name="VOUCHER_REMARK" ColumnName="VOUCHER_REMARK" />
+                <ScalarProperty Name="DATA_SEQ" ColumnName="DATA_SEQ" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="WORK_STEP" ColumnName="WORK_STEP" />
+                <ScalarProperty Name="BUDGET" ColumnName="BUDGET" />
+                <ScalarProperty Name="SECTION_NAME" ColumnName="SECTION_NAME" />
+                <ScalarProperty Name="DATE_ST" ColumnName="DATE_ST" />
+                <ScalarProperty Name="DATE_END" ColumnName="DATE_END" />
+                <ScalarProperty Name="RECEIVE_EMP_NO" ColumnName="RECEIVE_EMP_NO" />
+                <ScalarProperty Name="DEPUTY_EMP_NO" ColumnName="DEPUTY_EMP_NO" />
+                <ScalarProperty Name="EXPECT_FINISH_DATE" ColumnName="EXPECT_FINISH_DATE" />
+                <ScalarProperty Name="REAL_FINISH_DATE" ColumnName="REAL_FINISH_DATE" />
+                <ScalarProperty Name="CUE_OK_DATE" ColumnName="CUE_OK_DATE" />
+                <ScalarProperty Name="CANCEL_YN" ColumnName="CANCEL_YN" />
+                <ScalarProperty Name="DETAIL_REMARK" ColumnName="DETAIL_REMARK" />
+                <ScalarProperty Name="ENTRY_ID" ColumnName="ENTRY_ID" />
+                <ScalarProperty Name="ENTRY_TIME" ColumnName="ENTRY_TIME" />
+                <ScalarProperty Name="MODIFY_ID" ColumnName="MODIFY_ID" />
+                <ScalarProperty Name="MODIFY_TIME" ColumnName="MODIFY_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

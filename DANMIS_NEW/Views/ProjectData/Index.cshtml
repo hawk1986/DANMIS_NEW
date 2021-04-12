@@ -1,0 +1,497 @@
+@model ProjectDataSearchModel
+@{
+    var auth = UnobtrusiveSession.Session["Auth"] as IList<Auth>;
+    var function = auth.First(x => x.Code == "ProjectDataIndex");
+    var details = auth.Any(x => x.Code == "ProjectDataDetails");
+    var create = auth.Any(x => x.Code == "ProjectDataCreate");
+    var edit = auth.Any(x => x.Code == "ProjectDataEdit");
+    var delete = auth.Any(x => x.Code == "ProjectDataDelete");
+    ViewBag.Title = function.ModuleName + " / " + function.GroupName + " / " + function.SimpleName;
+}
+@section scripts {
+    @Scripts.Render("~/bundles/table")
+    <script src="~/Scripts/table-init.js"></script>
+    @*<script src="~/Scripts/sweetalert.min.js"></script>
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />*@
+<script>
+		//formatter
+        @if (Model.Formatter != null)
+        {
+            foreach (var fmt in Model.Formatter)
+            {
+                @Html.Raw("function ")
+                @Html.Raw(fmt.Key)
+                @Html.Raw("(value,row,index){if(null!==value){switch(value){")
+                foreach (var item in fmt.Value)
+                {
+                    @Html.Raw(string.Format("case '{0}': return '{1}';", item.Value, item.Text))
+                }
+                @Html.Raw("}}}")
+                @System.Environment.NewLine
+            }
+        }
+
+    // set column function
+    function setColumn() {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("SetColumn", "Common")',
+            data: { functionName: 'projectData', data: this.columns[0] },
+            dataType: 'json',
+            success: function (data) { },
+            error: function (data, error) { }
+        });
+    }
+
+    // Init
+    $(function () {
+        // init page event
+        var initOptions = {
+            detailsUrl: '@Url.Action("Details")',
+            editUrl: '@Url.Action("Edit")',
+            deleteUrl: '@Url.Action("Delete")',
+            pagingUrl: '@Url.Action("Paging")',
+            getColumnUrl: '@Url.Action("GetColumn", "Common")',
+            functionName: 'projectData',
+            detailsBtn: '@details' == 'True',
+            editBtn: '@edit' == 'True',
+            deleteBtn: '@delete' == 'True',
+            confirmMessage: '@string.Format(@Resource.ExecutionConfirm, @Resource.Delete, @Resource.ProjectData)',
+            successMessage: '@string.Format(@Resource.ExecutionCompleted, @Resource.Delete, @Resource.ProjectData)',
+            errorMessage: '@string.Format(@Resource.ExecutionFailed, @Resource.Delete, @Resource.ProjectData)',
+            systemErrorMessage: '@Resource.SystemError',
+            onReorderColumn: setColumn,
+            onColumnSwitch: setColumn
+        };
+        // init page event
+        InitBasicEvent(initOptions);
+
+    });
+
+    $(function () {
+        // init page event
+        FileCount = @Model.AttachedFiles.Count;
+        FileLimit = 1;
+        if (FileCount === FileLimit) {
+            $('#addXLSButton').prop('disabled', true);
+        }
+
+        $("#StartDate").datepicker({ dateFormat: "yy/mm/dd" });
+    });
+
+    // 檔案檢查
+    $("body").on('change', '#FileUpload1', function () {
+        var file = $(this).parent().find("input[type=file]")[0].files;
+        var extStart = file[0].name.lastIndexOf(".");
+        var ext = file[0].name.substring(extStart, file[0].name.length).toUpperCase();
+        if (ext != ".xls" && ext != ".xlsx" &&
+            ext != ".XLS" && ext != ".XLSX" &&
+            ext != ".csv" && ext != ".CSV") {
+            $(this).parent().find("input[type=file]").val('');
+            alert("請上傳正確檔案格式");
+            return false;
+        }
+    });
+
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    $('input[type=datetime]').change(function () {
+        swal({
+            title: "從CaratStation匯入",
+            text: "確定匯入?",
+            type: "info",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }, function () {
+            var data = $('#search_form').serializeObject();
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: '@Url.Action("ImportProjectData", "ProjectData")',
+                data: JSON.stringify({ 'data': data }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (result) {
+                    swal(result.message);
+
+                    $('#search_form_submit').click();
+
+                },
+                error: function () {
+                    //alert('匯出失敗');
+                }
+            });
+        });
+    });
+
+
+    $('#Status.selectpicker').change(function () {
+        var data = $('#search_form').serializeObject();
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: '@Url.Action("Paging", "ProjectData")',
+            data: JSON.stringify({ 'searchModel': data }),
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (result) {
+                $('#search_form_submit').click();
+            },
+            error: function () {
+
+            }
+        });
+    });
+
+    $('#IsChargeable.selectpicker').change(function () {
+        var data = $('#search_form').serializeObject();
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: '@Url.Action("Paging", "ProjectData")',
+            data: JSON.stringify({ 'searchModel': data }),
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (result) {
+                $('#search_form_submit').click();
+            },
+            error: function () {
+
+            }
+        });
+    });
+
+    $('#ProjectType.selectpicker').change(function () {
+        var data = $('#search_form').serializeObject();
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: '@Url.Action("Paging", "ProjectData")',
+            data: JSON.stringify({ 'searchModel': data }),
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (result) {
+                $('#search_form_submit').click();
+            },
+            error: function () {
+
+            }
+        });
+    });
+
+    $('#btn_ExportCSV').click(function () {
+        var data = $('#search_form').serializeObject();
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: '@Url.Action("ExportCSV", "ProjectData")',
+            data: JSON.stringify({ 'data': data }),
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (result) {
+                //alert(result);
+                //if (!result) { alert("今天還沒有將Workfront回傳的專案資料匯入系統，無法轉資料！"); }
+                event.preventDefault();
+                //$('#search_form_submit').click();
+            },
+            error: function () {
+
+            }
+        });
+    });
+
+    // Upload資料
+    $('#btnUpload').click(function () {
+        swal({
+            title: "上傳Excel",
+            text: "確定上傳?",
+            type: "info",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }, function () {
+            var data = $('#search_form').serializeObject();
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: '@Url.Action("CheckTodayDataExist", "ProjectData")',
+                data: JSON.stringify({ 'data': data }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (result) {
+                    if (!result) {
+                        swal("今天還沒有將Workfront回傳的專案資料匯入系統，無法轉資料！");
+                    }
+                    else {
+
+                        // Checking whether FormData is available in browser
+                        if (window.FormData !== undefined) {
+
+                            var fileUpload = $("#FileUpload1").get(0);
+                            var files = fileUpload.files;
+
+                            // Create FormData object
+                            var fileData = new FormData();
+
+                            // Looping over all files and add it to FormData object
+                            for (var i = 0; i < files.length; i++) {
+                                fileData.append(files[i].name, files[i]);
+                            }
+
+                            // Adding one more key to FormData object
+                            //fileData.append('username', "");
+
+                            $.ajax({
+                                url: '@Url.Action("UploadFiles", "ProjectData")',
+                                type: "POST",
+                                contentType: false, // Not to set any content header
+                                processData: false, // Not to process data
+                                data: fileData,
+                                success: function (result) {
+                                    swal(result.message);
+
+                                    $('#search_form_submit').click();
+                                },
+                                error: function (err) {
+                                    swal(result.message);
+                                }
+                            });
+                        }
+                        else {
+                            swal("FormData is not supported.");
+                        }
+
+                    }
+                    event.preventDefault();
+
+                },
+                error: function () {
+
+                }
+
+            });
+        });
+    });
+
+    // table row selected event 控制從 CaratStatoin 來的不能修改刪除
+    $('#eventsTable').on('load-success.bs.table', function () {
+        $('#eventsTable .bs-checkbox').find("input[name='btSelectItem']").each(function () {
+            var importType = $(this).closest("tr").find("td:eq(7)").text();
+
+            if (importType === "CaratStation") {
+                $(this).prop("disabled", true);
+            }
+        });
+    });
+
+    $('#table').bootstrapTable({
+        url: '@Url.Action("GetBadData", "ProjectData")',
+        method: 'GET',
+        striped: true,
+        cache: false,
+        pagination: true,
+        sortable: true,
+        sortOrder: "asc",
+        sidePagination: "server",
+        pageNumber: 1,
+        pageList: [10, 25, 50, 100],
+        search: false,
+        strictSearch: true,
+        showColumns: true,
+        showRefresh: true,
+        minimumCountColumns: 2,
+        clickToSelect: true,
+        columns: [
+            { field: 'WORK_CARD_NO', title: '工作卡號' },
+            { field: 'CUST_ABBR', title: '客戶名稱' },
+            { field: 'PROD_NAME', title: '產品名稱' },
+            { field: 'MEDIA_KIND_NAME', title: '媒體別' },
+            { field: 'BrandName', title: '品牌' },
+        ],
+        onLoadSuccess: function (result) {
+        },
+        onLoadError: function () {
+            alert("BadProjectData數據加載失敗！");
+        },
+
+    });
+
+    $('#btn_BadProjectData').click(function () {
+            var data = $('#search_form').serializeObject();
+             $.ajax({
+                cache: false,
+                type: 'POST',
+                url: '@Url.Action("CheckTodayDataExist", "ProjectData")',
+                 data: JSON.stringify({ 'searchModel': data }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                 success: function (result) {
+                     swal(result.message);
+                     event.preventDefault();                     
+                },
+                error: function () {
+
+                }
+            });
+        });
+</script>
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">@function.ModuleName</a>
+            </li>
+            <li>
+                @Html.ActionLink(function.GroupName, "Index")
+            </li>
+            <li class="active">
+                <strong>@function.SimpleName</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        @using (Html.BeginForm("Paging", "ProjectData", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "search_form", enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-group">
+                                @Html.Label(Resource.ImportFile, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2 XLSUpload">
+                                    <div @*class="row m-t"*@>
+                                        <div @*class="col-xs-12"*@>
+                                            <input type="file" id="FileUpload1" name="PostedFiles" class="form-control m-b" />
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <button type="button" id="btnUpload" value="Upload Files" class="UploadExcel btn btn-primary">上傳</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.Label(Resource.ImportStart, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                <div class="col-sm-2">
+                                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                          
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2">
+                                    @Html.DropDownListFor(model => model.Status, Model._Status, string.Format(Resource.PleaseSelect, Resource.ProjectStatus), new { @class = "form-control selectpicker" })
+                                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.LabelFor(model => model.IsChargeable, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                <div class="col-sm-2">
+                                    @Html.DropDownListFor(model => model.IsChargeable, Model._IsChargeable, string.Format(Resource.PleaseSelect, Resource.IsChargeable), new { @class = "form-control selectpicker" })
+                                    @Html.ValidationMessageFor(model => model.IsChargeable, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ProjectType, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2">
+                                    @Html.DropDownListFor(model => model.ProjectType, Model._ProjectType, string.Format(Resource.PleaseSelect, Resource.ProjectType), new { @class = "form-control selectpicker" })
+                                    @Html.ValidationMessageFor(model => model.ProjectType, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.Label(Resource.Keyword, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                <div class="col-sm-2">
+                                    @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", @placeholder = "請輸入關鍵字..." } })
+                                    @Html.ValidationMessageFor(model => model.Search, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-1">
+                                    <button type="submit" id="search_form_submit" class="btn btn-primary"><i class="fa fa-search"></i> @Resource.Search</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div id="toolbar">
+                        @if (create)
+                        {
+                            <a href="@Url.Action("Create")" id="create" class="btn btn-primary">
+                                <i class="fa fa-plus" aria-hidden="true"></i> @Resource.Create
+                            </a>
+                        }
+                        @if (details)
+                        {
+                            <button id="details_btn" class="btn btn-info disabled">
+                                <i class="fa fa-eye" aria-hidden="true"></i> @Resource.Details
+                            </button>
+                        }
+                        @if (edit)
+                        {
+                            <button id="edit_btn" class="btn btn-success disabled">
+                                <i class="fa fa-pencil" aria-hidden="true"></i> @Resource.Edit
+                            </button>
+                        }
+                        @if (delete)
+                        {
+                            <button id="delete_btn" class="btn btn-danger disabled">
+                                <i class="fa fa-times" aria-hidden="true"></i> @Resource.Delete
+                            </button>
+                        }
+                        <button id="btn_BadProjectData" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"> <i class="fa fa-times" aria-hidden="true"></i>@Resource.BadProjectData</button>
+                        <button id="btn_ExportCSV" type="button" class="btn btn-warning"> <i class="fa fa-file-excel-o" aria-hidden="true"></i>@Resource.ExportCSV</button>
+                    </div>
+                    <table id="eventsTable" data-toolbar="#toolbar" data-sort-name="SequenceNo" data-row-style="rowStyle"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">待修正卡工作清單</h4>
+            </div>
+
+            <table id="table"></table>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    tr:nth-child(even) {
+        background: #CCC
+    }
+
+    tr:nth-child(odd) {
+        background-color: #FAFAFA;
+    }  
+</style>
