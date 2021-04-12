@@ -1,7 +1,4 @@
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\NLog.config
-C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\PRS_New.dll.config
-C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\PRS_New.dll
-C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\PRS_New.pdb
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\roslyn\csc.exe
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\roslyn\csc.exe.config
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\roslyn\csc.rsp
@@ -166,8 +163,6 @@ C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\zh-Hant
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\DANMIS_NEW.csprojAssemblyReference.cache
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\DANMIS_NEW.csproj.CoreCompileInputs.cache
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\DANMIS_NEW.csproj.CopyComplete
-C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\PRS_New.dll
-C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\PRS_New.pdb
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git1\DANMIS_NEW\DANMIS_NEW\bin\NLog.config
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git1\DANMIS_NEW\DANMIS_NEW\bin\PRS_New.dll.config
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git1\DANMIS_NEW\DANMIS_NEW\bin\PRS_New.dll
@@ -346,3 +341,8 @@ C:\Users\HCheng03\OneDrive - dentsu\桌面\Git1\DANMIS_NEW\DANMIS_NEW\obj\Debug\
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git1\DANMIS_NEW\DANMIS_NEW\obj\Debug\DANMIS_NEW.csproj.CopyComplete
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git1\DANMIS_NEW\DANMIS_NEW\obj\Debug\PRS_New.dll
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git1\DANMIS_NEW\DANMIS_NEW\obj\Debug\PRS_New.pdb
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\DANMIS_NEW.dll.config
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\DANMIS_NEW.dll
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\DANMIS_NEW.pdb
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\DANMIS_NEW.dll
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\DANMIS_NEW.pdb

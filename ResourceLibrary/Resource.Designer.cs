@@ -232,6 +232,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 基本資料 的當地語系化字串。
+        /// </summary>
+        public static string BasicSetting {
+            get {
+                return ResourceManager.GetString("BasicSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 基本設定 的當地語系化字串。
         /// </summary>
         public static string BasicSetup {
@@ -1110,15 +1119,6 @@ namespace ResourceLibrary {
         public static string FactoryName {
             get {
                 return ResourceManager.GetString("FactoryName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類似 廠商資料維護 的當地語系化字串。
-        /// </summary>
-        public static string FactorySetting {
-            get {
-                return ResourceManager.GetString("FactorySetting", resourceCulture);
             }
         }
         

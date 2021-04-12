@@ -1107,6 +1107,9 @@
   <data name="MediaType" xml:space="preserve">
     <value>MediaType</value>
   </data>
+  <data name="BasicSetting" xml:space="preserve">
+    <value>基本資料</value>
+  </data>
   <data name="Factory" xml:space="preserve">
     <value>廠商資料維護</value>
   </data>
@@ -1115,9 +1118,6 @@
   </data>
   <data name="FactoryName" xml:space="preserve">
     <value>廠商全名</value>
-  </data>
-  <data name="FactorySetting" xml:space="preserve">
-    <value>廠商資料維護</value>
   </data>
   <data name="FactoryShortName" xml:space="preserve">
     <value>廠商簡稱</value>
