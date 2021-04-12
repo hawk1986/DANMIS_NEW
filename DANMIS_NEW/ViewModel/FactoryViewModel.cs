@@ -9,6 +9,8 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using DANMIS_NEW.Models;
+using DANMIS_NEW.ViewModel.SearchModel;
 using ResourceLibrary;
 using System;
 using System.Collections.Generic;
@@ -70,7 +72,7 @@ namespace DANMIS_NEW.ViewModel
         /// <summary>
         /// FAX
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "FAX", ResourceType = typeof(Resource))]
         public string FAX { get; set; }
@@ -78,7 +80,7 @@ namespace DANMIS_NEW.ViewModel
         /// <summary>
         /// Address
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(100, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "Address", ResourceType = typeof(Resource))]
         public string Address { get; set; }
@@ -86,7 +88,7 @@ namespace DANMIS_NEW.ViewModel
         /// <summary>
         /// FactoryClass
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "FactoryClass", ResourceType = typeof(Resource))]
         public string FactoryClass { get; set; }
@@ -94,14 +96,14 @@ namespace DANMIS_NEW.ViewModel
         /// <summary>
         /// IsShow
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "IsShow", ResourceType = typeof(Resource))]
         public bool IsShow { get; set; }
 
         /// <summary>
         /// Memo
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(200, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "Memo", ResourceType = typeof(Resource))]
         public string Memo { get; set; }
@@ -140,7 +142,24 @@ namespace DANMIS_NEW.ViewModel
     public class FactoryViewModel : FactoryBaseModel
     {
         #region == View Fields ==
+        public FactoryViewModel()
+        {         
+            this.ContactPerson = new List<ContactPerson>();
+            var a = new ContactPerson()
+            {
+                Name = "abc",
+                FactoryID = Guid.NewGuid(),
+            };
+            ContactPerson.Add(a);
+        
+        }
 
+
+        public SelectList _FactoryClass { get; set; }
+        public SelectList YesNoList { get; set; }
+        [Display(Name = "ContactPerson", ResourceType = typeof(Resource))]
+        public List<ContactPerson> ContactPerson { get; set; }
+        
         #endregion == View Fields ==
     }
 }

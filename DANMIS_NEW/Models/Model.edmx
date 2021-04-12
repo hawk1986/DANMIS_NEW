@@ -5,11 +5,30 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MGearModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ContactPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FactoryID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEL" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FAX" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CellPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Memo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsShow" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Factory">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="SequenceNo" Type="int" Nullable="false" />
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FactoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="FactoryShortName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -307,6 +326,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ContactPerson_Factory">
+          <End Role="Factory" Type="Self.Factory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactPerson">
+              <PropertyRef Name="FactoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Department_Head">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Department" Type="Self.Department" Multiplicity="*" />
@@ -438,6 +471,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MGearModelStoreContainer">
+          <EntitySet Name="ContactPerson" EntityType="Self.ContactPerson" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Factory" EntityType="Self.Factory" Schema="dan" store:Type="Tables" />
           <EntitySet Name="AccessControl" EntityType="Self.AccessControl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
@@ -470,6 +504,10 @@
           <AssociationSet Name="FK_AccessControl_Role" Association="Self.FK_AccessControl_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="AccessControl" EntitySet="AccessControl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactPerson_Factory" Association="Self.FK_ContactPerson_Factory">
+            <End Role="Factory" EntitySet="Factory" />
+            <End Role="ContactPerson" EntitySet="ContactPerson" />
           </AssociationSet>
           <AssociationSet Name="FK_Department_Head" Association="Self.FK_Department_Head">
             <End Role="User" EntitySet="User" />
@@ -572,6 +610,11 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
           <EntitySet Name="Factory" EntityType="DbModel.Factory" />
+          <EntitySet Name="ContactPerson" EntityType="DbModel.ContactPerson" />
+          <AssociationSet Name="FK_ContactPerson_Factory" Association="DbModel.FK_ContactPerson_Factory">
+            <End Role="Factory" EntitySet="Factory" />
+            <End Role="ContactPerson" EntitySet="ContactPerson" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Department">
           <Key>
@@ -957,7 +1000,42 @@
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ContactPerson" Relationship="DbModel.FK_ContactPerson_Factory" FromRole="Factory" ToRole="ContactPerson" />
         </EntityType>
+        <EntityType Name="ContactPerson">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="FactoryID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TEL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FAX" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CellPhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsShow" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Factory" Relationship="DbModel.FK_ContactPerson_Factory" FromRole="ContactPerson" ToRole="Factory" />
+          <Property Name="Memo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_ContactPerson_Factory">
+          <End Type="DbModel.Factory" Role="Factory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DbModel.ContactPerson" Role="ContactPerson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ContactPerson">
+              <PropertyRef Name="FactoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1242,6 +1320,26 @@
                 <ScalarProperty Name="IDNO" ColumnName="IDNO" />
                 <ScalarProperty Name="FactoryShortName" ColumnName="FactoryShortName" />
                 <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactPerson">
+            <EntityTypeMapping TypeName="DbModel.ContactPerson">
+              <MappingFragment StoreEntitySet="ContactPerson">
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FactoryID" ColumnName="FactoryID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>

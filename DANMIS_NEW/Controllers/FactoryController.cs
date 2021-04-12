@@ -29,13 +29,16 @@ namespace DANMIS_NEW.Controllers
     {
         readonly ICommonManager _commonManager;
         readonly IFactoryManager _factoryManager;
+        readonly IContactPersonManager _contactPersonManager;
 
         public FactoryController(
             ICommonManager commonManager,
-            IFactoryManager factoryManager)
+            IFactoryManager factoryManager,
+            IContactPersonManager contactPersonManager)
         {
             _commonManager = commonManager;
             _factoryManager = factoryManager;
+            _contactPersonManager = contactPersonManager;
             logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -301,13 +304,41 @@ namespace DANMIS_NEW.Controllers
             return Json(result);
         }
 
+        [HttpGet]
+        public ActionResult _Paging(FactoryViewModel data)
+        {
+            var searhModel = new ContactPersonSearchModel();
+            // 查詢結果物件初始化
+            var result = new Paging<ContactPersonListResult> { total = 0, rows = null };
+            // 查詢
+            try
+            {
+                if (!string.IsNullOrEmpty(data.ID.ToString()))
+                {
+                    searhModel.FactoryID = data.ID;
+                    result = _contactPersonManager.Paging(searhModel);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, string.Format(Resource.PagingError, Resource.ContactPerson));
+            }
+
+            return Json(new { total = result.total, rows = result }, JsonRequestBehavior.AllowGet);
+        }
+
         /// <summary>
         /// 設定頁面所需要的下拉選單資料
         /// </summary>
         /// <param name="viewModel"></param>
         void setDropDownList(ref FactoryViewModel viewModel)
         {
+            viewModel._FactoryClass = _commonManager.GetOptionList("FactoryClass");
+            viewModel.YesNoList = _commonManager.GetYesNoList();
         }
+
+       
     }
 }
 #pragma warning restore 1591

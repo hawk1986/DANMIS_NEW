@@ -38,10 +38,22 @@ namespace DANMIS_NEW.Controllers
             {
                 switch (functionName)
                 {
-                    case "factory":
+                    case "contactPerson":
                         result = new List<ListOption>
                         {
                             new ListOption{ checkbox = false, sortable = false, visible = false },
+                            new ListOption{ field = "Name", title = Resource.ContactPerson },
+                            new ListOption{ field = "TEL", title = Resource.TEL },
+                            new ListOption{ field = "FAX", title = Resource.FAX },
+                            new ListOption{ field = "CellPhone", title = Resource.CellPhone },
+                            new ListOption{ field = "Email", title = Resource.Email },
+                            new ListOption{ field = "IsShow", title = Resource.IsShow, formatter = "BitFormatter" },
+                        };
+                        break;
+                    case "factory":
+                        result = new List<ListOption>
+                        {
+                            new ListOption{ checkbox = true, sortable = false, visible = true },
                             new ListOption{ field = "FactoryShortName", title = Resource.FactoryShortName },
                             new ListOption{ field = "TEL", title = Resource.TEL },
                             new ListOption{ field = "FAX", title = Resource.FAX },

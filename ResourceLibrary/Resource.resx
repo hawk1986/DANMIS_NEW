@@ -840,7 +840,7 @@
   <data name="State" xml:space="preserve">
     <value>狀態</value>
   </data>
-  <data name="Cellphone" xml:space="preserve">
+  <data name="CellPhone" xml:space="preserve">
     <value>手機號碼</value>
   </data>
   <data name="Memo" xml:space="preserve">

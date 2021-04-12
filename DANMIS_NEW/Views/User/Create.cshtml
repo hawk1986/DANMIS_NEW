@@ -152,7 +152,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.DepartmentID, htmlAttributes: new { @class = "control-label col-sm-2" })
                             <div class="col-sm-4">
-                                @Html.ListBoxFor(model => model.DepartmentIDs, Model.DepartmentList, new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
+                                @Html.ListBoxFor(model => model.DepartmentIDs, Model.DepartmentList, new { @class = "form-control selectpicker multiline", data_live_search = "true", data_size = "10" })
                                 @Html.ValidationMessageFor(model => model.DepartmentIDs, "", new { @class = "text-danger" })
                             </div>
                         </div>

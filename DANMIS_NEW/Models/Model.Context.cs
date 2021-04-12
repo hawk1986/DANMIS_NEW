@@ -40,5 +40,6 @@ namespace DANMIS_NEW.Models
         public virtual DbSet<VisualMenu> VisualMenu { get; set; }
         public virtual DbSet<Skill> Skill { get; set; }
         public virtual DbSet<Factory> Factory { get; set; }
+        public virtual DbSet<ContactPerson> ContactPerson { get; set; }
     }
 }

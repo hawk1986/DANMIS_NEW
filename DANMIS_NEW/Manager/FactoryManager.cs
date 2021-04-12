@@ -152,6 +152,11 @@ namespace DANMIS_NEW.Manager
                 .Take(searchModel.Limit)
                 .ToList();
 
+            foreach (var item in result.rows)
+            {
+                item.FactoryClass = switchFactoryClass(item.FactoryClass);
+            }
+
             return result;
         }
 
@@ -188,6 +193,76 @@ namespace DANMIS_NEW.Manager
                 }
             }
         }
+
+        #region switchFactoryClass
+        public string switchFactoryClass(string factoryClass)
+        {
+            var result = string.Empty;
+
+            switch (factoryClass)
+            {
+                case "0":
+                    result = "大樓相關";
+                    break;
+                case "1":
+                    result = "文具/日常用品";
+                    break;
+                case "2":
+                    result = "水電/工程";
+                    break;
+                case "3":
+                    result = "交通/運輸/快遞";
+                    break;
+                case "4":
+                    result = "其他";
+                    break;
+                case "5":
+                    result = "花店";
+                    break;
+                case "6":
+                    result = "設備";
+                    break;
+                case "7":
+                    result = "電腦/電話/門禁相關";
+                    break;
+                case "8":
+                    result = "影印/印刷用品";
+                    break;
+                case "大樓相關":
+                    result = "0";
+                    break;
+                case "文具/日常用品":
+                    result = "1";
+                    break;
+                case "水電/工程":
+                    result = "2";
+                    break;
+                case "交通/運輸/快遞":
+                    result = "3";
+                    break;
+                case "其他":
+                    result = "4";
+                    break;
+                case "花店":
+                    result = "5";
+                    break;
+                case "設備":
+                    result = "6";
+                    break;
+                case "電腦/電話/門禁相關":
+                    result = "7";
+                    break;
+                case "影印/印刷用品":
+                    result = "8";
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
+        #endregion
+
     }
 }
 #pragma warning restore 1591

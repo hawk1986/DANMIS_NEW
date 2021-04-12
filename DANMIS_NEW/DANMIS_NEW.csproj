@@ -1093,6 +1093,9 @@
     <Compile Include="Controllers\CommonController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ContactPersonController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Controller.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1139,6 +1142,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interface\ICommonManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IContactPersonManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IDepartmentManager.cs">
@@ -1190,6 +1196,9 @@
     <Compile Include="Manager\CommonManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manager\ContactPersonManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Manager\DepartmentManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
@@ -1234,6 +1243,12 @@
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CaptchaData.cs" />
+    <Compile Include="Models\ContactPerson.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContactPersonRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Department.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -1262,6 +1277,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FunctionRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IContactPersonRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IDepartmentRepository.cs">
@@ -1315,6 +1333,9 @@
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginLockInfo.cs" />
+    <Compile Include="Models\Mapper\ContactPerson.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Mapper\Department.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
@@ -1472,6 +1493,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModel\ContactPersonViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\DepartmentViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
@@ -1490,6 +1514,9 @@
     <Compile Include="ViewModel\FunctionSequenceInfo.cs" />
     <Compile Include="ViewModel\FunctionViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\ContactPersonListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\DepartmentListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
@@ -1532,6 +1559,9 @@
     </Compile>
     <Compile Include="ViewModel\ListResult\VisualMenuListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\ContactPersonSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\FactorySearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
@@ -1667,9 +1697,10 @@
     <Content Include="Views\Function\Details.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
-    <Content Include="Views\Function\Index.cshtml">
+    <Content Include="Views\Factory\_Create.cshtml" />
+    <None Include="Views\Function\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
-    </Content>
+    </None>
     <Content Include="Views\Module\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
@@ -1756,6 +1787,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <None Include="Views\ContactPerson\Create.cshtml" />
+    <None Include="Views\ContactPerson\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\ContactPerson\Index.cshtml" />
     <None Include="Views\Factory\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -1765,6 +1801,7 @@
     <None Include="Views\Factory\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
+    <Content Include="Views\Factory\_Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1774,18 +1811,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploads\" />
-    <Folder Include="Views\Department\" />
-    <Folder Include="Views\Factory\" />
-    <Folder Include="Views\FreeFieldSetting\" />
-    <Folder Include="Views\Function\" />
-    <Folder Include="Views\Module\" />
-    <Folder Include="Views\OperateRecord\" />
-    <Folder Include="Views\Role\" />
-    <Folder Include="Views\SystemConfig\" />
-    <Folder Include="Views\SystemOption\" />
-    <Folder Include="Views\UserProfile\" />
-    <Folder Include="Views\User\" />
-    <Folder Include="Views\VisualMenu\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

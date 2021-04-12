@@ -30,6 +30,8 @@
         <AssociationConnector Association="DbModel.AccessControl" />
         <AssociationConnector Association="DbModel.User2Role" />
         <EntityTypeShape EntityType="DbModel.Factory" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DbModel.ContactPerson" Width="1.5" PointX="3" PointY="13" />
+        <AssociationConnector Association="DbModel.FK_ContactPerson_Factory" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

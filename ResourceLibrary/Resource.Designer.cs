@@ -405,9 +405,9 @@ namespace ResourceLibrary {
         /// <summary>
         ///   查詢類似 手機號碼 的當地語系化字串。
         /// </summary>
-        public static string Cellphone {
+        public static string CellPhone {
             get {
-                return ResourceManager.GetString("Cellphone", resourceCulture);
+                return ResourceManager.GetString("CellPhone", resourceCulture);
             }
         }
         
