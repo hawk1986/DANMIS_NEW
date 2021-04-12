@@ -57,7 +57,7 @@
                 { field: 'IsShow', title: '是否顯示' },
 
             ],
-            onLoadSuccess: function (result) {
+            onLoadSuccess: function (result) {                
             },
             onLoadError: function () {
                 alert("ContactPerson數據加載失敗！");
@@ -92,7 +92,7 @@
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.SequenceNo)
-                        @Html.HiddenFor(model => model.ID)                        
+                        @Html.HiddenFor(model => model.ID)
                         <div class="form-group">
                             @Html.LabelFor(model => model.FactoryShortName, htmlAttributes: new { @class = "control-label col-sm-2" })
                             <div class="col-sm-2">
@@ -159,16 +159,22 @@
                         if (action != "Create")
                         {
                             <div class="form-group">
+                                
                                 @Html.LabelFor(model => model.ContactPerson, htmlAttributes: new { @class = "control-label col-sm-2" })
                                 <div class="col-sm-8">
                                     <table id="table"></table>
                                 </div>
+                                <button type="submit" id="" class="btn col-sm-offset-2 "><i class="fa fa-plus"></i> 新增聯絡人</button>                                
                             </div>
+                            <div class="form-group">                                
+                                
+                            </div>
+                            
                         }
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>
-                                <button type="reset" class="btn btn-default"><i class="fa fa-eraser"></i> @Resource.Reset</button>
+                                @*<button type="reset" class="btn btn-default"><i class="fa fa-eraser"></i> @Resource.Reset</button>*@
                                 <a id="exit_btn" href="@Url.Action("Index")" class="btn btn-danger"><i class="fa fa-sign-out"></i> @Resource.Exit</a>
                             </div>
                         </div>
@@ -179,26 +185,6 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">待修正卡工作清單</h4>
-            </div>
-
-            <table id="table"></table>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
 
 <style>
     tr:nth-child(even) {

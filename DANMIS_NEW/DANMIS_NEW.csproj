@@ -1697,7 +1697,6 @@
     <Content Include="Views\Function\Details.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
-    <Content Include="Views\Factory\_Create.cshtml" />
     <None Include="Views\Function\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -1801,7 +1800,6 @@
     <None Include="Views\Factory\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
-    <Content Include="Views\Factory\_Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -325,7 +325,7 @@ namespace DANMIS_NEW.Controllers
                 logger.Error(ex, string.Format(Resource.PagingError, Resource.ContactPerson));
             }
 
-            return Json(new { total = result.total, rows = result }, JsonRequestBehavior.AllowGet);
+            return Json(new { total = result.total, rows = result.rows }, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>
