@@ -113,7 +113,7 @@ namespace DANMIS_NEW.Manager
                              {
                                  SequenceNo = x.SequenceNo,
                                  ID = x.ID,
-                                 //FactoryName = x.FactoryName,
+                                 FactoryID = x.FactoryID,
                                  Name = x.Name,
                                  TEL = x.TEL,
                                  FAX = x.FAX,
@@ -128,8 +128,7 @@ namespace DANMIS_NEW.Manager
             if (!string.IsNullOrWhiteSpace(searchModel.Search))
             {
                 var search = searchModel.Search.ToLower();
-                tempResult = tempResult.Where(x =>
-                    x.FactoryName.Contains(search) ||
+                tempResult = tempResult.Where(x =>                    
                     x.Name.Contains(search) ||
                     x.TEL.Contains(search) ||
                     x.FAX.Contains(search) ||
@@ -139,6 +138,10 @@ namespace DANMIS_NEW.Manager
                     x.UpdateUser.Contains(search) ||
                     false);
             }
+            if (searchModel.FactoryID.HasValue && searchModel.FactoryID != new Guid())
+                tempResult = tempResult.Where(x =>
+                        x.FactoryID == searchModel.FactoryID ||                        
+                        false);
 
             // 進行分頁處理
             var result = new Paging<ContactPersonListResult>();

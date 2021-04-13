@@ -17,7 +17,7 @@ namespace DANMIS_NEW.ViewModel.ListResult
     {
         public int SequenceNo { get; set; }
         public Guid ID { get; set; }
-        public string FactoryName { get; set; }
+        public Guid FactoryID { get; set; }
         public string Name { get; set; }
         public string TEL { get; set; }
         public string FAX { get; set; }

@@ -36,13 +36,7 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.SequenceNo)
                         @Html.HiddenFor(model => model.ID)
-                        @*<div class="form-group">
-                            @Html.LabelFor(model => model.FactoryID, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
-                                @Html.DropDownListFor(model => model.FactoryID, Model.FactoryList, string.Format(Resource.PleaseSelect, Resource.Factory), new { @class = "form-control selectpicker" })
-                                @Html.ValidationMessageFor(model => model.FactoryID, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-sm-2" })
                             <div class="col-sm-4">

@@ -304,7 +304,7 @@ namespace DANMIS_NEW.Controllers
             return Json(result);
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult _Paging(FactoryViewModel data)
         {
             var searhModel = new ContactPersonSearchModel();

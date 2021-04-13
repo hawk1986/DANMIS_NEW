@@ -144,21 +144,14 @@ namespace DANMIS_NEW.ViewModel
         #region == View Fields ==
         public FactoryViewModel()
         {         
-            this.ContactPerson = new List<ContactPerson>();
-            var a = new ContactPerson()
-            {
-                Name = "abc",
-                FactoryID = Guid.NewGuid(),
-            };
-            ContactPerson.Add(a);
-        
+            this.ContactPerson = new ContactPerson();
         }
-
 
         public SelectList _FactoryClass { get; set; }
         public SelectList YesNoList { get; set; }
         [Display(Name = "ContactPerson", ResourceType = typeof(Resource))]
-        public List<ContactPerson> ContactPerson { get; set; }
+
+        public ContactPerson ContactPerson { get; set; }
         
         #endregion == View Fields ==
     }

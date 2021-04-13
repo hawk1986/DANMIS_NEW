@@ -27,13 +27,78 @@
             });
             return o;
         };
-        
+
         var data = $('#create_form').serializeObject();
-        
-        $('#table').bootstrapTable({            
+
+        function operateFormatter(value, row, index) {
+            return [
+                //'<a class="modify" href="javascript:void(0)" title="Modify">',
+                //'<i class="fa fa-pencil-square-o"></i>',
+                //'</a>  ',
+                '<a id="getPerson" type="button" class="modify" title="Modify" data-toggle="modal" data-target="#myModal"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>',
+                '<a class="remove" href="javascript:void(0)" title="Remove">',
+                '<i class="fa fa-trash"></i>',
+                '</a>'
+            ].join('')
+        }
+
+        window.operateEvents = {
+            'click .modify': function (e, value, row, index) {
+
+                //alert('You click modify action, row: ' + JSON.stringify(row))
+            },
+            'click .remove': function (e, value, row, index) {
+                swal({
+                        title: "",
+                        text: "確定刪除?",
+                        type: "info",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        showLoaderOnConfirm: true
+                    },
+                    function ()
+                    {
+                            @*var data = $('#search_form').serializeObject();
+                            $.ajax({
+                                cache: false,
+                                type: 'POST',
+                                url: '@Url.Action("ImportProjectData", "ProjectData")',
+                                data: JSON.stringify({ 'data': data }),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: 'json',
+                                success: function (result) {
+                                    swal(result.message);
+
+                                    $('#search_form_submit').click();
+
+                                },
+                                error: function () {
+                                    alert('匯出失敗');
+                                }*@
+                    }
+                );
+
+                /*alert('You click delete action, row: ' + JSON.stringify(row))*/
+                //$('#table').bootstrapTable('remove', {
+                //    field: 'ID',
+                //    values: [row.id]
+                //})
+            }
+        }
+
+        $('#remove').click(function () {
+            var ids = getIdSelections()
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: ids
+            })
+            $remove.prop('disabled', true)
+        })
+
+        $('#table').bootstrapTable({
             url: '@Url.Action("_Paging", "Factory")',
-            method: 'GET',
-            data: JSON.stringify({ 'data': data }),
+            method: 'POST',
+            queryParams: JSON.stringify(data),
             striped: true,
             cache: false,
             pagination: true,
@@ -48,16 +113,28 @@
             showRefresh: true,
             minimumCountColumns: 2,
             clickToSelect: true,
+            uniqueId: "ID",
+            showToggle: true,
+            silent: true,
             columns: [
-                { field: 'Name', title: '聯絡人' },
-                { field: 'TEL', title: '電話號碼' },
-                { field: 'FAX', title: '傳真號碼' },
-                { field: 'CellPhone', title: '手機號碼' },
-                { field: 'Email', title: 'Email' },
-                { field: 'IsShow', title: '是否顯示' },
-
+                { checkbox: true, visible: true },
+                { field: 'ID', title: 'ID', visible: false },
+                { field: 'Name', title: '聯絡人', sortable: true, searchable: true},
+                { field: 'TEL', title: '電話號碼', sortable: true },
+                { field: 'FAX', title: '傳真號碼', sortable: true },
+                { field: 'CellPhone', title: '手機號碼', sortable: true  },
+                { field: 'Email', title: 'Email', sortable: true  },
+                { field: 'IsShow', title: '是否顯示', sortable: true },
+                {
+                    field: 'operate',
+                    title: '執行動作',
+                    align: 'center',
+                    clickToSelect: false,
+                    events: window.operateEvents,
+                    formatter: operateFormatter
+                }
             ],
-            onLoadSuccess: function (result) {                
+            onLoadSuccess: function (result) {
             },
             onLoadError: function () {
                 alert("ContactPerson數據加載失敗！");
@@ -159,17 +236,17 @@
                         if (action != "Create")
                         {
                             <div class="form-group">
-                                
+
                                 @Html.LabelFor(model => model.ContactPerson, htmlAttributes: new { @class = "control-label col-sm-2" })
-                                <div class="col-sm-8">
+                                <div class="col-sm-10">
                                     <table id="table"></table>
                                 </div>
-                                <button type="submit" id="" class="btn col-sm-offset-2 "><i class="fa fa-plus"></i> 新增聯絡人</button>                                
+                                <button type="submit" id="" class="btn col-sm-offset-2 "><i class="fa fa-plus"></i> 新增聯絡人</button>
                             </div>
-                            <div class="form-group">                                
-                                
+                            <div class="form-group">
+
                             </div>
-                            
+
                         }
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -185,13 +262,91 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        
+        <div class="wrapper wrapper-content animated" style="width: 800px;">
 
-<style>
-    tr:nth-child(even) {
-        background: #CCC
-    }
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
 
-    tr:nth-child(odd) {
-        background-color: #FAFAFA;
-    }
-</style>
+                        <div class="ibox-content" style="height: 400px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">聯絡人資訊</h4>
+                            </div>
+
+                            @using (Html.BeginForm(action, "Factory", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form", enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.SequenceNo)
+                                @Html.HiddenFor(model => model.ID)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ContactPerson.Name, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.ContactPerson.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ContactPerson.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                    @Html.LabelFor(model => model.ContactPerson.TEL, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.ContactPerson.TEL, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ContactPerson.TEL, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ContactPerson.FAX, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.ContactPerson.FAX, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ContactPerson.FAX, "", new { @class = "text-danger" })
+                                    </div>
+                                    @Html.LabelFor(model => model.ContactPerson.CellPhone, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.ContactPerson.CellPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ContactPerson.CellPhone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ContactPerson.Email, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-8">
+                                        @Html.EditorFor(model => model.ContactPerson.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ContactPerson.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ContactPerson.Memo, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-8">
+                                        @Html.EditorFor(model => model.ContactPerson.Memo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ContactPerson.Memo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ContactPerson.IsShow, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.DropDownListFor(model => model.ContactPerson.IsShow, Model.YesNoList, string.Format(Resource.PleaseSelect, Resource.IsShow), new { @class = "form-control selectpicker" })
+                                        @Html.ValidationMessageFor(model => model.ContactPerson.IsShow, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>
+                                            <button type="reset" class="btn btn-default"><i class="fa fa-eraser"></i> @Resource.Reset</button>
+                                            <a id="exit_btn" href="@Url.Action("Index")" class="btn btn-danger"><i class="fa fa-sign-out"></i> @Resource.Exit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
