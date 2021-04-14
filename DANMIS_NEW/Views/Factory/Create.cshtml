@@ -145,6 +145,14 @@
                             }
                         );
 
+                        $('#ContactPerson_ID').val('');
+                        $('#ContactPerson_Name').val('');
+                        $('#ContactPerson_TEL').val('');
+                        $('#ContactPerson_FAX').val('');
+                        $('#ContactPerson_CellPhone').val('');
+                        $('#ContactPerson_Email').val('');
+                        $('#ContactPerson_Memo').val('');
+                        $('#ContactPerson_IsShow.selectpicker').selectpicker('val', '');
                     },
                     error: function () {
                          //alert(3);
@@ -265,6 +273,14 @@
     function delayShow() {
         $('#updateContactPerson').show();
         $('#addContactPerson').show();
+        $('#ContactPerson_ID').val('');
+        $('#ContactPerson_Name').val('');
+        $('#ContactPerson_TEL').val('');
+        $('#ContactPerson_FAX').val('');
+        $('#ContactPerson_CellPhone').val('');
+        $('#ContactPerson_Email').val('');
+        $('#ContactPerson_Memo').val('');
+        $('#ContactPerson_IsShow.selectpicker').selectpicker('val', '');
     };
 
     $('#closeDialog').click(function () {        
