@@ -28,6 +28,7 @@ namespace DANMIS_NEW.ViewModel.ListResult
         public string Memo { get; set; }
         public string UpdateUser { get; set; }
         public DateTime UpdateTime { get; set; }
+        public string ContactPerson { get; set; }
     }
 }
 #pragma warning restore 1591

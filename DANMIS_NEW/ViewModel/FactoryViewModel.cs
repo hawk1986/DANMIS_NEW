@@ -144,14 +144,13 @@ namespace DANMIS_NEW.ViewModel
         #region == View Fields ==
         public FactoryViewModel()
         {         
-            this.ContactPerson = new ContactPerson();
+            this.ContactPerson = new ContactPersonViewModel();
         }
 
         public SelectList _FactoryClass { get; set; }
         public SelectList YesNoList { get; set; }
         [Display(Name = "ContactPerson", ResourceType = typeof(Resource))]
-
-        public ContactPerson ContactPerson { get; set; }
+        public ContactPersonViewModel ContactPerson { get; set; }
         
         #endregion == View Fields ==
     }

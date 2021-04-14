@@ -53,13 +53,15 @@ namespace DANMIS_NEW.Controllers
                     case "factory":
                         result = new List<ListOption>
                         {
+
+                            
                             new ListOption{ checkbox = true, sortable = false, visible = true },
                             new ListOption{ field = "FactoryShortName", title = Resource.FactoryShortName },
                             new ListOption{ field = "TEL", title = Resource.TEL },
                             new ListOption{ field = "FAX", title = Resource.FAX },
                             new ListOption{ field = "IDNO", title = Resource.IDNO },
                             new ListOption{ field = "FactoryClass", title = Resource.FactoryClass },
-                            new ListOption{ field = "ContactPerson", title = Resource.ContactPerson },
+                            new ListOption{ field = "ContactPerson", title = Resource.ContactPerson, align = "center", events = "window.operateEvents", formatter = "<button class='detail btn btn-info' title='Detail' data-toggle='modal' data-target='#myModal'><i class='fa fa-address-book'></i>ÀËµøÁpµ¸¤H</button>" },
                         };
                         break;
                     case "freeFieldSetting":

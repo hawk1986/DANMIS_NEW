@@ -19,6 +19,7 @@ using DANMIS_NEW.ViewModel;
 using DANMIS_NEW.ViewModel.ListResult;
 using DANMIS_NEW.ViewModel.SearchModel;
 using ResourceLibrary;
+using System.Web;
 
 namespace DANMIS_NEW.Manager
 {
@@ -121,9 +122,10 @@ namespace DANMIS_NEW.Manager
                                  Address = x.Address,
                                  FactoryClass = x.FactoryClass,
                                  IsShow = x.IsShow,
-                                 Memo = x.Memo,
+                                 Memo = x.Memo,                                
                                  UpdateUser = x.UpdateUser,
                                  UpdateTime = x.UpdateTime,
+                                 ContactPerson = string.Empty,
                              };
 
             // 如有篩選條件，進行篩選

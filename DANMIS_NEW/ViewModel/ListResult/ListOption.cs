@@ -16,11 +16,17 @@
 
         public int? width { get; set; }
 
+        public string events { get; set; }
+
+        public string align { get; set; }
+
         public ListOption()
         {
             sortable = true;
             visible = true;
             formatter = string.Empty;
+            events = string.Empty;
+            align = string.Empty;
         }
     }
 }

@@ -63,6 +63,62 @@
             // init page event
             InitBasicEvent(initOptions);
         });
+
+        window.operateEvents = {
+            'click .detail': function (e, value, row, index) {
+
+                $("#table").bootstrapTable('destroy'); 
+                //alert(JSON.parse(JSON.stringify(row)).ID);
+                createBootstrape(JSON.parse(JSON.stringify(row)).ID);
+            }
+        }
+
+        function createBootstrape(id) {
+            var data =
+            {
+                ID: id,
+            };
+            $('#table').bootstrapTable({
+                    url: '@Url.Action("_Paging", "Factory")',
+                    method: 'POST',
+                    queryParams: JSON.stringify(data),
+                    striped: true,
+                    cache: false,
+                    pagination: true,
+                    sortable: true,
+                    sortOrder: "asc",
+                    sidePagination: "server",
+                    pageNumber: 1,
+                    pageList: [10, 25, 50, 100],
+                    search: false,
+                    strictSearch: true,
+                    showColumns: true,
+                    showRefresh: true,
+                    minimumCountColumns: 2,
+                    clickToSelect: true,
+                    uniqueId: "ID",
+                    showToggle: true,
+                    silent: true,
+                    columns: [
+                        { field: 'ID', title: 'ID', visible: false },
+                        { field: 'Name', title: '聯絡人', sortable: true, searchable: true },
+                        { field: 'TEL', title: '電話號碼', sortable: true },
+                        { field: 'FAX', title: '傳真號碼', sortable: true },
+                        { field: 'CellPhone', title: '手機號碼', sortable: true },
+                        { field: 'Email', title: 'Email', sortable: true },
+                        { field: 'IsShow', title: '是否顯示', sortable: true },
+                    ],
+                    onLoadSuccess: function (result) {
+
+                    },
+                    onLoadError: function () {
+                        alert("ContactPerson數據加載失敗！");
+                    },
+
+            });
+
+        };
+
     </script>
 }
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -135,4 +191,32 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="wrapper wrapper-content animated" style="width: 800px;">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+
+                        <div class="ibox-content" style="height: 400px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">聯絡人資訊</h4>
+                            </div>
+
+                            <table id="table"></table>
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -266,7 +266,7 @@ namespace DANMIS_NEW.Controllers
                 }
             }
             // 初始化編輯頁面下拉選單
-            setDropDownList(ref viewModel);
+            //setDropDownList(ref viewModel);
 
             return View("Create", viewModel);
         }
@@ -301,6 +301,92 @@ namespace DANMIS_NEW.Controllers
             return Json(result);
         }
 
+        [HttpPost]
+        public ActionResult EditAJAX(ContactPersonViewModel viewModel)
+        {
+            var result = Json(new { result = false }, JsonRequestBehavior.AllowGet);
+            // 驗證
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    viewModel.UpdateUser = UserName;
+                    viewModel.UpdateTime = NowTime;
+                    _contactPersonManager.Update(viewModel);
+
+                    // 完成
+                    result = Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                    
+                }
+                catch (Exception ex)
+                {
+                    // 儲存發生錯誤
+                    logger.Error(ex, string.Format(Resource.ExecutionFailedWithID, Resource.Edit, Resource.ContactPerson, viewModel.ID));
+                    TempData["ErrorMsg"] = new JsonMessage { Style = "danger", Message = string.Format(Resource.ExecutionFailedWithID, Resource.Edit, Resource.ContactPerson, viewModel.ID) }.ToString();
+                }
+            }
+
+            return result;
+        }
+
+        [HttpPost]
+        public ActionResult CreateAJAX(ContactPersonViewModel viewModel)
+        {
+            var result = Json(new { result = false }, JsonRequestBehavior.AllowGet);
+            // 驗證
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    viewModel.ID = Guid.NewGuid();
+                    viewModel.CreateUser = UserName;
+                    viewModel.CreateTime = NowTime;
+                    viewModel.UpdateUser = UserName;
+                    viewModel.UpdateTime = NowTime;
+                    _contactPersonManager.Create(viewModel);
+                    UnobtrusiveSession.Session["QueryModel"] = null;
+
+                    // 完成
+                    result = Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                    
+                }
+                catch (Exception ex)
+                {
+                    // 儲存發生錯誤
+                    logger.Error(ex, string.Format(Resource.ExecutionFailedWithID, Resource.Create, Resource.ContactPerson, viewModel.ID));
+                    TempData["ErrorMsg"] = new JsonMessage { Style = "danger", Message = string.Format(Resource.ExecutionFailedWithID, Resource.Create, Resource.ContactPerson, viewModel.ID) }.ToString();
+                }
+            }            
+
+            return result;
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAJAX(List<Guid> id)
+        {
+            // 預設失敗
+            var result = Json(new { result = false }, JsonRequestBehavior.AllowGet);
+            // id 有值進行刪除作業
+            if (id != null && id.Any())
+            {
+                try
+                {
+                    // 進行刪除
+                    _contactPersonManager.Delete(id);
+
+                    // 完成
+                    result = Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception ex)
+                {
+                    // 刪除失敗
+                    logger.Error(ex, string.Format(Resource.ExecutionFailed, Resource.Delete, Resource.ContactPerson, id));
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// 設定頁面所需要的下拉選單資料
         /// </summary>
@@ -309,6 +395,8 @@ namespace DANMIS_NEW.Controllers
         {
             
         }
+
+        
     }
 }
 #pragma warning restore 1591

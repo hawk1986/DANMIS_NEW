@@ -403,7 +403,7 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
-        ///   查詢類似 手機號碼 的當地語系化字串。
+        ///   查詢類似 手機 的當地語系化字串。
         /// </summary>
         public static string CellPhone {
             get {
