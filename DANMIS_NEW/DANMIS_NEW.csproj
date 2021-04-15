@@ -144,6 +144,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.106.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.106.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -1090,7 +1091,13 @@
     <Compile Include="Controllers\Api\Public\ResetPasswordController.cs" />
     <Compile Include="Controllers\Base\BaseApiController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\BrandController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CommonController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CompanyController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ContactPersonController.cs">
@@ -1141,7 +1148,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IBrandManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Interface\ICommonManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ICompanyManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IContactPersonManager.cs">
@@ -1192,8 +1205,15 @@
     <Compile Include="IoC\WindsorControllerFactory.cs" />
     <Compile Include="IoC\WindsorDependencyResolver.cs" />
     <Compile Include="IoC\WindsorDependencyScope.cs" />
+    <Compile Include="Manager\ADLoginManager.cs" />
+    <Compile Include="Manager\BrandManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Manager\CaptchaManager.cs" />
     <Compile Include="Manager\CommonManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\CompanyManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\ContactPersonManager.cs">
@@ -1245,9 +1265,15 @@
     <Compile Include="Models\Brand.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BrandRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CaptchaData.cs" />
     <Compile Include="Models\Company.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CompanyRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ContactPerson.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -1283,6 +1309,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FunctionRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IBrandRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ICompanyRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IContactPersonRepository.cs">
@@ -1339,6 +1371,12 @@
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginLockInfo.cs" />
+    <Compile Include="Models\Mapper\Brand.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\Company.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Mapper\ContactPerson.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
@@ -1498,7 +1536,13 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\BrandViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModel\CompanyViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ContactPersonViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
@@ -1520,6 +1564,12 @@
     <Compile Include="ViewModel\FunctionSequenceInfo.cs" />
     <Compile Include="ViewModel\FunctionViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\BrandListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\CompanyListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\ContactPersonListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
@@ -1565,6 +1615,12 @@
     </Compile>
     <Compile Include="ViewModel\ListResult\VisualMenuListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\BrandSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\CompanySearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\ContactPersonSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
@@ -1703,6 +1759,24 @@
     <Content Include="Views\Function\Details.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
+    <None Include="Views\Brand\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Brand\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Brand\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Company\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Company\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Company\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\Function\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -1792,11 +1866,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <None Include="Views\ContactPerson\Create.cshtml" />
+    <None Include="Views\ContactPerson\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\ContactPerson\Details.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
-    <None Include="Views\ContactPerson\Index.cshtml" />
+    <None Include="Views\ContactPerson\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\Factory\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -1815,6 +1893,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploads\" />
+    <Folder Include="Views\Brand\" />
+    <Folder Include="Views\Company\" />
+    <Folder Include="Views\ContactPerson\" />
+    <Folder Include="Views\Department\" />
+    <Folder Include="Views\Factory\" />
+    <Folder Include="Views\FreeFieldSetting\" />
+    <Folder Include="Views\Function\" />
+    <Folder Include="Views\Module\" />
+    <Folder Include="Views\OperateRecord\" />
+    <Folder Include="Views\Role\" />
+    <Folder Include="Views\SystemConfig\" />
+    <Folder Include="Views\SystemOption\" />
+    <Folder Include="Views\UserProfile\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\VisualMenu\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
