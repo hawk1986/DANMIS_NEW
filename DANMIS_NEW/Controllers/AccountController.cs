@@ -153,8 +153,9 @@ namespace DANMIS_NEW.Controllers
             if (ModelState.IsValid)
             {
                 //判斷是否鎖定帳號
-                isLockAccount = LoginLockManager.IsLockAccount(viewModel.Account);
+                //isLockAccount = LoginLockManager.IsLockAccount(viewModel.Account);
                 //驗證碼檢查
+                //20210415 改驗證AD
                 if (!isLockAccount /*&& CaptchaManager.RemoveCaptcha(viewModel.CaptchaID, viewModel.CaptchaCode)*/)
                 {
                     viewModel.NowTime = NowTime;

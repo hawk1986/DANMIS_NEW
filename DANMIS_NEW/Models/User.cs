@@ -45,6 +45,63 @@ namespace DANMIS_NEW.Models
         public Nullable<System.Guid> DefaultIndex { get; set; }
         public Nullable<System.Guid> DepartmentID { get; set; }
         public string DepartmentIDs { get; set; }
+        public Nullable<int> EmpUniqNo { get; set; }
+        public string EmpEngName { get; set; }
+        public string RegionCode { get; set; }
+        public string CompCode { get; set; }
+        public string OfficeCode { get; set; }
+        public string DeptCode { get; set; }
+        public string EmpNo { get; set; }
+        public string EmpEngOfficialName { get; set; }
+        public string EmpLocName { get; set; }
+        public string EmpGender { get; set; }
+        public string JobTitleCode { get; set; }
+        public Nullable<System.DateTime> EmpStartDate { get; set; }
+        public Nullable<System.DateTime> EmpQuitDate { get; set; }
+        public string EmpStatusCode { get; set; }
+        public string JobStatusCode { get; set; }
+        public string EmpCompEmail { get; set; }
+        public string EmpADLoginID { get; set; }
+        public string EmpComputerID { get; set; }
+        public string EmpPrivateEMail { get; set; }
+        public string EmpHomePhone { get; set; }
+        public string EmpMobilePhone { get; set; }
+        public Nullable<int> BossEmpUniqNo { get; set; }
+        public string EmpAcctStatus { get; set; }
+        public string WritingLanguage { get; set; }
+        public string SysLanguage { get; set; }
+        public string EmpBankAccount { get; set; }
+        public string EmpPhoto { get; set; }
+        public string CheckAttendance { get; set; }
+        public string ExtDisplayFlag { get; set; }
+        public string SpcInTime { get; set; }
+        public string SpcOutTime { get; set; }
+        public Nullable<int> InputBy { get; set; }
+        public Nullable<System.DateTime> InputDate { get; set; }
+        public Nullable<int> ChangeBe { get; set; }
+        public Nullable<System.DateTime> ChangeDate { get; set; }
+        public string Random { get; set; }
+        public Nullable<int> NextBossEmpUniqNo { get; set; }
+        public string Do_PDP { get; set; }
+        public string EmpExtNo { get; set; }
+        public string WDID { get; set; }
+        public string TaxiAccount { get; set; }
+        public string BrandCode { get; set; }
+        public string EmpType { get; set; }
+        public string CostCenter { get; set; }
+        public string ProfitCenter { get; set; }
+        public Nullable<System.DateTime> LastWorkDate { get; set; }
+        public string CardNo { get; set; }
+        public string FloorNo { get; set; }
+        public string SeatNo { get; set; }
+        public string MotoNo { get; set; }
+        public string MotocycleID { get; set; }
+        public string ETag { get; set; }
+        public Nullable<System.DateTime> MotoStartDate { get; set; }
+        public string FaxNo { get; set; }
+        public string LeaseLine { get; set; }
+        public string AssestNo { get; set; }
+        public string ThirdCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Department> Department { get; set; }

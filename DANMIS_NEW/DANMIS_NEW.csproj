@@ -1242,7 +1242,13 @@
     <Compile Include="Manager\VisualMenuManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Brand.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CaptchaData.cs" />
+    <Compile Include="Models\Company.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ContactPerson.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

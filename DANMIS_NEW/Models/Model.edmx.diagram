@@ -32,6 +32,8 @@
         <EntityTypeShape EntityType="DbModel.Factory" Width="1.5" PointX="0.75" PointY="12.75" />
         <EntityTypeShape EntityType="DbModel.ContactPerson" Width="1.5" PointX="3" PointY="13" />
         <AssociationConnector Association="DbModel.FK_ContactPerson_Factory" />
+        <EntityTypeShape EntityType="DbModel.Brand" Width="1.5" PointX="12.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DbModel.Company" Width="1.5" PointX="12.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
