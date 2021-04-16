@@ -78,7 +78,7 @@ namespace DANMIS_NEW.ViewModel
         /// <summary>
         /// ContactTel
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(20, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "ContactTel", ResourceType = typeof(Resource))]
         public string ContactTel { get; set; }
@@ -168,7 +168,7 @@ namespace DANMIS_NEW.ViewModel
         /// <summary>
         /// DepartmentIDs
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "Department", ResourceType = typeof(Resource))]
         public List<Guid> DepartmentIDs { get; set; }
 

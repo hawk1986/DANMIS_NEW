@@ -84,15 +84,20 @@ namespace DANMIS_NEW.Controllers
             }            
             searchModel.Candidates = candidates;
             searchModel.CanVote = false;
+            var _canVote = false;
+            var _hasVote = true;
             // 判斷投票人名單是否有自己
             var hasVote = _voterManager.GetByWDID(WDID);
             if (!string.IsNullOrEmpty(hasVote.EmployeeID))
-                searchModel.CanVote = true;
+                _canVote = true;               
 
             // 判斷是否已投過
             var isVote = _votesManager.GetByWDID(WDID);
             if (string.IsNullOrEmpty(isVote.EmployeeID))
-                searchModel.CanVote = true;
+                _hasVote = false;
+
+            if (_canVote == true && _hasVote == false)            
+                searchModel.CanVote = true;            
             else
             {
                 searchModel.CanVote = false;

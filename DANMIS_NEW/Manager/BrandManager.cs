@@ -137,8 +137,8 @@ namespace DANMIS_NEW.Manager
             result.total = tempResult.Count();
             result.rows = tempResult
                 .OrderBy(searchModel.Sort, searchModel.Order)
-                .Skip(searchModel.Offset)
-                .Take(searchModel.Limit)
+                //.Skip(searchModel.Offset)
+                //.Take(searchModel.Limit)
                 .ToList();
 
             return result;

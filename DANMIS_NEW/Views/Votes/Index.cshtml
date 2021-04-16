@@ -134,13 +134,23 @@
                     <div class="row">
                         <form class="form-horizontal" id="search_form">
                             @Html.HiddenFor(model => model.CanVote)
+                            @if (!Model.CanVote)
+                            {
                             <div class="form-group">
-                                @Html.Label("候選人名單:", htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-8">
+                                    @Html.Label("您已完成投票!", htmlAttributes: new { @class = "", @style = "color:red;" })
+                                </div>
+                            </div>
+                            }
+                            <div class="form-group">
+                                
+                                    @Html.Label("候選人名單:", htmlAttributes: new { @class = "control-label col-sm-1" })
+                                
                             </div>
                             <div class="form-group">
                                 @foreach (var item in Model.Candidates)
                                 {
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-3">
                                         <label class="radio-inline">
                                             @if (Model.CanVote)
                                             {
@@ -148,7 +158,8 @@
                                             }
                                             else
                                             {
-                                                @Html.RadioButtonFor(model => model.WDID, item.WDID, htmlAttributes: new { @disabled = "disabled" })
+                                                @Html.RadioButtonFor(model => model.WDID, item.WDID)
+                                                @*@Html.RadioButtonFor(model => model.WDID, item.WDID, htmlAttributes: new { @disabled = "disabled" })*@
                                             }
                                             @item.PreferredName
                                         </label>
@@ -162,11 +173,6 @@
                                     <button type="button" id="confirm" class="btn btn-primary">確定投票</button>
                                 </div>
                             }
-                            else
-                            {
-                                @Html.Label("您已投過囉!", htmlAttributes: new { @class = "control-label col-sm-1" })
-                            }
-
                         </form>
                     </div>
                 </div>
