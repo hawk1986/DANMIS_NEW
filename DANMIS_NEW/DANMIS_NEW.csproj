@@ -1094,6 +1094,9 @@
     <Compile Include="Controllers\BrandController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CandidateController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CommonController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
@@ -1145,10 +1148,19 @@
     <Compile Include="Controllers\VisualMenuController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\VoterController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\VotesController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interface\IBrandManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ICandidateManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\ICommonManager.cs">
@@ -1201,12 +1213,21 @@
     <Compile Include="Interface\IVisualMenuManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IVoterManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IVotesManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="IoC\ControllersInstaller.cs" />
     <Compile Include="IoC\WindsorControllerFactory.cs" />
     <Compile Include="IoC\WindsorDependencyResolver.cs" />
     <Compile Include="IoC\WindsorDependencyScope.cs" />
     <Compile Include="Manager\ADLoginManager.cs" />
     <Compile Include="Manager\BrandManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\CandidateManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\CaptchaManager.cs" />
@@ -1262,10 +1283,22 @@
     <Compile Include="Manager\VisualMenuManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manager\VoterManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\VotesManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Brand.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BrandRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Candidate.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CandidateRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CaptchaData.cs" />
@@ -1312,6 +1345,9 @@
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IBrandRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ICandidateRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ICompanyRepository.cs">
@@ -1370,8 +1406,17 @@
     <Compile Include="Models\IVisualMenuRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IVoterRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IVotesRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginLockInfo.cs" />
     <Compile Include="Models\Mapper\Brand.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\Candidate.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\Company.cs">
@@ -1428,6 +1473,12 @@
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\VisualMenu.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\Voter.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\Votes.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Marquee.cs">
@@ -1534,9 +1585,24 @@
     <Compile Include="Models\VisualMenuRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Voter.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VoterRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Votes.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VotesRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\BrandViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\CandidateViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ChangePasswordViewModel.cs" />
@@ -1566,6 +1632,9 @@
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\BrandListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\CandidateListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\CompanyListResult.cs">
@@ -1616,7 +1685,16 @@
     <Compile Include="ViewModel\ListResult\VisualMenuListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ListResult\VoterListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\VotesListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\SearchModel\BrandSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\CandidateSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\CompanySearchModel.cs">
@@ -1626,6 +1704,12 @@
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\FactorySearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\VoterSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\VotesSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SendMailModel\ContactUsMailModel.cs" />
@@ -1711,6 +1795,12 @@
     <Compile Include="ViewModel\VisualMenuViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\VoterViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\VotesViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Views\Views.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1766,6 +1856,15 @@
       <DependentUpon>Views.tt</DependentUpon>
     </None>
     <None Include="Views\Brand\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Candidate\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Candidate\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Candidate\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
     <None Include="Views\Company\Create.cshtml">
@@ -1884,6 +1983,24 @@
     <None Include="Views\Factory\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
+    <None Include="Views\Voter\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Voter\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Voter\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <Content Include="Views\Votes\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </Content>
+    <Content Include="Views\Votes\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </Content>
+    <Content Include="Views\Votes\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1894,6 +2011,7 @@
   <ItemGroup>
     <Folder Include="Content\uploads\" />
     <Folder Include="Views\Brand\" />
+    <Folder Include="Views\Candidate\" />
     <Folder Include="Views\Company\" />
     <Folder Include="Views\ContactPerson\" />
     <Folder Include="Views\Department\" />
@@ -1908,6 +2026,8 @@
     <Folder Include="Views\UserProfile\" />
     <Folder Include="Views\User\" />
     <Folder Include="Views\VisualMenu\" />
+    <Folder Include="Views\Voter\" />
+    <Folder Include="Views\Votes\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

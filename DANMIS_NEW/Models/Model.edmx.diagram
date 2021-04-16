@@ -34,6 +34,9 @@
         <AssociationConnector Association="DbModel.FK_ContactPerson_Factory" />
         <EntityTypeShape EntityType="DbModel.Brand" Width="1.5" PointX="12.375" PointY="8.75" />
         <EntityTypeShape EntityType="DbModel.Company" Width="1.5" PointX="12.375" PointY="12.75" />
+        <EntityTypeShape EntityType="DbModel.Candidate" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DbModel.Voter" Width="1.5" PointX="14.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DbModel.Votes" Width="1.5" PointX="14.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

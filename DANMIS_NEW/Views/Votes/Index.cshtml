@@ -1,0 +1,176 @@
+@model VotesSearchModel
+@{
+    var auth = UnobtrusiveSession.Session["Auth"] as IList<Auth>;
+    var function = auth.First(x => x.Code == "VotesIndex");
+    var details = auth.Any(x => x.Code == "VotesDetails");
+    var create = auth.Any(x => x.Code == "VotesCreate");
+    var edit = auth.Any(x => x.Code == "VotesEdit");
+    var delete = auth.Any(x => x.Code == "VotesDelete");
+    ViewBag.Title = function.ModuleName + " / " + function.GroupName + " / " + function.SimpleName;
+}
+@section scripts {
+    @Scripts.Render("~/bundles/table")
+    <script src="~/Scripts/table-init.js"></script>
+    <script>
+		//formatter
+        @if (Model.Formatter != null)
+        {
+            foreach (var fmt in Model.Formatter)
+            {
+                @Html.Raw("function ")
+                @Html.Raw(fmt.Key)
+                @Html.Raw("(value,row,index){if(null!==value){switch(value){")
+                foreach (var item in fmt.Value)
+                {
+                    @Html.Raw(string.Format("case '{0}': return '{1}';", item.Value, item.Text))
+                }
+                @Html.Raw("}}}")
+                @System.Environment.NewLine
+            }
+        }
+        // set column function
+        function setColumn() {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SetColumn", "Common")',
+                data: { functionName: 'votes', data: this.columns[0] },
+                dataType: 'json',
+                success: function (data) { },
+                error: function (data, error) { }
+            });
+        }
+
+        // Init
+        $(function () {
+            // init page event
+            var initOptions = {
+                detailsUrl: '@Url.Action("Details")',
+                editUrl: '@Url.Action("Edit")',
+                deleteUrl: '@Url.Action("Delete")',
+                pagingUrl: '@Url.Action("Paging")',
+                getColumnUrl: '@Url.Action("GetColumn", "Common")',
+                functionName: 'votes',
+                detailsBtn: '@details' == 'True',
+                editBtn: '@edit' == 'True',
+                deleteBtn: '@delete' == 'True',
+                confirmMessage: '@string.Format(@Resource.ExecutionConfirm, @Resource.Delete, @Resource.Votes)',
+                successMessage: '@string.Format(@Resource.ExecutionCompleted, @Resource.Delete, @Resource.Votes)',
+                errorMessage: '@string.Format(@Resource.ExecutionFailed, @Resource.Delete, @Resource.Votes)',
+                systemErrorMessage: '@Resource.SystemError',
+                onReorderColumn: setColumn,
+                onColumnSwitch: setColumn
+            };
+            // init page event
+            InitBasicEvent(initOptions);
+        });
+
+        $.fn.serializeObject = function () {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function () {
+                if (o[this.name]) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+        
+
+        $('#confirm').click(function () {
+            var data = $('#search_form').serializeObject();
+            
+            swal({
+                title: "確定投票?",
+                text: "投完之後就不能修改囉!",
+                type: "info",
+                showCancelButton: true,
+                closeOnConfirm: true,
+                showLoaderOnConfirm: false
+            }, function () {
+                $.ajax({
+                    cache: false,
+                    type: 'POST',
+                    url: '@Url.Action("Paging", "Votes")',
+                    data: JSON.stringify({ 'searchModel': data }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        alert(result.message);
+                        history.go(0);                      
+                    },
+                    error: function () {
+                        
+                    }
+                });
+            });
+        });
+    </script>
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">@function.ModuleName</a>
+            </li>
+            <li>
+                @Html.ActionLink(function.GroupName, "Index")
+            </li>
+            <li class="active">
+                <strong>@function.SimpleName</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <form class="form-horizontal" id="search_form">
+                            @Html.HiddenFor(model => model.CanVote)
+                            <div class="form-group">
+                                @Html.Label("候選人名單:", htmlAttributes: new { @class = "control-label col-sm-1" })
+                            </div>
+                            <div class="form-group">
+                                @foreach (var item in Model.Candidates)
+                                {
+                                    <div class="col-sm-12">
+                                        <label class="radio-inline">
+                                            @if (Model.CanVote)
+                                            {
+                                                @Html.RadioButtonFor(model => model.WDID, item.WDID)
+                                            }
+                                            else
+                                            {
+                                                @Html.RadioButtonFor(model => model.WDID, item.WDID, htmlAttributes: new { @disabled = "disabled" })
+                                            }
+                                            @item.PreferredName
+                                        </label>
+                                    </div>
+
+                                }
+                            </div>
+                            @if (Model.CanVote)
+                            {
+                                <div class="col-sm-6">
+                                    <button type="button" id="confirm" class="btn btn-primary">確定投票</button>
+                                </div>
+                            }
+                            else
+                            {
+                                @Html.Label("您已投過囉!", htmlAttributes: new { @class = "control-label col-sm-1" })
+                            }
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>

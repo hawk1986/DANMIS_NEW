@@ -1131,4 +1131,184 @@
   <data name="IsShow" xml:space="preserve">
     <value>是否顯示</value>
   </data>
+  <data name="Candidate" xml:space="preserve">
+    <value>候選人</value>
+  </data>
+  <data name="Voter" xml:space="preserve">
+    <value>投票人</value>
+  </data>
+  <data name="Votes" xml:space="preserve">
+    <value>投票活動</value>
+  </data>
+  <data name="AssestNo" xml:space="preserve">
+    <value>耳機編號</value>
+  </data>
+  <data name="BossEmpUniqNo" xml:space="preserve">
+    <value>主管資料庫代碼編號</value>
+  </data>
+  <data name="BrandCode" xml:space="preserve">
+    <value>品牌代碼</value>
+  </data>
+  <data name="CardNo" xml:space="preserve">
+    <value>卡片編號</value>
+  </data>
+  <data name="ChangeBe" xml:space="preserve">
+    <value>修改人資料庫編號</value>
+  </data>
+  <data name="ChangeDate" xml:space="preserve">
+    <value>資料庫修改時間</value>
+  </data>
+  <data name="CheckAttendance" xml:space="preserve">
+    <value>CheckAttendance</value>
+  </data>
+  <data name="CompCode" xml:space="preserve">
+    <value>品牌</value>
+  </data>
+  <data name="CostCenter" xml:space="preserve">
+    <value>CostCenter</value>
+  </data>
+  <data name="DeptCode" xml:space="preserve">
+    <value>部門別</value>
+  </data>
+  <data name="Do_PDP" xml:space="preserve">
+    <value>Do_PDP</value>
+  </data>
+  <data name="EmpAcctStatus" xml:space="preserve">
+    <value>EmpAcctStatus</value>
+  </data>
+  <data name="EmpADLoginID" xml:space="preserve">
+    <value>公司AD帳號</value>
+  </data>
+  <data name="EmpBankAccount" xml:space="preserve">
+    <value>銀行帳戶</value>
+  </data>
+  <data name="EmpCompEmail" xml:space="preserve">
+    <value>公司Email</value>
+  </data>
+  <data name="EmpComputerID" xml:space="preserve">
+    <value>公司電腦ID</value>
+  </data>
+  <data name="EmpEngName" xml:space="preserve">
+    <value>英文名</value>
+  </data>
+  <data name="EmpEngOfficialName" xml:space="preserve">
+    <value>英文名</value>
+  </data>
+  <data name="EmpExtNo" xml:space="preserve">
+    <value>EmpExtNo</value>
+  </data>
+  <data name="EmpGender" xml:space="preserve">
+    <value>性別</value>
+  </data>
+  <data name="EmpHomePhone" xml:space="preserve">
+    <value>住家電話</value>
+  </data>
+  <data name="EmpLocName" xml:space="preserve">
+    <value>中文名</value>
+  </data>
+  <data name="EmpMobilePhone" xml:space="preserve">
+    <value>手機</value>
+  </data>
+  <data name="EmpNo" xml:space="preserve">
+    <value>員工編號</value>
+  </data>
+  <data name="EmpPhoto" xml:space="preserve">
+    <value>個人圖</value>
+  </data>
+  <data name="EmpPrivateEMail" xml:space="preserve">
+    <value>個人Email</value>
+  </data>
+  <data name="EmpQuitDate" xml:space="preserve">
+    <value>離職時間</value>
+  </data>
+  <data name="EmpStartDate" xml:space="preserve">
+    <value>到職時間</value>
+  </data>
+  <data name="EmpStatusCode" xml:space="preserve">
+    <value>狀態代碼</value>
+  </data>
+  <data name="EmpType" xml:space="preserve">
+    <value>EmpType</value>
+  </data>
+  <data name="EmpUniqNo" xml:space="preserve">
+    <value>資料庫編號</value>
+  </data>
+  <data name="ETag" xml:space="preserve">
+    <value>ETag</value>
+  </data>
+  <data name="ExtDisplayFlag" xml:space="preserve">
+    <value>ExtDisplayFlag</value>
+  </data>
+  <data name="FaxNo" xml:space="preserve">
+    <value>傳真號碼</value>
+  </data>
+  <data name="FloorNo" xml:space="preserve">
+    <value>樓層位置</value>
+  </data>
+  <data name="InputBy" xml:space="preserve">
+    <value>建立人資料庫編號</value>
+  </data>
+  <data name="InputDate" xml:space="preserve">
+    <value>資料庫建立時間</value>
+  </data>
+  <data name="JobStatusCode" xml:space="preserve">
+    <value>工作狀態代碼</value>
+  </data>
+  <data name="JobTitleCode" xml:space="preserve">
+    <value>職業代碼</value>
+  </data>
+  <data name="LastWorkDate" xml:space="preserve">
+    <value>LastWorkDate</value>
+  </data>
+  <data name="LeaseLine" xml:space="preserve">
+    <value>座位電話</value>
+  </data>
+  <data name="MotocycleID" xml:space="preserve">
+    <value>MotocycleID</value>
+  </data>
+  <data name="MotoNo" xml:space="preserve">
+    <value>MotoNo</value>
+  </data>
+  <data name="MotoStartDate" xml:space="preserve">
+    <value>停車位啟用日期</value>
+  </data>
+  <data name="NextBossEmpUniqNo" xml:space="preserve">
+    <value>上層主管資料庫編號</value>
+  </data>
+  <data name="OfficeCode" xml:space="preserve">
+    <value>公司別</value>
+  </data>
+  <data name="ProfitCenter" xml:space="preserve">
+    <value>ProfitCenter</value>
+  </data>
+  <data name="Random" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="RegionCode" xml:space="preserve">
+    <value>所在地區</value>
+  </data>
+  <data name="SeatNo" xml:space="preserve">
+    <value>座位編號</value>
+  </data>
+  <data name="SpcInTime" xml:space="preserve">
+    <value>SpcInTime</value>
+  </data>
+  <data name="SpcOutTime" xml:space="preserve">
+    <value>SpcOutTime</value>
+  </data>
+  <data name="SysLanguage" xml:space="preserve">
+    <value>SysLanguage</value>
+  </data>
+  <data name="TaxiAccount" xml:space="preserve">
+    <value>計程車帳號</value>
+  </data>
+  <data name="ThirdCode" xml:space="preserve">
+    <value>ThirdCode</value>
+  </data>
+  <data name="WDID" xml:space="preserve">
+    <value>WorkdayID</value>
+  </data>
+  <data name="WritingLanguage" xml:space="preserve">
+    <value>WritingLanguage</value>
+  </data>
 </root>

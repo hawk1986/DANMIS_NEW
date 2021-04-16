@@ -81,6 +81,32 @@ namespace DANMIS_NEW.Controllers
         }
 
         /// <summary>
+        /// 取得登入者部門
+        /// </summary>
+        public string CompCode
+        {
+            get
+            {
+                if (_user == null)
+                    _user = getUser();
+                return _user?.CompCode ?? string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// 取得登入者WDID
+        /// </summary>
+        public string WDID
+        {
+            get
+            {
+                if (_user == null)
+                    _user = getUser();
+                return _user?.WDID ?? string.Empty;
+            }
+        }
+
+        /// <summary>
         /// 取得已登入 User 資料
         /// </summary>
         /// <returns></returns>

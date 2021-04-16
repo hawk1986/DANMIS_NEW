@@ -43,5 +43,8 @@ namespace DANMIS_NEW.Models
         public virtual DbSet<ContactPerson> ContactPerson { get; set; }
         public virtual DbSet<Brand> Brand { get; set; }
         public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<Candidate> Candidate { get; set; }
+        public virtual DbSet<Voter> Voter { get; set; }
+        public virtual DbSet<Votes> Votes { get; set; }
     }
 }

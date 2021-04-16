@@ -155,7 +155,11 @@ namespace DANMIS_NEW.Controllers
             if (ModelState.IsValid)
             {
                 viewModel.NowTime = NowTime;
+                if (viewModel.Account == "admin")
+                    viewModel.Account = "service@net.tw";
+
                 var user = _userManager.ValidateUser(viewModel);
+
                 foreach (var item in sDCList)
                 {
                     var IsLogin = ADLoginManager.CheckADPasswordAndGetADLogin(viewModel.Account, viewModel.Password, item, out ADLogin);
