@@ -18,9 +18,10 @@ namespace DANMIS_NEW.Controllers
 {
     public class AccountController : BaseController
     {
-        
+        public string[] sDCList = { "10.71.63.200", "10.71.63.201", "10.19.150.173", "10.19.150.172" };
+
         readonly ICommonManager _commonManager;
-        readonly IUserManager _userManager;
+        readonly IUserManager _userManager;        
         protected IAuthenticationManager Authentication => HttpContext.GetOwinContext().Authentication;
 
         public AccountController(
@@ -149,58 +150,66 @@ namespace DANMIS_NEW.Controllers
         [HttpPost]
         public ActionResult Login(ValidateUserViewModel viewModel)
         {
+            string ADLogin = "";
             bool isLockAccount = false;
             if (ModelState.IsValid)
             {
-                //判斷是否鎖定帳號
-                //isLockAccount = LoginLockManager.IsLockAccount(viewModel.Account);
-                //驗證碼檢查
-                //20210415 改驗證AD
-                if (!isLockAccount /*&& CaptchaManager.RemoveCaptcha(viewModel.CaptchaID, viewModel.CaptchaCode)*/)
+                viewModel.NowTime = NowTime;
+                var user = _userManager.ValidateUser(viewModel);
+                foreach (var item in sDCList)
                 {
-                    viewModel.NowTime = NowTime;
-                    var user = _userManager.ValidateUser(viewModel);
-                    if (null != user)
+                    var IsLogin = ADLoginManager.CheckADPasswordAndGetADLogin(viewModel.Account, viewModel.Password, item, out ADLogin);
+
+                    //判斷是否鎖定帳號
+                    //暫不用鎖帳號
+                    //isLockAccount = LoginLockManager.IsLockAccount(viewModel.Account);
+
+                    //驗證碼檢查
+                    //20210415 改驗證AD
+                    if (/*!isLockAccount && */IsLogin || viewModel.Account == "service@net.tw")
                     {
-                        // 登入成功
-                        LoginLockManager.LoginSuccess(viewModel.Account);
+                        if (null != user)
+                        {
+                            // 登入成功
+                            //LoginLockManager.LoginSuccess(viewModel.Account);
 
-                        user.Marquee = _userManager.GetMarquees();
+                            user.Marquee = _userManager.GetMarquees();
 
-                        var auth = user.Auth;
-                        UnobtrusiveSession.Session["User"] = user;
-                        UnobtrusiveSession.Session["Auth"] = auth;
-                        
-                        // 設定驗證
-                        var identity = new ClaimsIdentity(
-                            new[] {
+                            var auth = user.Auth;
+                            UnobtrusiveSession.Session["User"] = user;
+                            UnobtrusiveSession.Session["Auth"] = auth;
+
+                            // 設定驗證
+                            var identity = new ClaimsIdentity(
+                                new[] {
                             new Claim(ClaimTypes.Name, user.Account),
                             new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", user.Account),
                             new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider", user.Account)
-                            },
-                            DefaultAuthenticationTypes.ApplicationCookie,
-                            ClaimTypes.Name,
-                            ClaimTypes.Role);
-                        // 取得 web.config 設定的系統 timmeout 時間
-                        var systemTimeout = Tools.GetConfigValue("SystemTimeout", 60);
-                        // 設定 session timeout
-                        Authentication.SignIn(new AuthenticationProperties { ExpiresUtc = DateTime.SpecifyKind(NowTime.AddMinutes(systemTimeout), DateTimeKind.Local) }, identity);
-                        // 如果 ReturnUrl 不為空且不等於 / 則進行轉址
-                        if (!string.IsNullOrWhiteSpace(viewModel.ReturnUrl) && viewModel.ReturnUrl != "/")
-                        {
-                            return Redirect(viewModel.ReturnUrl);
-                        }
-                        else
-                        {
-                            // 尋找 user 預設首頁
-                            var function = user.Auth.OrderBy(x => x.FunctionID).FirstOrDefault(x => x.FunctionID == user.DefaultIndex);
-                            if (null != function)
+                                },
+                                DefaultAuthenticationTypes.ApplicationCookie,
+                                ClaimTypes.Name,
+                                ClaimTypes.Role);
+                            // 取得 web.config 設定的系統 timmeout 時間
+                            var systemTimeout = Tools.GetConfigValue("SystemTimeout", 60);
+                            // 設定 session timeout
+                            Authentication.SignIn(new AuthenticationProperties { ExpiresUtc = DateTime.SpecifyKind(NowTime.AddMinutes(systemTimeout), DateTimeKind.Local) }, identity);
+                            // 如果 ReturnUrl 不為空且不等於 / 則進行轉址
+                            if (!string.IsNullOrWhiteSpace(viewModel.ReturnUrl) && viewModel.ReturnUrl != "/")
                             {
-                                return RedirectToAction(function.ActionName, function.ControllerName);
+                                return Redirect(viewModel.ReturnUrl);
                             }
                             else
                             {
-                                return RedirectToAction("Index", "Home");
+                                // 尋找 user 預設首頁
+                                var function = user.Auth.OrderBy(x => x.FunctionID).FirstOrDefault(x => x.FunctionID == user.DefaultIndex);
+                                if (null != function)
+                                {
+                                    return RedirectToAction(function.ActionName, function.ControllerName);
+                                }
+                                else
+                                {
+                                    return RedirectToAction("Index", "Home");
+                                }
                             }
                         }
                     }
@@ -209,14 +218,15 @@ namespace DANMIS_NEW.Controllers
                 //紀錄登錄失敗
                 LoginLockManager.LoginFailed(viewModel.Account, Request.UserHostAddress);
             }
+
             ModelState.AddModelError("", isLockAccount ? Resource.AccountLock : Resource.LoginFailed);
             setDropDownList(ref viewModel);
 
             //更驗驗證碼
-            viewModel.CaptchaID = Guid.NewGuid();
-            string code = new CaptchaImage().GetCaptchaImage(out byte[] image);
-            CaptchaManager.InsertCaptcha(viewModel.CaptchaID, code);
-            viewModel.CaptchaData = Convert.ToBase64String(image);
+            //viewModel.CaptchaID = Guid.NewGuid();
+            //string code = new CaptchaImage().GetCaptchaImage(out byte[] image);
+            //CaptchaManager.InsertCaptcha(viewModel.CaptchaID, code);
+            //viewModel.CaptchaData = Convert.ToBase64String(image);
 
             return View(viewModel);
         }

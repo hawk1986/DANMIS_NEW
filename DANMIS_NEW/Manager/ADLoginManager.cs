@@ -8,9 +8,6 @@ namespace DANMIS_NEW.Manager
 {
     public static class ADLoginManager
     {
-
-
-
         #region CheckADPasswordAndGetADLogin
         public static bool CheckADPasswordAndGetADLogin(string sEMail, string sPassword, string sDCName, out string sADLogin)
         {
