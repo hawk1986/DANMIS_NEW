@@ -597,6 +597,20 @@ namespace DANMIS_NEW.Manager
             return true;
         }
 
+        public UserViewModel GetByWDID(string id)
+        {
+            var item = _userRepository.GetAll().FirstOrDefault(x => x.WDID == id);
+            var result = (UserViewModel)item;
+
+            return result;
+        }
+
+        public List<UserViewModel> GetAll()
+        {
+            var result = _userRepository.GetAll().ToList().ConvertAll(e => (UserViewModel)e);
+            return result;
+        }
+
         /// <summary>
         /// GetMarquees
         /// </summary>

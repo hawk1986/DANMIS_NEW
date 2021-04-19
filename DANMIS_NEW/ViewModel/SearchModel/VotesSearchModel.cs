@@ -12,6 +12,7 @@
 using DANMIS_NEW.ViewModel.ListResult;
 using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace DANMIS_NEW.ViewModel.SearchModel
 {
@@ -20,11 +21,17 @@ namespace DANMIS_NEW.ViewModel.SearchModel
         public VotesSearchModel()
         {
             Candidates = new List<CandidateListResult>();
+            ShowMsg = "您沒有投票權限唷!";
         }
         public List<CandidateListResult> Candidates { get; set; }
 
         public string WDID { get; set; }
         public bool CanVote { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string ShowMsg { get; set; }
+        public SelectList BrandList { get; set; }
+        public string Brand { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -192,6 +192,12 @@ namespace DANMIS_NEW.Manager
                 }
             }
         }
+
+        public List<VotesViewModel> GetAll()
+        {
+            var result = _votesRepository.GetAll().ToList().ConvertAll(e => (VotesViewModel)e);
+            return result;
+        }
     }
 }
 #pragma warning restore 1591

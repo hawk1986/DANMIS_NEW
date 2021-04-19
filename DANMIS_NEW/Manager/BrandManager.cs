@@ -19,6 +19,7 @@ using DANMIS_NEW.ViewModel;
 using DANMIS_NEW.ViewModel.ListResult;
 using DANMIS_NEW.ViewModel.SearchModel;
 using ResourceLibrary;
+using System.Web.Mvc;
 
 namespace DANMIS_NEW.Manager
 {
@@ -170,6 +171,16 @@ namespace DANMIS_NEW.Manager
                     throw;
                 }
             }
+        }
+
+        public SelectList GetSelectList()
+        {
+            var list = new List<SelectListItem>();
+            var temp = _brandRepository.GetAll().Select(x => new SelectListItem { Value = x.BrandCode, Text = x.BrandCode}).ToList();
+            
+            var result = new SelectList(temp, "Value", "Text");
+
+            return result;
         }
     }
 }

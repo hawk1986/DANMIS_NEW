@@ -32,19 +32,22 @@ namespace DANMIS_NEW.Controllers
         readonly ICandidateManager _candidateManager;
         readonly IVoterManager _voterManager;
         readonly IBrandManager _brandManager;
+        readonly IUserManager _userManager;        
 
         public VotesController(
             ICommonManager commonManager,
             IVotesManager votesManager,
             ICandidateManager candidateManager,
             IVoterManager voterManager,
-            IBrandManager brandManager)
+            IBrandManager brandManager,
+            IUserManager userManager)
         {
             _commonManager = commonManager;
             _votesManager = votesManager;
             _candidateManager = candidateManager;
             _voterManager = voterManager;
             _brandManager = brandManager;
+            _userManager = userManager;
             logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -58,9 +61,11 @@ namespace DANMIS_NEW.Controllers
         {
             var bSearchModel = new BrandSearchModel();
             var brands = _brandManager.Paging(bSearchModel).rows.ToList();
-
+            
             // 初始化查詢物件
             var searchModel = new VotesSearchModel();
+            searchModel.BrandList = _brandManager.GetSelectList();
+
             if (null != UnobtrusiveSession.Session["QueryModel"])
             {
                 // 查詢條件存在 session 則取出
@@ -70,38 +75,58 @@ namespace DANMIS_NEW.Controllers
                     searchModel = temp;
                 }
             }
-            
-            var _compCode = brands.FirstOrDefault(x => x.BrandID == CompCode).BrandCode;            
-            var cSearchModel = new CandidateSearchModel();
-            // 依登入者取得可投票人(不包含自己)
-            cSearchModel.CompCode = _compCode;
-            cSearchModel.WDID = WDID;
-            var pagingCandidates = _candidateManager.Paging(cSearchModel);
-            var candidates = pagingCandidates.rows;
-            foreach (var item in candidates)
-            {
-                item.Company = brands.FirstOrDefault(x => x.BrandCode == item.Company.Split(' ')[0]).BrandID;
-            }            
-            searchModel.Candidates = candidates;
+
+            searchModel.StartDate = Convert.ToDateTime("2021-04-17");
+            searchModel.EndDate = Convert.ToDateTime("2021-04-30");
+
+
+            var _compCode = brands.FirstOrDefault(x => x.BrandID == CompCode)?.BrandCode ?? string.Empty;
             searchModel.CanVote = false;
-            var _canVote = false;
-            var _hasVote = true;
-            // 判斷投票人名單是否有自己
-            var hasVote = _voterManager.GetByWDID(WDID);
-            if (!string.IsNullOrEmpty(hasVote.EmployeeID))
-                _canVote = true;               
-
-            // 判斷是否已投過
-            var isVote = _votesManager.GetByWDID(WDID);
-            if (string.IsNullOrEmpty(isVote.EmployeeID))
-                _hasVote = false;
-
-            if (_canVote == true && _hasVote == false)            
-                searchModel.CanVote = true;            
-            else
+            if (!string.IsNullOrEmpty(_compCode))
             {
-                searchModel.CanVote = false;
-                searchModel.WDID = isVote.VoteTo;
+                var cSearchModel = new CandidateSearchModel();
+                // 依登入者取得可投票人(不包含自己)
+                cSearchModel.CompCode = _compCode;
+                cSearchModel.WDID = WDID;
+                var pagingCandidates = _candidateManager.Paging(cSearchModel);
+                var candidates = pagingCandidates.rows;
+                foreach (var item in candidates)
+                {
+                    item.Company = brands.FirstOrDefault(x => x.BrandCode == item.Company.Split(' ')[0]).BrandID;
+                }
+                searchModel.Candidates = candidates;
+                
+                var _canVote = false;
+                var _hasVote = false;
+
+                // 判斷投票人名單是否有自己
+                var hasVote = _voterManager.GetByWDID(WDID);
+                if (!string.IsNullOrEmpty(hasVote.EmployeeID))
+                    _canVote = true;
+
+                // 判斷是否已投過
+                var isVote = _votesManager.GetByWDID(WDID);
+                if (!string.IsNullOrEmpty(isVote.EmployeeID))
+                {
+                    _hasVote = true;
+                    // show訊息
+                    searchModel.ShowMsg = "您已投過票囉!";
+                }
+
+                if (_canVote == true && _hasVote == false)
+                    searchModel.CanVote = true;
+                else
+                {
+                    searchModel.CanVote = false;
+                    searchModel.WDID = isVote.VoteTo;
+                }
+
+                // 判斷可投票日期
+                if (Today < searchModel.StartDate || Today > searchModel.EndDate)
+                {
+                    searchModel.CanVote = false;
+                    searchModel.ShowMsg = "投票已結束!";
+                }
             }
 
             return View(searchModel);
@@ -116,7 +141,9 @@ namespace DANMIS_NEW.Controllers
         [HttpPost]
         public ActionResult Paging(VotesSearchModel searchModel)
         {
-            
+            var bSearchModel = new BrandSearchModel();
+            var brands = _brandManager.Paging(bSearchModel).rows.ToList();
+            var _compCode = brands.FirstOrDefault(x => x.BrandID == CompCode).BrandCode;
             var result = Json(new { result = true, message = "投票失敗!" }, JsonRequestBehavior.AllowGet);
             // 查詢
             try
@@ -130,7 +157,7 @@ namespace DANMIS_NEW.Controllers
                         FirstName = string.Empty,
                         LastName = string.Empty,
                         PreferredName = string.Empty,
-                        Company = string.Empty,
+                        Company = _compCode,
                         VoteTo = searchModel.WDID,
                         VoteDate = DateTime.Now,
                     };
@@ -360,6 +387,83 @@ namespace DANMIS_NEW.Controllers
         /// <param name="viewModel"></param>
         void setDropDownList(ref VotesViewModel viewModel)
         {
+        }
+
+        [HttpGet]
+        public ActionResult GetStatistic()
+        {
+            var result = new JsonResult();
+            
+            var model = new StatisticModel();
+            var statistics = new List<StatisticModel>();
+            var votes = _votesManager.GetAll();
+            
+            var groupVotes = votes.GroupBy(x => new
+            {
+                VoteTo = x.VoteTo,
+                Brand = x.Company
+            }).Select(y => new Statistics
+            {
+                Candidate = y.Key.VoteTo,
+                Brand = y.Key.Brand,
+                Count = y.Count()
+            }).ToList();
+
+            foreach (var item in groupVotes)
+            {
+                var userDetail = _userManager.GetByWDID(item.Candidate);
+                if (userDetail != null)
+                {
+                    var statisticModel = new StatisticModel
+                    {
+                        Brand = item.Brand,
+                        Name = userDetail.Name,
+                        Count = item.Count,
+                    };
+                    if (!string.IsNullOrEmpty(statisticModel.Name))
+                        statistics.Add(statisticModel);
+                }
+            }
+
+            result = Json(new { total = statistics.Count, rows = statistics }, JsonRequestBehavior.AllowGet);
+            return result;
+        }
+
+        public class Statistics
+        {
+            public string Candidate { get; set; }
+            public string Brand { get; set; }
+            public int Count { get; set; }
+        }
+
+        public class StatisticModel
+        {
+            public string Brand { get; set; }
+            public string Name { get; set; }
+            public int Count { get; set; }            
+        }
+
+        [HttpGet]
+        public ActionResult UserToRole()
+        {
+            var result = new JsonResult();
+            
+            var users = _userManager.GetAll().ToList();
+
+            foreach (var item in users)
+            {
+                var voters = _voterManager.GetByWDID(item.WDID);
+                if (!string.IsNullOrEmpty(voters.EmployeeID))
+                {
+                    item.DefaultIndex = new Guid("4C14D23E-B445-4AF7-BA54-FCA5A515AEDB");
+                    item.RoleID.Add(new Guid("C1DC25C1-7950-4D08-9A9F-CD8FB1ABB4DD"));
+                    _userManager.Update(item);
+                }
+            }
+
+            result = Json(new { result = "寫入成功" }, JsonRequestBehavior.AllowGet);
+
+            return result;
         }
     }
 }

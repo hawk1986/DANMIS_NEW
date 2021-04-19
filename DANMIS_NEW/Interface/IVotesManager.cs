@@ -55,6 +55,8 @@ namespace DANMIS_NEW.Interface
         void Update(VotesViewModel entity);
 
         VotesViewModel GetByWDID(string id);
+
+        List<VotesViewModel> GetAll();
     }
 }
 #pragma warning restore 1591

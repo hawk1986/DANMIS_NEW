@@ -115,6 +115,10 @@ namespace DANMIS_NEW.Interface
         /// </summary>
         /// <returns></returns>
         List<string> GetMarquees();
+
+        UserViewModel GetByWDID(string id);
+
+        List<UserViewModel> GetAll();
     }
 }
 #pragma warning restore 1591
