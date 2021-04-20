@@ -40,8 +40,8 @@ namespace DANMIS_NEW.ViewModel
         /// </summary>
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "EmployeeID", ResourceType = typeof(Resource))]
-        public string EmployeeID { get; set; }
+        [Display(Name = "WDID", ResourceType = typeof(Resource))]
+        public string WDID { get; set; }
 
         /// <summary>
         /// FirstName

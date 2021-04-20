@@ -17,7 +17,7 @@ namespace DANMIS_NEW.ViewModel.ListResult
     {
         public int SequenceNo { get; set; }
         public Guid ID { get; set; }
-        public string EmployeeID { get; set; }
+        public string WDID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PreferredName { get; set; }

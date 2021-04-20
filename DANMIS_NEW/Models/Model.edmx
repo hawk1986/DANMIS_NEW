@@ -97,7 +97,7 @@
           </Key>
           <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WDID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PreferredName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -115,6 +115,7 @@
           <Property Name="PreferredName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Company" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="VoteTo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VoteToName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="VoteDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="AccessControl">
@@ -1286,11 +1287,11 @@
           </Key>
           <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PreferredName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Company" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WDID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Votes">
           <Key>
@@ -1305,6 +1306,7 @@
           <Property Name="Company" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VoteTo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VoteDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VoteToName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1725,11 +1727,11 @@
           <EntitySetMapping Name="Voter">
             <EntityTypeMapping TypeName="DbModel.Voter">
               <MappingFragment StoreEntitySet="Voter">
+                <ScalarProperty Name="WDID" ColumnName="WDID" />
                 <ScalarProperty Name="Company" ColumnName="Company" />
                 <ScalarProperty Name="PreferredName" ColumnName="PreferredName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>
@@ -1738,6 +1740,7 @@
           <EntitySetMapping Name="Votes">
             <EntityTypeMapping TypeName="DbModel.Votes">
               <MappingFragment StoreEntitySet="Votes">
+                <ScalarProperty Name="VoteToName" ColumnName="VoteToName" />
                 <ScalarProperty Name="VoteDate" ColumnName="VoteDate" />
                 <ScalarProperty Name="VoteTo" ColumnName="VoteTo" />
                 <ScalarProperty Name="Company" ColumnName="Company" />

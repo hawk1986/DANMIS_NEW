@@ -105,7 +105,7 @@ namespace DANMIS_NEW.Manager
         public VoterViewModel GetByWDID(string id)
         {
             var result = new VoterViewModel();
-            var item = _voterRepository.GetAll().FirstOrDefault(x => x.EmployeeID == id);
+            var item = _voterRepository.GetAll().FirstOrDefault(x => x.WDID == id);
             if(item != null)
                 result = (VoterViewModel)item;
 
@@ -129,7 +129,7 @@ namespace DANMIS_NEW.Manager
                              {
                                  SequenceNo = x.SequenceNo,
                                  ID = x.ID,
-                                 EmployeeID = x.EmployeeID,
+                                 WDID = x.WDID,
                                  FirstName = x.FirstName,
                                  LastName = x.LastName,
                                  PreferredName = x.PreferredName,
@@ -141,7 +141,7 @@ namespace DANMIS_NEW.Manager
             {
                 var search = searchModel.Search.ToLower();
                 tempResult = tempResult.Where(x =>
-                    x.EmployeeID.Contains(search) ||
+                    x.WDID.Contains(search) ||
                     x.FirstName.Contains(search) ||
                     x.LastName.Contains(search) ||
                     x.PreferredName.Contains(search) ||
@@ -172,7 +172,7 @@ namespace DANMIS_NEW.Manager
                 try
                 {
                     var source = _voterRepository.GetByID(entity.ID);
-                    source.EmployeeID = entity.EmployeeID ?? string.Empty;
+                    source.WDID = entity.WDID ?? string.Empty;
                     source.FirstName = entity.FirstName ?? string.Empty;
                     source.LastName = entity.LastName ?? string.Empty;
                     source.PreferredName = entity.PreferredName ?? string.Empty;

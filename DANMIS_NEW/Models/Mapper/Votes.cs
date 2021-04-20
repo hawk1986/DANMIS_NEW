@@ -32,6 +32,7 @@ namespace DANMIS_NEW.Models
                 PreferredName = source.PreferredName ?? string.Empty,
                 Company = source.Company ?? string.Empty,
                 VoteTo = source.VoteTo ?? string.Empty,
+                VoteToName = source.VoteToName ?? string.Empty,
                 VoteDate = source.VoteDate,
             };
         }
@@ -53,6 +54,7 @@ namespace DANMIS_NEW.Models
                 PreferredName = source.PreferredName ?? string.Empty,
                 Company = source.Company ?? string.Empty,
                 VoteTo = source.VoteTo ?? string.Empty,
+                VoteToName = source.VoteToName ?? string.Empty,
                 VoteDate = source.VoteDate,
             };
         }

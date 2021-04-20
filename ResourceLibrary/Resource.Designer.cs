@@ -3580,6 +3580,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 被投票人 的當地語系化字串。
+        /// </summary>
+        public static string VoteToName {
+            get {
+                return ResourceManager.GetString("VoteToName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 備取人數 的當地語系化字串。
         /// </summary>
         public static string WaitingNum {

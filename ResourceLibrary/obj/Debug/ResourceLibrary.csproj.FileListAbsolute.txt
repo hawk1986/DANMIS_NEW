@@ -40,7 +40,6 @@ C:\Users\HCheng03\OneDrive - dentsu\桌面\GitProjs\PRS_New\ResourceLibrary\obj\
 C:\Users\HCheng03\OneDrive - dentsu\桌面\GitProjs\PRS_New\ResourceLibrary\obj\Debug\ResourceLibrary.pdb
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\bin\Debug\ResourceLibrary.dll
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\bin\Debug\ResourceLibrary.pdb
-C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Debug\ResourceLibrary.csprojAssemblyReference.cache
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Debug\ResourceLibrary.Resource.resources
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Debug\ResourceLibrary.csproj.GenerateResource.cache
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Debug\ResourceLibrary.csproj.CoreCompileInputs.cache

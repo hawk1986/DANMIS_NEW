@@ -101,7 +101,7 @@ namespace DANMIS_NEW.Controllers
 
                 // 判斷投票人名單是否有自己
                 var hasVote = _voterManager.GetByWDID(WDID);
-                if (!string.IsNullOrEmpty(hasVote.EmployeeID))
+                if (!string.IsNullOrEmpty(hasVote.WDID))
                     _canVote = true;
 
                 // 判斷是否已投過
@@ -144,6 +144,7 @@ namespace DANMIS_NEW.Controllers
             var bSearchModel = new BrandSearchModel();
             var brands = _brandManager.Paging(bSearchModel).rows.ToList();
             var _compCode = brands.FirstOrDefault(x => x.BrandID == CompCode).BrandCode;
+            var candidate = _userManager.GetByWDID(searchModel.WDID);
             var result = Json(new { result = true, message = "投票失敗!" }, JsonRequestBehavior.AllowGet);
             // 查詢
             try
@@ -159,6 +160,7 @@ namespace DANMIS_NEW.Controllers
                         PreferredName = string.Empty,
                         Company = _compCode,
                         VoteTo = searchModel.WDID,
+                        VoteToName = candidate.EmpLocName,
                         VoteDate = DateTime.Now,
                     };
                     _votesManager.Create(create);
@@ -389,42 +391,44 @@ namespace DANMIS_NEW.Controllers
         {
         }
 
-        [HttpGet]
-        public ActionResult GetStatistic()
+        [HttpPost]
+        public ActionResult GetStatistic(VotesSearchModel searchModel)
         {
             var result = new JsonResult();
             
             var model = new StatisticModel();
             var statistics = new List<StatisticModel>();
-            var votes = _votesManager.GetAll();
-            
+            var votes = _votesManager.GetAll();            
+
             var groupVotes = votes.GroupBy(x => new
             {
                 VoteTo = x.VoteTo,
+                VoteToName = x.VoteToName,
                 Brand = x.Company
             }).Select(y => new Statistics
             {
-                Candidate = y.Key.VoteTo,
                 Brand = y.Key.Brand,
+                Candidate = y.Key.VoteToName,
                 Count = y.Count()
             }).ToList();
-
+            
             foreach (var item in groupVotes)
-            {
-                var userDetail = _userManager.GetByWDID(item.Candidate);
-                if (userDetail != null)
-                {
+            {                
+                
                     var statisticModel = new StatisticModel
                     {
                         Brand = item.Brand,
-                        Name = userDetail.Name,
+                        Name = item.Candidate,
                         Count = item.Count,
                     };
                     if (!string.IsNullOrEmpty(statisticModel.Name))
                         statistics.Add(statisticModel);
-                }
+                
             }
-
+            if(!string.IsNullOrEmpty(searchModel.Brand))
+                statistics = statistics.Where(x => x.Brand == searchModel.Brand).OrderByDescending(x => x.Count).ThenBy(x => x.Brand).ToList();
+            else
+                statistics = statistics.OrderByDescending(x => x.Count).ThenBy(x => x.Brand).ToList();
             result = Json(new { total = statistics.Count, rows = statistics }, JsonRequestBehavior.AllowGet);
             return result;
         }
@@ -432,6 +436,7 @@ namespace DANMIS_NEW.Controllers
         public class Statistics
         {
             public string Candidate { get; set; }
+            public string CandidateName { get; set; }
             public string Brand { get; set; }
             public int Count { get; set; }
         }
@@ -453,7 +458,7 @@ namespace DANMIS_NEW.Controllers
             foreach (var item in users)
             {
                 var voters = _voterManager.GetByWDID(item.WDID);
-                if (!string.IsNullOrEmpty(voters.EmployeeID))
+                if (!string.IsNullOrEmpty(voters.WDID))
                 {
                     item.DefaultIndex = new Guid("4C14D23E-B445-4AF7-BA54-FCA5A515AEDB");
                     item.RoleID.Add(new Guid("C1DC25C1-7950-4D08-9A9F-CD8FB1ABB4DD"));

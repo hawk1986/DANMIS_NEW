@@ -16,10 +16,10 @@ namespace DANMIS_NEW.Models
     {
         public int SequenceNo { get; set; }
         public System.Guid ID { get; set; }
-        public string EmployeeID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PreferredName { get; set; }
         public string Company { get; set; }
+        public string WDID { get; set; }
     }
 }

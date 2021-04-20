@@ -84,6 +84,14 @@ namespace DANMIS_NEW.ViewModel
         public string VoteTo { get; set; }
 
         /// <summary>
+        /// VoteToName
+        /// </summary>
+        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "VoteToName", ResourceType = typeof(Resource))]
+        public string VoteToName { get; set; }
+
+        /// <summary>
         /// VoteDate
         /// </summary>
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]

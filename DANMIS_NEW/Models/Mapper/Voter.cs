@@ -26,7 +26,7 @@ namespace DANMIS_NEW.Models
             {
                 SequenceNo = source.SequenceNo,
                 ID = source.ID,
-                EmployeeID = source.EmployeeID ?? string.Empty,
+                WDID = source.WDID ?? string.Empty,
                 FirstName = source.FirstName ?? string.Empty,
                 LastName = source.LastName ?? string.Empty,
                 PreferredName = source.PreferredName ?? string.Empty,
@@ -45,7 +45,7 @@ namespace DANMIS_NEW.Models
             {
                 SequenceNo = source.SequenceNo,
                 ID = source.ID,
-                EmployeeID = source.EmployeeID ?? string.Empty,
+                WDID = source.WDID ?? string.Empty,
                 FirstName = source.FirstName ?? string.Empty,
                 LastName = source.LastName ?? string.Empty,
                 PreferredName = source.PreferredName ?? string.Empty,

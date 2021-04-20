@@ -1311,4 +1311,7 @@
   <data name="WritingLanguage" xml:space="preserve">
     <value>WritingLanguage</value>
   </data>
+  <data name="VoteToName" xml:space="preserve">
+    <value>被投票人</value>
+  </data>
 </root>

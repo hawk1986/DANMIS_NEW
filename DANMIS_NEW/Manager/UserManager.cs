@@ -25,7 +25,7 @@ using Newtonsoft.Json;
 using DANMIS_NEW;
 using System.Data;
 using System.Diagnostics;
-
+using System.Text;
 
 namespace DANMIS_NEW.Manager
 {
@@ -599,9 +599,13 @@ namespace DANMIS_NEW.Manager
 
         public UserViewModel GetByWDID(string id)
         {
-            var item = _userRepository.GetAll().FirstOrDefault(x => x.WDID == id);
-            var result = (UserViewModel)item;
+            var a = _userRepository.GetAll().ToList();
 
+            // 轉入時Unicode問題 待解決
+            var item = a.FirstOrDefault(x => x.WDID == id || x.WDID == "" + id);
+           
+            var result = (UserViewModel)item;
+            
             return result;
         }
 
@@ -619,7 +623,26 @@ namespace DANMIS_NEW.Manager
         {            
             return Marquee.Marquees.Select(x => x.MarqueeContent).ToList();
         }
-            
+
+        private string UnicodeToString(string srcText)
+        {
+            string dst = "";
+            string src = srcText;
+            int len = srcText.Length / 6;
+
+            for (int i = 0; i <= len - 1; i++)
+            {
+                string str = "";
+                str = src.Substring(0, 6).Substring(2);
+                src = src.Substring(6);
+                byte[] bytes = new byte[2];
+                bytes[1] = byte.Parse(int.Parse(str.Substring(0, 2), System.Globalization.NumberStyles.HexNumber).ToString());
+                bytes[0] = byte.Parse(int.Parse(str.Substring(2, 2), System.Globalization.NumberStyles.HexNumber).ToString());
+                dst += Encoding.Unicode.GetString(bytes);
+            }
+            return dst;
+        }
+
     }
 }
 #pragma warning restore 1591

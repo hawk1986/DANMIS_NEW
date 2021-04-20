@@ -7,6 +7,7 @@
     var edit = auth.Any(x => x.Code == "VotesEdit");
     var delete = auth.Any(x => x.Code == "VotesDelete");
     ViewBag.Title = function.ModuleName + " / " + function.GroupName + " / " + function.SimpleName;
+    var user = UnobtrusiveSession.Session["User"] as UserViewModel;
 }
 @section scripts {
     @Scripts.Render("~/bundles/table")
@@ -110,10 +111,11 @@
             });
         });
 
-         $('#table').bootstrapTable({
+        var data1 = $('#search_form').serializeObject();
+        $('#table').bootstrapTable({
             url: '@Url.Action("GetStatistic", "Votes")',
-            method: 'GET',
-            /*queryParams: JSON.stringify(data),*/
+            method: 'POST',
+            queryParams: JSON.stringify(data1),
             striped: true,
             cache: false,
             pagination: true,
@@ -141,16 +143,31 @@
             onLoadSuccess: function (result) {
             },
             onLoadError: function () {
-                
+
             },
 
-         });
+        });
 
         $(document).ready(function () {
             $("#myInput").on("change", function () {
-                var value = $(this).val().toLowerCase();
-                $("#table tbody tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                $('#Brand').val($("#myInput.selectpicker option:selected").val());
+                //alert($("#myInput.selectpicker option:selected").val());
+                //alert($('#Brand').val());
+                var data = $('#search_form').serializeObject();
+                $.ajax({
+                    cache: false,
+                    type: 'POST',
+                    url: '@Url.Action("GetStatistic", "Votes")',
+                    data: JSON.stringify({ 'searchModel': data }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#table').bootstrapTable('load', result);
+                        /*history.go(0);*/
+                    },
+                    error: function () {
+
+                    }
                 });
             });
         });
@@ -166,8 +183,8 @@
                 dataType: 'json',
                 success: function (result) {
                     alert(result.result);
-                                       
-                    
+
+
                 },
                 error: function () {
 
@@ -199,8 +216,12 @@
                     <div class="row">
                         <form class="form-horizontal" id="search_form">
                             <button id="report" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"> <i class="fa fa-bar-chart" aria-hidden="true"></i>щ布挡狦</button>
-                            <button id="user2role" type="button" class="btn btn-default" hidden> 倒ぉщ布舦</button>
+                            @if (user.Account == "Admin")
+                            {
+                                <button id="user2role" type="button" class="btn btn-default"> 倒ぉщ布舦</button>
+                            }
                             @Html.HiddenFor(model => model.CanVote)
+                            @Html.HiddenFor(model => model.Brand)
                             @if (!Model.CanVote)
                             {
                                 <div class="form-group">
@@ -256,7 +277,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="ibox float-e-margins">                        
-                        <div class="ibox-content" style="height: 400px;">
+                        <div class="ibox-content" style="height: auto;">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">щ布挡狦</h4>

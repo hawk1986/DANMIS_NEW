@@ -23,5 +23,6 @@ namespace DANMIS_NEW.Models
         public string Company { get; set; }
         public string VoteTo { get; set; }
         public System.DateTime VoteDate { get; set; }
+        public string VoteToName { get; set; }
     }
 }

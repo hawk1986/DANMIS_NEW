@@ -21,7 +21,7 @@ namespace DANMIS_NEW.ViewModel.SearchModel
         public VotesSearchModel()
         {
             Candidates = new List<CandidateListResult>();
-            ShowMsg = "您沒有投票權限唷!";
+            ShowMsg = "";
         }
         public List<CandidateListResult> Candidates { get; set; }
 
