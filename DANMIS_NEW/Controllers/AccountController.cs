@@ -170,7 +170,7 @@ namespace DANMIS_NEW.Controllers
 
                     //驗證碼檢查
                     //20210415 改驗證AD
-                    //if (IsLogin || viewModel.Account == "service@net.tw")
+                    //if (IsLogin || viewModel.Account == "service@net.tw") // for formal
                     if (/*!isLockAccount && */viewModel.Account != null) // for test
                     {
                         if (null != user)

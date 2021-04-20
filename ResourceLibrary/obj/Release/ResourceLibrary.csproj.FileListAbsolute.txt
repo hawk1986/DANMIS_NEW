@@ -6,3 +6,11 @@ C:\Users\Hawk Cheng\Desktop\Projects\TainanSpinningMall\tainanspinningmall\Resou
 C:\Users\Hawk Cheng\Desktop\Projects\TainanSpinningMall\tainanspinningmall\ResourceLibrary\obj\Release\ResourceLibrary.csproj.CoreCompileInputs.cache
 C:\Users\Hawk Cheng\Desktop\Projects\TainanSpinningMall\tainanspinningmall\ResourceLibrary\obj\Release\ResourceLibrary.dll
 C:\Users\Hawk Cheng\Desktop\Projects\TainanSpinningMall\tainanspinningmall\ResourceLibrary\obj\Release\ResourceLibrary.pdb
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\bin\Release\ResourceLibrary.dll
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\bin\Release\ResourceLibrary.pdb
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Release\ResourceLibrary.csprojAssemblyReference.cache
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Release\ResourceLibrary.Resource.resources
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Release\ResourceLibrary.csproj.GenerateResource.cache
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Release\ResourceLibrary.csproj.CoreCompileInputs.cache
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Release\ResourceLibrary.dll
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\ResourceLibrary\obj\Release\ResourceLibrary.pdb
