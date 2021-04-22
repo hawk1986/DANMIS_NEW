@@ -28,6 +28,7 @@ namespace DANMIS_NEW.Models
         public string UpdateUser { get; set; }
         public System.DateTime UpdateTime { get; set; }
         public string Memo { get; set; }
+        public bool IsDeleted { get; set; }
     
         public virtual Factory Factory { get; set; }
     }

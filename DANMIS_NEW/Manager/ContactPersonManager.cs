@@ -44,6 +44,7 @@ namespace DANMIS_NEW.Manager
             {
                 try
                 {
+                    item.IsDeleted = false;
                     _contactPersonRepository.Create(item);
                     transaction.Commit();
                 }
@@ -105,7 +106,7 @@ namespace DANMIS_NEW.Manager
         public Paging<ContactPersonListResult> Paging(ContactPersonSearchModel searchModel)
         {
             // 預設集合
-            var temp = _contactPersonRepository.GetAll();
+            var temp = _contactPersonRepository.GetAll().Where(x => x.IsDeleted == false);
 
             // 將 DB 資料轉換為列表頁呈現資料
             var tempResult = from x in temp
@@ -178,6 +179,7 @@ namespace DANMIS_NEW.Manager
                     source.CellPhone = entity.CellPhone ?? string.Empty;
                     source.Email = entity.Email ?? string.Empty;
                     source.IsShow = entity.IsShow ?? string.Empty;
+                    source.IsDeleted = entity.IsDeleted;
                     source.UpdateUser = entity.UpdateUser ?? string.Empty;
                     source.UpdateTime = entity.UpdateTime;
 

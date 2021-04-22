@@ -89,7 +89,7 @@
                                         showLoaderOnConfirm: false
                                     },
                                     function () {
-                                        $('#table').bootstrapTable('refresh', '@Url.Action("_Paging", "Factory")');
+                                        $('#table').bootstrapTable('refresh');
                                     }
                                 );
                             },
@@ -141,7 +141,7 @@
                             },
                             function ()
                             {
-                                $('#table').bootstrapTable('refresh', '@Url.Action("_Paging", "Factory")');
+                                $('#table').bootstrapTable('refresh');
                             }
                         );
 
@@ -162,110 +162,122 @@
 
     $('#addContactPerson').click(function () {
 
-            var value = $('#ContactPerson_IsShow.selectpicker option:selected').val();
+        var value = $('#ContactPerson_IsShow.selectpicker option:selected').val();
 
-            var contactPerson = {
-                ID : $('#ContactPerson_ID').val(),
-                FactoryID: $('#ID').val(),
-                Name : $('#ContactPerson_Name').val(),
-                TEL : $('#ContactPerson_TEL').val(),
-                FAX : $('#ContactPerson_FAX').val(),
-                CellPhone : $('#ContactPerson_CellPhone').val(),
-                Email : $('#ContactPerson_Email').val(),
-                Memo : $('#ContactPerson_Memo').val(),
-                IsShow : value == "True" ? "1" : "0"
-            };
+        var contactPerson = {
+            ID: $('#ContactPerson_ID').val(),
+            FactoryID: $('#ID').val(),
+            Name: $('#ContactPerson_Name').val(),
+            TEL: $('#ContactPerson_TEL').val(),
+            FAX: $('#ContactPerson_FAX').val(),
+            CellPhone: $('#ContactPerson_CellPhone').val(),
+            Email: $('#ContactPerson_Email').val(),
+            Memo: $('#ContactPerson_Memo').val(),
+            IsShow: value == "True" ? "1" : "0"
+        };
 
-            //alert(JSON.stringify(contactPerson));
+        //alert(JSON.stringify(contactPerson));
 
-            $.ajax({
-                    cache: false,
-                    type: 'POST',
-                    url: '@Url.Action("CreateAJAX", "ContactPerson")',
-                    data: JSON.stringify({ 'viewModel': contactPerson }),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'json',
-                    success: function (result) {
-
-                        $('#closeDialog').click();
-
-                        swal(
-                            {
-                                title: "新增成功!",
-                                type: "info",
-                                showCancelButton: false,
-                                closeOnConfirm: true,
-                                showLoaderOnConfirm: false
-                            },
-                            function ()
-                            {
-                                $('#table').bootstrapTable('refresh', '@Url.Action("_Paging", "Factory")');
-                            }
-                        );
-
-                        $('#ContactPerson_ID').val('');                        
-                        $('#ContactPerson_Name').val('');
-                        $('#ContactPerson_TEL').val('');
-                        $('#ContactPerson_FAX').val('');
-                        $('#ContactPerson_CellPhone').val('');
-                        $('#ContactPerson_Email').val('');
-                        $('#ContactPerson_Memo').val('');
-                        $('#ContactPerson_IsShow.selectpicker').selectpicker('val', '');
-                        
-                    },
-                    error: function () {
-                         //alert(3);
-                    }
-            });
-        });
-
-
-        $('#table').bootstrapTable({
-            url: '@Url.Action("_Paging", "Factory")',
-            method: 'POST',
-            queryParams: JSON.stringify(data),
-            striped: true,
+        $.ajax({
             cache: false,
-            pagination: true,
-            sortable: true,
-            sortOrder: "asc",
-            sidePagination: "server",
-            pageNumber: 1,
-            pageList: [10, 25, 50, 100],
-            search: false,
-            strictSearch: true,
-            showColumns: true,
-            showRefresh: true,
-            minimumCountColumns: 2,
-            clickToSelect: true,
-            uniqueId: "ID",
-            showToggle: true,
-            silent: true,
-            columns: [
-                //{ checkbox: true, visible: true },
-                { field: 'ID', title: 'ID', visible: false },
-                { field: 'Name', title: '聯絡人', sortable: true, searchable: true},
-                { field: 'TEL', title: '電話號碼', sortable: true },
-                { field: 'FAX', title: '傳真號碼', sortable: true },
-                { field: 'CellPhone', title: '手機號碼', sortable: true  },
-                { field: 'Email', title: 'Email', sortable: true  },
-                { field: 'IsShow', title: '是否顯示', sortable: true },
-                {
-                    field: 'operate',
-                    title: '執行動作',
-                    align: 'center',
-                    clickToSelect: false,
-                    events: window.operateEvents,
-                    formatter: operateFormatter
-                }
-            ],
-            onLoadSuccess: function (result) {
-            },
-            onLoadError: function () {
-                alert("ContactPerson數據加載失敗！");
-            },
+            type: 'POST',
+            url: '@Url.Action("CreateAJAX", "ContactPerson")',
+            data: JSON.stringify({ 'viewModel': contactPerson }),
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (result) {
+                
+                $('#closeDialog').click();
+                if (result.result) {
+                    swal(
+                        {
+                            title: "新增成功!",
+                            type: "info",
+                            showCancelButton: false,
+                            closeOnConfirm: true,
+                            showLoaderOnConfirm: false
+                        },
+                        function () {
+                            $('#table').bootstrapTable('refresh');
+                        }
+                    );
 
+                    $('#ContactPerson_ID').val('');
+                    $('#ContactPerson_Name').val('');
+                    $('#ContactPerson_TEL').val('');
+                    $('#ContactPerson_FAX').val('');
+                    $('#ContactPerson_CellPhone').val('');
+                    $('#ContactPerson_Email').val('');
+                    $('#ContactPerson_Memo').val('');
+                    $('#ContactPerson_IsShow.selectpicker').selectpicker('val', '');
+                }
+                else {
+                    swal(
+                        {
+                            title: "新增失敗!姓名不可為空值!",
+                            type: "info",
+                            showCancelButton: false,
+                            closeOnConfirm: true,
+                            showLoaderOnConfirm: false
+                        },
+                        function () {
+                        }
+                    );
+                }
+            },
+            error: function () {
+                //alert(3);
+            }
         });
+    });
+
+
+    $('#table').bootstrapTable({
+        url: '@Url.Action("_Paging", "Factory")',
+        method: 'POST',
+        queryParams: JSON.stringify(data),
+        striped: true,
+        cache: false,
+        pagination: true,
+        sortable: true,
+        sortOrder: "asc",
+        sidePagination: "server",
+        pageNumber: 1,
+        pageList: [10, 25, 50, 100],
+        search: false,
+        strictSearch: true,
+        showColumns: true,
+        showRefresh: true,
+        minimumCountColumns: 2,
+        clickToSelect: true,
+        uniqueId: "ID",
+        showToggle: true,
+        silent: true,
+        columns: [
+            //{ checkbox: true, visible: true },
+            { field: 'ID', title: 'ID', visible: false },
+            { field: 'Name', title: '聯絡人', sortable: true, searchable: true },
+            { field: 'TEL', title: '電話號碼', sortable: true },
+            { field: 'FAX', title: '傳真號碼', sortable: true },
+            { field: 'CellPhone', title: '手機號碼', sortable: true },
+            { field: 'Email', title: 'Email', sortable: true },
+            { field: 'IsShow', title: '是否顯示', sortable: true },
+            {
+                field: 'operate',
+                title: '執行動作',
+                align: 'center',
+                clickToSelect: false,
+                events: window.operateEvents,
+                formatter: operateFormatter
+            }
+        ],
+        onLoadSuccess: function (result) {
+        },
+        onLoadError: function () {
+            alert("ContactPerson數據加載失敗！");
+        },
+
+    });
 
     $('#addPerson').click(function () {
         $('#updateContactPerson').hide();
@@ -283,7 +295,7 @@
         $('#ContactPerson_IsShow.selectpicker').selectpicker('val', '');
     };
 
-    $('#closeDialog').click(function () {        
+    $('#closeDialog').click(function () {
         setTimeout(delayShow, 500);
     });
 

@@ -110,12 +110,17 @@
                 });
             });
         });
-
-        var data1 = $('#search_form').serializeObject();
+        
         $('#table').bootstrapTable({
             url: '@Url.Action("GetStatistic", "Votes")',
-            method: 'POST',
-            queryParams: JSON.stringify(data1),
+            method: 'POST',        
+            queryParams: function (temp) {
+                var data = $("#search_form").serializeObject();
+                //這裡的鍵的名字和控制器的變數名必須一直，這邊改動，控制器也需要改成一樣的                
+                data["limit"] = temp.limit;   //頁面大小
+                data["offset"] = temp.offset  //頁碼
+                return JSON.stringify(data);
+            },
             striped: true,
             cache: false,
             pagination: true,
@@ -151,23 +156,13 @@
         $(document).ready(function () {
             $("#myInput").on("change", function () {
                 $('#Brand').val($("#myInput.selectpicker option:selected").val());
-                //alert($("#myInput.selectpicker option:selected").val());
-                //alert($('#Brand').val());
-                var data = $('#search_form').serializeObject();
-                $.ajax({
-                    cache: false,
-                    type: 'POST',
-                    url: '@Url.Action("GetStatistic", "Votes")',
-                    data: JSON.stringify({ 'searchModel': data }),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'json',
-                    success: function (result) {
-                        $('#table').bootstrapTable('load', result);
-                        /*history.go(0);*/
-                    },
-                    error: function () {
+                $('#table').bootstrapTable('refresh');
+            });
 
-                    }
+            $("#Search").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $(".radio-inline").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
         });
@@ -222,6 +217,13 @@
                             }
                             @Html.HiddenFor(model => model.CanVote)
                             @Html.HiddenFor(model => model.Brand)
+                            <div class="form-group">
+                            @Html.LabelFor(model => model.Search, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2 m-b-xs">
+                                    @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", placeholder = Resource.Keyword } })
+                                </div>
+                            </div>
+
                             @if (!Model.CanVote)
                             {
                                 <div class="form-group">

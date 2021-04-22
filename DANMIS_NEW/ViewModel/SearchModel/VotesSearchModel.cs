@@ -32,6 +32,7 @@ namespace DANMIS_NEW.ViewModel.SearchModel
         public string ShowMsg { get; set; }
         public SelectList BrandList { get; set; }
         public string Brand { get; set; }
+        public string SearchName { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -334,7 +334,7 @@ namespace DANMIS_NEW.Controllers
         {
             var result = Json(new { result = false }, JsonRequestBehavior.AllowGet);
             // 驗證
-            if (ModelState.IsValid)
+            if (!string.IsNullOrEmpty(viewModel.Name))
             {
                 try
                 {
@@ -356,23 +356,26 @@ namespace DANMIS_NEW.Controllers
                     logger.Error(ex, string.Format(Resource.ExecutionFailedWithID, Resource.Create, Resource.ContactPerson, viewModel.ID));
                     TempData["ErrorMsg"] = new JsonMessage { Style = "danger", Message = string.Format(Resource.ExecutionFailedWithID, Resource.Create, Resource.ContactPerson, viewModel.ID) }.ToString();
                 }
-            }            
+            }                 
 
             return result;
         }
 
         [HttpPost]
-        public ActionResult DeleteAJAX(List<Guid> id)
+        public ActionResult DeleteAJAX(Guid id)
         {
             // 預設失敗
             var result = Json(new { result = false }, JsonRequestBehavior.AllowGet);
             // id 有值進行刪除作業
-            if (id != null && id.Any())
+            if (id != null)
             {
                 try
                 {
                     // 進行刪除
-                    _contactPersonManager.Delete(id);
+                    var temp = _contactPersonManager.GetByID(id);
+                    temp.IsDeleted = true;
+
+                    _contactPersonManager.Update(temp);
 
                     // 完成
                     result = Json(new { result = true }, JsonRequestBehavior.AllowGet);

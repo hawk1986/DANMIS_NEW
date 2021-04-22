@@ -16,7 +16,8 @@ namespace DANMIS_NEW.ViewModel.SearchModel
     public class CandidateSearchModel : SearchModel
     {
         public string CompCode { get; set; }
-        public string WDID { get; set; }        
+        public string WDID { get; set; }
+        public string SearchName { get; set; }
     }
 }
 #pragma warning restore 1591

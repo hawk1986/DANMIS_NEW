@@ -99,6 +99,12 @@ namespace DANMIS_NEW.ViewModel
         public string IsShow { get; set; }
 
         /// <summary>
+        /// IsDeleted
+        /// </summary>                
+        [Display(Name = "IsDeleted", ResourceType = typeof(Resource))]
+        public bool IsDeleted { get; set; }
+
+        /// <summary>
         /// CreateUser
         /// </summary>
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]

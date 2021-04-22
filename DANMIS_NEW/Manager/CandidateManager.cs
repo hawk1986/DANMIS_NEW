@@ -142,11 +142,17 @@ namespace DANMIS_NEW.Manager
                     x.WDID != searchModel.WDID ||
                     false);
 
+            if (!string.IsNullOrWhiteSpace(searchModel.SearchName))
+                tempResult = tempResult.Where(x =>
+                    x.PreferredName.Contains(searchModel.SearchName) ||
+                    false);
+
             // 進行分頁處理
             var result = new Paging<CandidateListResult>();
             result.total = tempResult.Count();
             result.rows = tempResult
                 .OrderBy(searchModel.Sort, searchModel.Order)
+                .OrderBy(x => x.PreferredName)
                 //.Skip(searchModel.Offset)
                 //.Take(searchModel.Limit)
                 .ToList();

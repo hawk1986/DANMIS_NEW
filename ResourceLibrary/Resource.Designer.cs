@@ -1897,6 +1897,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 是否已刪除 的當地語系化字串。
+        /// </summary>
+        public static string IsDeleted {
+            get {
+                return ResourceManager.GetString("IsDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 啟用 的當地語系化字串。
         /// </summary>
         public static string IsEnable {

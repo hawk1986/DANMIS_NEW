@@ -66,6 +66,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Memo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="IsShow" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -1219,6 +1220,7 @@
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Factory" Relationship="DbModel.FK_ContactPerson_Factory" FromRole="ContactPerson" ToRole="Factory" />
           <Property Name="Memo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_ContactPerson_Factory">
           <End Type="DbModel.Factory" Role="Factory" Multiplicity="1">
@@ -1657,6 +1659,7 @@
           <EntitySetMapping Name="ContactPerson">
             <EntityTypeMapping TypeName="DbModel.ContactPerson">
               <MappingFragment StoreEntitySet="ContactPerson">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="Memo" ColumnName="Memo" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />

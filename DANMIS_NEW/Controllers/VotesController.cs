@@ -394,8 +394,6 @@ namespace DANMIS_NEW.Controllers
         [HttpPost]
         public ActionResult GetStatistic(VotesSearchModel searchModel)
         {
-            var result = new JsonResult();
-            
             var model = new StatisticModel();
             var statistics = new List<StatisticModel>();
             var votes = _votesManager.GetAll();            
@@ -429,8 +427,15 @@ namespace DANMIS_NEW.Controllers
                 statistics = statistics.Where(x => x.Brand == searchModel.Brand).OrderByDescending(x => x.Count).ThenBy(x => x.Brand).ToList();
             else
                 statistics = statistics.OrderByDescending(x => x.Count).ThenBy(x => x.Brand).ToList();
-            result = Json(new { total = statistics.Count, rows = statistics }, JsonRequestBehavior.AllowGet);
-            return result;
+
+            var result = new Paging<StatisticModel>();
+            result.total = statistics.Count();
+            result.rows = statistics                                
+                .Skip(searchModel.Offset)
+                .Take(searchModel.Limit)
+                .ToList();
+            
+            return Json(result);
         }
 
         public class Statistics

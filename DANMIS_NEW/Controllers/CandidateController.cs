@@ -67,7 +67,7 @@ namespace DANMIS_NEW.Controllers
         /// </summary>
         /// <param name="searchModel"></param>
         /// <returns></returns>
-        [WebAuthorize(Code = "CandidateIndex")]
+        //[WebAuthorize(Code = "CandidateIndex")]
         [HttpPost]
         public ActionResult Paging(CandidateSearchModel searchModel)
         {

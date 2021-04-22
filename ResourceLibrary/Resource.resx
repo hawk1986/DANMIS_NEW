@@ -1314,4 +1314,7 @@
   <data name="VoteToName" xml:space="preserve">
     <value>被投票人</value>
   </data>
+  <data name="IsDeleted" xml:space="preserve">
+    <value>是否已刪除</value>
+  </data>
 </root>
