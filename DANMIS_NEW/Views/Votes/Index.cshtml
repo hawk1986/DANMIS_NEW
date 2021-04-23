@@ -110,13 +110,13 @@
                 });
             });
         });
-        
+
         $('#table').bootstrapTable({
             url: '@Url.Action("GetStatistic", "Votes")',
-            method: 'POST',        
+            method: 'POST',
             queryParams: function (temp) {
                 var data = $("#search_form").serializeObject();
-                //這裡的鍵的名字和控制器的變數名必須一直，這邊改動，控制器也需要改成一樣的                
+                //這裡的鍵的名字和控制器的變數名必須一直，這邊改動，控制器也需要改成一樣的
                 data["limit"] = temp.limit;   //頁面大小
                 data["offset"] = temp.offset  //頁碼
                 return JSON.stringify(data);
@@ -165,6 +165,8 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+
+            $("#downloadPath").hide();
         });
 
         $('#user2role').click(function () {
@@ -178,14 +180,40 @@
                 dataType: 'json',
                 success: function (result) {
                     alert(result.result);
-
-
                 },
                 error: function () {
 
                 }
             });
         });
+
+        $('#btn_ExportCSV').click(function () {
+            var searchModel = {
+                Brand: $("#myInput.selectpicker option:selected").val(),
+            };
+            /*alert(JSON.stringify(searchModel));*/
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: '@Url.Action("ExportCSV", "Votes")',
+                data: JSON.stringify({ 'searchModel': searchModel }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (result) {
+                    //alert(result.url);
+                    
+                    $("#downloadPath").attr("href", result.url);
+                    $("#downloadPath")[0].click();
+                    
+                },
+                error: function () {
+                }
+
+            });
+        });
+
+        
+        
     </script>
 }
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -210,7 +238,10 @@
                 <div class="ibox-content">
                     <div class="row">
                         <form class="form-horizontal" id="search_form">
-                            <button id="report" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"> <i class="fa fa-bar-chart" aria-hidden="true"></i>投票結果</button>
+                            @if (user.Account == "Admin" || user.WDID == "63044859" || user.WDID == "63033121" || user.WDID == "62064030")
+                            {
+                                <button id="report" type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"> <i class="fa fa-bar-chart" aria-hidden="true"></i>投票結果</button>
+                            }
                             @if (user.Account == "Admin")
                             {
                                 <button id="user2role" type="button" class="btn btn-default"> 給予投票人權限</button>
@@ -220,7 +251,7 @@
                             <div class="form-group">
                             @Html.LabelFor(model => model.Search, htmlAttributes: new { @class = "control-label col-sm-1" })
                                 <div class="col-sm-2 m-b-xs">
-                                    @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", placeholder = Resource.Keyword } })
+                                    @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", placeholder = "請輸入候選人名..." } })
                                 </div>
                             </div>
 
@@ -229,6 +260,8 @@
                                 <div class="form-group">
                                     <div class="col-sm-8">
                                         @Html.Label(Model.ShowMsg, htmlAttributes: new { @class = "", @style = "color:red;" })
+                                        @Html.Label("您投給了:", htmlAttributes: new { @class = "", @style = "color:red;" })
+                                        @Html.Label(Model.VoteToName, htmlAttributes: new { @class = "", @style = "color:red;" })
                                     </div>
                                 </div>
                             }
@@ -247,8 +280,8 @@
                                             }
                                             else
                                             {
-                                                @Html.RadioButtonFor(model => model.WDID, item.WDID)
-                                                @*@Html.RadioButtonFor(model => model.WDID, item.WDID, htmlAttributes: new { @disabled = "disabled" })*@
+                                                @*@Html.RadioButtonFor(model => model.WDID, item.WDID)*@
+                                                @Html.RadioButtonFor(model => model.WDID, item.WDID, htmlAttributes: new { @disabled = "disabled" })
                                             }
                                             @item.PreferredName
                                         </label>
@@ -284,8 +317,9 @@
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">投票結果</h4>
                             </div>
-                            @Html.DropDownListFor(model => model.Brand, Model.BrandList, string.Format(Resource.PleaseSelect, Resource.BrandName), new { @class = "form-control selectpicker", @id = "myInput", data_live_search = "true", data_size = "10" })                            
-                            @*<input class="form-control" id="myInput" type="text" placeholder="Search..">*@
+                            <button id="btn_ExportCSV" type="button" class="btn btn-warning"> <i class="fa fa-file-excel-o" aria-hidden="true"></i>@Resource.ExportCSV</button>
+                            <a href="#" id="downloadPath">下載位置</a>
+                            @Html.DropDownListFor(model => model.Brand, Model.BrandList, string.Format(Resource.PleaseSelect, Resource.BrandName), new { @class = "form-control selectpicker", @id = "myInput", data_live_search = "true", data_size = "10" })
                             <table id="table"></table>
                         </div>
                     </div>

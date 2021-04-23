@@ -113,6 +113,16 @@ namespace DANMIS_NEW.Manager
         }
 
 
+        public List<VoterViewModel> GetAll()
+        {
+            var result = new List<VoterViewModel>();
+            var item = _voterRepository.GetAll().ToList();
+            
+            result = item.ConvertAll(e => (VoterViewModel)e);
+
+            return result;
+        }
+
         /// <summary>
         /// 分頁
         /// </summary>

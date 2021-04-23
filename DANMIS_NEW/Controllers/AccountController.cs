@@ -162,7 +162,7 @@ namespace DANMIS_NEW.Controllers
 
                 foreach (var item in sDCList)
                 {
-                    //var IsLogin = ADLoginManager.CheckADPasswordAndGetADLogin(viewModel.Account, viewModel.Password, item, out ADLogin);
+                    var IsLogin = ADLoginManager.CheckADPasswordAndGetADLogin(viewModel.Account, viewModel.Password, item, out ADLogin);
 
                     //判斷是否鎖定帳號
                     //暫不用鎖帳號
@@ -170,8 +170,8 @@ namespace DANMIS_NEW.Controllers
 
                     //驗證碼檢查
                     //20210415 改驗證AD
-                    //if (IsLogin || viewModel.Account == "service@net.tw") // for formal
-                    if (/*!isLockAccount && */viewModel.Account != null) // for test
+                    if (IsLogin || viewModel.Account == "service@net.tw") // for formal
+                        //if (/*!isLockAccount && */viewModel.Account != null) // for test
                     {
                         if (null != user)
                         {

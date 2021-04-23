@@ -21,7 +21,8 @@ namespace DANMIS_NEW.ViewModel.SearchModel
         public VotesSearchModel()
         {
             Candidates = new List<CandidateListResult>();
-            ShowMsg = "";
+            ShowMsg = string.Empty;
+            VoteToName = string.Empty;
         }
         public List<CandidateListResult> Candidates { get; set; }
 
@@ -33,6 +34,7 @@ namespace DANMIS_NEW.ViewModel.SearchModel
         public SelectList BrandList { get; set; }
         public string Brand { get; set; }
         public string SearchName { get; set; }
+        public string VoteToName { get; set; }
     }
 }
 #pragma warning restore 1591

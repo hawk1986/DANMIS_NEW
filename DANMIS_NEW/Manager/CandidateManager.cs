@@ -97,6 +97,14 @@ namespace DANMIS_NEW.Manager
             return result;
         }
 
+        public CandidateViewModel GetByWDID(string id)
+        {
+            var item = _candidateRepository.GetAll().FirstOrDefault(x => x.WDID == id);
+            var result = (CandidateViewModel)item;
+
+            return result;
+        }
+
         /// <summary>
         /// 分頁
         /// </summary>

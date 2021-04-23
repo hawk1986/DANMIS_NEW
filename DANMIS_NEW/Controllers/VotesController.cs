@@ -22,11 +22,20 @@ using DANMIS_NEW.Interface;
 using DANMIS_NEW.ViewModel;
 using DANMIS_NEW.ViewModel.ListResult;
 using DANMIS_NEW.ViewModel.SearchModel;
+using System.Globalization;
+using System.Text;
+using System.IO;
+using System.Reflection;
 
 namespace DANMIS_NEW.Controllers
 {
     public class VotesController : BaseController
     {
+        public const string tableType = "Votes";
+        public const string uploadPath = "~/Content/Uploads/Votes/";
+        public const string exportPath = "~/Content/Exports/Votes/";
+        public const string _exportPath = "/Content/Exports/Votes/";
+
         readonly ICommonManager _commonManager;
         readonly IVotesManager _votesManager;
         readonly ICandidateManager _candidateManager;
@@ -77,7 +86,7 @@ namespace DANMIS_NEW.Controllers
             }
 
             searchModel.StartDate = Convert.ToDateTime("2021-04-17");
-            searchModel.EndDate = Convert.ToDateTime("2021-04-30");
+            searchModel.EndDate = Convert.ToDateTime("2021-05-10");
 
 
             var _compCode = brands.FirstOrDefault(x => x.BrandID == CompCode)?.BrandCode ?? string.Empty;
@@ -111,6 +120,7 @@ namespace DANMIS_NEW.Controllers
                     _hasVote = true;
                     // show訊息
                     searchModel.ShowMsg = "您已投過票囉!";
+                    searchModel.VoteToName = candidates.FirstOrDefault(x => x.WDID == isVote.VoteTo)?.PreferredName ?? string.Empty;
                 }
 
                 if (_canVote == true && _hasVote == false)
@@ -144,7 +154,7 @@ namespace DANMIS_NEW.Controllers
             var bSearchModel = new BrandSearchModel();
             var brands = _brandManager.Paging(bSearchModel).rows.ToList();
             var _compCode = brands.FirstOrDefault(x => x.BrandID == CompCode).BrandCode;
-            var candidate = _userManager.GetByWDID(searchModel.WDID);
+            var candidate = _candidateManager.GetByWDID(searchModel.WDID);
             var result = Json(new { result = true, message = "投票失敗!" }, JsonRequestBehavior.AllowGet);
             // 查詢
             try
@@ -160,7 +170,7 @@ namespace DANMIS_NEW.Controllers
                         PreferredName = string.Empty,
                         Company = _compCode,
                         VoteTo = searchModel.WDID,
-                        VoteToName = candidate.EmpLocName,
+                        VoteToName = candidate.PreferredName,
                         VoteDate = DateTime.Now,
                     };
                     _votesManager.Create(create);
@@ -393,7 +403,7 @@ namespace DANMIS_NEW.Controllers
 
         [HttpPost]
         public ActionResult GetStatistic(VotesSearchModel searchModel)
-        {
+        {            
             var model = new StatisticModel();
             var statistics = new List<StatisticModel>();
             var votes = _votesManager.GetAll();            
@@ -458,12 +468,13 @@ namespace DANMIS_NEW.Controllers
         {
             var result = new JsonResult();
             
-            var users = _userManager.GetAll().ToList();
+            var users = _userManager.GetAll();
+            var voters = _voterManager.GetAll();
 
             foreach (var item in users)
             {
-                var voters = _voterManager.GetByWDID(item.WDID);
-                if (!string.IsNullOrEmpty(voters.WDID))
+                var voter = voters.FirstOrDefault(x => x.WDID == item.WDID);
+                if (voter != null)
                 {
                     item.DefaultIndex = new Guid("4C14D23E-B445-4AF7-BA54-FCA5A515AEDB");
                     item.RoleID.Add(new Guid("C1DC25C1-7950-4D08-9A9F-CD8FB1ABB4DD"));
@@ -474,6 +485,116 @@ namespace DANMIS_NEW.Controllers
             result = Json(new { result = "寫入成功" }, JsonRequestBehavior.AllowGet);
 
             return result;
+        }
+
+        [HttpPost]
+        public ActionResult ExportCSV(VotesSearchModel searchModel)
+        {
+            var result = new JsonResult();
+            result = Json(new { message = "no Data" }, JsonRequestBehavior.AllowGet);
+
+            try
+            {
+                var model = new StatisticModel();
+                var statistics = new List<StatisticModel>();
+                var votes = _votesManager.GetAll();
+
+                var groupVotes = votes.GroupBy(x => new
+                {
+                    VoteTo = x.VoteTo,
+                    VoteToName = x.VoteToName,
+                    Brand = x.Company
+                }).Select(y => new Statistics
+                {
+                    Brand = y.Key.Brand,
+                    Candidate = y.Key.VoteToName,
+                    Count = y.Count()
+                }).ToList();
+
+                foreach (var item in groupVotes)
+                {
+
+                    var statisticModel = new StatisticModel
+                    {
+                        Brand = item.Brand,
+                        Name = item.Candidate,
+                        Count = item.Count,
+                    };
+                    if (!string.IsNullOrEmpty(statisticModel.Name))
+                        statistics.Add(statisticModel);
+
+                }
+                if (!string.IsNullOrEmpty(searchModel.Brand))
+                    statistics = statistics.Where(x => x.Brand == searchModel.Brand).OrderByDescending(x => x.Count).ThenBy(x => x.Brand).ToList();
+                else
+                    statistics = statistics.OrderByDescending(x => x.Count).ThenBy(x => x.Brand).ToList();
+                var temp = new Paging<StatisticModel>();
+                temp.total = statistics.Count();
+                temp.rows = statistics
+                    .Skip(searchModel.Offset)
+                    .Take(searchModel.Limit)
+                    .ToList();
+
+                List<ExportVotesCSVModel> exportData =
+                    temp.rows.Select(x => new ExportVotesCSVModel
+                    {
+                        Brand = x.Brand,
+                        Name = x.Name,
+                        Counts = x.Count
+                    }).ToList();
+
+
+                var export = CSVGenerator<ExportVotesCSVModel>(true, exportPath, exportData);
+                var downloadPath = string.Concat(Request.Url.Scheme, "://", Request.Url.Authority, _exportPath, export);
+                result = Json(new { result = true, url = downloadPath }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = false, message = "Error" }, JsonRequestBehavior.AllowGet);
+            }
+            return result;
+        }
+
+
+        /// <summary>
+        /// CSV Generator
+        /// </summary>
+        /// <param name="genColumn">output data property name</param>
+        /// <param name="FilePath">target CSV path</param>
+        /// <param name="data"> List of T</param>
+        public string CSVGenerator<T>(bool genColumn, string FilePath, List<T> data)
+        {
+            var name = string.Concat("投票統計_", DateTime.Now.ToString("yyyy-MM-dd_hhmmss"), ".csv");
+            var _path = string.Concat(FilePath, name);
+            var path = Path.Combine(Server.MapPath(_path));
+            Encoding utf8 = Encoding.UTF8;
+            CultureInfo cultureInfo = new CultureInfo("zh-TW");
+            // Create the file, or overwrite if the file exists.
+            using (FileStream fs = System.IO.File.Create(path))
+            {
+                StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
+                Type t = typeof(T);
+                PropertyInfo[] propInfos = t.GetProperties();
+                if (genColumn)
+                {
+                    foreach (var item in propInfos)
+                    {
+                        // Test
+                        var e = item.CustomAttributes.FirstOrDefault();
+                        var f = e.NamedArguments.Select(i => i.TypedValue).FirstOrDefault();
+                        var c = item.PropertyType;
+                        var d = item.Attributes;
+                    }
+                    sw.WriteLine(string.Join("|", propInfos.Select(i => i.CustomAttributes.FirstOrDefault().NamedArguments.FirstOrDefault().TypedValue.ToString().Replace(@"""", ""))));
+                }
+                foreach (var item in data)
+                {
+                    sw.WriteLine(string.Join("|", propInfos.Select(i => i.GetValue(item))));
+                }
+                sw.Close();
+            }
+
+            return name;
         }
     }
 }

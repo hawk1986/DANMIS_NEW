@@ -53,6 +53,8 @@ namespace DANMIS_NEW.Interface
         /// <param name="entity"></param>
         /// <returns></returns>
         void Update(CandidateViewModel entity);
+
+        CandidateViewModel GetByWDID(string id);
     }
 }
 #pragma warning restore 1591
