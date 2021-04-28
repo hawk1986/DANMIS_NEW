@@ -350,7 +350,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.FactoryClass, htmlAttributes: new { @class = "control-label col-sm-2" })
                             <div class="col-sm-2">
-                                @Html.DropDownListFor(model => model.FactoryClass, Model._FactoryClass, string.Format(Resource.PleaseSelect, Resource.FactoryClass), new { @class = "form-control selectpicker" })
+                                @Html.DropDownListFor(model => model.FactoryClass, Model._FactoryClass, string.Format(Resource.PleaseSelect, Resource.FactoryClass), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
                                 @Html.ValidationMessageFor(model => model.FactoryClass, "", new { @class = "text-danger" })
                             </div>
                             @Html.LabelFor(model => model.IsShow, htmlAttributes: new { @class = "control-label col-sm-1" })

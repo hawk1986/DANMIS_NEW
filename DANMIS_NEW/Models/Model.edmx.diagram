@@ -37,6 +37,10 @@
         <EntityTypeShape EntityType="DbModel.Candidate" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="DbModel.Voter" Width="1.5" PointX="14.375" PointY="4.75" />
         <EntityTypeShape EntityType="DbModel.Votes" Width="1.5" PointX="14.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DbModel.FactoryClass" Width="1.5" PointX="14.375" PointY="12.75" />
+        <EntityTypeShape EntityType="DbModel.DID" Width="1.5" PointX="16.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DbModel.FactoryItems" Width="1.5" PointX="16.375" PointY="4.75" />
+        <EntityTypeShape EntityType="DbModel.ItemClass" Width="1.5" PointX="16.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

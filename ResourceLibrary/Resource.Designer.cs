@@ -592,6 +592,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 類別 的當地語系化字串。
+        /// </summary>
+        public static string ClassName {
+            get {
+                return ResourceManager.GetString("ClassName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 ClientName 的當地語系化字串。
         /// </summary>
         public static string ClientName {
@@ -1051,6 +1060,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 DID 的當地語系化字串。
+        /// </summary>
+        public static string DID {
+            get {
+                return ResourceManager.GetString("DID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 顯示於標頭 的當地語系化字串。
         /// </summary>
         public static string DisplayHeader {
@@ -1416,6 +1434,15 @@ namespace ResourceLibrary {
         public static string FactoryClass {
             get {
                 return ResourceManager.GetString("FactoryClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廠商物品管理 的當地語系化字串。
+        /// </summary>
+        public static string FactoryItems {
+            get {
+                return ResourceManager.GetString("FactoryItems", resourceCulture);
             }
         }
         
@@ -1915,6 +1942,24 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 是否顯示供同事選訂 的當地語系化字串。
+        /// </summary>
+        public static string IsForColleague {
+            get {
+                return ResourceManager.GetString("IsForColleague", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 是否供做文具領用 的當地語系化字串。
+        /// </summary>
+        public static string IsForStationery {
+            get {
+                return ResourceManager.GetString("IsForStationery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 首頁是否顯示 的當地語系化字串。
         /// </summary>
         public static string IsHomePage {
@@ -1956,6 +2001,60 @@ namespace ResourceLibrary {
         public static string IsShowFooter {
             get {
                 return ResourceManager.GetString("IsShowFooter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 物品類別 的當地語系化字串。
+        /// </summary>
+        public static string ItemClass {
+            get {
+                return ResourceManager.GetString("ItemClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 品名 的當地語系化字串。
+        /// </summary>
+        public static string ItemName {
+            get {
+                return ResourceManager.GetString("ItemName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 單價 的當地語系化字串。
+        /// </summary>
+        public static string ItemPrice {
+            get {
+                return ResourceManager.GetString("ItemPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 庫存量 的當地語系化字串。
+        /// </summary>
+        public static string ItemQty {
+            get {
+                return ResourceManager.GetString("ItemQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 規格 的當地語系化字串。
+        /// </summary>
+        public static string ItemSpecification {
+            get {
+                return ResourceManager.GetString("ItemSpecification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 庫存單位 的當地語系化字串。
+        /// </summary>
+        public static string ItemUnit {
+            get {
+                return ResourceManager.GetString("ItemUnit", resourceCulture);
             }
         }
         

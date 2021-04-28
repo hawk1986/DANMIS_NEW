@@ -30,15 +30,18 @@ namespace DANMIS_NEW.Controllers
         readonly ICommonManager _commonManager;
         readonly IFactoryManager _factoryManager;
         readonly IContactPersonManager _contactPersonManager;
+        readonly IFactoryClassManager _factoryClassManager;
 
         public FactoryController(
             ICommonManager commonManager,
             IFactoryManager factoryManager,
-            IContactPersonManager contactPersonManager)
+            IContactPersonManager contactPersonManager,
+            IFactoryClassManager factoryClassManager)
         {
             _commonManager = commonManager;
             _factoryManager = factoryManager;
             _contactPersonManager = contactPersonManager;
+            _factoryClassManager = factoryClassManager;
             logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -61,6 +64,8 @@ namespace DANMIS_NEW.Controllers
                     searchModel = temp;
                 }
             }
+
+            searchModel._FactoryClass = _factoryClassManager.PagingSelectList();
 
             return View(searchModel);
         }
@@ -334,7 +339,7 @@ namespace DANMIS_NEW.Controllers
         /// <param name="viewModel"></param>
         void setDropDownList(ref FactoryViewModel viewModel)
         {
-            viewModel._FactoryClass = _commonManager.GetOptionList("FactoryClass");
+            viewModel._FactoryClass = _factoryClassManager.PagingSelectList();
             viewModel.YesNoList = _commonManager.GetYesNoList();
         }
 

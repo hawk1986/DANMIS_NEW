@@ -53,6 +53,8 @@ namespace DANMIS_NEW.Interface
         /// <param name="entity"></param>
         /// <returns></returns>
         void Update(FactoryViewModel entity);
+
+        string switchFactoryClassName(Guid factoryClass);
     }
 }
 #pragma warning restore 1591

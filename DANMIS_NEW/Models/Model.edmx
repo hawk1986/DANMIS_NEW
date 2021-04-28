@@ -92,6 +92,52 @@
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="FactoryClass">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FactoryItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemSpecification" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemClass" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemPrice" Type="float" Nullable="false" />
+          <Property Name="ItemQty" Type="int" Nullable="false" />
+          <Property Name="Factory" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsForStationery" Type="bit" Nullable="false" />
+          <Property Name="IsForColleague" Type="bit" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemClass">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Voter">
           <Key>
             <PropertyRef Name="ID" />
@@ -430,6 +476,20 @@
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="DID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WDID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Memo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <Association Name="FK_AccessControl_Function">
           <End Role="Function" Type="Self.Function" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -459,9 +519,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ContactPerson_Factory">
-          <End Role="Factory" Type="Self.Factory" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Factory" Type="Self.Factory" Multiplicity="1" />
           <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Factory">
@@ -608,6 +666,9 @@
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dan" store:Type="Tables" />
           <EntitySet Name="ContactPerson" EntityType="Self.ContactPerson" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Factory" EntityType="Self.Factory" Schema="dan" store:Type="Tables" />
+          <EntitySet Name="FactoryClass" EntityType="Self.FactoryClass" Schema="dan" store:Type="Tables" />
+          <EntitySet Name="FactoryItems" EntityType="Self.FactoryItems" Schema="dan" store:Type="Tables" />
+          <EntitySet Name="ItemClass" EntityType="Self.ItemClass" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Voter" EntityType="Self.Voter" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Votes" EntityType="Self.Votes" Schema="dan" store:Type="Tables" />
           <EntitySet Name="AccessControl" EntityType="Self.AccessControl" Schema="dbo" store:Type="Tables" />
@@ -625,6 +686,7 @@
           <EntitySet Name="UserChangePass" EntityType="Self.UserChangePass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VisualMenu" EntityType="Self.VisualMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DID" EntityType="Self.DID" Schema="jml" store:Type="Tables" />
           <EntitySet Name="Skill" EntityType="Self.Skill" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Skill].[rowId] AS [rowId], 
@@ -757,6 +819,10 @@
           <EntitySet Name="Candidate" EntityType="DbModel.Candidate" />
           <EntitySet Name="Voter" EntityType="DbModel.Voter" />
           <EntitySet Name="Votes" EntityType="DbModel.Votes" />
+          <EntitySet Name="FactoryClass" EntityType="DbModel.FactoryClass" />
+          <EntitySet Name="DID" EntityType="DbModel.DID" />
+          <EntitySet Name="FactoryItems" EntityType="DbModel.FactoryItems" />
+          <EntitySet Name="ItemClass" EntityType="DbModel.ItemClass" />
         </EntityContainer>
         <EntityType Name="Department">
           <Key>
@@ -1310,6 +1376,66 @@
           <Property Name="VoteDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="VoteToName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="FactoryClass">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ClassName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DID">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="DID1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WDID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Memo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FactoryItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemSpecification" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemClass" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPrice" Type="Double" Nullable="false" />
+          <Property Name="ItemQty" Type="Int32" Nullable="false" />
+          <Property Name="Factory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsForStationery" Type="Boolean" Nullable="false" />
+          <Property Name="IsForColleague" Type="Boolean" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ItemClass">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ClassName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1751,6 +1877,70 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactoryClass">
+            <EntityTypeMapping TypeName="DbModel.FactoryClass">
+              <MappingFragment StoreEntitySet="FactoryClass">
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DID">
+            <EntityTypeMapping TypeName="DbModel.DID">
+              <MappingFragment StoreEntitySet="DID">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="WDID" ColumnName="WDID" />
+                <ScalarProperty Name="DID1" ColumnName="DID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactoryItems">
+            <EntityTypeMapping TypeName="DbModel.FactoryItems">
+              <MappingFragment StoreEntitySet="FactoryItems">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="IsForColleague" ColumnName="IsForColleague" />
+                <ScalarProperty Name="IsForStationery" ColumnName="IsForStationery" />
+                <ScalarProperty Name="Factory" ColumnName="Factory" />
+                <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="ItemUnit" ColumnName="ItemUnit" />
+                <ScalarProperty Name="ItemClass" ColumnName="ItemClass" />
+                <ScalarProperty Name="ItemSpecification" ColumnName="ItemSpecification" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemClass">
+            <EntityTypeMapping TypeName="DbModel.ItemClass">
+              <MappingFragment StoreEntitySet="ItemClass">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>

@@ -1317,4 +1317,37 @@
   <data name="IsDeleted" xml:space="preserve">
     <value>是否已刪除</value>
   </data>
+  <data name="ClassName" xml:space="preserve">
+    <value>類別</value>
+  </data>
+  <data name="DID" xml:space="preserve">
+    <value>DID</value>
+  </data>
+  <data name="FactoryItems" xml:space="preserve">
+    <value>廠商物品管理</value>
+  </data>
+  <data name="IsForColleague" xml:space="preserve">
+    <value>是否顯示供同事選訂</value>
+  </data>
+  <data name="IsForStationery" xml:space="preserve">
+    <value>是否供做文具領用</value>
+  </data>
+  <data name="ItemClass" xml:space="preserve">
+    <value>物品類別</value>
+  </data>
+  <data name="ItemName" xml:space="preserve">
+    <value>品名</value>
+  </data>
+  <data name="ItemPrice" xml:space="preserve">
+    <value>單價</value>
+  </data>
+  <data name="ItemQty" xml:space="preserve">
+    <value>庫存量</value>
+  </data>
+  <data name="ItemSpecification" xml:space="preserve">
+    <value>規格</value>
+  </data>
+  <data name="ItemUnit" xml:space="preserve">
+    <value>庫存單位</value>
+  </data>
 </root>

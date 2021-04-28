@@ -53,8 +53,6 @@ namespace DANMIS_NEW.Controllers
                     case "factory":
                         result = new List<ListOption>
                         {
-
-                            
                             new ListOption{ checkbox = true, sortable = false, visible = true },
                             new ListOption{ field = "FactoryShortName", title = Resource.FactoryShortName },
                             new ListOption{ field = "TEL", title = Resource.TEL },
@@ -62,6 +60,15 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "IDNO", title = Resource.IDNO },
                             new ListOption{ field = "FactoryClass", title = Resource.FactoryClass },
                             new ListOption{ field = "ContactPerson", title = Resource.ContactPerson, align = "center", events = "window.operateEvents", formatter = "<button class='detail btn btn-info' title='Detail' data-toggle='modal' data-target='#myModal'><i class='fa fa-address-book'></i>檢視聯絡人</button>" },
+                        };
+                        break;
+                    case "factoryClass":
+                        result = new List<ListOption>
+                        {
+                            new ListOption{ checkbox = true, sortable = false, visible = true },
+                            new ListOption{ field = "ClassName", title = Resource.ClassName },
+                            new ListOption{ field = "Order", title = Resource.Order },
+                            new ListOption{ field = "Factory", title = Resource.Factory, align = "center", events = "window.operateEvents", formatter = "<button class='detail btn btn-info' title='Detail' data-toggle='modal' data-target='#myModal'><i class='fa fa-address-book'></i>檢視廠商</button>" },
                         };
                         break;
                     case "freeFieldSetting":
@@ -90,7 +97,29 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "ControllerName", title = Resource.ControllerName },
                             new ListOption{ field = "ActionName", title = Resource.ActionName },
                         };
-                        break;                    
+                        break;
+                    case "factoryItems":
+                        result = new List<ListOption>
+                        {
+                            new ListOption{ checkbox = true, sortable = false, visible = true },
+                            new ListOption{ field = "ItemName", title = Resource.ItemName },
+                            new ListOption{ field = "ItemSpecification", title = Resource.ItemSpecification },
+                            new ListOption{ field = "ItemClass", title = Resource.ItemClass },
+                            new ListOption{ field = "ItemUnit", title = Resource.ItemUnit },
+                            new ListOption{ field = "ItemPrice", title = Resource.ItemPrice },
+                            new ListOption{ field = "ItemQty", title = Resource.ItemQty },
+                            new ListOption{ field = "Factory", title = Resource.FactoryShortName },
+                        };
+                        break;
+                    case "itemClass":
+                        result = new List<ListOption>
+                        {
+                            new ListOption{ checkbox = true, sortable = false, visible = true },
+                            new ListOption{ field = "ClassName", title = Resource.ClassName },
+                            new ListOption{ field = "Order", title = Resource.Order },
+                            new ListOption{ field = "Factory", title = Resource.Factory, align = "center", events = "window.operateEvents", formatter = "<button class='detail btn btn-info' title='Detail' data-toggle='modal' data-target='#myModal'><i class='fa fa-address-book'></i>檢視廠商</button>" },
+                        };
+                        break;
                     case "module":
                         result = new List<ListOption>
                         {

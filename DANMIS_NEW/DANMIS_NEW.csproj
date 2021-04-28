@@ -1114,7 +1114,16 @@
     <Compile Include="Controllers\DepartmentController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DIDController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FactoryClassController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\FactoryController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\FactoryItemsController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\FreeFieldSettingController.cs">
@@ -1124,6 +1133,9 @@
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemClassController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ModuleController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
@@ -1175,6 +1187,15 @@
     <Compile Include="Interface\IDepartmentManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IDIDManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IFactoryClassManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IFactoryItemsManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Interface\IFactoryManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
@@ -1182,6 +1203,9 @@
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IFunctionManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IItemClassManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IManager.cs">
@@ -1243,6 +1267,15 @@
     <Compile Include="Manager\DepartmentManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manager\DIDManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\FactoryClassManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\FactoryItemsManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Manager\FactoryManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
@@ -1250,6 +1283,9 @@
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\FunctionManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ItemClassManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\LoginLockManager.cs" />
@@ -1320,8 +1356,26 @@
     <Compile Include="Models\DepartmentRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DID.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DIDRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Factory.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FactoryClass.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FactoryClassRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FactoryItems.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FactoryItemsRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FactoryRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
@@ -1359,6 +1413,15 @@
     <Compile Include="Models\IDepartmentRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IDIDRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IFactoryClassRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IFactoryItemsRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IFactoryRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
@@ -1369,6 +1432,9 @@
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IFunctionRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IItemClassRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IModuleRepository.cs">
@@ -1392,6 +1458,12 @@
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ISystemOptionRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemClass.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemClassRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IUserChangePassRepository.cs">
@@ -1428,7 +1500,16 @@
     <Compile Include="Models\Mapper\Department.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mapper\DID.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Mapper\Factory.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\FactoryClass.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\FactoryItems.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\FileAttached.cs">
@@ -1438,6 +1519,9 @@
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\Function.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\ItemClass.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\Mapper.cs">
@@ -1615,8 +1699,17 @@
     <Compile Include="ViewModel\DepartmentViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\DIDViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\Enum\EnumSet.cs" />
     <Compile Include="ViewModel\Export\ExportCSVModel.cs" />
+    <Compile Include="ViewModel\FactoryClassViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\FactoryItemsViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\FactoryViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
@@ -1629,6 +1722,9 @@
     </Compile>
     <Compile Include="ViewModel\FunctionSequenceInfo.cs" />
     <Compile Include="ViewModel\FunctionViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ItemClassViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\BrandListResult.cs">
@@ -1646,6 +1742,15 @@
     <Compile Include="ViewModel\ListResult\DepartmentListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ListResult\DIDListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\FactoryClassListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\FactoryItemsListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ListResult\FactoryListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
@@ -1653,6 +1758,9 @@
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\FunctionListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\ItemClassListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\ListOption.cs" />
@@ -1703,7 +1811,19 @@
     <Compile Include="ViewModel\SearchModel\ContactPersonSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\SearchModel\DIDSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\FactoryClassSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\FactoryItemsSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\SearchModel\FactorySearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\ItemClassSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\VoterSearchModel.cs">
@@ -1876,6 +1996,33 @@
     <None Include="Views\Company\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
+    <Content Include="Views\DID\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </Content>
+    <Content Include="Views\DID\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </Content>
+    <Content Include="Views\DID\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </Content>
+    <Content Include="Views\FactoryClass\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </Content>
+    <Content Include="Views\FactoryClass\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </Content>
+    <Content Include="Views\FactoryClass\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </Content>
+    <None Include="Views\FactoryItems\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\FactoryItems\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\FactoryItems\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\Function\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -1983,6 +2130,15 @@
     <Content Include="Views\Factory\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
+    <None Include="Views\ItemClass\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\ItemClass\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\ItemClass\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\Voter\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2010,6 +2166,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploads\" />
+    <Folder Include="Views\Brand\" />
+    <Folder Include="Views\Candidate\" />
+    <Folder Include="Views\Company\" />
+    <Folder Include="Views\ContactPerson\" />
+    <Folder Include="Views\Department\" />
+    <Folder Include="Views\DID\" />
+    <Folder Include="Views\FactoryClass\" />
+    <Folder Include="Views\FactoryItems\" />
+    <Folder Include="Views\Factory\" />
+    <Folder Include="Views\FreeFieldSetting\" />
+    <Folder Include="Views\Function\" />
+    <Folder Include="Views\ItemClass\" />
+    <Folder Include="Views\Module\" />
+    <Folder Include="Views\OperateRecord\" />
+    <Folder Include="Views\Role\" />
+    <Folder Include="Views\SystemConfig\" />
+    <Folder Include="Views\SystemOption\" />
+    <Folder Include="Views\UserProfile\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\VisualMenu\" />
+    <Folder Include="Views\Voter\" />
+    <Folder Include="Views\Votes\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -46,5 +46,9 @@ namespace DANMIS_NEW.Models
         public virtual DbSet<Candidate> Candidate { get; set; }
         public virtual DbSet<Voter> Voter { get; set; }
         public virtual DbSet<Votes> Votes { get; set; }
+        public virtual DbSet<FactoryClass> FactoryClass { get; set; }
+        public virtual DbSet<DID> DID { get; set; }
+        public virtual DbSet<FactoryItems> FactoryItems { get; set; }
+        public virtual DbSet<ItemClass> ItemClass { get; set; }
     }
 }
