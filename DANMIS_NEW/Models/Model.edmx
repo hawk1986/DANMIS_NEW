@@ -118,8 +118,10 @@
           <Property Name="ItemPrice" Type="float" Nullable="false" />
           <Property Name="ItemQty" Type="int" Nullable="false" />
           <Property Name="Factory" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsInventoryMgmt" Type="bit" Nullable="false" />
           <Property Name="IsForStationery" Type="bit" Nullable="false" />
           <Property Name="IsForColleague" Type="bit" Nullable="false" />
+          <Property Name="IsAttached" Type="bit" Nullable="false" />
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -133,6 +135,8 @@
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ClassName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="IsForUser" Type="bit" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -755,7 +759,6 @@
       <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Department" EntityType="DbModel.Department" />
-          <EntitySet Name="FileAttached" EntityType="DbModel.FileAttached" />
           <EntitySet Name="FreeFieldSetting" EntityType="DbModel.FreeFieldSetting" />
           <EntitySet Name="Function" EntityType="DbModel.Function" />
           <EntitySet Name="Module" EntityType="DbModel.Module" />
@@ -823,6 +826,7 @@
           <EntitySet Name="DID" EntityType="DbModel.DID" />
           <EntitySet Name="FactoryItems" EntityType="DbModel.FactoryItems" />
           <EntitySet Name="ItemClass" EntityType="DbModel.ItemClass" />
+          <EntitySet Name="FileAttached" EntityType="DbModel.FileAttached" />
         </EntityContainer>
         <EntityType Name="Department">
           <Key>
@@ -855,26 +859,6 @@
           <NavigationProperty Name="Children" Relationship="DbModel.FK_Department_Parent" FromRole="Department" ToRole="Department1" />
           <NavigationProperty Name="Parent" Relationship="DbModel.FK_Department_Parent" FromRole="Department1" ToRole="Department" />
           <NavigationProperty Name="User" Relationship="DbModel.FK_User_Department" FromRole="Department" ToRole="User" />
-        </EntityType>
-        <EntityType Name="FileAttached">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="ParentID" Type="Guid" Nullable="false" />
-          <Property Name="TableType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ItemType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FileName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FileExtension" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="FileSize" Type="Int32" Nullable="false" />
-          <Property Name="IsImageFile" Type="Boolean" Nullable="false" />
-          <Property Name="IsThumbImage" Type="Boolean" Nullable="false" />
-          <Property Name="DownloadCount" Type="Int32" Nullable="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="FreeFieldSetting">
           <Key>
@@ -1422,6 +1406,8 @@
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsInventoryMgmt" Type="Boolean" Nullable="false" />
+          <Property Name="IsAttached" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemClass">
           <Key>
@@ -1434,6 +1420,28 @@
           <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsForUser" Type="Boolean" Nullable="false" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FileAttached">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ParentID" Type="Guid" Nullable="false" />
+          <Property Name="TableType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileExtension" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FileSize" Type="Int32" Nullable="false" />
+          <Property Name="IsImageFile" Type="Boolean" Nullable="false" />
+          <Property Name="IsThumbImage" Type="Boolean" Nullable="false" />
+          <Property Name="DownloadCount" Type="Int32" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         </Schema>
@@ -1466,27 +1474,6 @@
                 <ScalarProperty Name="Abbreviate" ColumnName="Abbreviate" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Sequence" ColumnName="Sequence" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FileAttached">
-            <EntityTypeMapping TypeName="DbModel.FileAttached">
-              <MappingFragment StoreEntitySet="FileAttached">
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="DownloadCount" ColumnName="DownloadCount" />
-                <ScalarProperty Name="IsThumbImage" ColumnName="IsThumbImage" />
-                <ScalarProperty Name="IsImageFile" ColumnName="IsImageFile" />
-                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
-                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
-                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
-                <ScalarProperty Name="TableType" ColumnName="TableType" />
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>
@@ -1914,6 +1901,8 @@
           <EntitySetMapping Name="FactoryItems">
             <EntityTypeMapping TypeName="DbModel.FactoryItems">
               <MappingFragment StoreEntitySet="FactoryItems">
+                <ScalarProperty Name="IsAttached" ColumnName="IsAttached" />
+                <ScalarProperty Name="IsInventoryMgmt" ColumnName="IsInventoryMgmt" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
@@ -1935,12 +1924,35 @@
           <EntitySetMapping Name="ItemClass">
             <EntityTypeMapping TypeName="DbModel.ItemClass">
               <MappingFragment StoreEntitySet="ItemClass">
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="IsForUser" ColumnName="IsForUser" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileAttached">
+            <EntityTypeMapping TypeName="DbModel.FileAttached">
+              <MappingFragment StoreEntitySet="FileAttached">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="DownloadCount" ColumnName="DownloadCount" />
+                <ScalarProperty Name="IsThumbImage" ColumnName="IsThumbImage" />
+                <ScalarProperty Name="IsImageFile" ColumnName="IsImageFile" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+                <ScalarProperty Name="TableType" ColumnName="TableType" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>

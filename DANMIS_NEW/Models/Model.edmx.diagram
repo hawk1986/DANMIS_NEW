@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="3fc870a68adc4fa6b37ddc20fd2c0fe2" Name="Diagram1" ZoomLevel="100">
         <EntityTypeShape EntityType="DbModel.Department" Width="1.5" PointX="9.75" PointY="9.375" />
-        <EntityTypeShape EntityType="DbModel.FileAttached" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="DbModel.FreeFieldSetting" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="DbModel.Function" Width="1.5" PointX="3" PointY="7.25" />
         <EntityTypeShape EntityType="DbModel.Module" Width="1.5" PointX="0.75" PointY="8.375" />
@@ -41,6 +40,7 @@
         <EntityTypeShape EntityType="DbModel.DID" Width="1.5" PointX="16.375" PointY="0.75" />
         <EntityTypeShape EntityType="DbModel.FactoryItems" Width="1.5" PointX="16.375" PointY="4.75" />
         <EntityTypeShape EntityType="DbModel.ItemClass" Width="1.5" PointX="16.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DbModel.FileAttached" Width="1.5" PointX="16.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -27,15 +27,24 @@ namespace DANMIS_NEW.Controllers
 {
     public class FactoryItemsController : BaseController
     {
+        public const string tableType = "FactoryItems";
+        public const string uploadPath = "~/Content/Uploads/FactoryItems/";
+
         readonly ICommonManager _commonManager;
         readonly IFactoryItemsManager _factoryItemsManager;
+        readonly IFactoryManager _factoryManager;
+        readonly IItemClassManager _itemClassManager;
 
         public FactoryItemsController(
             ICommonManager commonManager,
-            IFactoryItemsManager factoryItemsManager)
+            IFactoryItemsManager factoryItemsManager,
+            IFactoryManager factoryManager,
+            IItemClassManager itemClassManager)
         {
             _commonManager = commonManager;
             _factoryItemsManager = factoryItemsManager;
+            _factoryManager = factoryManager;
+            _itemClassManager = itemClassManager;
             logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -58,6 +67,9 @@ namespace DANMIS_NEW.Controllers
                     searchModel = temp;
                 }
             }
+
+            searchModel._Factory = _factoryManager.GetSelectList();
+            searchModel._ItemClass = _itemClassManager.GetSelectList();
 
             return View(searchModel);
         }
@@ -169,6 +181,10 @@ namespace DANMIS_NEW.Controllers
                     viewModel.CreateTime = NowTime;
                     viewModel.UpdateUser = UserName;
                     viewModel.UpdateTime = NowTime;
+
+                    //處理上傳多檔案
+                    fileAttachedHandler(this, viewModel, viewModel.ID, uploadPath, tableType);
+
                     _factoryItemsManager.Create(viewModel);
                     UnobtrusiveSession.Session["QueryModel"] = null;
                     // 完成
@@ -252,6 +268,10 @@ namespace DANMIS_NEW.Controllers
                 {
                     viewModel.UpdateUser = UserName;
                     viewModel.UpdateTime = NowTime;
+
+                    //處理上傳多檔案
+                    fileAttachedHandler(this, viewModel, viewModel.ID, uploadPath, tableType);
+
                     _factoryItemsManager.Update(viewModel);
                     // 完成
                     TempData["ErrorMsg"] = new JsonMessage { Style = "success", Message = string.Format(Resource.ExecutionCompleted, Resource.Edit, Resource.FactoryItems) }.ToString();
@@ -307,6 +327,9 @@ namespace DANMIS_NEW.Controllers
         /// <param name="viewModel"></param>
         void setDropDownList(ref FactoryItemsViewModel viewModel)
         {
+            viewModel.YesNoList = _commonManager.GetYesNoList();
+            viewModel._ItemClass = _itemClassManager.GetSelectList();
+            viewModel._Factory = _factoryManager.GetSelectList();
         }
     }
 }

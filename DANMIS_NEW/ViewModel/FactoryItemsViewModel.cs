@@ -17,7 +17,7 @@ using System.Web.Mvc;
 
 namespace DANMIS_NEW.ViewModel
 {
-    public class FactoryItemsBaseModel
+    public class FactoryItemsBaseModel : PostedFileBaseModel
     {
         public FactoryItemsBaseModel()
         {
@@ -86,8 +86,15 @@ namespace DANMIS_NEW.ViewModel
         /// </summary>
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "Factory", ResourceType = typeof(Resource))]
+        [Display(Name = "Factory_Name", ResourceType = typeof(Resource))]
         public string Factory { get; set; }
+
+        /// <summary>
+        /// IsForStationery
+        /// </summary>
+        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "IsInventoryMgmt", ResourceType = typeof(Resource))]
+        public bool IsInventoryMgmt { get; set; }
 
         /// <summary>
         /// IsForStationery
@@ -102,6 +109,12 @@ namespace DANMIS_NEW.ViewModel
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "IsForColleague", ResourceType = typeof(Resource))]
         public bool IsForColleague { get; set; }
+
+        /// <summary>
+        /// IsAttached
+        /// </summary>        
+        [Display(Name = "IsAttached", ResourceType = typeof(Resource))]
+        public bool IsAttached { get; set; }
 
         /// <summary>
         /// CreateUser
@@ -137,7 +150,9 @@ namespace DANMIS_NEW.ViewModel
     public class FactoryItemsViewModel : FactoryItemsBaseModel
     {
         #region == View Fields ==
-
+        public SelectList YesNoList { get; set; }
+        public SelectList _Factory { get; set; }
+        public SelectList _ItemClass { get; set; }
         #endregion == View Fields ==
     }
 }

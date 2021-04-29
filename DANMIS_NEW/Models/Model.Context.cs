@@ -26,7 +26,6 @@ namespace DANMIS_NEW.Models
         }
     
         public virtual DbSet<Department> Department { get; set; }
-        public virtual DbSet<FileAttached> FileAttached { get; set; }
         public virtual DbSet<FreeFieldSetting> FreeFieldSetting { get; set; }
         public virtual DbSet<Function> Function { get; set; }
         public virtual DbSet<Module> Module { get; set; }
@@ -50,5 +49,6 @@ namespace DANMIS_NEW.Models
         public virtual DbSet<DID> DID { get; set; }
         public virtual DbSet<FactoryItems> FactoryItems { get; set; }
         public virtual DbSet<ItemClass> ItemClass { get; set; }
+        public virtual DbSet<FileAttached> FileAttached { get; set; }
     }
 }

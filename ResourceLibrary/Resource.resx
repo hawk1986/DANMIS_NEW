@@ -1350,4 +1350,16 @@
   <data name="ItemUnit" xml:space="preserve">
     <value>庫存單位</value>
   </data>
+  <data name="Factory_Name" xml:space="preserve">
+    <value>廠商</value>
+  </data>
+  <data name="IsInventoryMgmt" xml:space="preserve">
+    <value>是否做庫存管理</value>
+  </data>
+  <data name="IsForUser" xml:space="preserve">
+    <value>是否顯示給User</value>
+  </data>
+  <data name="Factory_Items" xml:space="preserve">
+    <value>廠商物品資料</value>
+  </data>
 </root>

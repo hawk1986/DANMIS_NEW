@@ -87,12 +87,24 @@
                 <div class="ibox-content">
                     <div class="row">
                         <form class="form-horizontal" id="search_form">
-                            @Html.LabelFor(model => model.Search, htmlAttributes: new { @class = "control-label col-sm-1" })
-                            <div class="col-sm-2 m-b-xs">
-                                @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", placeholder = Resource.Keyword } })
-                            </div>
-                            <div class="col-sm-6">
-                                <button type="submit" id="search_form_submit" class="btn btn-primary"><i class="fa fa-search"></i> @Resource.Search</button>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Factory, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2">
+                                    @Html.DropDownListFor(model => model.Factory, Model._Factory, string.Format(Resource.PleaseSelect, Resource.Factory_Name), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
+                                    @Html.ValidationMessageFor(model => model.Factory, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.LabelFor(model => model.ItemClass, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2">
+                                    @Html.DropDownListFor(model => model.ItemClass, Model._ItemClass, string.Format(Resource.PleaseSelect, Resource.ItemClass), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
+                                    @Html.ValidationMessageFor(model => model.ItemClass, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.LabelFor(model => model.Search, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2 m-b-xs">
+                                    @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", placeholder = Resource.Keyword } })
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="submit" id="search_form_submit" class="btn btn-primary"><i class="fa fa-search"></i> @Resource.Search</button>
+                                </div>
                             </div>
                         </form>
                     </div>

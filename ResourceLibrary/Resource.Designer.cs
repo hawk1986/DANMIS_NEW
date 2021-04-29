@@ -1429,6 +1429,24 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 廠商物品資料 的當地語系化字串。
+        /// </summary>
+        public static string Factory_Items {
+            get {
+                return ResourceManager.GetString("Factory_Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廠商 的當地語系化字串。
+        /// </summary>
+        public static string Factory_Name {
+            get {
+                return ResourceManager.GetString("Factory_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 廠商類別 的當地語系化字串。
         /// </summary>
         public static string FactoryClass {
@@ -1960,6 +1978,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 是否顯示給User 的當地語系化字串。
+        /// </summary>
+        public static string IsForUser {
+            get {
+                return ResourceManager.GetString("IsForUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 首頁是否顯示 的當地語系化字串。
         /// </summary>
         public static string IsHomePage {
@@ -1974,6 +2001,15 @@ namespace ResourceLibrary {
         public static string IsInlinePage {
             get {
                 return ResourceManager.GetString("IsInlinePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 是否做庫存管理 的當地語系化字串。
+        /// </summary>
+        public static string IsInventoryMgmt {
+            get {
+                return ResourceManager.GetString("IsInventoryMgmt", resourceCulture);
             }
         }
         

@@ -307,6 +307,7 @@ namespace DANMIS_NEW.Controllers
         /// <param name="viewModel"></param>
         void setDropDownList(ref ItemClassViewModel viewModel)
         {
+            viewModel.YesNoList = _commonManager.GetYesNoList();            
         }
     }
 }

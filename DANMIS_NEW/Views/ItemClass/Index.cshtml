@@ -63,6 +63,63 @@
             // init page event
             InitBasicEvent(initOptions);
         });
+
+         window.operateEvents = {
+            'click .detail': function (e, value, row, index) {
+
+                $("#table").bootstrapTable('destroy');
+                //alert(JSON.parse(JSON.stringify(row)).ID);
+                createBootstrap(JSON.parse(JSON.stringify(row)).ID);
+            }
+        }
+
+        function createBootstrap(id) {
+            var data =
+            {
+                ItemClass: id,
+            };
+
+            $('#table').bootstrapTable({
+                    url: '@Url.Action("Paging", "FactoryItems")',
+                    method: 'POST',
+                    queryParams: JSON.stringify(data),
+                    striped: true,
+                    cache: false,
+                    pagination: true,
+                    sortable: true,
+                    sortOrder: "asc",
+                    sidePagination: "server",
+                    pageNumber: 1,
+                    pageList: [10, 25, 50, 100],
+                    search: false,
+                    strictSearch: true,
+                    showColumns: true,
+                    showRefresh: true,
+                    minimumCountColumns: 2,
+                    clickToSelect: true,
+                    uniqueId: "ID",
+                    showToggle: true,
+                    silent: true,
+                    columns: [
+                        { field: 'ID', title: 'ID', visible: false },
+                        { field: 'ItemName', title: '品名', sortable: true, searchable: true },
+                        { field: 'ItemUnit', title: '庫存單位', sortable: true },
+                        { field: 'ItemSpecification', title: '規格', sortable: true },
+                        { field: 'ItemClass', title: '物品類別', sortable: true },
+                        { field: 'ItemPrice', title: '單價', sortable: true },
+                        { field: 'ItemQty', title: '庫存量', sortable: true },
+                        { field: 'Factory', title: '廠商', sortable: true },
+                    ],
+                    onLoadSuccess: function (result) {
+
+                    },
+                    onLoadError: function () {
+                        alert("ContactPerson數據加載失敗！");
+                    },
+
+            });
+
+        };
     </script>
 }
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -131,6 +188,29 @@
                         }
                     </div>
                     <table id="eventsTable" data-toolbar="#toolbar" data-sort-name="SequenceNo" data-row-style="rowStyle"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="wrapper wrapper-content animated" style="width: 800px;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content" style="height: 400px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">商品資訊</h4>
+                            </div>
+
+                            <table id="table"></table>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

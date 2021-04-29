@@ -20,6 +20,7 @@ using DANMIS_NEW.ViewModel.ListResult;
 using DANMIS_NEW.ViewModel.SearchModel;
 using ResourceLibrary;
 using System.Web;
+using System.Web.Mvc;
 
 namespace DANMIS_NEW.Manager
 {
@@ -210,6 +211,46 @@ namespace DANMIS_NEW.Manager
             return result;
         }
         #endregion
+
+        public SelectList GetSelectList()
+        {
+            // 預設集合
+            var temp = _factoryRepository.GetAll();
+
+            // 將 DB 資料轉換為列表頁呈現資料
+            var _tempResult = from x in temp
+                              select new FactoryListResult
+                              {
+                                  SequenceNo = x.SequenceNo,
+                                  ID = x.ID,
+                                  FactoryName = x.FactoryName,
+                                  FactoryShortName = x.FactoryShortName,
+                                  IDNO = x.IDNO,
+                                  TEL = x.TEL,
+                                  FAX = x.FAX,
+                                  Address = x.Address,
+                                  FactoryClass = x.FactoryClass,
+                                  IsShow = x.IsShow,
+                                  Memo = x.Memo,
+                                  UpdateUser = x.UpdateUser,
+                                  UpdateTime = x.UpdateTime,
+                                  ContactPerson = string.Empty,
+                              };
+
+            // 進行分頁處理
+            var tempResult = new Paging<FactoryListResult>();
+            tempResult.total = _tempResult.Count();
+            tempResult.rows = _tempResult.OrderBy("FactoryName", "asc").ToList();
+
+            var list = new List<SelectListItem>();
+            foreach (var item in tempResult.rows)
+            {
+                list.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.FactoryShortName });
+            }
+            var result = new SelectList(list, "Value", "Text");
+
+            return result;
+        }
 
     }
 }

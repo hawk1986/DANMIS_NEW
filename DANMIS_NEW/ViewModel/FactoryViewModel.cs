@@ -50,7 +50,7 @@ namespace DANMIS_NEW.ViewModel
         /// </summary>
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "FactoryShortName", ResourceType = typeof(Resource))]
+        [Display(Name = "Factory_Name", ResourceType = typeof(Resource))]
         public string FactoryShortName { get; set; }
 
         /// <summary>

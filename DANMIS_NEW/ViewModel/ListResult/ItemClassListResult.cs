@@ -19,6 +19,8 @@ namespace DANMIS_NEW.ViewModel.ListResult
         public Guid ID { get; set; }
         public string ClassName { get; set; }
         public int Order { get; set; }
+        public bool IsForUser { get; set; }
+        public bool IsEnable { get; set; }
         public string UpdateUser { get; set; }
         public DateTime UpdateTime { get; set; }
     }

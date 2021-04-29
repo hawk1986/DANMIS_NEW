@@ -44,6 +44,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            @Html.LabelFor(model => model.IsForUser, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-1">                                
+                                @Html.DropDownListFor(model => model.IsForUser, Model.YesNoList, string.Format(Resource.PleaseSelect, Resource.IsForUser), new { @class = "form-control selectpicker" })
+                                @Html.ValidationMessageFor(model => model.IsForUser, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IsEnable, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-1">                                
+                                @Html.DropDownListFor(model => model.IsEnable, Model.YesNoList, string.Format(Resource.PleaseSelect, Resource.IsEnable), new { @class = "form-control selectpicker" })
+                                @Html.ValidationMessageFor(model => model.IsEnable, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
                             @Html.LabelFor(model => model.Order, htmlAttributes: new { @class = "control-label col-sm-2" })
                             <div class="col-sm-1">
                                 @Html.EditorFor(model => model.Order, new { htmlAttributes = new { @class = "form-control" } })

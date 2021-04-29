@@ -7,8 +7,96 @@
 }
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-    </script>
+<script>
+         //初始化
+       $(function () {
+           // init page event
+           PicCount = @Model.AttachedFiles.Count;
+           PicLimitCount = 1;
+           if (PicCount === PicLimitCount) {
+               $('#addPicButton').prop('disabled', true);
+           }
+       });
+
+        //圖片顯示跟檢查
+        $("body").on('change', '#ImageUpload', function () {
+            var file = $(this).parent().find("input[type=file]")[0].files;
+            if (file[0].type != "image/jpg" &&
+                file[0].type != "image/pjpeg" &&
+                file[0].type != "image/gif" &&
+                file[0].type != "image/x-png" &&
+                file[0].type != "image/png" &&
+                file[0].type != "image/jpeg") {
+
+                alert("請上傳正確檔案格式");
+                $(this).parent().find("input[type=file]").val('');
+                return false;
+            }
+
+            var imageSizeKB = file[0].size / 1024;
+
+            if (imageSizeKB > 5120) {
+                alert("檔案過大請壓縮圖片");
+                $(this).parent().find("input[type=file]").val('');
+                $(this).parent().parent().find("#image").attr("src", '')
+                return false;
+            }
+
+            src = URL.createObjectURL(file[0]);
+            $(this).parent().parent().find("#image").show().attr("src", src);
+            var close = $(this).parent().parent().find(".close");
+            if (close != undefined) {
+                $(this).parent().parent().find(".close").show();
+            }
+        });
+        //圖片取消
+        $("body").on('click', '.close', function () {
+            $(this).parent().parent().find("input[type=file]").val('');
+            $(this).parent().parent().find("#image").hide();
+            $(this).parent().parent().find(".close").hide();
+        });
+
+        //增加大圖片上傳按鈕
+        $('#addPicButton').on('click', function () {
+            if (PicLimitCount > 0) {
+                if (PicCount < PicLimitCount) {
+                    $('.PicUpload').append("<div class='row m-t'><div class='col-xs-6'><input type='file' id='ImageUpload' name='PostedFiles' class='form-control m-b' /><img id ='image' src ='' style ='width:100%' /></div><div class='col-xs-2'><button type='button' class='removePic btn btn-primary'>刪除</button></div></div>");
+                    PicCount++;
+                    if (PicCount === PicLimitCount) {
+                        $(this).prop('disabled', true);
+                    }
+                }
+            }
+            else {
+                $('.PicUpload').append("<div class='row m-t'><div class='col-xs-6'><input type='file' id='ImageUpload' name='PostedFiles' class='form-control m-b' /><img id ='image' src ='' style ='width:100%' /></div><div class='col-xs-2'><button type='button' class='removeBigPic btn btn-primary'>刪除</button></div></div>");
+            }
+            event.preventDefault();
+        });
+        // 刪除大圖片
+        $("body").on('click', '.removePic', function () {
+            $(this).parent().parent().remove();
+            if (PicLimitCount > 0) {
+                PicCount--;
+                $('#addPicButton').prop('disabled', false);
+            }
+        });
+
+        // 縮放圖片
+        $(".imagesize").attr("src", $(".imagesize").attr("src"));
+        $(".imagesize").load(function () {
+            if ($(this).prop("naturalWidth") > $(this).parent().parent().width()) {
+                $(this).css({ width: "100%" });
+            } else {
+                $(this).css({ width: "auto" });
+            }
+            $(this).parent().find(".close").show();
+        }).error(function () {
+            $(this).hide();
+            if ($(this).attr("src") != "") {
+                $(this).parent().find(".nofile,.close").show();
+            }
+        })
+</script>
 }
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
@@ -30,87 +118,100 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                    @using (Html.BeginForm(action, "FactoryItems", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form" }))
+                    @using (Html.BeginForm(action, "FactoryItems", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form", enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.SequenceNo)
                         @Html.HiddenFor(model => model.ID)
+                        @Html.HiddenFor(model => model.IsAttached)
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.ItemName, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
+                            <div class="col-sm-2">
                                 @Html.EditorFor(model => model.ItemName, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.ItemName, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.ItemUnit, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-1">
+                                @Html.EditorFor(model => model.ItemUnit, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ItemUnit, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.ItemSpecification, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 @Html.EditorFor(model => model.ItemSpecification, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.ItemSpecification, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.ItemClass, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
-                                @Html.EditorFor(model => model.ItemClass, new { htmlAttributes = new { @class = "form-control" } })
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.ItemClass, Model._ItemClass, string.Format(Resource.PleaseSelect, Resource.ItemClass), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
                                 @Html.ValidationMessageFor(model => model.ItemClass, "", new { @class = "text-danger" })
                             </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.ItemUnit, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
-                                @Html.EditorFor(model => model.ItemUnit, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ItemUnit, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
                             @Html.LabelFor(model => model.ItemPrice, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
+                            <div class="col-sm-1">
                                 @Html.EditorFor(model => model.ItemPrice, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.ItemPrice, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.ItemQty, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
-                                @Html.EditorFor(model => model.ItemQty, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ItemQty, "", new { @class = "text-danger" })
+                            @Html.LabelFor(model => model.IsInventoryMgmt, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.IsInventoryMgmt, Model.YesNoList, string.Format(Resource.PleaseSelect, Resource.IsInventoryMgmt), new { @class = "form-control selectpicker" })
+                                @Html.ValidationMessageFor(model => model.IsInventoryMgmt, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.IsForStationery, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.IsForStationery, Model.YesNoList, string.Format(Resource.PleaseSelect, Resource.IsForStationery), new { @class = "form-control selectpicker" })
+                                @Html.ValidationMessageFor(model => model.IsForStationery, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Factory, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
-                                @Html.EditorFor(model => model.Factory, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.LabelFor(model => model.ItemQty, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-1">
+                                @Html.EditorFor(model => model.ItemQty, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ItemQty, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.IsForColleague, htmlAttributes: new { @class = "control-label col-sm-3" })
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.IsForColleague, Model.YesNoList, string.Format(Resource.PleaseSelect, Resource.IsForColleague), new { @class = "form-control selectpicker" })
+                                @Html.ValidationMessageFor(model => model.IsForColleague, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label(Resource.UploadFile, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-3 PicUpload">
+                                <button id="addPicButton" class="btn btn-primary">@Resource.AddImage</button>
+                                @for (int i = 0; i < Model.AttachedFiles.Count; i++)
+                                {
+                                    <div class="row m-t">
+                                        <div class="col-xs-9">
+                                            <input id="ReservedID" name="ReservedID" type="hidden" value="@Model.AttachedFiles[i].ID" />
+                                            <input type="text" class="form-control m-b" readonly="readonly" value="@Model.AttachedFiles[i].FileName" />
+                                            <img id="Pic" class="imagesize" src="@Model.AttachedFiles[i].FilePath" style="width:100%" />
+                                            @if (!string.IsNullOrEmpty(Model.AttachedFiles[i].FilePath))
+                                            {
+                                                <span class="nofile" style="display:none;">@Resource.NoFile</span>
+                                            }
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <button type="button" class="removePic btn btn-danger">@Resource.Delete</button>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            @Html.LabelFor(model => model.Factory, htmlAttributes: new { @class = "control-label col-sm-1" })
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.Factory, Model._Factory, string.Format(Resource.PleaseSelect, Resource.Factory_Name), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
                                 @Html.ValidationMessageFor(model => model.Factory, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.IsForStationery, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
-                                <div class="checkbox">
-                                    <label>
-                                        @Html.EditorFor(model => model.IsForStationery)
-                                    </label>
-                                    @Html.ValidationMessageFor(model => model.IsForStationery, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.IsForColleague, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-4">
-                                <div class="checkbox">
-                                    <label>
-                                        @Html.EditorFor(model => model.IsForColleague)
-                                    </label>
-                                    @Html.ValidationMessageFor(model => model.IsForColleague, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>                                
+                                <button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>
                                 <a id="exit_btn" href="@Url.Action("Index")" class="btn btn-danger"><i class="fa fa-sign-out"></i> @Resource.Exit</a>
                             </div>
                         </div>

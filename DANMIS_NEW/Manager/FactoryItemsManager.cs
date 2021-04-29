@@ -25,10 +25,17 @@ namespace DANMIS_NEW.Manager
     public class FactoryItemsManager : IFactoryItemsManager
     {
         readonly IFactoryItemsRepository _factoryItemsRepository;
+        readonly IFileAttachedRepository _fileAttachedRepository;
+        readonly IItemClassRepository _itemClassRepository;
+        readonly IFactoryRepository _factoryRepository;
 
-        public FactoryItemsManager(IFactoryItemsRepository factoryItemsRepository)
+        public FactoryItemsManager(IFactoryItemsRepository factoryItemsRepository, IFileAttachedRepository fileAttachedRepository,
+                                   IItemClassRepository itemClassRepository, IFactoryRepository factoryRepository)
         {
             _factoryItemsRepository = factoryItemsRepository;
+            _fileAttachedRepository = fileAttachedRepository;
+            _itemClassRepository = itemClassRepository;
+            _factoryRepository = factoryRepository;
         }
 
         /// <summary>
@@ -44,7 +51,15 @@ namespace DANMIS_NEW.Manager
             {
                 try
                 {
+                    //判斷是否新增附件檔案
+                    if (entity.NewAttachedFiles.Count > 0)
+                    {
+                        _fileAttachedRepository.Create(entity.NewAttachedFiles);
+                        item.IsAttached = true;
+                    }
+
                     _factoryItemsRepository.Create(item);
+
                     transaction.Commit();
                 }
                 catch
@@ -94,6 +109,13 @@ namespace DANMIS_NEW.Manager
             var item = _factoryItemsRepository.GetByID(id);
             var result = (FactoryItemsViewModel)item;
 
+            //判斷是否有附件檔案            
+            if (item.IsAttached)
+            {
+                var AttachedFiles = _fileAttachedRepository.Where(x => x.ParentID == id).ToList();
+                result.AttachedFiles = AttachedFiles;
+            }
+
             return result;
         }
 
@@ -120,8 +142,10 @@ namespace DANMIS_NEW.Manager
                                  ItemPrice = x.ItemPrice,
                                  ItemQty = x.ItemQty,
                                  Factory = x.Factory,
+                                 IsInventoryMgmt = x.IsInventoryMgmt,
                                  IsForStationery = x.IsForStationery,
                                  IsForColleague = x.IsForColleague,
+                                 IsAttached = x.IsAttached,
                                  UpdateUser = x.UpdateUser,
                                  UpdateTime = x.UpdateTime,
                              };
@@ -140,6 +164,16 @@ namespace DANMIS_NEW.Manager
                     false);
             }
 
+            if (!string.IsNullOrWhiteSpace(searchModel.Factory))
+                tempResult = tempResult.Where(x =>
+                    x.Factory == searchModel.Factory ||
+                    false);
+
+            if (!string.IsNullOrWhiteSpace(searchModel.ItemClass))
+                tempResult = tempResult.Where(x =>
+                    x.ItemClass == searchModel.ItemClass ||
+                    false);
+
             // 進行分頁處理
             var result = new Paging<FactoryItemsListResult>();
             result.total = tempResult.Count();
@@ -148,6 +182,12 @@ namespace DANMIS_NEW.Manager
                 .Skip(searchModel.Offset)
                 .Take(searchModel.Limit)
                 .ToList();
+
+            foreach (var item in result.rows)
+            {
+                item.ItemClass = _itemClassRepository.GetByID(new Guid(item.ItemClass))?.ClassName ?? "尚未分類";
+                item.Factory = _factoryRepository.GetByID(new Guid(item.Factory))?.FactoryShortName ?? string.Empty;
+            }
 
             return result;
         }
@@ -170,10 +210,38 @@ namespace DANMIS_NEW.Manager
                     source.ItemPrice = entity.ItemPrice;
                     source.ItemQty = entity.ItemQty;
                     source.Factory = entity.Factory ?? string.Empty;
+                    source.IsInventoryMgmt = entity.IsInventoryMgmt;
                     source.IsForStationery = entity.IsForStationery;
                     source.IsForColleague = entity.IsForColleague;
+                    source.IsAttached = entity.IsAttached;
                     source.UpdateUser = entity.UpdateUser ?? string.Empty;
                     source.UpdateTime = entity.UpdateTime;
+
+                    #region File check
+                    bool hasFile = source.IsAttached;
+                    if (hasFile)
+                    {
+                        //取得已上傳的檔案
+                        List<Guid> saveFilesID = _fileAttachedRepository.Where(x => x.ParentID == entity.ID).Select(x => x.ID).ToList();
+
+                        //比對哪些檔案需要移除
+                        if (saveFilesID.Count != entity.ReservedID.Count)
+                        {
+                            var removeList = saveFilesID.Except(entity.ReservedID).ToList();
+                            //刪除檔案
+                            _fileAttachedRepository.Delete(x => removeList.Contains(x.ID));
+                            entity.DeleteFileID.AddRange(removeList);
+                            hasFile = removeList.Count != saveFilesID.Count;
+                        }
+                    }
+                    //判斷是否新增附件檔案
+                    if (entity.NewAttachedFiles.Count > 0)
+                    {                        
+                        _fileAttachedRepository.Create(entity.NewAttachedFiles);
+
+                        source.IsAttached = true;
+                    }
+                    #endregion
 
                     _factoryItemsRepository.Update(source);
                     transaction.Commit();

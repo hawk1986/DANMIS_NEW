@@ -68,7 +68,7 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ checkbox = true, sortable = false, visible = true },
                             new ListOption{ field = "ClassName", title = Resource.ClassName },
                             new ListOption{ field = "Order", title = Resource.Order },
-                            new ListOption{ field = "Factory", title = Resource.Factory, align = "center", events = "window.operateEvents", formatter = "<button class='detail btn btn-info' title='Detail' data-toggle='modal' data-target='#myModal'><i class='fa fa-address-book'></i>檢視廠商</button>" },
+                            new ListOption{ field = "Factory", title = Resource.Factory_Name, align = "center", events = "window.operateEvents", formatter = "<button class='detail btn btn-info' title='Detail' data-toggle='modal' data-target='#myModal'><i class='fa fa-address-book'></i>檢視廠商</button>" },
                         };
                         break;
                     case "freeFieldSetting":
@@ -108,7 +108,7 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "ItemUnit", title = Resource.ItemUnit },
                             new ListOption{ field = "ItemPrice", title = Resource.ItemPrice },
                             new ListOption{ field = "ItemQty", title = Resource.ItemQty },
-                            new ListOption{ field = "Factory", title = Resource.FactoryShortName },
+                            new ListOption{ field = "Factory", title = Resource.Factory_Name },
                         };
                         break;
                     case "itemClass":
@@ -117,7 +117,9 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ checkbox = true, sortable = false, visible = true },
                             new ListOption{ field = "ClassName", title = Resource.ClassName },
                             new ListOption{ field = "Order", title = Resource.Order },
-                            new ListOption{ field = "Factory", title = Resource.Factory, align = "center", events = "window.operateEvents", formatter = "<button class='detail btn btn-info' title='Detail' data-toggle='modal' data-target='#myModal'><i class='fa fa-address-book'></i>檢視廠商</button>" },
+                            new ListOption{ field = "IsForUser", title = Resource.IsForUser, formatter = "BitFormatter" },
+                            new ListOption{ field = "IsEnable", title = Resource.IsEnable, formatter = "BitFormatter" },
+                            new ListOption{ field = "FactoryItems", title = Resource.FactoryItems, align = "center", events = "window.operateEvents", formatter = "<button class='detail btn btn-info' title='Detail' data-toggle='modal' data-target='#myModal'><i class='fa fa-address-book'></i>檢視此類商品</button>" },
                         };
                         break;
                     case "module":

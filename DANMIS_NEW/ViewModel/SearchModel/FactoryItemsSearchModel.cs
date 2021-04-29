@@ -9,12 +9,21 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using ResourceLibrary;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace DANMIS_NEW.ViewModel.SearchModel
 {
     public class FactoryItemsSearchModel : SearchModel
     {
+        [Display(Name = "Factory_Name", ResourceType = typeof(Resource))]
+        public string Factory { get; set; }
+        public SelectList _Factory { get; set; }
+        [Display(Name = "ItemClass", ResourceType = typeof(Resource))]
+        public string ItemClass { get; set; }
+        public SelectList _ItemClass { get; set; }
     }
 }
 #pragma warning restore 1591

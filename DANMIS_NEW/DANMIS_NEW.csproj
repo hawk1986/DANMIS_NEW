@@ -2014,15 +2014,15 @@
     <Content Include="Views\FactoryClass\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
-    <None Include="Views\FactoryItems\Create.cshtml">
+    <Content Include="Views\FactoryItems\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
-    </None>
-    <None Include="Views\FactoryItems\Details.cshtml">
+    </Content>
+    <Content Include="Views\FactoryItems\Details.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
-    </None>
-    <None Include="Views\FactoryItems\Index.cshtml">
+    </Content>
+    <Content Include="Views\FactoryItems\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
-    </None>
+    </Content>
     <None Include="Views\Function\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2130,15 +2130,15 @@
     <Content Include="Views\Factory\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
-    <None Include="Views\ItemClass\Create.cshtml">
+    <Content Include="Views\ItemClass\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
-    </None>
-    <None Include="Views\ItemClass\Details.cshtml">
+    </Content>
+    <Content Include="Views\ItemClass\Details.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
-    </None>
-    <None Include="Views\ItemClass\Index.cshtml">
+    </Content>
+    <Content Include="Views\ItemClass\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
-    </None>
+    </Content>
     <None Include="Views\Voter\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2166,28 +2166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploads\" />
-    <Folder Include="Views\Brand\" />
-    <Folder Include="Views\Candidate\" />
-    <Folder Include="Views\Company\" />
-    <Folder Include="Views\ContactPerson\" />
-    <Folder Include="Views\Department\" />
-    <Folder Include="Views\DID\" />
-    <Folder Include="Views\FactoryClass\" />
-    <Folder Include="Views\FactoryItems\" />
-    <Folder Include="Views\Factory\" />
-    <Folder Include="Views\FreeFieldSetting\" />
-    <Folder Include="Views\Function\" />
-    <Folder Include="Views\ItemClass\" />
-    <Folder Include="Views\Module\" />
-    <Folder Include="Views\OperateRecord\" />
-    <Folder Include="Views\Role\" />
-    <Folder Include="Views\SystemConfig\" />
-    <Folder Include="Views\SystemOption\" />
-    <Folder Include="Views\UserProfile\" />
-    <Folder Include="Views\User\" />
-    <Folder Include="Views\VisualMenu\" />
-    <Folder Include="Views\Voter\" />
-    <Folder Include="Views\Votes\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

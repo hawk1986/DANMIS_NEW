@@ -51,6 +51,20 @@ namespace DANMIS_NEW.ViewModel
         public int Order { get; set; }
 
         /// <summary>
+        /// IsForUser
+        /// </summary>
+        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "IsForUser", ResourceType = typeof(Resource))]
+        public bool IsForUser { get; set; }
+
+        /// <summary>
+        /// IsEnable
+        /// </summary>
+        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "IsEnable", ResourceType = typeof(Resource))]
+        public bool IsEnable { get; set; }
+
+        /// <summary>
         /// CreateUser
         /// </summary>
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
@@ -84,7 +98,7 @@ namespace DANMIS_NEW.ViewModel
     public class ItemClassViewModel : ItemClassBaseModel
     {
         #region == View Fields ==
-
+        public SelectList YesNoList { get; set; }
         #endregion == View Fields ==
     }
 }

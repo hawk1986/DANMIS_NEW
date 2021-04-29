@@ -214,7 +214,8 @@ namespace DANMIS_NEW.Controllers
                             IsImageFile = isImage,
                             IsThumbImage = isImage && genThumbImage,
                             Description = viewModel.PostedCaption.Count > i ? viewModel.PostedCaption[i] ?? string.Empty : string.Empty,
-                            CreateTime = DateTime.Now
+                            CreateTime = DateTime.Now,
+                            UpdateTime = DateTime.Now,
                         });
                     }
                 }

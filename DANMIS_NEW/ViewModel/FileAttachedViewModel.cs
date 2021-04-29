@@ -22,6 +22,7 @@ namespace DANMIS_NEW.ViewModel
     {
         public FileAttachedBaseModel()
         {
+            UpdateTime = DateTime.Now;   
         }
 
         #region == DB Fields ==
@@ -121,71 +122,18 @@ namespace DANMIS_NEW.ViewModel
         public int DownloadCount { get; set; }
 
         /// <summary>
-        /// IsThumbImage
-        /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "MainPic", ResourceType = typeof(Resource))]
-        public bool MainPic { get; set; }
-
-        /// <summary>
-        /// PicOrder 
-        /// </summary>        
-        [Display(Name = "Order", ResourceType = typeof(Resource))]
-        public int? PicOrder { get; set; }
-
-        /// <summary>
-        /// AreaKind 
-        /// </summary>        
-        [Display(Name = "AreaKind", ResourceType = typeof(Resource))]
-        public string AreaKind { get; set; }
-
-        /// <summary>
-        /// CounterType
-        /// </summary>
-        [Display(Name = "CounterType", ResourceType = typeof(Resource))]
-        public string CounterType { get; set; }
-
-        /// <summary>
-        /// Building
-        /// </summary>
-        [Display(Name = "Building", ResourceType = typeof(Resource))]
-        [JsonIgnore]
-        public string Building { get; set; }
-
-        /// <summary>
-        /// Floor
-        /// </summary>
-        [Display(Name = "Floor", ResourceType = typeof(Resource))]
-        [JsonIgnore]
-        public string Floor { get; set; }
-
-        /// <summary>
-        /// Brand
-        /// </summary>
-        [Display(Name = "Brand", ResourceType = typeof(Resource))]
-        [JsonIgnore]
-        public string Brand { get; set; }
-
-        /// <summary>
-        /// ActiveDate
-        /// </summary>
-        [Display(Name = "ActiveDate", ResourceType = typeof(Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        public DateTime? ActiveDate { get; set; }
-
-        /// <summary>
-        /// ActiveTime
-        /// </summary>
-        [Display(Name = "ActiveTime", ResourceType = typeof(Resource))]        
-        public TimeSpan? ActiveTime { get; set; }
-
-        /// <summary>
         /// CreateTime
         /// </summary>
         [Display(Name = "CreateTime", ResourceType = typeof(Resource))]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime CreateTime { get; set; }
 
+        /// <summary>
+        /// UpdateTime
+        /// </summary>
+        [Display(Name = "UpdateTime", ResourceType = typeof(Resource))]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public DateTime UpdateTime { get; set; }
         #endregion == DB Fields ==
     }
 
@@ -193,17 +141,6 @@ namespace DANMIS_NEW.ViewModel
     {
         #region == View Fields ==
 
-        /// <summary>
-        /// ParentList
-        /// </summary>
-        public SelectList ParentList { get; set; }
-        public string BuildingName { get; set; }
-        public string FloorName { get; set; }
-        public string BrandName { get; set; }
-        public double XAxis { get; set; }
-        public double YAxis { get; set; }
-        public double XProportion { get; set; }
-        public double YProportion { get; set; }
         #endregion == View Fields ==
     }
 }

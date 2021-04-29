@@ -24,8 +24,10 @@ namespace DANMIS_NEW.ViewModel.ListResult
         public double ItemPrice { get; set; }
         public int ItemQty { get; set; }
         public string Factory { get; set; }
+        public bool IsInventoryMgmt { get; set; }
         public bool IsForStationery { get; set; }
         public bool IsForColleague { get; set; }
+        public bool IsAttached { get; set; }
         public string UpdateUser { get; set; }
         public DateTime UpdateTime { get; set; }
     }

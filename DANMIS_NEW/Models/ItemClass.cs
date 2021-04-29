@@ -22,5 +22,7 @@ namespace DANMIS_NEW.Models
         public System.DateTime CreateTime { get; set; }
         public string UpdateUser { get; set; }
         public System.DateTime UpdateTime { get; set; }
+        public bool IsForUser { get; set; }
+        public bool IsEnable { get; set; }
     }
 }
