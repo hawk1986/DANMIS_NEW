@@ -1456,6 +1456,24 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 廠商 的當地語系化字串。
+        /// </summary>
+        public static string FactoryID {
+            get {
+                return ResourceManager.GetString("FactoryID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 FactoryItemID 的當地語系化字串。
+        /// </summary>
+        public static string FactoryItemID {
+            get {
+                return ResourceManager.GetString("FactoryItemID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 廠商物品管理 的當地語系化字串。
         /// </summary>
         public static string FactoryItems {
@@ -2059,6 +2077,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 物品編號 的當地語系化字串。
+        /// </summary>
+        public static string ItemNO {
+            get {
+                return ResourceManager.GetString("ItemNO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 單價 的當地語系化字串。
         /// </summary>
         public static string ItemPrice {
@@ -2073,6 +2100,15 @@ namespace ResourceLibrary {
         public static string ItemQty {
             get {
                 return ResourceManager.GetString("ItemQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 廠商物品資料 的當地語系化字串。
+        /// </summary>
+        public static string Items {
+            get {
+                return ResourceManager.GetString("Items", resourceCulture);
             }
         }
         

@@ -1136,6 +1136,9 @@
     <Compile Include="Controllers\ItemClassController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ItemsController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ModuleController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
@@ -1206,6 +1209,9 @@
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IItemClassManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IItemsManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IManager.cs">
@@ -1286,6 +1292,9 @@
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\ItemClassManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ItemsManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\LoginLockManager.cs" />
@@ -1437,6 +1446,9 @@
     <Compile Include="Models\IItemClassRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IItemsRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IModuleRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
@@ -1464,6 +1476,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemClassRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Items.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemsRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IUserChangePassRepository.cs">
@@ -1522,6 +1540,9 @@
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\ItemClass.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\Items.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\Mapper.cs">
@@ -1727,6 +1748,9 @@
     <Compile Include="ViewModel\ItemClassViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ItemsViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ListResult\BrandListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
@@ -1761,6 +1785,9 @@
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\ItemClassListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\ItemsListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\ListOption.cs" />
@@ -1824,6 +1851,9 @@
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\ItemClassSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\ItemsSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\VoterSearchModel.cs">
@@ -2139,6 +2169,15 @@
     <Content Include="Views\ItemClass\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
+    <None Include="Views\Items\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Items\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Items\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\Voter\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2166,6 +2205,29 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploads\" />
+    <Folder Include="Views\Brand\" />
+    <Folder Include="Views\Candidate\" />
+    <Folder Include="Views\Company\" />
+    <Folder Include="Views\ContactPerson\" />
+    <Folder Include="Views\Department\" />
+    <Folder Include="Views\DID\" />
+    <Folder Include="Views\FactoryClass\" />
+    <Folder Include="Views\FactoryItems\" />
+    <Folder Include="Views\Factory\" />
+    <Folder Include="Views\FreeFieldSetting\" />
+    <Folder Include="Views\Function\" />
+    <Folder Include="Views\ItemClass\" />
+    <Folder Include="Views\Items\" />
+    <Folder Include="Views\Module\" />
+    <Folder Include="Views\OperateRecord\" />
+    <Folder Include="Views\Role\" />
+    <Folder Include="Views\SystemConfig\" />
+    <Folder Include="Views\SystemOption\" />
+    <Folder Include="Views\UserProfile\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\VisualMenu\" />
+    <Folder Include="Views\Voter\" />
+    <Folder Include="Views\Votes\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

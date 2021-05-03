@@ -86,7 +86,7 @@ namespace DANMIS_NEW.ViewModel
         /// </summary>
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "Factory_Name", ResourceType = typeof(Resource))]
+        [Display(Name = "FactoryItems", ResourceType = typeof(Resource))]
         public string Factory { get; set; }
 
         /// <summary>
@@ -149,10 +149,18 @@ namespace DANMIS_NEW.ViewModel
 
     public class FactoryItemsViewModel : FactoryItemsBaseModel
     {
+        public FactoryItemsViewModel()
+        {
+            this.Items = new ItemsViewModel();
+        }
+
         #region == View Fields ==
         public SelectList YesNoList { get; set; }
         public SelectList _Factory { get; set; }
         public SelectList _ItemClass { get; set; }
+
+        [Display(Name = "Items", ResourceType = typeof(Resource))]
+        public ItemsViewModel Items { get; set; }
         #endregion == View Fields ==
     }
 }

@@ -12,98 +12,99 @@
     @Scripts.Render("~/bundles/table")
     @*<script src="~/Scripts/table-init.js"></script>*@
 <script>
-        $.fn.serializeObject = function () {
-            var o = {};
-            var a = this.serializeArray();
-            $.each(a, function () {
-                if (o[this.name]) {
-                    if (!o[this.name].push) {
-                        o[this.name] = [o[this.name]];
-                    }
-                    o[this.name].push(this.value || '');
-                } else {
-                    o[this.name] = this.value || '';
+
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
                 }
-            });
-            return o;
-        };
-
-        var data = $('#create_form').serializeObject();
-
-        function operateFormatter(value, row, index) {
-            return [
-                '<a id="updatePerson" type="button" class="modify" title="Modify" data-toggle="modal" data-target="#myModal"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>',
-                '<a class="remove" href="javascript:void(0)" title="Remove">',
-                '<i class="fa fa-trash"></i>',
-                '</a>'
-            ].join('')
-        }
-
-        window.operateEvents = {
-            'click .modify': function (e, value, row, index) {
-                $('#addContactPerson').hide();
-                var show = JSON.parse(JSON.stringify(row)).IsShow == "是" ? "True" : "False";
-
-                $('#ContactPerson_ID').val(JSON.parse(JSON.stringify(row)).ID);
-                $('#ContactPerson_FactoryID').val(JSON.parse(JSON.stringify(row)).FactoryID);
-                $('#ContactPerson_Name').val(JSON.parse(JSON.stringify(row)).Name);
-                $('#ContactPerson_TEL').val(JSON.parse(JSON.stringify(row)).TEL);
-                $('#ContactPerson_FAX').val(JSON.parse(JSON.stringify(row)).FAX);
-                $('#ContactPerson_CellPhone').val(JSON.parse(JSON.stringify(row)).CellPhone);
-                $('#ContactPerson_Email').val(JSON.parse(JSON.stringify(row)).Email);
-                $('#ContactPerson_Memo').val(JSON.parse(JSON.stringify(row)).Memo);
-                $('#ContactPerson_IsShow.selectpicker').selectpicker('val', show);
-
-                //var value = $('#ContactPerson_IsShow.selectpicker option:selected').val();
-                //alert(value);
-
-                //alert('You click modify action, row: ' + JSON.stringify(row));
-            },
-            'click .remove': function (e, value, row, index) {
-                swal({
-                    title: "確定刪除?",
-                    type: "info",
-                    showCancelButton: true,
-                    closeOnConfirm: true,
-                    showLoaderOnConfirm: false
-                },
-                    function () {
-
-                        var id = JSON.parse(JSON.stringify(row)).ID;
-
-                        $.ajax({
-                            cache: false,
-                            type: 'POST',
-                            url: '@Url.Action("DeleteAJAX", "ContactPerson")',
-                            data: JSON.stringify({ 'id': id }),
-                            contentType: "application/json; charset=utf-8",
-                            dataType: 'json',
-                            success: function (result) {
-
-                                swal(
-                                    {
-                                        title: "刪除成功!",
-                                        type: "info",
-                                        showCancelButton: false,
-                                        closeOnConfirm: true,
-                                        showLoaderOnConfirm: false
-                                    },
-                                    function () {
-                                        $('#table').bootstrapTable('refresh');
-                                    }
-                                );
-                            },
-                            error: function () {
-                                //alert(3);
-                            }
-                        });
-                    }
-                );
-
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
             }
-        }
+        });
+        return o;
+    };
 
-        $('#updateContactPerson').click(function () {
+    var data = $('#create_form').serializeObject();
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<a id="updatePerson" type="button" class="modify" title="Modify" data-toggle="modal" data-target="#myModal"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>',
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<i class="fa fa-trash"></i>',
+            '</a>'
+        ].join('')
+    }
+
+    window.operateEvents = {
+        'click .modify': function (e, value, row, index) {
+            $('#addContactPerson').hide();
+            var show = JSON.parse(JSON.stringify(row)).IsShow == "是" ? "True" : "False";
+
+            $('#ContactPerson_ID').val(JSON.parse(JSON.stringify(row)).ID);
+            $('#ContactPerson_FactoryID').val(JSON.parse(JSON.stringify(row)).FactoryID);
+            $('#ContactPerson_Name').val(JSON.parse(JSON.stringify(row)).Name);
+            $('#ContactPerson_TEL').val(JSON.parse(JSON.stringify(row)).TEL);
+            $('#ContactPerson_FAX').val(JSON.parse(JSON.stringify(row)).FAX);
+            $('#ContactPerson_CellPhone').val(JSON.parse(JSON.stringify(row)).CellPhone);
+            $('#ContactPerson_Email').val(JSON.parse(JSON.stringify(row)).Email);
+            $('#ContactPerson_Memo').val(JSON.parse(JSON.stringify(row)).Memo);
+            $('#ContactPerson_IsShow.selectpicker').selectpicker('val', show);
+
+            //var value = $('#ContactPerson_IsShow.selectpicker option:selected').val();
+            //alert(value);
+
+            //alert('You click modify action, row: ' + JSON.stringify(row));
+        },
+        'click .remove': function (e, value, row, index) {
+            swal({
+                title: "確定刪除?",
+                type: "info",
+                showCancelButton: true,
+                closeOnConfirm: true,
+                showLoaderOnConfirm: false
+            },
+                function () {
+
+                    var id = JSON.parse(JSON.stringify(row)).ID;
+
+                    $.ajax({
+                        cache: false,
+                        type: 'POST',
+                        url: '@Url.Action("DeleteAJAX", "ContactPerson")',
+                        data: JSON.stringify({ 'id': id }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'json',
+                        success: function (result) {
+
+                            swal(
+                                {
+                                    title: "刪除成功!",
+                                    type: "info",
+                                    showCancelButton: false,
+                                    closeOnConfirm: true,
+                                    showLoaderOnConfirm: false
+                                },
+                                function () {
+                                    $('#table').bootstrapTable('refresh');
+                                }
+                            );
+                        },
+                        error: function () {
+                            //alert(3);
+                        }
+                    });
+                }
+            );
+
+        }
+    };
+
+    $('#updateContactPerson').click(function () {
 
             var value = $('#ContactPerson_IsShow.selectpicker option:selected').val();
 

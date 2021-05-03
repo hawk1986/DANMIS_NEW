@@ -1362,4 +1362,16 @@
   <data name="Factory_Items" xml:space="preserve">
     <value>廠商物品資料</value>
   </data>
+  <data name="Items" xml:space="preserve">
+    <value>廠商物品資料</value>
+  </data>
+  <data name="FactoryID" xml:space="preserve">
+    <value>廠商</value>
+  </data>
+  <data name="FactoryItemID" xml:space="preserve">
+    <value>FactoryItemID</value>
+  </data>
+  <data name="ItemNO" xml:space="preserve">
+    <value>物品編號</value>
+  </data>
 </root>

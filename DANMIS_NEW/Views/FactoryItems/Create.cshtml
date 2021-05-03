@@ -7,95 +7,414 @@
 }
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/table")
 <script>
-         //初始化
-       $(function () {
-           // init page event
-           PicCount = @Model.AttachedFiles.Count;
-           PicLimitCount = 1;
-           if (PicCount === PicLimitCount) {
-               $('#addPicButton').prop('disabled', true);
-           }
-       });
 
-        //圖片顯示跟檢查
-        $("body").on('change', '#ImageUpload', function () {
-            var file = $(this).parent().find("input[type=file]")[0].files;
-            if (file[0].type != "image/jpg" &&
-                file[0].type != "image/pjpeg" &&
-                file[0].type != "image/gif" &&
-                file[0].type != "image/x-png" &&
-                file[0].type != "image/png" &&
-                file[0].type != "image/jpeg") {
+    //初始化
+    $(function () {
+        // init page event
+        PicCount = @Model.AttachedFiles.Count;
+        PicLimitCount = 1;
+        if (PicCount === PicLimitCount) {
+            $('#addPicButton').prop('disabled', true);
+        }
+    });
 
-                alert("請上傳正確檔案格式");
-                $(this).parent().find("input[type=file]").val('');
-                return false;
-            }
-
-            var imageSizeKB = file[0].size / 1024;
-
-            if (imageSizeKB > 5120) {
-                alert("檔案過大請壓縮圖片");
-                $(this).parent().find("input[type=file]").val('');
-                $(this).parent().parent().find("#image").attr("src", '')
-                return false;
-            }
-
-            src = URL.createObjectURL(file[0]);
-            $(this).parent().parent().find("#image").show().attr("src", src);
-            var close = $(this).parent().parent().find(".close");
-            if (close != undefined) {
-                $(this).parent().parent().find(".close").show();
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
             }
         });
-        //圖片取消
-        $("body").on('click', '.close', function () {
-            $(this).parent().parent().find("input[type=file]").val('');
-            $(this).parent().parent().find("#image").hide();
-            $(this).parent().parent().find(".close").hide();
-        });
+        return o;
+    };
 
-        //增加大圖片上傳按鈕
-        $('#addPicButton').on('click', function () {
-            if (PicLimitCount > 0) {
-                if (PicCount < PicLimitCount) {
-                    $('.PicUpload').append("<div class='row m-t'><div class='col-xs-6'><input type='file' id='ImageUpload' name='PostedFiles' class='form-control m-b' /><img id ='image' src ='' style ='width:100%' /></div><div class='col-xs-2'><button type='button' class='removePic btn btn-primary'>刪除</button></div></div>");
-                    PicCount++;
-                    if (PicCount === PicLimitCount) {
-                        $(this).prop('disabled', true);
-                    }
+    //圖片顯示跟檢查
+    $("body").on('change', '#ImageUpload', function () {
+        var file = $(this).parent().find("input[type=file]")[0].files;
+        if (file[0].type != "image/jpg" &&
+            file[0].type != "image/pjpeg" &&
+            file[0].type != "image/gif" &&
+            file[0].type != "image/x-png" &&
+            file[0].type != "image/png" &&
+            file[0].type != "image/jpeg") {
+
+            alert("請上傳正確檔案格式");
+            $(this).parent().find("input[type=file]").val('');
+            return false;
+        }
+
+        var imageSizeKB = file[0].size / 1024;
+
+        if (imageSizeKB > 5120) {
+            alert("檔案過大請壓縮圖片");
+            $(this).parent().find("input[type=file]").val('');
+            $(this).parent().parent().find("#image").attr("src", '')
+            return false;
+        }
+
+        src = URL.createObjectURL(file[0]);
+        $(this).parent().parent().find("#image").show().attr("src", src);
+        var close = $(this).parent().parent().find(".close");
+        if (close != undefined) {
+            $(this).parent().parent().find(".close").show();
+        }
+    });
+
+    //圖片取消
+    $("body").on('click', '.close', function () {
+        $(this).parent().parent().find("input[type=file]").val('');
+        $(this).parent().parent().find("#image").hide();
+        $(this).parent().parent().find(".close").hide();
+    });
+
+    //增加大圖片上傳按鈕
+    $('#addPicButton').on('click', function () {
+        if (PicLimitCount > 0) {
+            if (PicCount < PicLimitCount) {
+                $('.PicUpload').append("<div class='row m-t'><div class='col-xs-6'><input type='file' id='ImageUpload' name='PostedFiles' class='form-control m-b' /><img id ='image' src ='' style ='width:100%' /></div><div class='col-xs-2'><button type='button' class='removePic btn btn-primary'>刪除</button></div></div>");
+                PicCount++;
+                if (PicCount === PicLimitCount) {
+                    $(this).prop('disabled', true);
                 }
             }
-            else {
-                $('.PicUpload').append("<div class='row m-t'><div class='col-xs-6'><input type='file' id='ImageUpload' name='PostedFiles' class='form-control m-b' /><img id ='image' src ='' style ='width:100%' /></div><div class='col-xs-2'><button type='button' class='removeBigPic btn btn-primary'>刪除</button></div></div>");
-            }
-            event.preventDefault();
-        });
-        // 刪除大圖片
-        $("body").on('click', '.removePic', function () {
-            $(this).parent().parent().remove();
-            if (PicLimitCount > 0) {
-                PicCount--;
-                $('#addPicButton').prop('disabled', false);
-            }
-        });
+        }
+        else {
+            $('.PicUpload').append("<div class='row m-t'><div class='col-xs-6'><input type='file' id='ImageUpload' name='PostedFiles' class='form-control m-b' /><img id ='image' src ='' style ='width:100%' /></div><div class='col-xs-2'><button type='button' class='removeBigPic btn btn-primary'>刪除</button></div></div>");
+        }
+        event.preventDefault();
+    });
 
-        // 縮放圖片
-        $(".imagesize").attr("src", $(".imagesize").attr("src"));
-        $(".imagesize").load(function () {
-            if ($(this).prop("naturalWidth") > $(this).parent().parent().width()) {
-                $(this).css({ width: "100%" });
-            } else {
-                $(this).css({ width: "auto" });
+    // 刪除大圖片
+    $("body").on('click', '.removePic', function () {
+        $(this).parent().parent().remove();
+        if (PicLimitCount > 0) {
+            PicCount--;
+            $('#addPicButton').prop('disabled', false);
+        }
+    });
+
+    // 縮放圖片
+    //$(".imagesize").attr("src", $(".imagesize").attr("src"));
+    //$(".imagesize").load(function () {
+    //    if ($(this).prop("naturalWidth") > $(this).parent().parent().width()) {
+    //        $(this).css({ width: "100%" });
+    //    } else {
+    //        $(this).css({ width: "auto" });
+    //    }
+    //    $(this).parent().find(".close").show();
+    //}).error(function () {
+    //    $(this).hide();
+    //    if ($(this).attr("src") != "") {
+    //        $(this).parent().find(".nofile,.close").show();
+    //    }
+    //});
+
+    
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<a id="updateItem" type="button" class="modify" title="Modify" data-toggle="modal" data-target="#myModal"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>',
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<i class="fa fa-trash"></i>',
+            '</a>'
+        ].join('')
+    }
+
+    window.operateEvents = {
+        'click .modify': function (e, value, row, index) {
+            $('#addItem').hide();
+            var show = row.IsShow == "是" ? "True" : "False";
+
+            $('#Items_ID').val(row.ID);
+            $('#Items_FactoryID.selectpicker').selectpicker('val', row.FactoryID);
+            $('#Items_ItemNO').val(row.ItemNO);
+            $('#Items_ItemName').val(row.ItemName);
+            $('#Items_ItemUnit').val(row.ItemUnit);
+            $('#Items_ItemPrice').val(row.ItemPrice);
+            $('#Items_ItemQty').val(row.ItemQty);
+            $('#Items_IsShow.selectpicker').selectpicker('val', show);
+
+            //alert('You click modify action, row: ' + JSON.stringify(row));
+        },
+        'click .remove': function (e, value, row, index) {
+            swal({
+                title: "確定刪除?",
+                type: "info",
+                showCancelButton: true,
+                closeOnConfirm: true,
+                showLoaderOnConfirm: false
+            },
+                function () {
+
+                    var id = row.ID;
+
+                    $.ajax({
+                        cache: false,
+                        type: 'POST',
+                        url: '@Url.Action("DeleteAJAX", "Items")',
+                        data: JSON.stringify({ 'id': id }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'json',
+                        success: function (result) {
+
+                            swal(
+                                {
+                                    title: "刪除成功!",
+                                    type: "info",
+                                    showCancelButton: false,
+                                    closeOnConfirm: true,
+                                    showLoaderOnConfirm: false
+                                },
+                                function () {
+                                    $('#table').bootstrapTable('refresh');
+                                }
+                            );
+                        },
+                        error: function () {
+                            //alert(3);
+                        }
+                    });
+                }
+            );
+
+        }
+    };
+
+    $('#updateItem').click(function () {
+
+        var value = $('#Items_IsShow.selectpicker option:selected').val();
+
+        var Item = {
+            ID: $('#Items_ID').val(),
+            FactoryID: $('#Items_FactoryID.selectpicker option:selected').val(),
+            FactoryItemID: $('#ID').val(),
+            ItemNo: $('#Items_ItemNO').val(),
+            ItemName: $('#Items_ItemName').val(),
+            ItemUnit: $('#Items_ItemUnit').val(),
+            ItemPrice: $('#Items_ItemPrice').val(),
+            ItemQty: $('#Items_ItemQty').val(),
+            IsShow: value == "True" ? "true" : "false"
+        };
+
+        //alert(JSON.stringify(Item));
+
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: '@Url.Action("EditAJAX", "Items")',
+            data: JSON.stringify({ 'viewModel': Item }),
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (result) {
+
+                $('#closeDialog').click();
+                swal(
+                    {
+                        title: "更新成功!",
+                        type: "info",
+                        showCancelButton: false,
+                        closeOnConfirm: true,
+                        showLoaderOnConfirm: false
+                    },
+                    function () {
+                        $('#table').bootstrapTable('refresh');
+                    }
+                );
+
+                $('#Items_ID').val('');
+                $('#Items_FactoryID.selectpicker').selectpicker('val', '');
+                $('#Items_ItemNO').val('');
+                $('#Items_ItemName').val('');
+                $('#Items_ItemUnit').val('');
+                $('#Items_ItemPrice').val('');
+                $('#Items_ItemQty').val('');
+                $('#Items_IsShow.selectpicker').selectpicker('val', '');
+            },
+            error: function () {
+                //alert(3);
             }
-            $(this).parent().find(".close").show();
-        }).error(function () {
-            $(this).hide();
-            if ($(this).attr("src") != "") {
-                $(this).parent().find(".nofile,.close").show();
+        });
+    });
+
+    $('#addItem').click(function () {
+
+        var value = $('#Items_IsShow.selectpicker option:selected').val();
+
+        var Item = {
+            ID: $('#Items_ID').val(),
+            FactoryID: $('#Items_FactoryID').val(),
+            FactoryItemID: $('#ID').val(),
+            ItemNo: $('#Items_ItemNO').val(),
+            ItemName: $('#Items_ItemName').val(),
+            ItemUnit: $('#Items_ItemUnit').val(),
+            ItemPrice: $('#Items_ItemPrice').val(),
+            ItemQty: $('#Items_ItemQty').val(),
+            IsShow: value == "True" ? "true" : "false"
+        };
+
+        //alert(JSON.stringify(Item));
+
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: '@Url.Action("CreateAJAX", "Items")',
+            data: JSON.stringify({ 'viewModel': Item }),
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (result) {
+
+                $('#closeDialog').click();
+                if (result.result) {
+                    swal(
+                        {
+                            title: "新增成功!",
+                            type: "info",
+                            showCancelButton: false,
+                            closeOnConfirm: true,
+                            showLoaderOnConfirm: false
+                        },
+                        function () {
+                            $('#table').bootstrapTable('refresh');
+                        }
+                    );
+
+                    $('#Items_ID').val('');
+                    $('#Items_FactoryID.selectpicker').selectpicker('val', '');
+                    $('#Items_ItemNO').val('');
+                    $('#Items_ItemName').val('');
+                    $('#Items_ItemUnit').val('');
+                    $('#Items_ItemPrice').val('');
+                    $('#Items_ItemQty').val('');
+                    $('#Items_IsShow.selectpicker').selectpicker('val', '');
+                }
+                else {
+                    swal(
+                        {
+                            title: "新增失敗!廠商不可為空值!",
+                            type: "info",
+                            showCancelButton: false,
+                            closeOnConfirm: true,
+                            showLoaderOnConfirm: false
+                        },
+                        function () {
+                        }
+                    );
+                }
+            },
+            error: function () {
+                //alert(3);
             }
-        })
+        });
+    });
+
+    //是否顯示
+    function BitFormatter(value, row, index) {
+        if (null !== value) {
+            switch (value) {
+                case true:
+                    return '<font color="green">是</font>';
+                case false:
+                    return '<font color="red">否</font>';
+            }
+        }
+    }
+
+
+    // 排序
+    var data = {        
+        FactoryItemID: $('#ID').val(),     
+        Sort: "SequenceNo",
+        Order: "asc",
+    };
+    function queryParams() {        
+        return JSON.stringify(data);
+    }
+    $('#table').on('sort.bs.table', function (e, name, order) {        
+        data.FactoryItemID = $('#ID').val();
+        if (name == "FactoryName") { name = "FactoryID";}
+        data.Sort = name;
+        data.Order = order;           
+        //alert(name);
+    });    
+    
+    $('#table').bootstrapTable({
+        url: '@Url.Action("Paging", "Items")',
+        method: 'POST',
+        queryParams: queryParams,
+        striped: true,
+        cache: false,
+        pagination: true,
+        sortable: true,
+        sortOrder: "asc",
+        sidePagination: "server",
+        pageNumber: 1,
+        pageList: [10, 25, 50, 100],
+        search: false,
+        strictSearch: true,
+        showColumns: true,
+        showRefresh: true,
+        minimumCountColumns: 2,
+        clickToSelect: true,
+        uniqueId: "ID",
+        showToggle: true,
+        silent: true,
+        columns: [
+            { field: 'ID', title: 'ID', visible: false },
+            { field: 'FactoryID', title: 'FactoryID', visible: false },
+            { field: 'FactoryName', title: '廠商', sortable: true, searchable: true },
+            { field: 'ItemNO', title: '廠商物品編號', sortable: true },
+            { field: 'ItemName', title: '物品名稱(採購用)', sortable: true },
+            { field: 'ItemUnit', title: '購買單位', sortable: true },
+            { field: 'ItemQty', title: '入庫量', sortable: true },
+            { field: 'ItemPrice', title: '單價', sortable: true },
+            { field: 'IsShow', title: '是否顯示', sortable: true, formatter: "BitFormatter" },
+            {
+                field: 'operate',
+                title: '編輯物品資訊',
+                align: 'center',
+                clickToSelect: false,
+                events: window.operateEvents,
+                formatter: operateFormatter
+            }
+        ],
+        onLoadSuccess: function (result) {
+        },
+        onLoadError: function () {
+            alert("廠商物品資訊數據加載失敗！");
+        },
+
+    });
+
+    $('#addItems').click(function () {
+        $('#Items_ItemUnit').val($('#ItemUnit').val());
+        $('#updateItems').hide();
+    });
+
+    function delayShow() {
+        $('#updateItems').show();
+        $('#addItem').show();
+        $('#Items_ID').val('');
+        $('#Items_FactoryID.selectpicker').selectpicker('val', '');
+        $('#Items_ItemNO').val('');
+        $('#Items_ItemName').val('');
+        $('#Items_ItemUnit').val('');
+        $('#Items_ItemPrice').val('');
+        $('#Items_ItemQty').val('');
+        $('#Items_IsShow.selectpicker').selectpicker('val', '');
+    };
+
+    $('#closeDialog').click(function () {
+        setTimeout(delayShow, 500);
+    });
+
 </script>
 }
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -153,7 +472,7 @@
                             </div>
                             @Html.LabelFor(model => model.ItemPrice, htmlAttributes: new { @class = "control-label col-sm-2" })
                             <div class="col-sm-1">
-                                @Html.EditorFor(model => model.ItemPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.ItemPrice, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                 @Html.ValidationMessageFor(model => model.ItemPrice, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -172,7 +491,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.ItemQty, htmlAttributes: new { @class = "control-label col-sm-2" })
                             <div class="col-sm-1">
-                                @Html.EditorFor(model => model.ItemQty, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.EditorFor(model => model.ItemQty, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                 @Html.ValidationMessageFor(model => model.ItemQty, "", new { @class = "text-danger" })
                             </div>
                             @Html.LabelFor(model => model.IsForColleague, htmlAttributes: new { @class = "control-label col-sm-3" })
@@ -191,7 +510,7 @@
                                         <div class="col-xs-9">
                                             <input id="ReservedID" name="ReservedID" type="hidden" value="@Model.AttachedFiles[i].ID" />
                                             <input type="text" class="form-control m-b" readonly="readonly" value="@Model.AttachedFiles[i].FileName" />
-                                            <img id="Pic" class="imagesize" src="@Model.AttachedFiles[i].FilePath" style="width:100%" />
+                                            <img id="Pic" class="imagesize" src="@Model.AttachedFiles[i].FilePath" style="width:auto;" />
                                             @if (!string.IsNullOrEmpty(Model.AttachedFiles[i].FilePath))
                                             {
                                                 <span class="nofile" style="display:none;">@Resource.NoFile</span>
@@ -203,12 +522,18 @@
                                     </div>
                                 }
                             </div>
-                            @Html.LabelFor(model => model.Factory, htmlAttributes: new { @class = "control-label col-sm-1" })
-                            <div class="col-sm-2">
-                                @Html.DropDownListFor(model => model.Factory, Model._Factory, string.Format(Resource.PleaseSelect, Resource.Factory_Name), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
-                                @Html.ValidationMessageFor(model => model.Factory, "", new { @class = "text-danger" })
-                            </div>
                         </div>
+                        if (action != "Create")
+                        {
+                            <div class="form-group">
+
+                                @Html.LabelFor(model => model.Factory, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                <div class="col-sm-10">
+                                    <table id="table"></table>
+                                </div>
+                                <button type="button" id="addItems" class="btn col-sm-offset-2" title="Add" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> 新增廠商物品</button>
+                            </div>
+                        }
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>
@@ -219,5 +544,91 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="wrapper wrapper-content animated" style="width: 800px;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content" style="height: 400px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">廠商物品資訊</h4>
+                            </div>
+
+                            @using (Html.BeginForm(action, "FactoryItems", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form", enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Items.SequenceNo)
+                                @Html.HiddenFor(model => model.Items.ID)
+                                @Html.HiddenFor(model => model.Items.FactoryItemID)
+                                @Html.HiddenFor(model => model.Items.IsDeleted)
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Items.FactoryID, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.DropDownListFor(model => model.Items.FactoryID, Model._Factory, string.Format(Resource.PleaseSelect, Resource.Factory_Name), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
+                                        @Html.ValidationMessageFor(model => model.Items.FactoryID, "", new { @class = "text-danger" })
+                                    </div>
+                                    @Html.LabelFor(model => model.Items.ItemNO, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.Items.ItemNO, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Items.ItemNO, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Items.ItemName, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.Items.ItemName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Items.ItemName, "", new { @class = "text-danger" })
+                                    </div>
+                                    @Html.LabelFor(model => model.Items.ItemUnit, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-2">
+                                        @Html.EditorFor(model => model.Items.ItemUnit, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Items.ItemUnit, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Items.ItemPrice, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-2">
+                                        @Html.EditorFor(model => model.Items.ItemPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Items.ItemPrice, "", new { @class = "text-danger" })
+                                    </div>
+                                    @Html.LabelFor(model => model.Items.ItemQty, htmlAttributes: new { @class = "control-label col-sm-4" })
+                                    <div class="col-sm-2">
+                                        @Html.EditorFor(model => model.Items.ItemQty, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Items.ItemQty, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Items.IsShow, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                    <div class="col-sm-3">
+                                        @Html.DropDownListFor(model => model.Items.IsShow, Model.YesNoList, string.Format(Resource.PleaseSelect, Resource.IsShow), new { @class = "form-control selectpicker" })
+                                        @Html.ValidationMessageFor(model => model.Items.IsShow, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="button" id="addItem" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Add</button>
+                                        <button type="button" id="updateItems" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>
+                                        <button type="button" id="closeDialog" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-sign-out"></i> @Resource.Exit</button>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

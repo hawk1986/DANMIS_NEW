@@ -14,6 +14,12 @@ namespace DANMIS_NEW.Models
     
     public partial class FactoryItems
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public FactoryItems()
+        {
+            this.Items = new HashSet<Items>();
+        }
+    
         public int SequenceNo { get; set; }
         public System.Guid ID { get; set; }
         public string ItemName { get; set; }
@@ -31,5 +37,8 @@ namespace DANMIS_NEW.Models
         public System.DateTime UpdateTime { get; set; }
         public bool IsInventoryMgmt { get; set; }
         public bool IsAttached { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Items> Items { get; set; }
     }
 }

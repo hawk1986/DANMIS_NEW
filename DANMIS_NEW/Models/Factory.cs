@@ -18,6 +18,7 @@ namespace DANMIS_NEW.Models
         public Factory()
         {
             this.ContactPerson = new HashSet<ContactPerson>();
+            this.Items = new HashSet<Items>();
         }
     
         public int SequenceNo { get; set; }
@@ -38,5 +39,7 @@ namespace DANMIS_NEW.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContactPerson> ContactPerson { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Items> Items { get; set; }
     }
 }

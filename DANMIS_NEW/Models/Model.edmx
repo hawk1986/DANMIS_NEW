@@ -142,6 +142,26 @@
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FactoryID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FactoryItemID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ItemNO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemUnit" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ItemPrice" Type="float" Nullable="false" />
+          <Property Name="ItemQty" Type="int" Nullable="false" />
+          <Property Name="IsShow" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Voter">
           <Key>
             <PropertyRef Name="ID" />
@@ -572,6 +592,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Items_Factory">
+          <End Role="Factory" Type="Self.Factory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="FactoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_FactoryItems">
+          <End Role="FactoryItems" Type="Self.FactoryItems" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FactoryItems">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="FactoryItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -673,6 +721,7 @@
           <EntitySet Name="FactoryClass" EntityType="Self.FactoryClass" Schema="dan" store:Type="Tables" />
           <EntitySet Name="FactoryItems" EntityType="Self.FactoryItems" Schema="dan" store:Type="Tables" />
           <EntitySet Name="ItemClass" EntityType="Self.ItemClass" Schema="dan" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Voter" EntityType="Self.Voter" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Votes" EntityType="Self.Votes" Schema="dan" store:Type="Tables" />
           <EntitySet Name="AccessControl" EntityType="Self.AccessControl" Schema="dbo" store:Type="Tables" />
@@ -723,6 +772,14 @@
           <AssociationSet Name="FK_Function_Module" Association="Self.FK_Function_Module">
             <End Role="Module" EntitySet="Module" />
             <End Role="Function" EntitySet="Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_Factory" Association="Self.FK_Items_Factory">
+            <End Role="Factory" EntitySet="Factory" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_FactoryItems" Association="Self.FK_Items_FactoryItems">
+            <End Role="FactoryItems" EntitySet="FactoryItems" />
+            <End Role="Items" EntitySet="Items" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Department" Association="Self.FK_User_Department">
             <End Role="Department" EntitySet="Department" />
@@ -827,6 +884,15 @@
           <EntitySet Name="FactoryItems" EntityType="DbModel.FactoryItems" />
           <EntitySet Name="ItemClass" EntityType="DbModel.ItemClass" />
           <EntitySet Name="FileAttached" EntityType="DbModel.FileAttached" />
+          <EntitySet Name="Items" EntityType="DbModel.Items" />
+          <AssociationSet Name="FK_Items_Factory" Association="DbModel.FK_Items_Factory">
+            <End Role="Factory" EntitySet="Factory" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_FactoryItems" Association="DbModel.FK_Items_FactoryItems">
+            <End Role="FactoryItems" EntitySet="FactoryItems" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Department">
           <Key>
@@ -1250,6 +1316,7 @@
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="ContactPerson" Relationship="DbModel.FK_ContactPerson_Factory" FromRole="Factory" ToRole="ContactPerson" />
+          <NavigationProperty Name="Items" Relationship="DbModel.FK_Items_Factory" FromRole="Factory" ToRole="Items" />
         </EntityType>
         <EntityType Name="ContactPerson">
           <Key>
@@ -1408,6 +1475,7 @@
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsInventoryMgmt" Type="Boolean" Nullable="false" />
           <Property Name="IsAttached" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="DbModel.FK_Items_FactoryItems" FromRole="FactoryItems" ToRole="Items" />
         </EntityType>
         <EntityType Name="ItemClass">
           <Key>
@@ -1444,6 +1512,56 @@
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="FactoryID" Type="Guid" Nullable="false" />
+          <Property Name="FactoryItemID" Type="Guid" Nullable="false" />
+          <Property Name="ItemNO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemUnit" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ItemPrice" Type="Double" Nullable="false" />
+          <Property Name="ItemQty" Type="Int32" Nullable="false" />
+          <Property Name="IsShow" Type="Boolean" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Factory" Relationship="DbModel.FK_Items_Factory" FromRole="Items" ToRole="Factory" />
+          <NavigationProperty Name="FactoryItems" Relationship="DbModel.FK_Items_FactoryItems" FromRole="Items" ToRole="FactoryItems" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Items_Factory">
+          <End Type="DbModel.Factory" Role="Factory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DbModel.Items" Role="Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="FactoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_FactoryItems">
+          <End Type="DbModel.FactoryItems" Role="FactoryItems" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DbModel.Items" Role="Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FactoryItems">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="FactoryItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1953,6 +2071,27 @@
                 <ScalarProperty Name="ItemType" ColumnName="ItemType" />
                 <ScalarProperty Name="TableType" ColumnName="TableType" />
                 <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="DbModel.Items">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="IsShow" ColumnName="IsShow" />
+                <ScalarProperty Name="ItemQty" ColumnName="ItemQty" />
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="ItemUnit" ColumnName="ItemUnit" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemNO" ColumnName="ItemNO" />
+                <ScalarProperty Name="FactoryItemID" ColumnName="FactoryItemID" />
+                <ScalarProperty Name="FactoryID" ColumnName="FactoryID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>

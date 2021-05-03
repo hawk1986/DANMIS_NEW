@@ -50,5 +50,6 @@ namespace DANMIS_NEW.Models
         public virtual DbSet<FactoryItems> FactoryItems { get; set; }
         public virtual DbSet<ItemClass> ItemClass { get; set; }
         public virtual DbSet<FileAttached> FileAttached { get; set; }
+        public virtual DbSet<Items> Items { get; set; }
     }
 }
