@@ -126,6 +126,9 @@ namespace DANMIS_NEW.Manager
         /// <returns></returns>
         public Paging<FactoryItemsListResult> Paging(FactoryItemsSearchModel searchModel)
         {
+            var itemClass = _itemClassRepository.GetAll().ToList();
+            var factory = _factoryRepository.GetAll().ToList();
+
             // 預設集合
             var temp = _factoryItemsRepository.GetAll();
 
@@ -185,8 +188,8 @@ namespace DANMIS_NEW.Manager
 
             foreach (var item in result.rows)
             {
-                item.ItemClass = _itemClassRepository.GetByID(new Guid(item.ItemClass))?.ClassName ?? "尚未分類";
-                item.Factory = _factoryRepository.GetByID(new Guid(item.Factory))?.FactoryShortName ?? string.Empty;
+                item.ItemClass = itemClass.FirstOrDefault(x => x.ID == new Guid(item.ItemClass))?.ClassName ?? "尚未分類";
+                item.Factory = factory.FirstOrDefault(x => x.ID == new Guid(item.Factory))?.FactoryShortName ?? string.Empty;
             }
 
             return result;
