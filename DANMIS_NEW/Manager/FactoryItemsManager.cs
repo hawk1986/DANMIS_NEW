@@ -256,6 +256,38 @@ namespace DANMIS_NEW.Manager
                 }
             }
         }
+
+        public void UpdateQty(FactoryItemsViewModel entity)
+        {
+            using (var transaction = _factoryItemsRepository.dbContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    var source = _factoryItemsRepository.GetByID(entity.ID);
+                    source.ItemName = entity.ItemName ?? string.Empty;
+                    source.ItemSpecification = entity.ItemSpecification ?? string.Empty;
+                    source.ItemClass = entity.ItemClass ?? string.Empty;
+                    source.ItemUnit = entity.ItemUnit ?? string.Empty;
+                    source.ItemPrice = entity.ItemPrice;
+                    source.ItemQty = entity.ItemQty;
+                    source.Factory = entity.Factory ?? string.Empty;
+                    source.IsInventoryMgmt = entity.IsInventoryMgmt;
+                    source.IsForStationery = entity.IsForStationery;
+                    source.IsForColleague = entity.IsForColleague;
+                    source.IsAttached = entity.IsAttached;
+                    source.UpdateUser = entity.UpdateUser ?? string.Empty;
+                    source.UpdateTime = entity.UpdateTime;
+
+                    _factoryItemsRepository.Update(source);
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+        }
     }
 }
 #pragma warning restore 1591

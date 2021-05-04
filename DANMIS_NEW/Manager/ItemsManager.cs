@@ -112,7 +112,7 @@ namespace DANMIS_NEW.Manager
             var factoryItems = _factoryItemsRepository.GetAll().ToList();
 
             // 預設集合
-            var temp = _itemsRepository.GetAll();
+            var temp = _itemsRepository.GetAll().Where(x => x.IsDeleted == false);
 
             // 將 DB 資料轉換為列表頁呈現資料
             var tempResult = from x in temp
@@ -204,6 +204,14 @@ namespace DANMIS_NEW.Manager
                     throw;
                 }
             }
+        }
+
+        public List<ItemsViewModel> GetByFactoryID(Guid id)
+        {
+            var item = _itemsRepository.GetAll().Where(x => x.FactoryItemID == id);
+            var result = item.ToList().ConvertAll( e => (ItemsViewModel)e);
+
+            return result;
         }
     }
 }

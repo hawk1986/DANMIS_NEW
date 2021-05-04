@@ -34,17 +34,20 @@ namespace DANMIS_NEW.Controllers
         readonly IFactoryItemsManager _factoryItemsManager;
         readonly IFactoryManager _factoryManager;
         readonly IItemClassManager _itemClassManager;
+        readonly IItemsManager _itemsManager;
 
         public FactoryItemsController(
             ICommonManager commonManager,
             IFactoryItemsManager factoryItemsManager,
             IFactoryManager factoryManager,
-            IItemClassManager itemClassManager)
+            IItemClassManager itemClassManager,
+            IItemsManager itemsManager)
         {
             _commonManager = commonManager;
             _factoryItemsManager = factoryItemsManager;
             _factoryManager = factoryManager;
             _itemClassManager = itemClassManager;
+            _itemsManager = itemsManager;
             logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -319,6 +322,49 @@ namespace DANMIS_NEW.Controllers
             }
 
             return Json(result);
+        }
+
+        // 計算平均單價
+        [HttpPost]
+        public ActionResult GetNewQty(Guid id)
+        {
+            // 預設失敗
+            var result = Json(new { result = false }, JsonRequestBehavior.AllowGet);
+
+            // 取得所有此類別物品
+            var items = _itemsManager.GetByFactoryID(id).Where(x => x.IsDeleted == false);
+
+            if (items.Any())
+            {
+                try
+                {
+                    // 取得平均單價 & 回寫
+                    double avarage = 0;
+                    var qty = 0;
+                    double totalPrice = 0;
+                    foreach (var item in items)
+                    {
+                        totalPrice += item.ItemPrice * item.ItemQty;
+                        qty += item.ItemQty;
+                    }
+                    avarage = totalPrice / qty;
+
+                    // 更新FactoryItem
+                    var factoryItem = _factoryItemsManager.GetByID(id);
+                    factoryItem.ItemPrice = Math.Round(avarage, 2, MidpointRounding.AwayFromZero);
+                    factoryItem.ItemQty = qty;
+                    _factoryItemsManager.UpdateQty(factoryItem);
+
+                    result = Json(new { result = true, price = factoryItem.ItemPrice, qty = qty }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception ex)
+                {
+                    // 刪除失敗
+                    logger.Error(ex, string.Format(Resource.ExecutionFailed, Resource.Delete, Resource.FactoryItems, id));
+                }
+            }
+
+            return result;
         }
 
         /// <summary>

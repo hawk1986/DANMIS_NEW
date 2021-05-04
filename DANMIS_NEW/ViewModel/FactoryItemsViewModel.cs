@@ -84,7 +84,7 @@ namespace DANMIS_NEW.ViewModel
         /// <summary>
         /// Factory
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "FactoryItems", ResourceType = typeof(Resource))]
         public string Factory { get; set; }

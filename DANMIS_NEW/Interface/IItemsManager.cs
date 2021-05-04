@@ -53,6 +53,8 @@ namespace DANMIS_NEW.Interface
         /// <param name="entity"></param>
         /// <returns></returns>
         void Update(ItemsViewModel entity);
+
+        List<ItemsViewModel> GetByFactoryID(Guid id);
     }
 }
 #pragma warning restore 1591

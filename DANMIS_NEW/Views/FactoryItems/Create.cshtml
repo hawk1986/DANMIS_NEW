@@ -117,7 +117,7 @@
     //    }
     //});
 
-    
+
 
     function operateFormatter(value, row, index) {
         return [
@@ -131,8 +131,9 @@
     window.operateEvents = {
         'click .modify': function (e, value, row, index) {
             $('#addItem').hide();
-            var show = row.IsShow == "是" ? "True" : "False";
-
+            var show = row.IsShow == true ? "True" : "False";
+            //if (row.IsShow == true) { alert(row.IsShow);}
+            
             $('#Items_ID').val(row.ID);
             $('#Items_FactoryID.selectpicker').selectpicker('val', row.FactoryID);
             $('#Items_ItemNO').val(row.ItemNO);
@@ -149,46 +150,61 @@
                 title: "確定刪除?",
                 type: "info",
                 showCancelButton: true,
-                closeOnConfirm: true,
+                closeOnConfirm: false,
                 showLoaderOnConfirm: false
-            },
+                },
                 function () {
-
-                    var id = row.ID;
-
                     $.ajax({
                         cache: false,
                         type: 'POST',
                         url: '@Url.Action("DeleteAJAX", "Items")',
-                        data: JSON.stringify({ 'id': id }),
+                        data: JSON.stringify({ 'id': row.ID }),
                         contentType: "application/json; charset=utf-8",
                         dataType: 'json',
                         success: function (result) {
-
-                            swal(
-                                {
-                                    title: "刪除成功!",
-                                    type: "info",
-                                    showCancelButton: false,
-                                    closeOnConfirm: true,
-                                    showLoaderOnConfirm: false
+                            // 修改單價 & 庫存
+                            $.ajax({
+                                cache: false,
+                                type: 'POST',
+                                url: '@Url.Action("GetNewQty", "FactoryItems")',
+                                data: JSON.stringify({ 'id': $('#ID').val() }),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: 'json',
+                                success: function (result) {
+                                    if (result.result) {
+                                        $('#ItemPrice').val(result.price);
+                                        $('#ItemQty').val(result.qty);                                        
+                                        $('#table').bootstrapTable('refresh');
+                                    }
                                 },
-                                function () {
-                                    $('#table').bootstrapTable('refresh');
+                                error: function () {
+                                    alert("庫存更新失敗!");
                                 }
-                            );
+                            }).then(() => {
+                                swal(
+                                    {
+                                        title: "刪除成功!",
+                                        type: "info",
+                                        showCancelButton: false,
+                                        closeOnConfirm: true,
+                                        showLoaderOnConfirm: false
+                                    },
+                                    function () {
+
+                                    }
+                                );
+                            });
                         },
                         error: function () {
                             //alert(3);
                         }
                     });
                 }
-            );
-
+            )
         }
     };
 
-    $('#updateItem').click(function () {
+    $('#updateItems').click(function () {
 
         var value = $('#Items_IsShow.selectpicker option:selected').val();
 
@@ -213,21 +229,38 @@
             data: JSON.stringify({ 'viewModel': Item }),
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
-            success: function (result) {
-
-                $('#closeDialog').click();
-                swal(
-                    {
-                        title: "更新成功!",
-                        type: "info",
-                        showCancelButton: false,
-                        closeOnConfirm: true,
-                        showLoaderOnConfirm: false
+            success: function (result) {                
+                // 修改單價 & 庫存
+                $.ajax({
+                    cache: false,
+                    type: 'POST',
+                    url: '@Url.Action("GetNewQty", "FactoryItems")',
+                    data: JSON.stringify({ 'id': $('#ID').val() }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#closeDialog').click();
+                        if (result.result) {
+                            $('#ItemPrice').val(result.price);
+                            $('#ItemQty').val(result.qty);                            
+                        }                                                
+                        swal(
+                            {
+                                title: "更新成功!",
+                                type: "info",
+                                showCancelButton: false,
+                                closeOnConfirm: true,
+                                showLoaderOnConfirm: false
+                            },
+                            function () {
+                                $('#table').bootstrapTable('refresh');
+                            }
+                        );
                     },
-                    function () {
-                        $('#table').bootstrapTable('refresh');
+                    error: function () {
+                        alert("庫存更新失敗!");
                     }
-                );
+                });
 
                 $('#Items_ID').val('');
                 $('#Items_FactoryID.selectpicker').selectpicker('val', '');
@@ -273,6 +306,24 @@
 
                 $('#closeDialog').click();
                 if (result.result) {
+                    // 修改單價 & 庫存
+                    $.ajax({
+                        cache: false,
+                        type: 'POST',
+                        url: '@Url.Action("GetNewQty", "FactoryItems")',
+                        data: JSON.stringify({ 'id': $('#ID').val() }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'json',
+                        success: function (result) {
+                            if (result.result) {
+                                $('#ItemPrice').val(result.price);
+                                $('#ItemQty').val(result.qty);
+                            }
+                        },
+                        error: function () {
+                            alert("庫存更新失敗!");
+                        }
+                    });
                     swal(
                         {
                             title: "新增成功!",
@@ -327,24 +378,22 @@
         }
     }
 
-
     // 排序
-    var data = {        
-        FactoryItemID: $('#ID').val(),     
+    var data = {
+        FactoryItemID: $('#ID').val(),
         Sort: "SequenceNo",
         Order: "asc",
     };
-    function queryParams() {        
+    function queryParams() {
         return JSON.stringify(data);
     }
-    $('#table').on('sort.bs.table', function (e, name, order) {        
+    $('#table').on('sort.bs.table', function (e, name, order) {
         data.FactoryItemID = $('#ID').val();
         if (name == "FactoryName") { name = "FactoryID";}
         data.Sort = name;
-        data.Order = order;           
-        //alert(name);
-    });    
-    
+        data.Order = order;        
+    });
+
     $('#table').bootstrapTable({
         url: '@Url.Action("Paging", "Items")',
         method: 'POST',
@@ -412,7 +461,7 @@
     };
 
     $('#closeDialog').click(function () {
-        setTimeout(delayShow, 500);
+        setTimeout(delayShow, 200);
     });
 
 </script>
@@ -444,6 +493,7 @@
                         @Html.HiddenFor(model => model.SequenceNo)
                         @Html.HiddenFor(model => model.ID)
                         @Html.HiddenFor(model => model.IsAttached)
+                        @Html.HiddenFor(model => model.Factory)
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.ItemName, htmlAttributes: new { @class = "control-label col-sm-2" })
@@ -560,7 +610,7 @@
                                 <h4 class="modal-title">廠商物品資訊</h4>
                             </div>
 
-                            @using (Html.BeginForm(action, "FactoryItems", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form", enctype = "multipart/form-data" }))
+                            @using (Html.BeginForm(action, "FactoryItems", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form1", enctype = "multipart/form-data" }))
                             {
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
