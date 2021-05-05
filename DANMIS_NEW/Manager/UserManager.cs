@@ -26,6 +26,7 @@ using DANMIS_NEW;
 using System.Data;
 using System.Diagnostics;
 using System.Text;
+using System.Web.Mvc;
 
 namespace DANMIS_NEW.Manager
 {
@@ -603,9 +604,9 @@ namespace DANMIS_NEW.Manager
 
             // 轉入時Unicode問題 待解決
             var item = a.FirstOrDefault(x => x.WDID == id || x.WDID == "" + id);
-           
+
             var result = (UserViewModel)item;
-            
+
             return result;
         }
 
@@ -620,7 +621,7 @@ namespace DANMIS_NEW.Manager
         /// </summary>
         /// <returns></returns>
         public List<string> GetMarquees()
-        {            
+        {
             return Marquee.Marquees.Select(x => x.MarqueeContent).ToList();
         }
 
@@ -643,6 +644,41 @@ namespace DANMIS_NEW.Manager
             return dst;
         }
 
+        public SelectList GetSelectList()
+        {
+            // 預設集合
+            var temp = _userRepository.GetAll().Where(x => x.EmpQuitDate == null && x.WDID != null);
+
+            // 將 DB 資料轉換為列表頁呈現資料
+            var _tempResult = from x in temp
+                              select new UserSelectList
+                              {                                  
+                                  Name = x.EmpLocName,
+                                  WDID = x.WDID,
+                                  EmpEngName = x.EmpEngName,
+                              };
+
+            // 進行分頁處理
+            var tempResult = new Paging<UserSelectList>();
+            tempResult.total = _tempResult.Count();
+            tempResult.rows = _tempResult.OrderBy("WDID", "asc").Distinct().ToList();
+
+            var list = new List<SelectListItem>();
+            foreach (var item in tempResult.rows)
+            {
+                list.Add(new SelectListItem { Value = item.WDID, Text = string.Concat(item.Name, "(", item.EmpEngName, ")") });
+            }
+            var result = new SelectList(list, "Value", "Text");
+
+            return result;
+        }
+
+        public class UserSelectList
+        {
+            public string Name { get; set; }
+            public string EmpEngName { get; set; }
+            public string WDID { get; set; }
+        }
     }
 }
 #pragma warning restore 1591

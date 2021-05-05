@@ -1,0 +1,72 @@
+@model FloorManagerViewModel
+@{
+    var auth = UnobtrusiveSession.Session["Auth"] as IList<Auth>;
+    var action = ViewContext.RouteData.Values["action"] as string;
+    var function = auth.First(x => x.Code == "FloorManager" + action);
+    ViewBag.Title = function.ModuleName + " / " + function.GroupName + " / " + function.SimpleName;
+}
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    </script>
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">@function.ModuleName</a>
+            </li>
+            <li>
+                @Html.ActionLink(function.GroupName, "Index")
+            </li>
+            <li class="active">
+                <strong>@function.SimpleName</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    @using (Html.BeginForm(action, "FloorManager", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.SequenceNo)
+                        @Html.HiddenFor(model => model.ID)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.WDID, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.WDID, Model._Users, string.Format(Resource.PleaseSelect, Resource.User), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
+                                @Html.ValidationMessageFor(model => model.WDID, "", new { @class = "text-danger" })
+                            </div>                            
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-6">
+                                @Html.ListBoxFor(model => model.BrandIDs, Model._Brand, new { @class = "form-control selectpicker multiline", data_live_search = "true", data_size = "12" })
+                                @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+                            </div>                            
+                        </div>
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IsEnable, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-2 m-b-xs">
+                                @Html.DropDownListFor(model => model.IsEnable, Model.YesNoList, string.Format(Resource.PleaseSelect, Resource.Status), new { @class = "form-control selectpicker" })
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>                                
+                                <a id="exit_btn" href="@Url.Action("Index")" class="btn btn-danger"><i class="fa fa-sign-out"></i> @Resource.Exit</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

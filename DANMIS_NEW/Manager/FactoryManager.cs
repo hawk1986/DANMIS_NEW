@@ -108,6 +108,8 @@ namespace DANMIS_NEW.Manager
         /// <returns></returns>
         public Paging<FactoryListResult> Paging(FactorySearchModel searchModel)
         {
+            var factoryClass = _factoryClassRepository.GetAll().ToList();
+            
             // 預設集合
             var temp = _factoryRepository.GetAll();
 
@@ -164,7 +166,7 @@ namespace DANMIS_NEW.Manager
 
             foreach (var item in result.rows)
             {
-                item.FactoryClass = switchFactoryClassName(new Guid(item.FactoryClass));
+                item.FactoryClass = factoryClass.FirstOrDefault(x => x.ID == new Guid(item.FactoryClass)).ClassName;
             }
 
             return result;
@@ -203,14 +205,6 @@ namespace DANMIS_NEW.Manager
                 }
             }
         }
-
-        #region switchFactoryClassName
-        public string switchFactoryClassName(Guid factoryClass)
-        {
-            var result = _factoryClassRepository.GetByID(factoryClass).ClassName;
-            return result;
-        }
-        #endregion
 
         public SelectList GetSelectList()
         {

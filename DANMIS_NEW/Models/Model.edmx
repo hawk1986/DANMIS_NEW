@@ -127,6 +127,20 @@
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="FloorManager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WDID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="ItemClass">
           <Key>
             <PropertyRef Name="ID" />
@@ -720,6 +734,7 @@
           <EntitySet Name="Factory" EntityType="Self.Factory" Schema="dan" store:Type="Tables" />
           <EntitySet Name="FactoryClass" EntityType="Self.FactoryClass" Schema="dan" store:Type="Tables" />
           <EntitySet Name="FactoryItems" EntityType="Self.FactoryItems" Schema="dan" store:Type="Tables" />
+          <EntitySet Name="FloorManager" EntityType="Self.FloorManager" Schema="dan" store:Type="Tables" />
           <EntitySet Name="ItemClass" EntityType="Self.ItemClass" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Voter" EntityType="Self.Voter" Schema="dan" store:Type="Tables" />
@@ -893,6 +908,7 @@
             <End Role="FactoryItems" EntitySet="FactoryItems" />
             <End Role="Items" EntitySet="Items" />
           </AssociationSet>
+          <EntitySet Name="FloorManager" EntityType="DbModel.FloorManager" />
         </EntityContainer>
         <EntityType Name="Department">
           <Key>
@@ -1562,6 +1578,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="FloorManager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="WDID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2092,6 +2122,21 @@
                 <ScalarProperty Name="ItemNO" ColumnName="ItemNO" />
                 <ScalarProperty Name="FactoryItemID" ColumnName="FactoryItemID" />
                 <ScalarProperty Name="FactoryID" ColumnName="FactoryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FloorManager">
+            <EntityTypeMapping TypeName="DbModel.FloorManager">
+              <MappingFragment StoreEntitySet="FloorManager">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="WDID" ColumnName="WDID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>

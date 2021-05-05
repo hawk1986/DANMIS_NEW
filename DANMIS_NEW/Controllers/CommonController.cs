@@ -71,6 +71,15 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "Factory", title = Resource.Factory_Name, align = "center", events = "window.operateEvents", formatter = "<button class='detail btn btn-info' title='Detail' data-toggle='modal' data-target='#myModal'><i class='fa fa-address-book'></i>ÀËµø¼t°Ó</button>" },
                         };
                         break;
+                    case "floorManager":
+                        result = new List<ListOption>
+                        {
+                            new ListOption{ checkbox = true, sortable = false, visible = true },
+                            new ListOption{ field = "Name", title = Resource.Name },
+                            new ListOption{ field = "IsEnable", title = Resource.IsEnable, formatter = "BitFormatter" },
+                            new ListOption{ field = "Brand", title = Resource.Brand },
+                        };
+                        break;
                     case "freeFieldSetting":
                         result = new List<ListOption>
                         {

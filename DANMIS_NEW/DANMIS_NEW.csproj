@@ -1126,6 +1126,9 @@
     <Compile Include="Controllers\FactoryItemsController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\FloorManagerController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\FreeFieldSettingController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
@@ -1200,6 +1203,9 @@
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IFactoryManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IFloorManagerManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IFreeFieldSettingManager.cs">
@@ -1283,6 +1289,9 @@
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\FactoryManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\FloorManagerManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\FreeFieldSettingManager.cs">
@@ -1395,6 +1404,12 @@
     <Compile Include="Models\FileAttachedRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FloorManager.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FloorManagerRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FreeFieldSetting.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -1435,6 +1450,9 @@
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IFileAttachedRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IFloorManagerRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IFreeFieldSettingRepository.cs">
@@ -1531,6 +1549,9 @@
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\FileAttached.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\FloorManager.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\FreeFieldSetting.cs">
@@ -1737,6 +1758,9 @@
     <Compile Include="ViewModel\FileAttachedViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\FloorManagerViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModel\FreeFieldSettingViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
@@ -1776,6 +1800,9 @@
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\FactoryListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\FloorManagerListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\FreeFieldSettingListResult.cs">
@@ -1848,6 +1875,9 @@
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\FactorySearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\FloorManagerSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\ItemClassSearchModel.cs">
@@ -2053,6 +2083,15 @@
     <Content Include="Views\FactoryItems\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
+    <None Include="Views\FloorManager\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\FloorManager\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\FloorManager\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\Function\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2214,6 +2253,7 @@
     <Folder Include="Views\FactoryClass\" />
     <Folder Include="Views\FactoryItems\" />
     <Folder Include="Views\Factory\" />
+    <Folder Include="Views\FloorManager\" />
     <Folder Include="Views\FreeFieldSetting\" />
     <Folder Include="Views\Function\" />
     <Folder Include="Views\ItemClass\" />

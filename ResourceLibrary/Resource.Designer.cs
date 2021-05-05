@@ -142,6 +142,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 Admin人員 的當地語系化字串。
+        /// </summary>
+        public static string AddAdmin {
+            get {
+                return ResourceManager.GetString("AddAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 新增欄位 的當地語系化字串。
         /// </summary>
         public static string AddColumn {
@@ -309,6 +318,15 @@ namespace ResourceLibrary {
         public static string BrandCode {
             get {
                 return ResourceManager.GetString("BrandCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 負責品牌 的當地語系化字串。
+        /// </summary>
+        public static string BrandFor {
+            get {
+                return ResourceManager.GetString("BrandFor", resourceCulture);
             }
         }
         
@@ -1551,6 +1569,15 @@ namespace ResourceLibrary {
         public static string FinSourSys {
             get {
                 return ResourceManager.GetString("FinSourSys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 樓管設定 的當地語系化字串。
+        /// </summary>
+        public static string FloorManager {
+            get {
+                return ResourceManager.GetString("FloorManager", resourceCulture);
             }
         }
         

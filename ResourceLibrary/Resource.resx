@@ -1374,4 +1374,13 @@
   <data name="ItemNO" xml:space="preserve">
     <value>物品編號</value>
   </data>
+  <data name="FloorManager" xml:space="preserve">
+    <value>樓管設定</value>
+  </data>
+  <data name="BrandFor" xml:space="preserve">
+    <value>負責品牌</value>
+  </data>
+  <data name="AddAdmin" xml:space="preserve">
+    <value>Admin人員</value>
+  </data>
 </root>

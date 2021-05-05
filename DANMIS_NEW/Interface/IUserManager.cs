@@ -15,6 +15,7 @@ using DANMIS_NEW.ViewModel.SearchModel;
 using System;
 using System.Collections.Generic;
 using DANMIS_NEW.Models;
+using System.Web.Mvc;
 
 namespace DANMIS_NEW.Interface
 {
@@ -119,6 +120,8 @@ namespace DANMIS_NEW.Interface
         UserViewModel GetByWDID(string id);
 
         List<UserViewModel> GetAll();
+
+        SelectList GetSelectList();
     }
 }
 #pragma warning restore 1591
