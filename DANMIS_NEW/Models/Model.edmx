@@ -521,7 +521,41 @@
           <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="WDID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Memo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DIDAndHeadphone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HeadphoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WDID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="EffectiveDate" Type="datetime" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Headphone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HeadphoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WDID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Memo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
@@ -755,6 +789,8 @@
           <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VisualMenu" EntityType="Self.VisualMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DID" EntityType="Self.DID" Schema="jml" store:Type="Tables" />
+          <EntitySet Name="DIDAndHeadphone" EntityType="Self.DIDAndHeadphone" Schema="jml" store:Type="Tables" />
+          <EntitySet Name="Headphone" EntityType="Self.Headphone" Schema="jml" store:Type="Tables" />
           <EntitySet Name="Skill" EntityType="Self.Skill" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Skill].[rowId] AS [rowId], 
@@ -909,6 +945,8 @@
             <End Role="Items" EntitySet="Items" />
           </AssociationSet>
           <EntitySet Name="FloorManager" EntityType="DbModel.FloorManager" />
+          <EntitySet Name="Headphone" EntityType="DbModel.Headphone" />
+          <EntitySet Name="DIDAndHeadphone" EntityType="DbModel.DIDAndHeadphone" />
         </EntityContainer>
         <EntityType Name="Department">
           <Key>
@@ -1469,6 +1507,7 @@
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FactoryItems">
           <Key>
@@ -1587,6 +1626,39 @@
           <Property Name="WDID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Brand" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Headphone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="HeadphoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WDID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Memo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DIDAndHeadphone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="DID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeadphoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WDID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EffectiveDate" Type="DateTime" Precision="3" />
           <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -2034,6 +2106,7 @@
           <EntitySetMapping Name="DID">
             <EntityTypeMapping TypeName="DbModel.DID">
               <MappingFragment StoreEntitySet="DID">
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
@@ -2137,6 +2210,41 @@
                 <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
                 <ScalarProperty Name="Brand" ColumnName="Brand" />
                 <ScalarProperty Name="WDID" ColumnName="WDID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Headphone">
+            <EntityTypeMapping TypeName="DbModel.Headphone">
+              <MappingFragment StoreEntitySet="Headphone">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="WDID" ColumnName="WDID" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="HeadphoneNumber" ColumnName="HeadphoneNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIDAndHeadphone">
+            <EntityTypeMapping TypeName="DbModel.DIDAndHeadphone">
+              <MappingFragment StoreEntitySet="DIDAndHeadphone">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="WDID" ColumnName="WDID" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="HeadphoneNumber" ColumnName="HeadphoneNumber" />
+                <ScalarProperty Name="DID" ColumnName="DID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>

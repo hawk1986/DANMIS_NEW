@@ -19,16 +19,19 @@ using DANMIS_NEW.ViewModel;
 using DANMIS_NEW.ViewModel.ListResult;
 using DANMIS_NEW.ViewModel.SearchModel;
 using ResourceLibrary;
+using System.Web.Mvc;
 
 namespace DANMIS_NEW.Manager
 {
     public class DIDManager : IDIDManager
     {
         readonly IDIDRepository _dIDRepository;
+        readonly IUserRepository _userRepository;
 
-        public DIDManager(IDIDRepository dIDRepository)
+        public DIDManager(IDIDRepository dIDRepository, IUserRepository userRepository)
         {
             _dIDRepository = dIDRepository;
+            _userRepository = userRepository;
         }
 
         /// <summary>
@@ -93,6 +96,12 @@ namespace DANMIS_NEW.Manager
         {
             var item = _dIDRepository.GetByID(id);
             var result = (DIDViewModel)item;
+            var user = _userRepository.GetAll().FirstOrDefault(x => x.WDID == result.WDID);
+            if (user != null)
+            {
+                result.User.Name = string.Concat(user.EmpLocName, "(", user.EmpEngName, ")");
+                result.User.Email = user.EmpCompEmail;
+            }
 
             return result;
         }
@@ -115,7 +124,9 @@ namespace DANMIS_NEW.Manager
                                  ID = x.ID,
                                  DID1 = x.DID1,
                                  WDID = x.WDID,
-                                 Memo = x.Memo,
+                                 Brand = x.Brand,
+                                 User = string.Empty,
+                                 Email = string.Empty,
                                  UpdateUser = x.UpdateUser,
                                  UpdateTime = x.UpdateTime,
                              };
@@ -126,11 +137,15 @@ namespace DANMIS_NEW.Manager
                 var search = searchModel.Search.ToLower();
                 tempResult = tempResult.Where(x =>
                     x.DID1.Contains(search) ||
-                    x.WDID.Contains(search) ||
-                    x.Memo.Contains(search) ||
+                    x.WDID.Contains(search) ||                    
                     x.UpdateUser.Contains(search) ||
                     false);
             }
+
+            if (!string.IsNullOrEmpty(searchModel.Brand))
+                tempResult = tempResult.Where(x =>
+                        x.Brand == searchModel.Brand ||
+                        false);
 
             // 進行分頁處理
             var result = new Paging<DIDListResult>();
@@ -140,6 +155,18 @@ namespace DANMIS_NEW.Manager
                 .Skip(searchModel.Offset)
                 .Take(searchModel.Limit)
                 .ToList();
+
+            var users = _userRepository.GetAll().Where(x => x.EmpQuitDate == null && x.WDID != null).ToList();
+
+            foreach (var item in result.rows)
+            {
+                var user = users.FirstOrDefault(x => x.WDID == item.WDID);
+                if (user != null)
+                {
+                    item.User = string.Concat(user.EmpLocName, "(", user.EmpEngName, ")");
+                    item.Email = user.EmpCompEmail ?? string.Empty;
+                }
+            }
 
             return result;
         }
@@ -170,6 +197,47 @@ namespace DANMIS_NEW.Manager
                     throw;
                 }
             }
+        }
+
+        public SelectList GetSelectList(string brand, string did)
+        {
+            // 預設集合
+            var temp = _dIDRepository.GetAll().Where(x => x.WDID == null || x.WDID == "" || x.DID1 == did);
+
+            // 將 DB 資料轉換為列表頁呈現資料
+            var _tempResult = from x in temp
+                              select new DIDListResult
+                              {
+                                  SequenceNo = x.SequenceNo,
+                                  ID = x.ID,
+                                  DID1 = x.DID1,
+                                  WDID = x.WDID,
+                                  Brand = x.Brand,
+                                  User = string.Empty,
+                                  Email = string.Empty,
+                                  UpdateUser = x.UpdateUser,
+                                  UpdateTime = x.UpdateTime,
+                              };
+            
+            if(!string.IsNullOrEmpty(brand))
+                _tempResult = _tempResult.Where(x => 
+                    x.Brand == brand ||
+                    false);
+
+            // 進行分頁處理
+            var tempResult = new Paging<DIDListResult>();
+            tempResult.total = _tempResult.Count();
+            tempResult.rows = _tempResult.OrderBy("DID1", "asc").ToList();
+
+            var list = new List<SelectListItem>();
+            foreach (var item in tempResult.rows)
+            {
+                list.Add(new SelectListItem { Value = item.DID1, Text = item.DID1 });
+            }
+
+            var result = new SelectList(list, "Value", "Text");
+
+            return result;
         }
     }
 }

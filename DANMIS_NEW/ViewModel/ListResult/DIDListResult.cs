@@ -18,8 +18,10 @@ namespace DANMIS_NEW.ViewModel.ListResult
         public int SequenceNo { get; set; }
         public Guid ID { get; set; }
         public string DID1 { get; set; }
+        public string Brand { get; set; }
         public string WDID { get; set; }
-        public string Memo { get; set; }
+        public string User { get; set; }
+        public string Email { get; set; }        
         public string UpdateUser { get; set; }
         public DateTime UpdateTime { get; set; }
     }

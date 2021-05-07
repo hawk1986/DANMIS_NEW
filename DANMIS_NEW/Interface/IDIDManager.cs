@@ -11,6 +11,7 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using DANMIS_NEW.ViewModel;
 using DANMIS_NEW.ViewModel.ListResult;
 using DANMIS_NEW.ViewModel.SearchModel;
@@ -53,6 +54,8 @@ namespace DANMIS_NEW.Interface
         /// <param name="entity"></param>
         /// <returns></returns>
         void Update(DIDViewModel entity);
+
+        SelectList GetSelectList(string brand, string did);
     }
 }
 #pragma warning restore 1591

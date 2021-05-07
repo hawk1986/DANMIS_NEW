@@ -1,0 +1,96 @@
+@model DIDAndHeadphoneViewModel
+@{
+    var auth = UnobtrusiveSession.Session["Auth"] as IList<Auth>;
+    var action = ViewContext.RouteData.Values["action"] as string;
+    var function = auth.First(x => x.Code == "DIDAndHeadphone" + action);
+    ViewBag.Title = function.ModuleName + " / " + function.GroupName + " / " + function.SimpleName;
+}
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    </script>
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">@function.ModuleName</a>
+            </li>
+            <li>
+                @Html.ActionLink(function.GroupName, "Index")
+            </li>
+            <li class="active">
+                <strong>@function.SimpleName</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    @using (Html.BeginForm(action, "DIDAndHeadphone", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.SequenceNo)
+                        @Html.HiddenFor(model => model.ID)
+                        @Html.HiddenFor(model => model.WDID)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-2">
+                                @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.User.Name, htmlAttributes: new { @class = "control-label col-sm-1" })
+                            <div class="col-sm-2">
+                                @Html.EditorFor(model => model.User.Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.User.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.User.Email, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-3">
+                                @Html.EditorFor(model => model.User.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-2">
+                                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model._EffectiveDate, htmlAttributes: new { @class = "control-label col-sm-1" })
+                            <div class="col-sm-2">
+                                @Html.EditorFor(model => model._EffectiveDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model._EffectiveDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DID, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.DID, Model.DIDList, string.Format(Resource.PleaseSelect, Resource.DIDNumber), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
+                                @Html.ValidationMessageFor(model => model.DID, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.HeadphoneNumber, htmlAttributes: new { @class = "control-label col-sm-1" })
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(model => model.HeadphoneNumber, Model.HeadphoneList, string.Format(Resource.PleaseSelect, Resource.HeadphoneNumber), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
+                                @Html.ValidationMessageFor(model => model.HeadphoneNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>
+                                <a id="exit_btn" href="@Url.Action("Index")" class="btn btn-danger"><i class="fa fa-sign-out"></i> @Resource.Exit</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -40,13 +40,21 @@ namespace DANMIS_NEW.ViewModel
         /// </summary>
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "DID1", ResourceType = typeof(Resource))]
+        [Display(Name = "DIDNumber", ResourceType = typeof(Resource))]
         public string DID1 { get; set; }
+
+        /// <summary>
+        /// Brand
+        /// </summary>
+        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "Brand", ResourceType = typeof(Resource))]
+        public string Brand { get; set; }
 
         /// <summary>
         /// WDID
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "WDID", ResourceType = typeof(Resource))]
         public string WDID { get; set; }
@@ -54,7 +62,7 @@ namespace DANMIS_NEW.ViewModel
         /// <summary>
         /// Memo
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [StringLength(100, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "Memo", ResourceType = typeof(Resource))]
         public string Memo { get; set; }
@@ -93,8 +101,20 @@ namespace DANMIS_NEW.ViewModel
     public class DIDViewModel : DIDBaseModel
     {
         #region == View Fields ==
+        public DIDViewModel(){
+            User = new _User();
+        }
 
+        public SelectList BrandList { get; set; }
+        public _User User { get; set; }
         #endregion == View Fields ==
+    }
+
+    public class _User {
+        [Display(Name = "Name", ResourceType = typeof(Resource))]
+        public string Name { get; set; }
+        [Display(Name = "Email", ResourceType = typeof(Resource))]
+        public string Email { get; set; }
     }
 }
 #pragma warning restore 1591

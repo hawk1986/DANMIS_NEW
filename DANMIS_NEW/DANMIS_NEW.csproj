@@ -1114,6 +1114,9 @@
     <Compile Include="Controllers\DepartmentController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DIDAndHeadphoneController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\DIDController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
@@ -1133,6 +1136,9 @@
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\FunctionController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HeadphoneController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
@@ -1193,6 +1199,9 @@
     <Compile Include="Interface\IDepartmentManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IDIDAndHeadphoneManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Interface\IDIDManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
@@ -1212,6 +1221,9 @@
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IFunctionManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IHeadphoneManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IItemClassManager.cs">
@@ -1279,6 +1291,9 @@
     <Compile Include="Manager\DepartmentManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Manager\DIDAndHeadphoneManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Manager\DIDManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
@@ -1298,6 +1313,9 @@
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\FunctionManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\HeadphoneManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\ItemClassManager.cs">
@@ -1377,6 +1395,12 @@
     <Compile Include="Models\DID.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DIDAndHeadphone.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DIDAndHeadphoneRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DIDRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
@@ -1422,6 +1446,12 @@
     <Compile Include="Models\FunctionRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Headphone.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeadphoneRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IBrandRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
@@ -1435,6 +1465,9 @@
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IDepartmentRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IDIDAndHeadphoneRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IDIDRepository.cs">
@@ -1459,6 +1492,9 @@
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IFunctionRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IHeadphoneRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IItemClassRepository.cs">
@@ -1539,6 +1575,9 @@
     <Compile Include="Models\Mapper\DID.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mapper\DIDAndHeadphone.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Mapper\Factory.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
@@ -1558,6 +1597,9 @@
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\Function.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\Headphone.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\ItemClass.cs">
@@ -1741,6 +1783,9 @@
     <Compile Include="ViewModel\DepartmentViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\DIDAndHeadphoneViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\DIDViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
@@ -1769,6 +1814,9 @@
     <Compile Include="ViewModel\FunctionViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\HeadphoneViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ItemClassViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
@@ -1790,6 +1838,9 @@
     <Compile Include="ViewModel\ListResult\DepartmentListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ListResult\DIDAndHeadphoneListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ListResult\DIDListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
@@ -1809,6 +1860,9 @@
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\FunctionListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\HeadphoneListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\ItemClassListResult.cs">
@@ -1865,6 +1919,9 @@
     <Compile Include="ViewModel\SearchModel\ContactPersonSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\SearchModel\DIDAndHeadphoneSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\SearchModel\DIDSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
@@ -1878,6 +1935,9 @@
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\FloorManagerSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\HeadphoneSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\ItemClassSearchModel.cs">
@@ -2083,6 +2143,15 @@
     <Content Include="Views\FactoryItems\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
+    <None Include="Views\DIDAndHeadphone\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\DIDAndHeadphone\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\DIDAndHeadphone\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\FloorManager\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2208,6 +2277,15 @@
     <Content Include="Views\ItemClass\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
+    <None Include="Views\Headphone\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Headphone\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\Headphone\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\Items\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2249,6 +2327,7 @@
     <Folder Include="Views\Company\" />
     <Folder Include="Views\ContactPerson\" />
     <Folder Include="Views\Department\" />
+    <Folder Include="Views\DIDAndHeadphone\" />
     <Folder Include="Views\DID\" />
     <Folder Include="Views\FactoryClass\" />
     <Folder Include="Views\FactoryItems\" />
@@ -2256,6 +2335,7 @@
     <Folder Include="Views\FloorManager\" />
     <Folder Include="Views\FreeFieldSetting\" />
     <Folder Include="Views\Function\" />
+    <Folder Include="Views\Headphone\" />
     <Folder Include="Views\ItemClass\" />
     <Folder Include="Views\Items\" />
     <Folder Include="Views\Module\" />

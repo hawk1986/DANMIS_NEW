@@ -1107,8 +1107,8 @@
   <data name="MediaType" xml:space="preserve">
     <value>MediaType</value>
   </data>
-  <data name="BasicSetting" xml:space="preserve">
-    <value>基本資料</value>
+  <data name="FactoryBasicSetting" xml:space="preserve">
+    <value>廠商資料管理</value>
   </data>
   <data name="Factory" xml:space="preserve">
     <value>廠商資料維護</value>
@@ -1321,7 +1321,7 @@
     <value>類別</value>
   </data>
   <data name="DID" xml:space="preserve">
-    <value>DID</value>
+    <value>DID管理</value>
   </data>
   <data name="FactoryItems" xml:space="preserve">
     <value>廠商物品管理</value>
@@ -1382,5 +1382,29 @@
   </data>
   <data name="AddAdmin" xml:space="preserve">
     <value>Admin人員</value>
+  </data>
+  <data name="HRManagement" xml:space="preserve">
+    <value>HR作業</value>
+  </data>
+  <data name="ITManagement" xml:space="preserve">
+    <value>IT作業</value>
+  </data>
+  <data name="DIDNumber" xml:space="preserve">
+    <value>DID號碼</value>
+  </data>
+  <data name="Headphone" xml:space="preserve">
+    <value>耳機管理</value>
+  </data>
+  <data name="HeadphoneNumber" xml:space="preserve">
+    <value>耳機編號</value>
+  </data>
+  <data name="HeadphoneStatus" xml:space="preserve">
+    <value>耳機狀態</value>
+  </data>
+  <data name="DIDAndHeadphone" xml:space="preserve">
+    <value>DID&amp;耳機設定</value>
+  </data>
+  <data name="EffectiveDate" xml:space="preserve">
+    <value>生效日期</value>
   </data>
 </root>

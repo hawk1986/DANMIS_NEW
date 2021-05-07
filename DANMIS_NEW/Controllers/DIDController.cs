@@ -29,13 +29,16 @@ namespace DANMIS_NEW.Controllers
     {
         readonly ICommonManager _commonManager;
         readonly IDIDManager _dIDManager;
+        readonly IBrandManager _brandManager;
 
         public DIDController(
             ICommonManager commonManager,
-            IDIDManager dIDManager)
+            IDIDManager dIDManager,
+            IBrandManager brandManager)
         {
             _commonManager = commonManager;
             _dIDManager = dIDManager;
+            _brandManager = brandManager;
             logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -58,6 +61,8 @@ namespace DANMIS_NEW.Controllers
                     searchModel = temp;
                 }
             }
+
+            searchModel.BrandList = _brandManager.GetSelectList();
 
             return View(searchModel);
         }
@@ -307,6 +312,7 @@ namespace DANMIS_NEW.Controllers
         /// <param name="viewModel"></param>
         void setDropDownList(ref DIDViewModel viewModel)
         {
+            viewModel.BrandList = _brandManager.GetSelectList();
         }
     }
 }

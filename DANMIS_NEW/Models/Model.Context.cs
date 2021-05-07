@@ -52,5 +52,7 @@ namespace DANMIS_NEW.Models
         public virtual DbSet<FileAttached> FileAttached { get; set; }
         public virtual DbSet<Items> Items { get; set; }
         public virtual DbSet<FloorManager> FloorManager { get; set; }
+        public virtual DbSet<Headphone> Headphone { get; set; }
+        public virtual DbSet<DIDAndHeadphone> DIDAndHeadphone { get; set; }
     }
 }

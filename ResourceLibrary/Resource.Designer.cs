@@ -250,15 +250,6 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
-        ///   查詢類似 基本資料 的當地語系化字串。
-        /// </summary>
-        public static string BasicSetting {
-            get {
-                return ResourceManager.GetString("BasicSetting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查詢類似 基本設定 的當地語系化字串。
         /// </summary>
         public static string BasicSetup {
@@ -1078,11 +1069,29 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
-        ///   查詢類似 DID 的當地語系化字串。
+        ///   查詢類似 DID管理 的當地語系化字串。
         /// </summary>
         public static string DID {
             get {
                 return ResourceManager.GetString("DID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 DID&amp;耳機設定 的當地語系化字串。
+        /// </summary>
+        public static string DIDAndHeadphone {
+            get {
+                return ResourceManager.GetString("DIDAndHeadphone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 DID號碼 的當地語系化字串。
+        /// </summary>
+        public static string DIDNumber {
+            get {
+                return ResourceManager.GetString("DIDNumber", resourceCulture);
             }
         }
         
@@ -1137,6 +1146,15 @@ namespace ResourceLibrary {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 生效日期 的當地語系化字串。
+        /// </summary>
+        public static string EffectiveDate {
+            get {
+                return ResourceManager.GetString("EffectiveDate", resourceCulture);
             }
         }
         
@@ -1465,6 +1483,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 廠商資料管理 的當地語系化字串。
+        /// </summary>
+        public static string FactoryBasicSetting {
+            get {
+                return ResourceManager.GetString("FactoryBasicSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 廠商類別 的當地語系化字串。
         /// </summary>
         public static string FactoryClass {
@@ -1771,6 +1798,33 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 耳機管理 的當地語系化字串。
+        /// </summary>
+        public static string Headphone {
+            get {
+                return ResourceManager.GetString("Headphone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 耳機編號 的當地語系化字串。
+        /// </summary>
+        public static string HeadphoneNumber {
+            get {
+                return ResourceManager.GetString("HeadphoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 耳機狀態 的當地語系化字串。
+        /// </summary>
+        public static string HeadphoneStatus {
+            get {
+                return ResourceManager.GetString("HeadphoneStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 全區圖 的當地語系化字串。
         /// </summary>
         public static string HoleAreaPic {
@@ -1785,6 +1839,15 @@ namespace ResourceLibrary {
         public static string HomeManager {
             get {
                 return ResourceManager.GetString("HomeManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 HR作業 的當地語系化字串。
+        /// </summary>
+        public static string HRManagement {
+            get {
+                return ResourceManager.GetString("HRManagement", resourceCulture);
             }
         }
         
@@ -2154,6 +2217,15 @@ namespace ResourceLibrary {
         public static string ItemUnit {
             get {
                 return ResourceManager.GetString("ItemUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 IT作業 的當地語系化字串。
+        /// </summary>
+        public static string ITManagement {
+            get {
+                return ResourceManager.GetString("ITManagement", resourceCulture);
             }
         }
         

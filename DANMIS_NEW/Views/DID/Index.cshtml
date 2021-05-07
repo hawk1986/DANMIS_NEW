@@ -87,13 +87,21 @@
                 <div class="ibox-content">
                     <div class="row">
                         <form class="form-horizontal" id="search_form">
-                            @Html.LabelFor(model => model.Search, htmlAttributes: new { @class = "control-label col-sm-1" })
-                            <div class="col-sm-2 m-b-xs">
-                                @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", placeholder = Resource.Keyword } })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2">
+                                    @Html.DropDownListFor(model => model.Brand, Model.BrandList, string.Format(Resource.PleaseSelect, Resource.Brand), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
+                                    @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.LabelFor(model => model.Search, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2 m-b-xs">
+                                    @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", placeholder = Resource.Keyword } })
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="submit" id="search_form_submit" class="btn btn-primary"><i class="fa fa-search"></i> @Resource.Search</button>
+                                </div>
                             </div>
-                            <div class="col-sm-6">
-                                <button type="submit" id="search_form_submit" class="btn btn-primary"><i class="fa fa-search"></i> @Resource.Search</button>
-                            </div>
+                            
                         </form>
                     </div>
                 </div>
