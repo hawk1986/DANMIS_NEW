@@ -11,6 +11,7 @@
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 using DANMIS_NEW.ViewModel;
 using DANMIS_NEW.ViewModel.ListResult;
 using DANMIS_NEW.ViewModel.SearchModel;
@@ -55,6 +56,8 @@ namespace DANMIS_NEW.Interface
         void Update(FactoryItemsViewModel entity);
 
         void UpdateQty(FactoryItemsViewModel entity);
+
+        SelectList GetSelectList(string itemClass);
     }
 }
 #pragma warning restore 1591

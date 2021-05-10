@@ -205,6 +205,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 申請日期 的當地語系化字串。
+        /// </summary>
+        public static string ApplyDate {
+            get {
+                return ResourceManager.GetString("ApplyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 報名資料管理 的當地語系化字串。
         /// </summary>
         public static string ApplyManagement {
@@ -2149,6 +2158,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 物品 的當地語系化字串。
+        /// </summary>
+        public static string Item {
+            get {
+                return ResourceManager.GetString("Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 物品類別 的當地語系化字串。
         /// </summary>
         public static string ItemClass {
@@ -2199,6 +2217,15 @@ namespace ResourceLibrary {
         public static string Items {
             get {
                 return ResourceManager.GetString("Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 物品申請 的當地語系化字串。
+        /// </summary>
+        public static string ItemsApply {
+            get {
+                return ResourceManager.GetString("ItemsApply", resourceCulture);
             }
         }
         
@@ -3045,6 +3072,15 @@ namespace ResourceLibrary {
         public static string PublishUser {
             get {
                 return ResourceManager.GetString("PublishUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 數量 的當地語系化字串。
+        /// </summary>
+        public static string Qty {
+            get {
+                return ResourceManager.GetString("Qty", resourceCulture);
             }
         }
         

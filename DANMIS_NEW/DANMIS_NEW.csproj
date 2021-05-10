@@ -1145,6 +1145,9 @@
     <Compile Include="Controllers\ItemClassController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ItemsApplyController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ItemsController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
@@ -1227,6 +1230,9 @@
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IItemClassManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IItemsApplyManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IItemsManager.cs">
@@ -1319,6 +1325,9 @@
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\ItemClassManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\ItemsApplyManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
     <Compile Include="Manager\ItemsManager.cs">
@@ -1500,6 +1509,9 @@
     <Compile Include="Models\IItemClassRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IItemsApplyRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IItemsRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
@@ -1534,6 +1546,12 @@
     </Compile>
     <Compile Include="Models\Items.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemsApply.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemsApplyRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemsRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
@@ -1606,6 +1624,9 @@
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\Items.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\ItemsApply.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\Mapper.cs">
@@ -1820,6 +1841,9 @@
     <Compile Include="ViewModel\ItemClassViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ItemsApplyViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\ItemsViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
@@ -1866,6 +1890,9 @@
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\ItemClassListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\ItemsApplyListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\ItemsListResult.cs">
@@ -1941,6 +1968,9 @@
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\ItemClassSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\ItemsApplySearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\ItemsSearchModel.cs">
@@ -2286,6 +2316,15 @@
     <None Include="Views\Headphone\Index.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
+    <None Include="Views\ItemsApply\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\ItemsApply\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\ItemsApply\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\Items\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2337,6 +2376,7 @@
     <Folder Include="Views\Function\" />
     <Folder Include="Views\Headphone\" />
     <Folder Include="Views\ItemClass\" />
+    <Folder Include="Views\ItemsApply\" />
     <Folder Include="Views\Items\" />
     <Folder Include="Views\Module\" />
     <Folder Include="Views\OperateRecord\" />

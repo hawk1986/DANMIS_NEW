@@ -1,0 +1,187 @@
+@model ItemsApplySearchModel
+@{
+    var auth = UnobtrusiveSession.Session["Auth"] as IList<Auth>;
+    var function = auth.First(x => x.Code == "ItemsApplyIndex");
+    var details = auth.Any(x => x.Code == "ItemsApplyDetails");
+    var create = auth.Any(x => x.Code == "ItemsApplyCreate");
+    var edit = auth.Any(x => x.Code == "ItemsApplyEdit");
+    var delete = auth.Any(x => x.Code == "ItemsApplyDelete");
+    ViewBag.Title = function.ModuleName + " / " + function.GroupName + " / " + function.SimpleName;
+}
+@section scripts {
+    @Scripts.Render("~/bundles/table")
+    <script src="~/Scripts/table-init.js"></script>
+    <script>
+		//formatter
+        @if (Model.Formatter != null)
+        {
+            foreach (var fmt in Model.Formatter)
+            {
+                @Html.Raw("function ")
+                @Html.Raw(fmt.Key)
+                @Html.Raw("(value,row,index){if(null!==value){switch(value){")
+                foreach (var item in fmt.Value)
+                {
+                    @Html.Raw(string.Format("case '{0}': return '{1}';", item.Value, item.Text))
+                }
+                @Html.Raw("}}}")
+                @System.Environment.NewLine
+            }
+        }
+        // set column function
+        function setColumn() {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SetColumn", "Common")',
+                data: { functionName: 'itemsApply', data: this.columns[0] },
+                dataType: 'json',
+                success: function (data) { },
+                error: function (data, error) { }
+            });
+        }
+
+        // Init
+        $(function () {
+            // init page event
+            var initOptions = {
+                detailsUrl: '@Url.Action("Details")',
+                editUrl: '@Url.Action("Edit")',
+                deleteUrl: '@Url.Action("Delete")',
+                pagingUrl: '@Url.Action("Paging")',
+                getColumnUrl: '@Url.Action("GetColumn", "Common")',
+                functionName: 'itemsApply',
+                detailsBtn: '@details' == 'True',
+                editBtn: '@edit' == 'True',
+                deleteBtn: '@delete' == 'True',
+                confirmMessage: '@string.Format(@Resource.ExecutionConfirm, @Resource.Delete, @Resource.ItemsApply)',
+                successMessage: '@string.Format(@Resource.ExecutionCompleted, @Resource.Delete, @Resource.ItemsApply)',
+                errorMessage: '@string.Format(@Resource.ExecutionFailed, @Resource.Delete, @Resource.ItemsApply)',
+                systemErrorMessage: '@Resource.SystemError',
+                onReorderColumn: setColumn,
+                onColumnSwitch: setColumn
+            };
+            // init page event
+            InitBasicEvent(initOptions);
+        });
+
+        // table row selected event 控制 已審核通過則不能再修改
+        $('#eventsTable').on('load-success.bs.table', function () {
+            $('#eventsTable .bs-checkbox').find("input[name='btSelectItem']").each(function () {
+                var status = $(this).closest("tr").find("td:eq(5)").text();
+                if (status === "已審核通過") {
+                    $(this).prop("disabled", true);
+                }
+            });
+        });
+
+        $('#ItemClass.selectpicker').change(function () {
+            var itemClass = $('#ItemClass.selectpicker').val();
+            $.ajax({
+                cache: false,
+                type: 'POST',
+                url: '@Url.Action("GetSelectList", "FactoryItems")',
+                data: JSON.stringify({ 'itemClass': itemClass }),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (result) {
+                    if (result.result) {
+                        var select = $('#ItemID');
+                        select = '<option value="">@string.Format(Resource.PleaseSelect, Resource.Item)</option>';
+                        result.items.forEach(x => select += '<option value="' + x.Value + '">' + x.Text + '</option>');
+                        $('#ItemID.selectpicker').html(select).selectpicker('refresh');
+                    }
+                },
+                error: function () {
+                    //alert(3);
+                }
+            });
+        });
+        $('#ItemID.selectpicker').change(function () {
+            $('#search_form_submit').click();
+        });
+
+    </script>
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">@function.ModuleName</a>
+            </li>
+            <li>
+                @Html.ActionLink(function.GroupName, "Index")
+            </li>
+            <li class="active">
+                <strong>@function.SimpleName</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="row">
+                        <form class="form-horizontal" id="search_form">                            
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ItemID, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2">
+                                    @Html.DropDownListFor(model => model.ItemClass, Model.ItemClassList, string.Format(Resource.PleaseSelect, Resource.ItemClass), new { @class = "form-control selectpicker" })
+                                    @Html.ValidationMessageFor(model => model.ItemClass, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-3">
+                                    @Html.DropDownListFor(model => model.ItemID, Model.ItemList, string.Format(Resource.PleaseSelect, Resource.Item), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
+                                    @Html.ValidationMessageFor(model => model.ItemID, "", new { @class = "text-danger" })
+                                </div>
+                                @Html.LabelFor(model => model.Search, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                <div class="col-sm-2 m-b-xs">
+                                    @Html.EditorFor(model => model.Search, new { htmlAttributes = new { @class = "form-control", placeholder = Resource.Keyword } })
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="submit" id="search_form_submit" class="btn btn-primary"><i class="fa fa-search"></i> @Resource.Search</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div id="toolbar">
+                        @if (create)
+                        {
+                            <a href="@Url.Action("Create")" id="create" class="btn btn-primary">
+                                <i class="fa fa-plus" aria-hidden="true"></i> @Resource.Create
+                            </a>
+                        }
+                        @if (details)
+                        {
+                            <button id="details_btn" class="btn btn-info disabled">
+                                <i class="fa fa-eye" aria-hidden="true"></i> @Resource.Details
+                            </button>
+                        }
+                        @if (edit)
+                        {
+                            <button id="edit_btn" class="btn btn-success disabled">
+                                <i class="fa fa-pencil" aria-hidden="true"></i> @Resource.Edit
+                            </button>
+                        }
+                        @if (delete)
+                        {
+                            <button id="delete_btn" class="btn btn-danger disabled">
+                                <i class="fa fa-times" aria-hidden="true"></i> @Resource.Delete
+                            </button>
+                        }
+                    </div>
+                    <table id="eventsTable" data-toolbar="#toolbar" data-sort-name="SequenceNo" data-row-style="rowStyle"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

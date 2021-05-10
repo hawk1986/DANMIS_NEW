@@ -367,6 +367,39 @@ namespace DANMIS_NEW.Controllers
             return result;
         }
 
+        // 計算平均單價
+        [HttpPost]
+        public ActionResult GetSelectList(string itemClass)
+        {
+            // 預設失敗
+            var result = Json(new { result = false }, JsonRequestBehavior.AllowGet);
+
+            // 取得所有此類別物品
+            var items = _factoryItemsManager.GetSelectList(itemClass);
+
+            result = Json(new { result = true, items = items }, JsonRequestBehavior.AllowGet);
+
+            return result;
+        }
+
+        // 抓物品圖片
+        [HttpPost]
+        public ActionResult GetItemPic(string itemID)
+        {
+            // 預設失敗
+            var result = Json(new { result = false }, JsonRequestBehavior.AllowGet);
+
+            // 取得所有此類別物品
+            if (!string.IsNullOrEmpty(itemID))
+            {
+                var itempics = _factoryItemsManager.GetByID(new Guid(itemID)).AttachedFiles;
+                var picPath = itempics.FirstOrDefault().FilePath;
+                result = Json(new { result = true, picPath = picPath }, JsonRequestBehavior.AllowGet);
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// 設定頁面所需要的下拉選單資料
         /// </summary>

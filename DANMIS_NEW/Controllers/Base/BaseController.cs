@@ -107,6 +107,19 @@ namespace DANMIS_NEW.Controllers
         }
 
         /// <summary>
+        /// 取得登入者WDID
+        /// </summary>
+        public string Brand
+        {
+            get
+            {
+                if (_user == null)
+                    _user = getUser();
+                return _user?.BrandCode ?? string.Empty;
+            }
+        }
+
+        /// <summary>
         /// 取得已登入 User 資料
         /// </summary>
         /// <returns></returns>

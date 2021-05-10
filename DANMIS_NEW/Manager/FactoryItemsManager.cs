@@ -19,6 +19,7 @@ using DANMIS_NEW.ViewModel;
 using DANMIS_NEW.ViewModel.ListResult;
 using DANMIS_NEW.ViewModel.SearchModel;
 using ResourceLibrary;
+using System.Web.Mvc;
 
 namespace DANMIS_NEW.Manager
 {
@@ -287,6 +288,53 @@ namespace DANMIS_NEW.Manager
                     throw;
                 }
             }
+        }
+
+        public SelectList GetSelectList(string itemClass)
+        {
+            // 預設集合
+            var temp = _factoryItemsRepository.GetAll();
+
+            // 將 DB 資料轉換為列表頁呈現資料
+            var _tempResult = from x in temp
+                              select new FactoryItemsListResult
+                              {
+                                  SequenceNo = x.SequenceNo,
+                                  ID = x.ID,
+                                  ItemName = x.ItemName,
+                                  ItemSpecification = x.ItemSpecification,
+                                  ItemClass = x.ItemClass,
+                                  ItemUnit = x.ItemUnit,
+                                  ItemPrice = x.ItemPrice,
+                                  ItemQty = x.ItemQty,
+                                  Factory = x.Factory,
+                                  IsInventoryMgmt = x.IsInventoryMgmt,
+                                  IsForStationery = x.IsForStationery,
+                                  IsForColleague = x.IsForColleague,
+                                  IsAttached = x.IsAttached,
+                                  UpdateUser = x.UpdateUser,
+                                  UpdateTime = x.UpdateTime,
+                              };
+
+            if (!string.IsNullOrEmpty(itemClass))
+                _tempResult = _tempResult.Where(x =>
+                    x.ItemClass == itemClass ||
+                    false);
+
+            // 進行分頁處理
+            var tempResult = new Paging<FactoryItemsListResult>();
+            tempResult.total = _tempResult.Count();
+            tempResult.rows = _tempResult.OrderBy("ItemName", "asc").ToList();
+
+            var list = new List<SelectListItem>();
+            foreach (var item in tempResult.rows)
+            {
+                list.Add(new SelectListItem { Value = item.ID.ToString(), Text = item.ItemName });
+            }
+
+            var result = new SelectList(list, "Value", "Text");
+
+            return result;
         }
     }
 }

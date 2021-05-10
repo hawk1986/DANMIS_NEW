@@ -17,7 +17,7 @@ using System.Web.Mvc;
 namespace DANMIS_NEW.ViewModel.SearchModel
 {
     public class FactoryItemsSearchModel : SearchModel
-    {
+    {        
         [Display(Name = "Factory_Name", ResourceType = typeof(Resource))]
         public string Factory { get; set; }
         public SelectList _Factory { get; set; }

@@ -158,6 +158,18 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "UpdateTime", title = Resource.UpdateTime, formatter = "JsonDateFormatter" },
                         };
                         break;
+                    case "itemsApply":
+                        result = new List<ListOption>
+                        {
+                            new ListOption{ checkbox = true, sortable = false, visible = true },
+                            new ListOption{ field = "ItemName", title = Resource.ItemName },
+                            new ListOption{ field = "ItemSpecification", title = Resource.ItemSpecification },
+                            new ListOption{ field = "Qty", title = Resource.Qty },
+                            new ListOption{ field = "Memo", title = Resource.Memo },
+                            new ListOption{ field = "Status", title = Resource.State },
+                            new ListOption{ field = "CreateTime", title = Resource.ApplyDate, formatter = "JsonDateFormatter" },
+                        };
+                        break;
                     case "itemClass":
                         result = new List<ListOption>
                         {

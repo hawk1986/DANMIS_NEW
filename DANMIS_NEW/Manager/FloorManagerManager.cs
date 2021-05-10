@@ -107,7 +107,7 @@ namespace DANMIS_NEW.Manager
         /// <returns></returns>
         public Paging<FloorManagerListResult> Paging(FloorManagerSearchModel searchModel)
         {
-            var users = _userRepository.GetAll().Where(x => x.EmpQuitDate == null && x.WDID != null).ToList();
+            var users = _userRepository.GetAll().Where(x => x.EmpQuitDate == null && x.WDID != null);
 
             // 預設集合
             var temp = _floorManagerRepository.GetAll();
@@ -125,7 +125,7 @@ namespace DANMIS_NEW.Manager
                                  ID = x.ID,
                                  WDID = x.WDID,
                                  Brand = x.Brand,
-                                 Name = string.Empty,
+                                 Name = string.Concat(users.FirstOrDefault(y => x.WDID == y.WDID).EmpLocName, "(", users.FirstOrDefault(y => y.WDID == x.WDID).EmpEngName, ")") ?? string.Empty,
                                  IsEnable = x.IsEnable,
                                  UpdateUser = x.UpdateUser,
                                  UpdateTime = x.UpdateTime,
@@ -136,9 +136,7 @@ namespace DANMIS_NEW.Manager
             {
                 var search = searchModel.Search.ToLower();
                 tempResult = tempResult.Where(x =>
-                    x.WDID.Contains(search) ||
-                    x.Brand.Contains(search) ||
-                    x.UpdateUser.Contains(search) ||
+                    x.Name.Contains(search) ||                    
                     false);
             }
 
@@ -152,9 +150,7 @@ namespace DANMIS_NEW.Manager
                 .ToList();
 
             foreach (var item in result.rows)
-            {
-                var user = users.FirstOrDefault(x => x.WDID == item.WDID) ?? new User();
-                item.Name = string.Concat(user.EmpLocName, "(", user.EmpEngName, ")");
+            {                
                 item.Brand = string.Join(", " , JsonConvert.DeserializeObject<List<string>>(item.Brand));
             } 
 
