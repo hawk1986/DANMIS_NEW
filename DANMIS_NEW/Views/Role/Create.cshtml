@@ -104,8 +104,8 @@
         });
 
         function checkAll(checkAll, check, target) {
-            if ($(checkAll).size() > 0) {
-                var temp = $(checkAll).size() == $(check).size();
+            if ($(checkAll).length > 0) {
+                var temp = $(checkAll).length == $(check).length;
                 $(target).prop('checked', temp);
             }
         }

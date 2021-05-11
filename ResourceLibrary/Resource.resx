@@ -1342,7 +1342,7 @@
     <value>單價</value>
   </data>
   <data name="ItemQty" xml:space="preserve">
-    <value>庫存量</value>
+    <value>廠商進貨量</value>
   </data>
   <data name="ItemSpecification" xml:space="preserve">
     <value>規格</value>
@@ -1418,5 +1418,44 @@
   </data>
   <data name="Qty" xml:space="preserve">
     <value>數量</value>
+  </data>
+  <data name="AveragePrice" xml:space="preserve">
+    <value>平均單價</value>
+  </data>
+  <data name="ItemRequisitionQty" xml:space="preserve">
+    <value>已領用數量</value>
+  </data>
+  <data name="StockQty" xml:space="preserve">
+    <value>庫存量</value>
+  </data>
+  <data name="ApplyBrand" xml:space="preserve">
+    <value>申請品牌</value>
+  </data>
+  <data name="ApplyItemID" xml:space="preserve">
+    <value>申請物品ID</value>
+  </data>
+  <data name="ApplyItemName" xml:space="preserve">
+    <value>申請物品</value>
+  </data>
+  <data name="ApplyName" xml:space="preserve">
+    <value>申請人</value>
+  </data>
+  <data name="ApplyQty" xml:space="preserve">
+    <value>申請數量</value>
+  </data>
+  <data name="ApplyWDID" xml:space="preserve">
+    <value>申請人帳號</value>
+  </data>
+  <data name="FloorManagerConfirm" xml:space="preserve">
+    <value>樓管確認申請</value>
+  </data>
+  <data name="AgentName" xml:space="preserve">
+    <value>代申請人</value>
+  </data>
+  <data name="AgnetWDID" xml:space="preserve">
+    <value>代申請人WDID</value>
+  </data>
+  <data name="ConfirmID" xml:space="preserve">
+    <value>樓管確認ID</value>
   </data>
 </root>

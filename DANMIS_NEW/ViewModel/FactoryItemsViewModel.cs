@@ -71,7 +71,7 @@ namespace DANMIS_NEW.ViewModel
         /// ItemPrice
         /// </summary>
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "ItemPrice", ResourceType = typeof(Resource))]
+        [Display(Name = "AveragePrice", ResourceType = typeof(Resource))]
         public double ItemPrice { get; set; }
 
         /// <summary>
@@ -80,6 +80,13 @@ namespace DANMIS_NEW.ViewModel
         [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "ItemQty", ResourceType = typeof(Resource))]
         public int ItemQty { get; set; }
+
+        /// <summary>
+        /// ItemRequisitionQty
+        /// </summary>
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "ItemRequisitionQty", ResourceType = typeof(Resource))]
+        public int ItemRequisitionQty { get; set; }
 
         /// <summary>
         /// Factory
@@ -161,6 +168,9 @@ namespace DANMIS_NEW.ViewModel
 
         [Display(Name = "Items", ResourceType = typeof(Resource))]
         public ItemsViewModel Items { get; set; }
+
+        [Display(Name = "StockQty", ResourceType = typeof(Resource))]
+        public int StockQty { get; set; }
         #endregion == View Fields ==
     }
 }

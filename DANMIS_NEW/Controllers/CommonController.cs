@@ -105,6 +105,16 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "Brand", title = Resource.Brand },
                         };
                         break;
+                    case "floorManagerConfirm":
+                        result = new List<ListOption>
+                        {
+                            new ListOption{ checkbox = true, sortable = false, visible = true },
+                            new ListOption{ field = "ApplyName", title = Resource.ApplyName },
+                            new ListOption{ field = "ApplyItemName", title = Resource.ApplyItemName },
+                            new ListOption{ field = "ApplyQty", title = Resource.ApplyQty },
+                            new ListOption{ field = "AgentName", title = Resource.AgentName },
+                        };
+                        break;
                     case "freeFieldSetting":
                         result = new List<ListOption>
                         {

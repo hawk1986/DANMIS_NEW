@@ -37,6 +37,7 @@ namespace DANMIS_NEW.Models
         public System.DateTime UpdateTime { get; set; }
         public bool IsInventoryMgmt { get; set; }
         public bool IsAttached { get; set; }
+        public int ItemRequisitionQty { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Items> Items { get; set; }

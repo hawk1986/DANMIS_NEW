@@ -117,6 +117,7 @@
           <Property Name="ItemUnit" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ItemPrice" Type="float" Nullable="false" />
           <Property Name="ItemQty" Type="int" Nullable="false" />
+          <Property Name="ItemRequisitionQty" Type="int" Nullable="false" />
           <Property Name="Factory" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsInventoryMgmt" Type="bit" Nullable="false" />
           <Property Name="IsForStationery" Type="bit" Nullable="false" />
@@ -136,6 +137,23 @@
           <Property Name="WDID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Brand" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FloorManagerConfirm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplyWDID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AgentWDID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplyBrand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplyItemID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplyQty" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -180,7 +198,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="SequenceNo" Type="int" Nullable="false" />
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ItemID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Qty" Type="int" Nullable="false" />
@@ -188,6 +206,7 @@
           <Property Name="ApplyBrand" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Memo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConfirmID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -786,6 +805,7 @@
           <EntitySet Name="FactoryClass" EntityType="Self.FactoryClass" Schema="dan" store:Type="Tables" />
           <EntitySet Name="FactoryItems" EntityType="Self.FactoryItems" Schema="dan" store:Type="Tables" />
           <EntitySet Name="FloorManager" EntityType="Self.FloorManager" Schema="dan" store:Type="Tables" />
+          <EntitySet Name="FloorManagerConfirm" EntityType="Self.FloorManagerConfirm" Schema="dan" store:Type="Tables" />
           <EntitySet Name="ItemClass" EntityType="Self.ItemClass" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dan" store:Type="Tables" />
           <EntitySet Name="ItemsApply" EntityType="Self.ItemsApply" Schema="dan" store:Type="Tables" />
@@ -965,6 +985,7 @@
           <EntitySet Name="FloorManager" EntityType="DbModel.FloorManager" />
           <EntitySet Name="Headphone" EntityType="DbModel.Headphone" />
           <EntitySet Name="DIDAndHeadphone" EntityType="DbModel.DIDAndHeadphone" />
+          <EntitySet Name="FloorManagerConfirm" EntityType="DbModel.FloorManagerConfirm" />
           <EntitySet Name="ItemsApply" EntityType="DbModel.ItemsApply" />
         </EntityContainer>
         <EntityType Name="Department">
@@ -1550,6 +1571,7 @@
           <Property Name="IsInventoryMgmt" Type="Boolean" Nullable="false" />
           <Property Name="IsAttached" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Items" Relationship="DbModel.FK_Items_FactoryItems" FromRole="FactoryItems" ToRole="Items" />
+          <Property Name="ItemRequisitionQty" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemClass">
           <Key>
@@ -1683,22 +1705,40 @@
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="FloorManagerConfirm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ApplyWDID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AgentWDID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyBrand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplyItemID" Type="Guid" Nullable="false" />
+          <Property Name="ApplyQty" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <EntityType Name="ItemsApply">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="SequenceNo" Type="Int32" Nullable="false" />
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="ItemID" Type="Guid" Nullable="false" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <Property Name="ApplyWDID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ApplyBrand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Memo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmID" Type="Guid" Nullable="false" />
           <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Memo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2158,6 +2198,7 @@
           <EntitySetMapping Name="FactoryItems">
             <EntityTypeMapping TypeName="DbModel.FactoryItems">
               <MappingFragment StoreEntitySet="FactoryItems">
+                <ScalarProperty Name="ItemRequisitionQty" ColumnName="ItemRequisitionQty" />
                 <ScalarProperty Name="IsAttached" ColumnName="IsAttached" />
                 <ScalarProperty Name="IsInventoryMgmt" ColumnName="IsInventoryMgmt" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
@@ -2286,15 +2327,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ItemsApply">
-            <EntityTypeMapping TypeName="DbModel.ItemsApply">
-              <MappingFragment StoreEntitySet="ItemsApply">
-                <ScalarProperty Name="Memo" ColumnName="Memo" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+          <EntitySetMapping Name="FloorManagerConfirm">
+            <EntityTypeMapping TypeName="DbModel.FloorManagerConfirm">
+              <MappingFragment StoreEntitySet="FloorManagerConfirm">
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ApplyQty" ColumnName="ApplyQty" />
+                <ScalarProperty Name="ApplyItemID" ColumnName="ApplyItemID" />
+                <ScalarProperty Name="ApplyBrand" ColumnName="ApplyBrand" />
+                <ScalarProperty Name="AgentWDID" ColumnName="AgentWDID" />
+                <ScalarProperty Name="ApplyWDID" ColumnName="ApplyWDID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsApply">
+            <EntityTypeMapping TypeName="DbModel.ItemsApply">
+              <MappingFragment StoreEntitySet="ItemsApply">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="ConfirmID" ColumnName="ConfirmID" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ApplyBrand" ColumnName="ApplyBrand" />
                 <ScalarProperty Name="ApplyWDID" ColumnName="ApplyWDID" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />

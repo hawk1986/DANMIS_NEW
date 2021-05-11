@@ -26,11 +26,13 @@ namespace DANMIS_NEW.Manager
     {
         readonly IItemsApplyRepository _itemsApplyRepository;
         readonly IFactoryItemsRepository _factoryItemsRepository;
-
-        public ItemsApplyManager(IItemsApplyRepository itemsApplyRepository, IFactoryItemsRepository factoryItemsRepository)
+        readonly IFloorManagerConfirmRepository _floorManagerConfirmRepository;
+        public ItemsApplyManager(IItemsApplyRepository itemsApplyRepository, IFactoryItemsRepository factoryItemsRepository,
+            IFloorManagerConfirmRepository floorManagerConfirmRepository)
         {
             _itemsApplyRepository = itemsApplyRepository;
             _factoryItemsRepository = factoryItemsRepository;
+            _floorManagerConfirmRepository = floorManagerConfirmRepository;
         }
 
         /// <summary>
@@ -46,7 +48,27 @@ namespace DANMIS_NEW.Manager
             {
                 try
                 {
+                    // 新增一筆紀錄到樓管確認
+                    var floorManagerConfirm = new FloorManagerConfirm() {
+                        ID = Guid.NewGuid(),
+                        ApplyWDID = item.ApplyWDID,
+                        ApplyBrand = item.ApplyBrand,
+                        AgentWDID = string.Empty,
+                        ApplyItemID = item.ItemID,
+                        ApplyQty = item.Qty,
+                        Status = "申請中",
+                        CreateTime = item.CreateTime,
+                        CreateUser = item.CreateUser,
+                        UpdateTime = item.UpdateTime,
+                        UpdateUser = item.UpdateUser
+                    };
+
+                    _floorManagerConfirmRepository.Create(floorManagerConfirm);
+
+                    item.ConfirmID = floorManagerConfirm.ID;
+
                     _itemsApplyRepository.Create(item);
+
                     transaction.Commit();
                 }
                 catch
@@ -110,7 +132,7 @@ namespace DANMIS_NEW.Manager
             var factoryItems = _factoryItemsRepository.GetAll();
 
             // 預設集合(根據等入者取該使用者申請的物品)
-            var temp = _itemsApplyRepository.GetAll().Where(x => !string.IsNullOrEmpty(searchModel.ApplyWDID) ? x.ApplyWDID == searchModel.ApplyWDID : true);
+            var temp = _itemsApplyRepository.GetAll().Where(x => searchModel.ApplyWDID != "99999999" ? x.ApplyWDID == searchModel.ApplyWDID : true);
             
             // 將 DB 資料轉換為列表頁呈現資料
             var tempResult = from x in temp
@@ -152,7 +174,7 @@ namespace DANMIS_NEW.Manager
             result.total = tempResult.Count();
             result.rows = tempResult
                 .OrderBy(x => x.Status)
-                .ThenBy(x => x.CreateTime)
+                .ThenByDescending(x => x.CreateTime)
                 .ThenBy(searchModel.Sort, searchModel.Order)
                 .Skip(searchModel.Offset)
                 .Take(searchModel.Limit)
@@ -171,6 +193,21 @@ namespace DANMIS_NEW.Manager
             {
                 try
                 {
+
+                    // 更新紀錄到樓管確認
+                    var floorManagerConfirm = _floorManagerConfirmRepository.GetByID(entity.ConfirmID);
+
+                    floorManagerConfirm.ApplyWDID = entity.ApplyWDID;
+                    floorManagerConfirm.ApplyBrand = entity.ApplyBrand;
+                    floorManagerConfirm.AgentWDID = string.Empty;
+                    floorManagerConfirm.ApplyItemID = entity.ItemID;
+                    floorManagerConfirm.ApplyQty = entity.Qty;
+                    floorManagerConfirm.Status = "申請中";
+                    floorManagerConfirm.UpdateTime = entity.UpdateTime;
+                    floorManagerConfirm.UpdateUser = entity.UpdateUser;
+
+                    _floorManagerConfirmRepository.Update(floorManagerConfirm);
+
                     var source = _itemsApplyRepository.GetByID(entity.ID);
                     source.ItemID = entity.ItemID;
                     source.Qty = entity.Qty;

@@ -82,6 +82,13 @@ namespace DANMIS_NEW.ViewModel
         public string Memo { get; set; }
 
         /// <summary>
+        /// ConfirmID
+        /// </summary>
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "ConfirmID", ResourceType = typeof(Resource))]
+        public Guid ConfirmID { get; set; }
+
+        /// <summary>
         /// CreateUser
         /// </summary>
         [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]

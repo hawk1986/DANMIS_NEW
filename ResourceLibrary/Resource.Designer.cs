@@ -205,6 +205,33 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 代申請人 的當地語系化字串。
+        /// </summary>
+        public static string AgentName {
+            get {
+                return ResourceManager.GetString("AgentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 代申請人WDID 的當地語系化字串。
+        /// </summary>
+        public static string AgnetWDID {
+            get {
+                return ResourceManager.GetString("AgnetWDID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 申請品牌 的當地語系化字串。
+        /// </summary>
+        public static string ApplyBrand {
+            get {
+                return ResourceManager.GetString("ApplyBrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 申請日期 的當地語系化字串。
         /// </summary>
         public static string ApplyDate {
@@ -214,11 +241,56 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 申請物品ID 的當地語系化字串。
+        /// </summary>
+        public static string ApplyItemID {
+            get {
+                return ResourceManager.GetString("ApplyItemID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 申請物品 的當地語系化字串。
+        /// </summary>
+        public static string ApplyItemName {
+            get {
+                return ResourceManager.GetString("ApplyItemName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 報名資料管理 的當地語系化字串。
         /// </summary>
         public static string ApplyManagement {
             get {
                 return ResourceManager.GetString("ApplyManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 申請人 的當地語系化字串。
+        /// </summary>
+        public static string ApplyName {
+            get {
+                return ResourceManager.GetString("ApplyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 申請數量 的當地語系化字串。
+        /// </summary>
+        public static string ApplyQty {
+            get {
+                return ResourceManager.GetString("ApplyQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 申請人帳號 的當地語系化字串。
+        /// </summary>
+        public static string ApplyWDID {
+            get {
+                return ResourceManager.GetString("ApplyWDID", resourceCulture);
             }
         }
         
@@ -237,6 +309,15 @@ namespace ResourceLibrary {
         public static string AuthManagement {
             get {
                 return ResourceManager.GetString("AuthManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 平均單價 的當地語系化字串。
+        /// </summary>
+        public static string AveragePrice {
+            get {
+                return ResourceManager.GetString("AveragePrice", resourceCulture);
             }
         }
         
@@ -750,6 +831,15 @@ namespace ResourceLibrary {
         public static string ConfigValue {
             get {
                 return ResourceManager.GetString("ConfigValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 樓管確認ID 的當地語系化字串。
+        /// </summary>
+        public static string ConfirmID {
+            get {
+                return ResourceManager.GetString("ConfirmID", resourceCulture);
             }
         }
         
@@ -1618,6 +1708,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 樓管確認申請 的當地語系化字串。
+        /// </summary>
+        public static string FloorManagerConfirm {
+            get {
+                return ResourceManager.GetString("FloorManagerConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 樓層位置 的當地語系化字串。
         /// </summary>
         public static string FloorNo {
@@ -2203,11 +2302,20 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
-        ///   查詢類似 庫存量 的當地語系化字串。
+        ///   查詢類似 廠商進貨量 的當地語系化字串。
         /// </summary>
         public static string ItemQty {
             get {
                 return ResourceManager.GetString("ItemQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 已領用數量 的當地語系化字串。
+        /// </summary>
+        public static string ItemRequisitionQty {
+            get {
+                return ResourceManager.GetString("ItemRequisitionQty", resourceCulture);
             }
         }
         
@@ -3432,6 +3540,15 @@ namespace ResourceLibrary {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 庫存量 的當地語系化字串。
+        /// </summary>
+        public static string StockQty {
+            get {
+                return ResourceManager.GetString("StockQty", resourceCulture);
             }
         }
         

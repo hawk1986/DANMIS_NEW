@@ -110,6 +110,8 @@ namespace DANMIS_NEW.Manager
             var item = _factoryItemsRepository.GetByID(id);
             var result = (FactoryItemsViewModel)item;
 
+            result.StockQty = result.ItemQty - result.ItemRequisitionQty;
+
             //判斷是否有附件檔案            
             if (item.IsAttached)
             {
@@ -145,6 +147,7 @@ namespace DANMIS_NEW.Manager
                                  ItemUnit = x.ItemUnit,
                                  ItemPrice = x.ItemPrice,
                                  ItemQty = x.ItemQty,
+                                 ItemRequisitionQty = x.ItemRequisitionQty,
                                  Factory = x.Factory,
                                  IsInventoryMgmt = x.IsInventoryMgmt,
                                  IsForStationery = x.IsForStationery,
@@ -213,6 +216,7 @@ namespace DANMIS_NEW.Manager
                     source.ItemUnit = entity.ItemUnit ?? string.Empty;
                     source.ItemPrice = entity.ItemPrice;
                     source.ItemQty = entity.ItemQty;
+                    source.ItemRequisitionQty = entity.ItemRequisitionQty;
                     source.Factory = entity.Factory ?? string.Empty;
                     source.IsInventoryMgmt = entity.IsInventoryMgmt;
                     source.IsForStationery = entity.IsForStationery;
@@ -271,6 +275,7 @@ namespace DANMIS_NEW.Manager
                     source.ItemUnit = entity.ItemUnit ?? string.Empty;
                     source.ItemPrice = entity.ItemPrice;
                     source.ItemQty = entity.ItemQty;
+                    source.ItemRequisitionQty = entity.ItemRequisitionQty;
                     source.Factory = entity.Factory ?? string.Empty;
                     source.IsInventoryMgmt = entity.IsInventoryMgmt;
                     source.IsForStationery = entity.IsForStationery;
