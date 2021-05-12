@@ -27,12 +27,15 @@ namespace DANMIS_NEW.Manager
         readonly IItemsApplyRepository _itemsApplyRepository;
         readonly IFactoryItemsRepository _factoryItemsRepository;
         readonly IFloorManagerConfirmRepository _floorManagerConfirmRepository;
+        readonly IUserRepository _userRepository;
+
         public ItemsApplyManager(IItemsApplyRepository itemsApplyRepository, IFactoryItemsRepository factoryItemsRepository,
-            IFloorManagerConfirmRepository floorManagerConfirmRepository)
+            IFloorManagerConfirmRepository floorManagerConfirmRepository, IUserRepository userRepository)
         {
             _itemsApplyRepository = itemsApplyRepository;
             _factoryItemsRepository = factoryItemsRepository;
             _floorManagerConfirmRepository = floorManagerConfirmRepository;
+            _userRepository = userRepository;
         }
 
         /// <summary>
@@ -130,6 +133,7 @@ namespace DANMIS_NEW.Manager
         public Paging<ItemsApplyListResult> Paging(ItemsApplySearchModel searchModel)
         {
             var factoryItems = _factoryItemsRepository.GetAll();
+            var user = _userRepository.GetAll();
 
             // 預設集合(根據等入者取該使用者申請的物品)
             var temp = _itemsApplyRepository.GetAll().Where(x => searchModel.ApplyWDID != "99999999" ? x.ApplyWDID == searchModel.ApplyWDID : true);
@@ -148,6 +152,7 @@ namespace DANMIS_NEW.Manager
                                  ApplyWDID = x.ApplyWDID,
                                  ApplyBrand = x.ApplyBrand,
                                  Status = x.Status,
+                                 ApplyName = string.Concat(user.FirstOrDefault(y => y.WDID == x.ApplyWDID).EmpLocName, "(", user.FirstOrDefault(y => y.WDID == x.ApplyWDID).EmpEngName, ")"),
                                  CreateUser = x.CreateUser,
                                  CreateTime = x.CreateTime,
                              };

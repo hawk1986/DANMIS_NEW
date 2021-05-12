@@ -1094,6 +1094,12 @@
     <Compile Include="Controllers\BrandController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BrandItemsController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BrandItemsMgmtController.cs">
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CandidateController.cs">
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
@@ -1186,6 +1192,12 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IBrandItemsManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IBrandItemsMgmtManager.cs">
+      <DependentUpon>IManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Interface\IBrandManager.cs">
       <DependentUpon>IManager.tt</DependentUpon>
@@ -1284,6 +1296,12 @@
     <Compile Include="IoC\WindsorDependencyResolver.cs" />
     <Compile Include="IoC\WindsorDependencyScope.cs" />
     <Compile Include="Manager\ADLoginManager.cs" />
+    <Compile Include="Manager\BrandItemsManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\BrandItemsMgmtManager.cs">
+      <DependentUpon>Manager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Manager\BrandManager.cs">
       <DependentUpon>Manager.tt</DependentUpon>
     </Compile>
@@ -1382,6 +1400,18 @@
     <Compile Include="Models\Brand.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BrandItems.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BrandItemsMgmt.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BrandItemsMgmtRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BrandItemsRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BrandRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
@@ -1474,6 +1504,12 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HeadphoneRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IBrandItemsMgmtRepository.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IBrandItemsRepository.cs">
       <DependentUpon>IRepository.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IBrandRepository.cs">
@@ -1594,6 +1630,12 @@
     </Compile>
     <Compile Include="Models\LoginLockInfo.cs" />
     <Compile Include="Models\Mapper\Brand.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\BrandItems.cs">
+      <DependentUpon>Mapper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mapper\BrandItemsMgmt.cs">
       <DependentUpon>Mapper.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mapper\Candidate.cs">
@@ -1809,6 +1851,12 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\BrandItemsMgmtViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\BrandItemsViewModel.cs">
+      <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BrandViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
     </Compile>
@@ -1870,6 +1918,12 @@
     </Compile>
     <Compile Include="ViewModel\ItemsViewModel.cs">
       <DependentUpon>ViewModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\BrandItemsListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ListResult\BrandItemsMgmtListResult.cs">
+      <DependentUpon>ListResult.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListResult\BrandListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
@@ -1960,6 +2014,12 @@
     </Compile>
     <Compile Include="ViewModel\ListResult\VotesListResult.cs">
       <DependentUpon>ListResult.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\BrandItemsMgmtSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\SearchModel\BrandItemsSearchModel.cs">
+      <DependentUpon>SearchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\SearchModel\BrandSearchModel.cs">
       <DependentUpon>SearchModel.tt</DependentUpon>
@@ -2149,6 +2209,24 @@
     <Content Include="Views\Function\Details.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
+    <None Include="Views\BrandItemsMgmt\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\BrandItemsMgmt\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\BrandItemsMgmt\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\BrandItems\Create.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\BrandItems\Details.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
+    <None Include="Views\BrandItems\Index.cshtml">
+      <DependentUpon>Views.tt</DependentUpon>
+    </None>
     <None Include="Views\Brand\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2400,6 +2478,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploads\" />
+    <Folder Include="Views\BrandItemsMgmt\" />
+    <Folder Include="Views\BrandItems\" />
     <Folder Include="Views\Brand\" />
     <Folder Include="Views\Candidate\" />
     <Folder Include="Views\Company\" />

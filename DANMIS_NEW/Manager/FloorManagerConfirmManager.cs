@@ -25,10 +25,15 @@ namespace DANMIS_NEW.Manager
     public class FloorManagerConfirmManager : IFloorManagerConfirmManager
     {
         readonly IFloorManagerConfirmRepository _floorManagerConfirmRepository;
+        readonly IUserRepository _userRepository;
+        readonly IFactoryItemsRepository _factoryItemsRepository;
 
-        public FloorManagerConfirmManager(IFloorManagerConfirmRepository floorManagerConfirmRepository)
+        public FloorManagerConfirmManager(IFloorManagerConfirmRepository floorManagerConfirmRepository,
+            IUserRepository userRepository, IFactoryItemsRepository factoryItemsRepository)
         {
             _floorManagerConfirmRepository = floorManagerConfirmRepository;
+            _userRepository = userRepository;
+            _factoryItemsRepository = factoryItemsRepository;
         }
 
         /// <summary>
@@ -106,6 +111,8 @@ namespace DANMIS_NEW.Manager
         {
             // 預設集合
             var temp = _floorManagerConfirmRepository.GetAll();
+            var user = _userRepository.GetAll();
+            var items = _factoryItemsRepository.GetAll();
 
             // 將 DB 資料轉換為列表頁呈現資料
             var tempResult = from x in temp
@@ -116,8 +123,8 @@ namespace DANMIS_NEW.Manager
                                  ApplyItemID = x.ApplyItemID,
                                  ApplyWDID = x.ApplyWDID,
                                  ApplyBrand = x.ApplyBrand,
-                                 ApplyName = string.Empty,
-                                 ApplyItemName = string.Empty,
+                                 ApplyName = string.Concat(user.FirstOrDefault(y => y.WDID == x.ApplyWDID).EmpLocName, "(", user.FirstOrDefault(y => y.WDID == x.ApplyWDID).EmpEngName, ")"),
+                                 ApplyItemName = items.FirstOrDefault(y => y.ID == x.ApplyItemID).ItemName,
                                  ApplyQty = x.ApplyQty,
                                  Status = x.Status,
                                  UpdateUser = x.UpdateUser,

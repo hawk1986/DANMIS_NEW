@@ -24,6 +24,7 @@ namespace DANMIS_NEW.ViewModel.ListResult
         public string Memo { get; set; }
         public string Status { get; set; }
         public string ApplyWDID { get; set; }
+        public string ApplyName { get; set; }
         public string ApplyBrand { get; set; }
         public string CreateUser { get; set; }
         public DateTime CreateTime { get; set; }

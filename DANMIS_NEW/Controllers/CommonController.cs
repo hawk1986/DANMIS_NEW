@@ -38,6 +38,13 @@ namespace DANMIS_NEW.Controllers
             {
                 switch (functionName)
                 {
+                    case "brandItemsMgmt":
+                        result = new List<ListOption>
+                        {
+                            new ListOption{ checkbox = true, sortable = false, visible = true },
+                            new ListOption{ field = "BrandName", title = Resource.BrandName },                            
+                        };
+                        break;
                     case "contactPerson":
                         result = new List<ListOption>
                         {
@@ -48,6 +55,20 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "CellPhone", title = Resource.CellPhone },
                             new ListOption{ field = "Email", title = Resource.Email },
                             new ListOption{ field = "IsShow", title = Resource.IsShow, formatter = "BitFormatter" },
+                        };
+                        break;
+                    case "department":
+                        result = new List<ListOption>
+                        {
+                            new ListOption{ checkbox = true, sortable = false, visible = true },
+                            new ListOption{ field = "DepartmentParent", title = Resource.DepartmentParent },
+                            new ListOption{ field = "Name", title = Resource.Name },
+                            new ListOption{ field = "DepartmentLevel", title = Resource.DepartmentLevel },
+                            new ListOption{ field = "DepartmentHead", title = Resource.DepartmentHead },
+                            new ListOption{ field = "Sequence", title = Resource.Sequence },
+                            new ListOption{ field = "IsEnable", title = Resource.IsEnable, formatter = "BitFormatter" },
+                            new ListOption{ field = "UpdateUser", title = Resource.UpdateUser },
+                            new ListOption{ field = "UpdateTime", title = Resource.UpdateTime, formatter = "JsonTimeFormatter" },
                         };
                         break;
                     case "dID":
@@ -177,6 +198,7 @@ namespace DANMIS_NEW.Controllers
                             new ListOption{ field = "Qty", title = Resource.Qty },
                             new ListOption{ field = "Memo", title = Resource.Memo },
                             new ListOption{ field = "Status", title = Resource.State },
+                            new ListOption{ field = "ApplyName", title = Resource.ApplyName },
                             new ListOption{ field = "CreateTime", title = Resource.ApplyDate, formatter = "JsonDateFormatter" },
                         };
                         break;

@@ -1,0 +1,141 @@
+@model BrandItemsMgmtViewModel
+@{
+    var auth = UnobtrusiveSession.Session["Auth"] as IList<Auth>;
+    var action = ViewContext.RouteData.Values["action"] as string;
+    var function = auth.First(x => x.Code == "BrandItemsMgmt" + action);
+    ViewBag.Title = function.ModuleName + " / " + function.GroupName + " / " + function.SimpleName;
+}
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    </script>
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">@function.ModuleName</a>
+            </li>
+            <li>
+                @Html.ActionLink(function.GroupName, "Index")
+            </li>
+            <li class="active">
+                <strong>@function.SimpleName</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    @using (Html.BeginForm(action, "BrandItemsMgmt", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.SequenceNo)
+                        @Html.HiddenFor(model => model.ID)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BrandName, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-4">
+                                @Html.DropDownListFor(model => model.BrandName, Model.BrandList, string.Format(Resource.PleaseSelect, Resource.Brand), new { @class = "form-control selectpicker" })
+                                @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        if (action != "Create")
+                        {
+                            <div class="form-group">
+
+                                @Html.Label(Resource.BrandItems, htmlAttributes: new { @class = "control-label col-sm-2" })
+                                <div class="col-sm-10">
+                                    <table id="table"></table>
+                                </div>
+                                <button type="button" id="addBrandItem" class="btn col-sm-offset-2" title="Add" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> 新增廠商物品</button>
+                            </div>
+                            <div class="form-group">
+
+                            </div>
+
+                        }
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>
+                                <a id="exit_btn" href="@Url.Action("Index")" class="btn btn-danger"><i class="fa fa-sign-out"></i> @Resource.Exit</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="wrapper wrapper-content animated" style="width: 800px;">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+
+                        <div class="ibox-content" style="height: 400px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">廠商物品資訊</h4>
+                            </div>
+
+                            @using (Html.BeginForm(action, "BrandItemsMgmt", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "create_form1", enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.BrandItems.SequenceNo)
+                                @Html.HiddenFor(model => model.BrandItems.ID)
+                                @Html.HiddenFor(model => model.BrandItems.BrandItemsMgmtID)
+                                <div class="form-group">                                    
+                                    @Html.LabelFor(model => model.BrandItems.FactoryItemID, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.BrandItems.FactoryItemID, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BrandItems.FactoryItemID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.BrandItems.ItemSafeQty, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.BrandItems.ItemSafeQty, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BrandItems.ItemSafeQty, "", new { @class = "text-danger" })
+                                    </div>
+                                    @Html.LabelFor(model => model.BrandItems.ItemStockQty, htmlAttributes: new { @class = "control-label col-sm-1" })
+                                    <div class="col-sm-4">
+                                        @Html.EditorFor(model => model.BrandItems.ItemStockQty, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BrandItems.ItemStockQty, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="button" id="addBrandItem" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Add</button>
+                                        <button type="button" id="updateBrandItem" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>
+                                        <button type="button" id="closeDialog" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-sign-out"></i> @Resource.Exit</button>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

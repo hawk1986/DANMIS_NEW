@@ -1342,7 +1342,7 @@
     <value>單價</value>
   </data>
   <data name="ItemQty" xml:space="preserve">
-    <value>廠商進貨量</value>
+    <value>廠商單次進貨量</value>
   </data>
   <data name="ItemSpecification" xml:space="preserve">
     <value>規格</value>
@@ -1457,5 +1457,23 @@
   </data>
   <data name="ConfirmID" xml:space="preserve">
     <value>樓管確認ID</value>
+  </data>
+  <data name="BrandItemsMgmt" xml:space="preserve">
+    <value>品牌物品庫存管理</value>
+  </data>
+  <data name="ItemSafeQty" xml:space="preserve">
+    <value>安全庫存量</value>
+  </data>
+  <data name="ItemStockQty" xml:space="preserve">
+    <value>庫存</value>
+  </data>
+  <data name="BrandItems" xml:space="preserve">
+    <value>品牌物品</value>
+  </data>
+  <data name="BrandItemsID" xml:space="preserve">
+    <value>品牌物品ID</value>
+  </data>
+  <data name="BrandItemsMgmtID" xml:space="preserve">
+    <value>品牌物品ID</value>
   </data>
 </root>

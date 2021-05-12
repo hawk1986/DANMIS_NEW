@@ -412,6 +412,42 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 品牌物品 的當地語系化字串。
+        /// </summary>
+        public static string BrandItems {
+            get {
+                return ResourceManager.GetString("BrandItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 品牌物品ID 的當地語系化字串。
+        /// </summary>
+        public static string BrandItemsID {
+            get {
+                return ResourceManager.GetString("BrandItemsID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 品牌物品庫存管理 的當地語系化字串。
+        /// </summary>
+        public static string BrandItemsMgmt {
+            get {
+                return ResourceManager.GetString("BrandItemsMgmt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 品牌物品ID 的當地語系化字串。
+        /// </summary>
+        public static string BrandItemsMgmtID {
+            get {
+                return ResourceManager.GetString("BrandItemsMgmtID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 品牌管理 的當地語系化字串。
         /// </summary>
         public static string BrandManagement {
@@ -2302,7 +2338,7 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
-        ///   查詢類似 廠商進貨量 的當地語系化字串。
+        ///   查詢類似 廠商單次進貨量 的當地語系化字串。
         /// </summary>
         public static string ItemQty {
             get {
@@ -2329,6 +2365,15 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
+        ///   查詢類似 安全庫存量 的當地語系化字串。
+        /// </summary>
+        public static string ItemSafeQty {
+            get {
+                return ResourceManager.GetString("ItemSafeQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 物品申請 的當地語系化字串。
         /// </summary>
         public static string ItemsApply {
@@ -2343,6 +2388,15 @@ namespace ResourceLibrary {
         public static string ItemSpecification {
             get {
                 return ResourceManager.GetString("ItemSpecification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 庫存 的當地語系化字串。
+        /// </summary>
+        public static string ItemStockQty {
+            get {
+                return ResourceManager.GetString("ItemStockQty", resourceCulture);
             }
         }
         

@@ -173,8 +173,8 @@
                                 success: function (result) {
                                     if (result.result) {
                                         $('#ItemPrice').val(result.price);
-                                        $('#ItemQty').val(result.qty);
-                                        $('#StockQty').val($('#ItemQty').val() - $('#ItemRequisitionQty').val());
+                                        //$('#ItemQty').val(result.qty);
+                                        //$('#StockQty').val($('#ItemQty').val() - $('#ItemRequisitionQty').val());
                                         $('#table').bootstrapTable('refresh');
                                     }
                                 },
@@ -231,7 +231,7 @@
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
             success: function (result) {                
-                // 修改單價 & 庫存
+                // 修改單價
                 $.ajax({
                     cache: false,
                     type: 'POST',
@@ -243,8 +243,8 @@
                         $('#closeDialog').click();
                         if (result.result) {
                             $('#ItemPrice').val(result.price);
-                            $('#ItemQty').val(result.qty);      
-                            $('#StockQty').val($('#ItemQty').val() - $('#ItemRequisitionQty').val());      
+                            //$('#ItemQty').val(result.qty);      
+                            //$('#StockQty').val($('#ItemQty').val() - $('#ItemRequisitionQty').val());      
                         }                                                
                         swal(
                             {
@@ -319,8 +319,8 @@
                         success: function (result) {
                             if (result.result) {
                                 $('#ItemPrice').val(result.price);
-                                $('#ItemQty').val(result.qty);
-                                $('#StockQty').val($('#ItemQty').val() - $('#ItemRequisitionQty').val());      
+                                //$('#ItemQty').val(result.qty);
+                                //$('#StockQty').val($('#ItemQty').val() - $('#ItemRequisitionQty').val());      
                             }
                         },
                         error: function () {

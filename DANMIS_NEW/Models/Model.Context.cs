@@ -56,5 +56,7 @@ namespace DANMIS_NEW.Models
         public virtual DbSet<DIDAndHeadphone> DIDAndHeadphone { get; set; }
         public virtual DbSet<FloorManagerConfirm> FloorManagerConfirm { get; set; }
         public virtual DbSet<ItemsApply> ItemsApply { get; set; }
+        public virtual DbSet<BrandItems> BrandItems { get; set; }
+        public virtual DbSet<BrandItemsMgmt> BrandItemsMgmt { get; set; }
     }
 }

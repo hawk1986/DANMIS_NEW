@@ -19,6 +19,33 @@
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="BrandItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BrandItemsMgmtID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FactoryItemID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ItemSafeQty" Type="int" Nullable="false" />
+          <Property Name="ItemStockQty" Type="int" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BrandItemsMgmt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Candidate">
           <Key>
             <PropertyRef Name="ID" />
@@ -626,6 +653,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BrandItems_BrandItems">
+          <End Role="BrandItemsMgmt" Type="Self.BrandItemsMgmt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BrandItems" Type="Self.BrandItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandItemsMgmt">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BrandItems">
+              <PropertyRef Name="BrandItemsMgmtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrandItemsMgmt_BrandItemsMgmt">
+          <End Role="BrandItemsMgmt" Type="Self.BrandItemsMgmt" Multiplicity="1" />
+          <End Role="BrandItemsMgmt1" Type="Self.BrandItemsMgmt" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BrandItemsMgmt">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BrandItemsMgmt1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ContactPerson_Factory">
           <End Role="Factory" Type="Self.Factory" Multiplicity="1" />
           <End Role="ContactPerson" Type="Self.ContactPerson" Multiplicity="*" />
@@ -798,6 +851,8 @@
         </Association>
         <EntityContainer Name="MGearModelStoreContainer">
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dan" store:Type="Tables" />
+          <EntitySet Name="BrandItems" EntityType="Self.BrandItems" Schema="dan" store:Type="Tables" />
+          <EntitySet Name="BrandItemsMgmt" EntityType="Self.BrandItemsMgmt" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dan" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dan" store:Type="Tables" />
           <EntitySet Name="ContactPerson" EntityType="Self.ContactPerson" Schema="dan" store:Type="Tables" />
@@ -845,6 +900,14 @@
           <AssociationSet Name="FK_AccessControl_Role" Association="Self.FK_AccessControl_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="AccessControl" EntitySet="AccessControl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrandItems_BrandItems" Association="Self.FK_BrandItems_BrandItems">
+            <End Role="BrandItemsMgmt" EntitySet="BrandItemsMgmt" />
+            <End Role="BrandItems" EntitySet="BrandItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrandItemsMgmt_BrandItemsMgmt" Association="Self.FK_BrandItemsMgmt_BrandItemsMgmt">
+            <End Role="BrandItemsMgmt" EntitySet="BrandItemsMgmt" />
+            <End Role="BrandItemsMgmt1" EntitySet="BrandItemsMgmt" />
           </AssociationSet>
           <AssociationSet Name="FK_ContactPerson_Factory" Association="Self.FK_ContactPerson_Factory">
             <End Role="Factory" EntitySet="Factory" />
@@ -987,7 +1050,17 @@
           <EntitySet Name="DIDAndHeadphone" EntityType="DbModel.DIDAndHeadphone" />
           <EntitySet Name="FloorManagerConfirm" EntityType="DbModel.FloorManagerConfirm" />
           <EntitySet Name="ItemsApply" EntityType="DbModel.ItemsApply" />
-        </EntityContainer>
+          <EntitySet Name="BrandItems" EntityType="DbModel.BrandItems" />
+          <EntitySet Name="BrandItemsMgmt" EntityType="DbModel.BrandItemsMgmt" />
+          <AssociationSet Name="FK_BrandItems_BrandItems" Association="DbModel.FK_BrandItems_BrandItems">
+            <End Role="BrandItemsMgmt" EntitySet="BrandItemsMgmt" />
+            <End Role="BrandItems" EntitySet="BrandItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BrandItemsMgmt_BrandItemsMgmt" Association="DbModel.FK_BrandItemsMgmt_BrandItemsMgmt">
+            <End Role="BrandItemsMgmt" EntitySet="BrandItemsMgmt" />
+            <End Role="BrandItemsMgmt1" EntitySet="BrandItemsMgmt" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="ID" />
@@ -1740,6 +1813,63 @@
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="BrandItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="BrandItemsMgmtID" Type="Guid" Nullable="false" />
+          <Property Name="FactoryItemID" Type="Guid" Nullable="false" />
+          <Property Name="ItemSafeQty" Type="Int32" Nullable="false" />
+          <Property Name="ItemStockQty" Type="Int32" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BrandItemsMgmt" Relationship="DbModel.FK_BrandItems_BrandItems" FromRole="BrandItems" ToRole="BrandItemsMgmt" />
+        </EntityType>
+        <EntityType Name="BrandItemsMgmt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BrandItems" Relationship="DbModel.FK_BrandItems_BrandItems" FromRole="BrandItemsMgmt" ToRole="BrandItems" />
+          <NavigationProperty Name="BrandItemsMgmt1" Relationship="DbModel.FK_BrandItemsMgmt_BrandItemsMgmt" FromRole="BrandItemsMgmt" ToRole="BrandItemsMgmt1" />
+          <NavigationProperty Name="BrandItemsMgmt2" Relationship="DbModel.FK_BrandItemsMgmt_BrandItemsMgmt" FromRole="BrandItemsMgmt1" ToRole="BrandItemsMgmt" />
+        </EntityType>
+        <Association Name="FK_BrandItems_BrandItems">
+          <End Type="DbModel.BrandItemsMgmt" Role="BrandItemsMgmt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DbModel.BrandItems" Role="BrandItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BrandItemsMgmt">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BrandItems">
+              <PropertyRef Name="BrandItemsMgmtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BrandItemsMgmt_BrandItemsMgmt">
+          <End Type="DbModel.BrandItemsMgmt" Role="BrandItemsMgmt" Multiplicity="1" />
+          <End Type="DbModel.BrandItemsMgmt" Role="BrandItemsMgmt1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BrandItemsMgmt">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BrandItemsMgmt1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2359,6 +2489,35 @@
                 <ScalarProperty Name="ApplyWDID" ColumnName="ApplyWDID" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandItems">
+            <EntityTypeMapping TypeName="DbModel.BrandItems">
+              <MappingFragment StoreEntitySet="BrandItems">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="ItemStockQty" ColumnName="ItemStockQty" />
+                <ScalarProperty Name="ItemSafeQty" ColumnName="ItemSafeQty" />
+                <ScalarProperty Name="FactoryItemID" ColumnName="FactoryItemID" />
+                <ScalarProperty Name="BrandItemsMgmtID" ColumnName="BrandItemsMgmtID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BrandItemsMgmt">
+            <EntityTypeMapping TypeName="DbModel.BrandItemsMgmt">
+              <MappingFragment StoreEntitySet="BrandItemsMgmt">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>
