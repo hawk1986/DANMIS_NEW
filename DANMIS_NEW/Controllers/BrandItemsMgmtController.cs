@@ -30,15 +30,18 @@ namespace DANMIS_NEW.Controllers
         readonly ICommonManager _commonManager;
         readonly IBrandItemsMgmtManager _brandItemsMgmtManager;
         readonly IBrandManager _brandManager;
+        readonly IFactoryItemsManager _factoryItemsManager;
 
         public BrandItemsMgmtController(
             ICommonManager commonManager,
             IBrandItemsMgmtManager brandItemsMgmtManager,
-            IBrandManager brandManager)
+            IBrandManager brandManager,
+            IFactoryItemsManager factoryItemsManager)
         {
             _commonManager = commonManager;
             _brandItemsMgmtManager = brandItemsMgmtManager;
             _brandManager = brandManager;
+            _factoryItemsManager = factoryItemsManager;
             logger = LogManager.GetCurrentClassLogger();
         }
 
@@ -311,6 +314,7 @@ namespace DANMIS_NEW.Controllers
         void setDropDownList(ref BrandItemsMgmtViewModel viewModel)
         {
             viewModel.BrandList = _brandManager.GetSelectList();
+            viewModel.FactoryItemsList = _factoryItemsManager.GetSelectList(viewModel.ItemClass);
         }
     }
 }

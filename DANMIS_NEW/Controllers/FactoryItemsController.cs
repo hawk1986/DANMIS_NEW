@@ -82,7 +82,7 @@ namespace DANMIS_NEW.Controllers
         /// </summary>
         /// <param name="searchModel"></param>
         /// <returns></returns>
-        [WebAuthorize(Code = "FactoryItemsIndex")]
+        //[WebAuthorize(Code = "FactoryItemsIndex")]
         [HttpPost]
         public ActionResult Paging(FactoryItemsSearchModel searchModel)
         {
@@ -396,6 +396,18 @@ namespace DANMIS_NEW.Controllers
                 var picPath = itempics.FirstOrDefault().FilePath;
                 result = Json(new { result = true, picPath = picPath }, JsonRequestBehavior.AllowGet);
             }
+
+            return result;
+        }
+
+        [HttpPost]
+        public ActionResult GetByID(Guid id)
+        {
+            // 預設失敗
+            var result = Json(new { result = false }, JsonRequestBehavior.AllowGet);
+            var factoryItem = _factoryItemsManager.GetByID(id);
+                
+            result = Json(new { result = true, factoryItem = factoryItem }, JsonRequestBehavior.AllowGet);
 
             return result;
         }

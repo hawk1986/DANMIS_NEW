@@ -425,7 +425,7 @@
             { field: 'ItemNO', title: '廠商物品編號', sortable: true },
             { field: 'ItemName', title: '物品名稱(採購用)', sortable: true },
             { field: 'ItemUnit', title: '購買單位', sortable: true },
-            { field: 'ItemQty', title: '入庫量', sortable: true },
+            { field: 'ItemQty', title: '廠商單次進貨量', sortable: true },
             { field: 'ItemPrice', title: '單價', sortable: true },
             { field: 'IsShow', title: '是否顯示', sortable: true, formatter: "BitFormatter" },
             {
@@ -523,11 +523,7 @@
                                 @Html.DropDownListFor(model => model.ItemClass, Model._ItemClass, string.Format(Resource.PleaseSelect, Resource.ItemClass), new { @class = "form-control selectpicker", data_live_search = "true", data_size = "10" })
                                 @Html.ValidationMessageFor(model => model.ItemClass, "", new { @class = "text-danger" })
                             </div>
-                            @Html.LabelFor(model => model.ItemPrice, htmlAttributes: new { @class = "control-label col-sm-2" })
-                            <div class="col-sm-1">
-                                @Html.EditorFor(model => model.ItemPrice, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                                @Html.ValidationMessageFor(model => model.ItemPrice, "", new { @class = "text-danger" })
-                            </div>
+                            
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.IsInventoryMgmt, htmlAttributes: new { @class = "control-label col-sm-2" })
@@ -542,15 +538,20 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.ItemQty, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            @*@Html.LabelFor(model => model.ItemQty, htmlAttributes: new { @class = "control-label col-sm-2" })
                             <div class="col-sm-1">
                                 @Html.EditorFor(model => model.ItemQty, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                                 @Html.ValidationMessageFor(model => model.ItemQty, "", new { @class = "text-danger" })
-                            </div>
-                            @Html.LabelFor(model => model.IsForColleague, htmlAttributes: new { @class = "control-label col-sm-3" })
+                            </div>*@
+                            @Html.LabelFor(model => model.IsForColleague, htmlAttributes: new { @class = "control-label col-sm-2" })
                             <div class="col-sm-2">
                                 @Html.DropDownListFor(model => model.IsForColleague, Model.YesNoList, string.Format(Resource.PleaseSelect, Resource.IsForColleague), new { @class = "form-control selectpicker" })
                                 @Html.ValidationMessageFor(model => model.IsForColleague, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.ItemPrice, htmlAttributes: new { @class = "control-label col-sm-2" })
+                            <div class="col-sm-1">
+                                @Html.EditorFor(model => model.ItemPrice, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.ItemPrice, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">

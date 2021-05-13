@@ -75,9 +75,9 @@ namespace DANMIS_NEW.ViewModel
         public double ItemPrice { get; set; }
 
         /// <summary>
-        /// ItemQty
+        /// ItemQty (不使用，廠商單次進貨量以新增廠商物品內為主，未來拿掉)
         /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
         [Display(Name = "ItemQty", ResourceType = typeof(Resource))]
         public int ItemQty { get; set; }
 
@@ -171,6 +171,8 @@ namespace DANMIS_NEW.ViewModel
 
         [Display(Name = "StockQty", ResourceType = typeof(Resource))]
         public int StockQty { get; set; }
+
+        public string ItemClassName { get; set; }
         #endregion == View Fields ==
     }
 }

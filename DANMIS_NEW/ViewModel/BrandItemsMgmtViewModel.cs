@@ -86,6 +86,8 @@ namespace DANMIS_NEW.ViewModel
         public SelectList BrandList { get; set; }
 
         public BrandItemsViewModel BrandItems { get; set; }
+        public SelectList FactoryItemsList { get; set; }
+        public string ItemClass { get; set; }
         #endregion == View Fields ==
     }
 }

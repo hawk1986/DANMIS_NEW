@@ -1108,7 +1108,7 @@
     <value>MediaType</value>
   </data>
   <data name="FactoryBasicSetting" xml:space="preserve">
-    <value>廠商資料管理</value>
+    <value>廠商/物品庫存管理</value>
   </data>
   <data name="Factory" xml:space="preserve">
     <value>廠商資料維護</value>
@@ -1426,7 +1426,7 @@
     <value>已領用數量</value>
   </data>
   <data name="StockQty" xml:space="preserve">
-    <value>庫存量</value>
+    <value>總庫存量</value>
   </data>
   <data name="ApplyBrand" xml:space="preserve">
     <value>申請品牌</value>
@@ -1462,7 +1462,7 @@
     <value>品牌物品庫存管理</value>
   </data>
   <data name="ItemSafeQty" xml:space="preserve">
-    <value>安全庫存量</value>
+    <value>安全庫存</value>
   </data>
   <data name="ItemStockQty" xml:space="preserve">
     <value>庫存</value>

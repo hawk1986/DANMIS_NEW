@@ -42,7 +42,7 @@ namespace DANMIS_NEW.Controllers
                         result = new List<ListOption>
                         {
                             new ListOption{ checkbox = true, sortable = false, visible = true },
-                            new ListOption{ field = "BrandName", title = Resource.BrandName },                            
+                            new ListOption{ field = "BrandName", title = Resource.Brand },                            
                         };
                         break;
                     case "contactPerson":

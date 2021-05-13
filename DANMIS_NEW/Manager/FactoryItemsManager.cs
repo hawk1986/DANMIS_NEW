@@ -110,7 +110,8 @@ namespace DANMIS_NEW.Manager
             var item = _factoryItemsRepository.GetByID(id);
             var result = (FactoryItemsViewModel)item;
 
-            result.StockQty = result.ItemQty - result.ItemRequisitionQty;
+            // 取庫存
+            result.StockQty = 0;
 
             //判斷是否有附件檔案            
             if (item.IsAttached)
@@ -119,6 +120,8 @@ namespace DANMIS_NEW.Manager
                 result.AttachedFiles = AttachedFiles;
             }
 
+            result.ItemClassName = _itemClassRepository.GetByID(new Guid(result.ItemClass)).ClassName;
+            
             return result;
         }
 

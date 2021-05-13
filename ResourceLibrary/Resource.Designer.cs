@@ -1618,7 +1618,7 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
-        ///   查詢類似 廠商資料管理 的當地語系化字串。
+        ///   查詢類似 廠商/物品庫存管理 的當地語系化字串。
         /// </summary>
         public static string FactoryBasicSetting {
             get {
@@ -2365,7 +2365,7 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
-        ///   查詢類似 安全庫存量 的當地語系化字串。
+        ///   查詢類似 安全庫存 的當地語系化字串。
         /// </summary>
         public static string ItemSafeQty {
             get {
@@ -3598,7 +3598,7 @@ namespace ResourceLibrary {
         }
         
         /// <summary>
-        ///   查詢類似 庫存量 的當地語系化字串。
+        ///   查詢類似 總庫存量 的當地語系化字串。
         /// </summary>
         public static string StockQty {
             get {

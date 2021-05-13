@@ -108,6 +108,18 @@ namespace DANMIS_NEW.ViewModel
         /// </summary>
         public SelectList FactoryItemList { get; set; }
 
+        [Display(Name = "ItemName", ResourceType = typeof(Resource))]
+        public string ItemName { get; set; }
+
+        [Display(Name = "ItemSpecification", ResourceType = typeof(Resource))]
+        public string ItemSpecification { get; set; }
+
+        [Display(Name = "ItemClass", ResourceType = typeof(Resource))]
+        public string ItemClass { get; set; }
+
+        [Display(Name = "ItemUnit", ResourceType = typeof(Resource))]
+        public string ItemUnit { get; set; }
+
         #endregion == View Fields ==
     }
 }
