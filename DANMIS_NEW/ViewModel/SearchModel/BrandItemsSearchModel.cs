@@ -19,6 +19,7 @@ namespace DANMIS_NEW.ViewModel.SearchModel
 
         public Guid? FactoryItemID { get; set; }
 
+        public Guid? ID { get; set; }
     }
 }
 #pragma warning restore 1591

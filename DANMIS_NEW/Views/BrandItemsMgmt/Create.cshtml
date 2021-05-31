@@ -256,7 +256,7 @@
             { field: 'ItemSpecification', title: '規格', sortable: true },
             { field: 'ItemClass', title: '類別', sortable: true },
             { field: 'ItemUnit', title: '單位', sortable: true },
-            { field: 'ItemSafeQty', title: '安全庫存', sortable: true },
+            { text: true,  field: 'ItemSafeQty', title: '安全庫存', sortable: true },
             { field: 'ItemStockQty', title: '庫存', sortable: true },
             {
                 field: 'operate',
@@ -376,7 +376,10 @@
                         }
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                @*<button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>*@
+                                @if (action == "Create")
+                                {
+                                <button type="submit" id="form_submit" class="btn btn-primary"><i class="fa fa-plus"></i> @Resource.Save</button>
+                                }
                                 <a id="exit_btn" href="@Url.Action("Index")" class="btn btn-danger"><i class="fa fa-sign-out"></i> @Resource.Exit</a>
                             </div>
                         </div>

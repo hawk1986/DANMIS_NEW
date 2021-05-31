@@ -25,11 +25,15 @@ namespace DANMIS_NEW.Manager
     public class BrandItemsMgmtManager : IBrandItemsMgmtManager
     {
         readonly IBrandItemsMgmtRepository _brandItemsMgmtRepository;
-        readonly IFactoryRepository _factoryRepository;
-        public BrandItemsMgmtManager(IBrandItemsMgmtRepository brandItemsMgmtRepository, IFactoryRepository factoryRepository)
+        readonly IFactoryItemsRepository _factoryItemsRepository;
+        readonly IBrandItemsRepository _brandItemsRepository;
+
+        public BrandItemsMgmtManager(IBrandItemsMgmtRepository brandItemsMgmtRepository, IFactoryItemsRepository factoryItemsRepository,
+            IBrandItemsRepository brandItemsRepository)
         {
             _brandItemsMgmtRepository = brandItemsMgmtRepository;
-            _factoryRepository = factoryRepository;
+            _factoryItemsRepository = factoryItemsRepository;
+            _brandItemsRepository = brandItemsRepository;
         }
 
         /// <summary>
@@ -48,13 +52,28 @@ namespace DANMIS_NEW.Manager
                     _brandItemsMgmtRepository.Create(item);
 
                     // 取得所有廠商物品
-                    var factoryItems = _factoryRepository.GetAll().ToList();
-
-
-                    // 新增所有廠商物品到BrandItems
+                    var factoryItems = _factoryItemsRepository.GetAll().ToList();
                     List<BrandItems> brandItems = new List<BrandItems>();
 
+                    // 新增所有廠商物品到BrandItems
+                    foreach (var item1 in factoryItems)
+                    {
+                        var brandItem = new BrandItems
+                        {
+                            ID = Guid.NewGuid(),
+                            FactoryItemID = item1.ID,
+                            BrandItemsMgmtID = item.ID,
+                            ItemSafeQty = 0,
+                            ItemStockQty = 0,
+                            CreateUser = item.CreateUser,
+                            CreateTime = item.CreateTime,
+                            UpdateUser = item.UpdateUser,
+                            UpdateTime = item.UpdateTime,
+                        };
+                        brandItems.Add(brandItem);
+                    }
 
+                    _brandItemsRepository.Create(brandItems);
 
                     transaction.Commit();
                 }

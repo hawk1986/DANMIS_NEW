@@ -2209,6 +2209,7 @@
     <Content Include="Views\Function\Details.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </Content>
+    <Content Include="Views\Account\Redirect.cshtml" />
     <None Include="Views\BrandItemsMgmt\Create.cshtml">
       <DependentUpon>Views.tt</DependentUpon>
     </None>
@@ -2478,36 +2479,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\uploads\" />
-    <Folder Include="Views\BrandItemsMgmt\" />
-    <Folder Include="Views\BrandItems\" />
-    <Folder Include="Views\Brand\" />
-    <Folder Include="Views\Candidate\" />
-    <Folder Include="Views\Company\" />
-    <Folder Include="Views\ContactPerson\" />
-    <Folder Include="Views\Department\" />
-    <Folder Include="Views\DIDAndHeadphone\" />
-    <Folder Include="Views\DID\" />
-    <Folder Include="Views\FactoryClass\" />
-    <Folder Include="Views\FactoryItems\" />
-    <Folder Include="Views\Factory\" />
-    <Folder Include="Views\FloorManagerConfirm\" />
-    <Folder Include="Views\FloorManager\" />
-    <Folder Include="Views\FreeFieldSetting\" />
-    <Folder Include="Views\Function\" />
-    <Folder Include="Views\Headphone\" />
-    <Folder Include="Views\ItemClass\" />
-    <Folder Include="Views\ItemsApply\" />
-    <Folder Include="Views\Items\" />
-    <Folder Include="Views\Module\" />
-    <Folder Include="Views\OperateRecord\" />
-    <Folder Include="Views\Role\" />
-    <Folder Include="Views\SystemConfig\" />
-    <Folder Include="Views\SystemOption\" />
-    <Folder Include="Views\UserProfile\" />
-    <Folder Include="Views\User\" />
-    <Folder Include="Views\VisualMenu\" />
-    <Folder Include="Views\Voter\" />
-    <Folder Include="Views\Votes\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

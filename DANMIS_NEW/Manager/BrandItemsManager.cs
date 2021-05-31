@@ -25,10 +25,15 @@ namespace DANMIS_NEW.Manager
     public class BrandItemsManager : IBrandItemsManager
     {
         readonly IBrandItemsRepository _brandItemsRepository;
+        readonly IFactoryItemsRepository _factoryItemsRepository;
+        readonly IItemClassRepository _itemClassRepository;
 
-        public BrandItemsManager(IBrandItemsRepository brandItemsRepository)
+        public BrandItemsManager(IBrandItemsRepository brandItemsRepository, IFactoryItemsRepository factoryItemsRepository,
+            IItemClassRepository itemClassRepository)
         {
             _brandItemsRepository = brandItemsRepository;
+            _factoryItemsRepository = factoryItemsRepository;
+            _itemClassRepository = itemClassRepository;
         }
 
         /// <summary>
@@ -104,6 +109,9 @@ namespace DANMIS_NEW.Manager
         /// <returns></returns>
         public Paging<BrandItemsListResult> Paging(BrandItemsSearchModel searchModel)
         {
+            var factoryItems = _factoryItemsRepository.GetAll();
+            var itemClass = _itemClassRepository.GetAll().ToList();
+
             // 預設集合
             var temp = _brandItemsRepository.GetAll();
 
@@ -115,7 +123,11 @@ namespace DANMIS_NEW.Manager
                                  ID = x.ID,
                                  BrandItemsMgmtID = x.BrandItemsMgmtID,                                 
                                  FactoryItemID = x.FactoryItemID,
-                                 FactoryItemName = string.Empty,
+                                 FactoryItemName = factoryItems.FirstOrDefault(y => y.ID == x.FactoryItemID).ItemName,
+                                 ItemName = factoryItems.FirstOrDefault(y => y.ID == x.FactoryItemID).ItemName,
+                                 ItemSpecification = factoryItems.FirstOrDefault(y => y.ID == x.FactoryItemID).ItemSpecification,
+                                 ItemUnit = factoryItems.FirstOrDefault(y => y.ID == x.FactoryItemID).ItemUnit,
+                                 ItemClass = factoryItems.FirstOrDefault(z => z.ID == x.FactoryItemID).ItemClass,
                                  ItemSafeQty = x.ItemSafeQty,
                                  ItemStockQty = x.ItemStockQty,
                                  UpdateUser = x.UpdateUser,
@@ -132,6 +144,11 @@ namespace DANMIS_NEW.Manager
                     false);
             }
 
+            if (searchModel.ID != null)
+                tempResult = tempResult.Where(x =>
+                    x.BrandItemsMgmtID == searchModel.ID ||
+                    false);
+
             // 進行分頁處理
             var result = new Paging<BrandItemsListResult>();
             result.total = tempResult.Count();
@@ -140,6 +157,11 @@ namespace DANMIS_NEW.Manager
                 .Skip(searchModel.Offset)
                 .Take(searchModel.Limit)
                 .ToList();
+
+            foreach (var item in result.rows)
+            {
+                item.ItemClass = itemClass.FirstOrDefault(x => x.ID == new Guid(item.ItemClass)).ClassName;
+            }
 
             return result;
         }

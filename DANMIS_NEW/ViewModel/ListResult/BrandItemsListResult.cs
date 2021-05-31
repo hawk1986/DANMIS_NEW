@@ -20,6 +20,10 @@ namespace DANMIS_NEW.ViewModel.ListResult
         public Guid BrandItemsMgmtID { get; set; }
         public Guid FactoryItemID { get; set; }
         public string FactoryItemName { get; set; }
+        public string ItemName { get; set; }
+        public string ItemSpecification { get; set; }
+        public string ItemClass { get; set; }
+        public string ItemUnit { get; set; }
         public int ItemSafeQty { get; set; }
         public int ItemStockQty { get; set; }
         public string UpdateUser { get; set; }
