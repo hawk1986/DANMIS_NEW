@@ -99,8 +99,8 @@ namespace DANMIS_NEW.Manager
             var user = _userRepository.GetAll().FirstOrDefault(x => x.WDID == result.WDID);
             if (user != null)
             {
-                result.User.Name = string.Concat(user.EmpLocName, "(", user.EmpEngName, ")");
-                result.User.Email = user.EmpCompEmail;
+                result.User.Name = user.LocEngName;
+                result.User.Email = user.Email;
             }
 
             return result;
@@ -156,15 +156,15 @@ namespace DANMIS_NEW.Manager
                 .Take(searchModel.Limit)
                 .ToList();
 
-            var users = _userRepository.GetAll().Where(x => x.EmpQuitDate == null && x.WDID != null).ToList();
+            var users = _userRepository.GetAll().Where(x => x.LastWorkDate == "" && x.WDID != "").ToList();
 
             foreach (var item in result.rows)
             {
                 var user = users.FirstOrDefault(x => x.WDID == item.WDID);
                 if (user != null)
                 {
-                    item.User = string.Concat(user.EmpLocName, "(", user.EmpEngName, ")");
-                    item.Email = user.EmpCompEmail ?? string.Empty;
+                    item.User = user.LocEngName;
+                    item.Email = user.Email;
                 }
             }
 

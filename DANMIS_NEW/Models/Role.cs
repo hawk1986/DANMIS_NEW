@@ -17,8 +17,8 @@ namespace DANMIS_NEW.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            this.Function = new HashSet<Function>();
             this.User = new HashSet<User>();
+            this.Function = new HashSet<Function>();
         }
     
         public int SequenceNo { get; set; }
@@ -32,8 +32,8 @@ namespace DANMIS_NEW.Models
         public System.DateTime UpdateTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Function> Function { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Function> Function { get; set; }
     }
 }

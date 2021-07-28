@@ -1476,4 +1476,199 @@
   <data name="BrandItemsMgmtID" xml:space="preserve">
     <value>品牌物品ID</value>
   </data>
+  <data name="BossLocEngName" xml:space="preserve">
+    <value>主管中英文姓名</value>
+  </data>
+  <data name="BossWDID" xml:space="preserve">
+    <value>主管WorkdayID</value>
+  </data>
+  <data name="BrandEffDate" xml:space="preserve">
+    <value>品牌起始日期</value>
+  </data>
+  <data name="BusinessEffDate" xml:space="preserve">
+    <value>職銜異動日期</value>
+  </data>
+  <data name="BusinessTitle" xml:space="preserve">
+    <value>職銜全名</value>
+  </data>
+  <data name="ChangeJobDate" xml:space="preserve">
+    <value>工作變更日期</value>
+  </data>
+  <data name="ChangeJobReason" xml:space="preserve">
+    <value>變更工作原因</value>
+  </data>
+  <data name="CitiStatus" xml:space="preserve">
+    <value>公民身份</value>
+  </data>
+  <data name="CompEffDate" xml:space="preserve">
+    <value>公司到職日</value>
+  </data>
+  <data name="ConEndDate" xml:space="preserve">
+    <value>合約（試用期）到期日</value>
+  </data>
+  <data name="ContStartDate" xml:space="preserve">
+    <value>合約（試用期）起始日期</value>
+  </data>
+  <data name="CostCenterCode" xml:space="preserve">
+    <value>成本中心代碼</value>
+  </data>
+  <data name="CostCenterEffDate" xml:space="preserve">
+    <value>成本中心啟始日期</value>
+  </data>
+  <data name="CostCenterName" xml:space="preserve">
+    <value>成本中心</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>生日</value>
+  </data>
+  <data name="DeptEffDate" xml:space="preserve">
+    <value>加入部門的日期</value>
+  </data>
+  <data name="DeptMgrName" xml:space="preserve">
+    <value>部門主管姓名</value>
+  </data>
+  <data name="DeptMgrWDID" xml:space="preserve">
+    <value>部門主管ID</value>
+  </data>
+  <data name="EngFirstName" xml:space="preserve">
+    <value>英文名</value>
+  </data>
+  <data name="EngLastName" xml:space="preserve">
+    <value>英文姓氏</value>
+  </data>
+  <data name="EngMidName" xml:space="preserve">
+    <value>英文中間名</value>
+  </data>
+  <data name="FullEngName" xml:space="preserve">
+    <value>英文全名</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>性別</value>
+  </data>
+  <data name="GroupHireDate" xml:space="preserve">
+    <value>集團聘用起始日期</value>
+  </data>
+  <data name="HireDate" xml:space="preserve">
+    <value>聘用日期</value>
+  </data>
+  <data name="HireReason" xml:space="preserve">
+    <value>聘用原因</value>
+  </data>
+  <data name="JobID" xml:space="preserve">
+    <value>職位類別代碼</value>
+  </data>
+  <data name="JobProfile" xml:space="preserve">
+    <value>工作內容</value>
+  </data>
+  <data name="JobProfileEffDate" xml:space="preserve">
+    <value>工作内容異動日期</value>
+  </data>
+  <data name="LocalName" xml:space="preserve">
+    <value>本地姓名</value>
+  </data>
+  <data name="LocEngName" xml:space="preserve">
+    <value>中英文姓名</value>
+  </data>
+  <data name="MaritalStatus" xml:space="preserve">
+    <value>婚姻狀況</value>
+  </data>
+  <data name="MilitaryStatus" xml:space="preserve">
+    <value>兵役狀況</value>
+  </data>
+  <data name="NationalIDCountry" xml:space="preserve">
+    <value>身份證明上的國家</value>
+  </data>
+  <data name="NationalIDNo" xml:space="preserve">
+    <value>身份證明的號碼</value>
+  </data>
+  <data name="NationalIDType" xml:space="preserve">
+    <value>身份證明的類別</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>國籍</value>
+  </data>
+  <data name="PersonDataEffDate" xml:space="preserve">
+    <value>個人資料異動日期</value>
+  </data>
+  <data name="PersonTitle" xml:space="preserve">
+    <value>中文職稱</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>職位類別代碼</value>
+  </data>
+  <data name="PositionEffDate" xml:space="preserve">
+    <value>職位異動日期</value>
+  </data>
+  <data name="PositionID" xml:space="preserve">
+    <value>職位代碼</value>
+  </data>
+  <data name="PrimaryAdd1" xml:space="preserve">
+    <value>戶籍地址</value>
+  </data>
+  <data name="PrimaryAddCity" xml:space="preserve">
+    <value>住家城市</value>
+  </data>
+  <data name="PrimaryAddCountry" xml:space="preserve">
+    <value>住家國家</value>
+  </data>
+  <data name="PrimaryAddEmail" xml:space="preserve">
+    <value>個人Email</value>
+  </data>
+  <data name="PrimaryAddPhone" xml:space="preserve">
+    <value>住家電話 or 手機</value>
+  </data>
+  <data name="PrimaryAddPostCost" xml:space="preserve">
+    <value>住家郵遞區號</value>
+  </data>
+  <data name="StaffEvent" xml:space="preserve">
+    <value>新聘、離職、調職</value>
+  </data>
+  <data name="TerminationDate" xml:space="preserve">
+    <value>離職日期</value>
+  </data>
+  <data name="TerminationReasonLoc" xml:space="preserve">
+    <value>離職原因(公司)</value>
+  </data>
+  <data name="TerminationReasonPri" xml:space="preserve">
+    <value>離職原因(私人)</value>
+  </data>
+  <data name="TimeType" xml:space="preserve">
+    <value>工作型態</value>
+  </data>
+  <data name="TransDate" xml:space="preserve">
+    <value>轉檔日期</value>
+  </data>
+  <data name="TransTime" xml:space="preserve">
+    <value>轉檔時間(時、分、秒)</value>
+  </data>
+  <data name="UserComputerID" xml:space="preserve">
+    <value>電腦使用ID</value>
+  </data>
+  <data name="UserExtIsShow" xml:space="preserve">
+    <value>是否顯示分機號碼</value>
+  </data>
+  <data name="UserExtNo" xml:space="preserve">
+    <value>分機號碼</value>
+  </data>
+  <data name="UserHomePhone" xml:space="preserve">
+    <value>住家電話</value>
+  </data>
+  <data name="UserMobilePhone" xml:space="preserve">
+    <value>私人手機號碼</value>
+  </data>
+  <data name="WorkAdd1" xml:space="preserve">
+    <value>工作地址</value>
+  </data>
+  <data name="WorkAdd2" xml:space="preserve">
+    <value>工作地址2</value>
+  </data>
+  <data name="WorkAdd3" xml:space="preserve">
+    <value>區</value>
+  </data>
+  <data name="WorkAdd4" xml:space="preserve">
+    <value>縣市及郵遞區號</value>
+  </data>
+  <data name="WorkAddCountry" xml:space="preserve">
+    <value>國家或地區</value>
+  </data>
 </root>

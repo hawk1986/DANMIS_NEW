@@ -152,7 +152,7 @@ namespace DANMIS_NEW.Manager
                                  ApplyWDID = x.ApplyWDID,
                                  ApplyBrand = x.ApplyBrand,
                                  Status = x.Status,
-                                 ApplyName = string.Concat(user.FirstOrDefault(y => y.WDID == x.ApplyWDID).EmpLocName, "(", user.FirstOrDefault(y => y.WDID == x.ApplyWDID).EmpEngName, ")"),
+                                 ApplyName = user.FirstOrDefault(y => y.WDID == x.ApplyWDID).LocEngName,
                                  CreateUser = x.CreateUser,
                                  CreateTime = x.CreateTime,
                              };

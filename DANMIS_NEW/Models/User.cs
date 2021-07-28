@@ -17,10 +17,10 @@ namespace DANMIS_NEW.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Department = new HashSet<Department>();
             this.UserChangePass = new HashSet<UserChangePass>();
             this.UserProfile = new HashSet<UserProfile>();
             this.Role = new HashSet<Role>();
+            this.Department = new HashSet<Department>();
         }
     
         public int SequenceNo { get; set; }
@@ -30,13 +30,96 @@ namespace DANMIS_NEW.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string ContactTel { get; set; }
+        public string WDID { get; set; }
+        public string StaffEvent { get; set; }
+        public string EmpNo { get; set; }
+        public string PersonTitle { get; set; }
+        public string LocalName { get; set; }
+        public string FullEngName { get; set; }
+        public string LocEngName { get; set; }
+        public string EngFirstName { get; set; }
+        public string EngMidName { get; set; }
+        public string EngLastName { get; set; }
+        public string WorkAdd1 { get; set; }
+        public string WorkAdd2 { get; set; }
+        public string WorkAdd3 { get; set; }
+        public string WorkAdd4 { get; set; }
+        public string WorkAddCountry { get; set; }
+        public string HireDate { get; set; }
+        public string HireReason { get; set; }
+        public string ContStartDate { get; set; }
+        public string ConEndDate { get; set; }
+        public string CompName { get; set; }
+        public string CompEffDate { get; set; }
+        public string CostCenterName { get; set; }
+        public string CostCenterCode { get; set; }
+        public string CostCenterEffDate { get; set; }
+        public string Brand { get; set; }
+        public string BrandEffDate { get; set; }
+        public string BossLocEngName { get; set; }
+        public string BossWDID { get; set; }
+        public string EmpType { get; set; }
+        public string GroupHireDate { get; set; }
+        public string EmpStartDate { get; set; }
+        public string DeptMgrName { get; set; }
+        public string DeptMgrWDID { get; set; }
+        public string DeptEffDate { get; set; }
+        public string PrimaryAdd1 { get; set; }
+        public string PrimaryAddPostCost { get; set; }
+        public string PrimaryAddCity { get; set; }
+        public string PrimaryAddCountry { get; set; }
+        public string PrimaryAddPhone { get; set; }
+        public string PrimaryAddEmail { get; set; }
+        public string DateOfBirth { get; set; }
+        public string Gender { get; set; }
+        public string Nationality { get; set; }
+        public string MaritalStatus { get; set; }
+        public string CitiStatus { get; set; }
+        public string MilitaryStatus { get; set; }
+        public string PersonDataEffDate { get; set; }
+        public string Position { get; set; }
+        public string PositionID { get; set; }
+        public string TimeType { get; set; }
+        public string PositionEffDate { get; set; }
+        public string JobID { get; set; }
+        public string JobProfile { get; set; }
+        public string JobProfileEffDate { get; set; }
+        public string JobTitle { get; set; }
+        public string BusinessTitle { get; set; }
+        public string BusinessEffDate { get; set; }
+        public string ChangeJobReason { get; set; }
+        public string ChangeJobDate { get; set; }
+        public string TerminationDate { get; set; }
+        public string TerminationReasonLoc { get; set; }
+        public string TerminationReasonPri { get; set; }
+        public string LastWorkDate { get; set; }
+        public string NationalIDCountry { get; set; }
+        public string NationalIDType { get; set; }
+        public string NationalIDNo { get; set; }
+        public string RegionCode { get; set; }
+        public string CompCode { get; set; }
+        public string DeptCode { get; set; }
+        public string UserComputerID { get; set; }
+        public string UserHomePhone { get; set; }
+        public string UserMobilePhone { get; set; }
+        public string UserExtNo { get; set; }
+        public bool UserExtIsShow { get; set; }
+        public string TaxiAccount { get; set; }
+        public string BrandCode { get; set; }
+        public string CardNo { get; set; }
+        public string FloorNo { get; set; }
+        public string SeatNo { get; set; }
+        public string MotoNo { get; set; }
+        public string MotocycleID { get; set; }
+        public string ETag { get; set; }
+        public string MotoStartDate { get; set; }
+        public string FaxNo { get; set; }
+        public string LeaseLine { get; set; }
+        public string AssestNo { get; set; }
+        public string ThirdCode { get; set; }
+        public string BossEmpUniqNo { get; set; }
+        public string NextBossEmpUniqNo { get; set; }
         public bool IsEnable { get; set; }
-        public string CreateUser { get; set; }
-        public System.DateTime CreateTime { get; set; }
-        public string UpdateUser { get; set; }
-        public System.DateTime UpdateTime { get; set; }
-        public System.DateTime LoginTime { get; set; }
-        public System.DateTime ChangePassTime { get; set; }
         public string PhotoPath { get; set; }
         public bool IsToken { get; set; }
         public string HashToken { get; set; }
@@ -45,72 +128,23 @@ namespace DANMIS_NEW.Models
         public Nullable<System.Guid> DefaultIndex { get; set; }
         public Nullable<System.Guid> DepartmentID { get; set; }
         public string DepartmentIDs { get; set; }
-        public Nullable<int> EmpUniqNo { get; set; }
-        public string EmpEngName { get; set; }
-        public string RegionCode { get; set; }
-        public string CompCode { get; set; }
-        public string OfficeCode { get; set; }
-        public string DeptCode { get; set; }
-        public string EmpNo { get; set; }
-        public string EmpEngOfficialName { get; set; }
-        public string EmpLocName { get; set; }
-        public string EmpGender { get; set; }
-        public string JobTitleCode { get; set; }
-        public Nullable<System.DateTime> EmpStartDate { get; set; }
-        public Nullable<System.DateTime> EmpQuitDate { get; set; }
-        public string EmpStatusCode { get; set; }
-        public string JobStatusCode { get; set; }
-        public string EmpCompEmail { get; set; }
-        public string EmpADLoginID { get; set; }
-        public string EmpComputerID { get; set; }
-        public string EmpPrivateEMail { get; set; }
-        public string EmpHomePhone { get; set; }
-        public string EmpMobilePhone { get; set; }
-        public Nullable<int> BossEmpUniqNo { get; set; }
-        public string EmpAcctStatus { get; set; }
-        public string WritingLanguage { get; set; }
-        public string SysLanguage { get; set; }
-        public string EmpBankAccount { get; set; }
-        public string EmpPhoto { get; set; }
-        public string CheckAttendance { get; set; }
-        public string ExtDisplayFlag { get; set; }
-        public string SpcInTime { get; set; }
-        public string SpcOutTime { get; set; }
-        public Nullable<int> InputBy { get; set; }
-        public Nullable<System.DateTime> InputDate { get; set; }
-        public Nullable<int> ChangeBe { get; set; }
-        public Nullable<System.DateTime> ChangeDate { get; set; }
-        public string Random { get; set; }
-        public Nullable<int> NextBossEmpUniqNo { get; set; }
-        public string Do_PDP { get; set; }
-        public string EmpExtNo { get; set; }
-        public string WDID { get; set; }
-        public string TaxiAccount { get; set; }
-        public string BrandCode { get; set; }
-        public string EmpType { get; set; }
-        public string CostCenter { get; set; }
-        public string ProfitCenter { get; set; }
-        public Nullable<System.DateTime> LastWorkDate { get; set; }
-        public string CardNo { get; set; }
-        public string FloorNo { get; set; }
-        public string SeatNo { get; set; }
-        public string MotoNo { get; set; }
-        public string MotocycleID { get; set; }
-        public string ETag { get; set; }
-        public Nullable<System.DateTime> MotoStartDate { get; set; }
-        public string FaxNo { get; set; }
-        public string LeaseLine { get; set; }
-        public string AssestNo { get; set; }
-        public string ThirdCode { get; set; }
+        public System.DateTime LoginTime { get; set; }
+        public System.DateTime ChangePassTime { get; set; }
+        public string CreateUser { get; set; }
+        public System.DateTime CreateTime { get; set; }
+        public string UpdateUser { get; set; }
+        public System.DateTime UpdateTime { get; set; }
+        public string TransDate { get; set; }
+        public string TransTime { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Department> Department { get; set; }
-        public virtual Function Function { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserChangePass> UserChangePass { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserProfile> UserProfile { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Role> Role { get; set; }
+        public virtual Function Function { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Department> Department { get; set; }
     }
 }

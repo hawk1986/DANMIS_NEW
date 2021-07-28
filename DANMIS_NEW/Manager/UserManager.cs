@@ -249,59 +249,47 @@ namespace DANMIS_NEW.Manager
                                  LoginTime = x.LoginTime,
                                  PhotoPath = x.PhotoPath,
                                  DefaultIndex = x.Function.DisplayName,
-                                 EmpUniqNo = x.EmpUniqNo.HasValue ? x.EmpUniqNo.Value : 0,
-                                 EmpEngName = x.EmpEngName ?? string.Empty,
+                                 EmpEngName = x.FullEngName ?? string.Empty,
                                  RegionCode = x.RegionCode ?? string.Empty,
                                  CompCode = x.CompCode ?? string.Empty,
-                                 OfficeCode = x.OfficeCode ?? string.Empty,
+                                 OfficeCode = x.CostCenterCode ?? string.Empty,
                                  DeptCode = x.DeptCode ?? string.Empty,
                                  EmpNo = x.EmpNo ?? string.Empty,
-                                 EmpEngOfficialName = x.EmpEngOfficialName ?? string.Empty,
-                                 EmpLocName = x.EmpLocName ?? string.Empty,
-                                 EmpGender = x.EmpGender ?? string.Empty,
-                                 JobTitleCode = x.JobTitleCode ?? string.Empty,
-                                 EmpStartDate = x.EmpStartDate.HasValue ? x.EmpStartDate.Value : default(DateTime),
-                                 EmpQuitDate = x.EmpQuitDate.HasValue ? x.EmpQuitDate.Value : default(DateTime),
-                                 EmpStatusCode = x.EmpStatusCode ?? string.Empty,
-                                 JobStatusCode = x.JobStatusCode ?? string.Empty,
-                                 EmpCompEmail = x.EmpCompEmail ?? string.Empty,
-                                 EmpADLoginID = x.EmpADLoginID ?? string.Empty,
-                                 EmpComputerID = x.EmpComputerID ?? string.Empty,
-                                 EmpPrivateEMail = x.EmpPrivateEMail ?? string.Empty,
-                                 EmpHomePhone = x.EmpHomePhone ?? string.Empty,
-                                 EmpMobilePhone = x.EmpMobilePhone ?? string.Empty,
-                                 BossEmpUniqNo = x.BossEmpUniqNo.HasValue ? x.BossEmpUniqNo.Value : 0,
-                                 EmpAcctStatus = x.EmpAcctStatus ?? string.Empty,
-                                 WritingLanguage = x.WritingLanguage ?? string.Empty,
-                                 SysLanguage = x.SysLanguage ?? string.Empty,
-                                 EmpBankAccount = x.EmpBankAccount ?? string.Empty,
-                                 EmpPhoto = x.EmpPhoto ?? string.Empty,
-                                 CheckAttendance = x.CheckAttendance ?? string.Empty,
-                                 ExtDisplayFlag = x.ExtDisplayFlag ?? string.Empty,
-                                 SpcInTime = x.SpcInTime ?? string.Empty,
-                                 SpcOutTime = x.SpcOutTime ?? string.Empty,
-                                 InputBy = x.InputBy.HasValue ? x.InputBy.Value : 0,
-                                 InputDate = x.InputDate.HasValue ? x.InputDate.Value : default(DateTime),
-                                 ChangeBe = x.ChangeBe.HasValue ? x.ChangeBe.Value : 0,
-                                 ChangeDate = x.ChangeDate.HasValue ? x.ChangeDate.Value : default(DateTime),
-                                 Random = x.Random ?? string.Empty,
-                                 NextBossEmpUniqNo = x.NextBossEmpUniqNo.HasValue ? x.NextBossEmpUniqNo.Value : 0,
-                                 Do_PDP = x.Do_PDP ?? string.Empty,
-                                 EmpExtNo = x.EmpExtNo ?? string.Empty,
+                                 EmpEngOfficialName = x.FullEngName ?? string.Empty,
+                                 EmpLocName = x.LocalName ?? string.Empty,
+                                 EmpGender = x.Gender ?? string.Empty,
+                                 JobTitleCode = x.JobTitle ?? string.Empty,
+                                 EmpStartDate = Convert.ToDateTime(x.EmpStartDate ?? default(DateTime).ToString()),
+                                 EmpQuitDate = Convert.ToDateTime(x.LastWorkDate ?? default(DateTime).ToString()),
+                                 EmpStatusCode =  string.Empty, // ??
+                                 JobStatusCode = string.Empty, // ??
+                                 EmpCompEmail = x.Email ?? string.Empty,
+                                 EmpADLoginID = x.Account ?? string.Empty,
+                                 EmpComputerID = x.UserComputerID ?? string.Empty,
+                                 EmpPrivateEMail = x.PrimaryAddEmail ?? string.Empty,
+                                 EmpHomePhone = x.UserHomePhone ?? string.Empty,
+                                 EmpMobilePhone = x.UserMobilePhone ?? string.Empty,
+                                 BossEmpUniqNo = x.BossEmpUniqNo ?? string.Empty,
+                                 WritingLanguage = string.Empty, // ??
+                                 SysLanguage = string.Empty, // ??
+                                 EmpBankAccount = string.Empty, // ??
+                                 EmpPhoto = x.PhotoPath ?? string.Empty,
+                                 CheckAttendance = string.Empty, // ??
+                                 UserExtIsShow = x.UserExtIsShow,
+                                 NextBossEmpUniqNo = x.NextBossEmpUniqNo ?? string.Empty,
+                                 EmpExtNo = x.UserExtNo ?? string.Empty,
                                  WDID = x.WDID ?? string.Empty,
                                  TaxiAccount = x.TaxiAccount ?? string.Empty,
                                  BrandCode = x.BrandCode ?? string.Empty,
                                  EmpType = x.EmpType ?? string.Empty,
-                                 CostCenter = x.CostCenter ?? string.Empty,
-                                 ProfitCenter = x.ProfitCenter ?? string.Empty,
-                                 LastWorkDate = x.LastWorkDate.HasValue ? x.LastWorkDate.Value : default(DateTime),
+                                 LastWorkDate = Convert.ToDateTime(x.LastWorkDate ?? default(DateTime).ToString()),
                                  CardNo = x.CardNo ?? string.Empty,
                                  FloorNo = x.FloorNo ?? string.Empty,
                                  SeatNo = x.SeatNo ?? string.Empty,
                                  MotoNo = x.MotoNo ?? string.Empty,
                                  MotocycleID = x.MotocycleID ?? string.Empty,
                                  ETag = x.ETag ?? string.Empty,
-                                 MotoStartDate = x.MotoStartDate.HasValue ? x.MotoStartDate.Value : default(DateTime),
+                                 MotoStartDate = Convert.ToDateTime(x.MotoStartDate ?? default(DateTime).ToString()),
                                  FaxNo = x.FaxNo ?? string.Empty,
                                  LeaseLine = x.LeaseLine ?? string.Empty,
                                  AssestNo = x.AssestNo ?? string.Empty,
@@ -647,15 +635,15 @@ namespace DANMIS_NEW.Manager
         public SelectList GetSelectList()
         {
             // 預設集合
-            var temp = _userRepository.GetAll().Where(x => x.EmpQuitDate == null && x.WDID != null);
+            var temp = _userRepository.GetAll().Where(x => x.LastWorkDate == "" && x.WDID != "");
 
             // 將 DB 資料轉換為列表頁呈現資料
             var _tempResult = from x in temp
                               select new UserSelectList
                               {                                  
-                                  Name = x.EmpLocName,
+                                  Name = x.LocalName,
                                   WDID = x.WDID,
-                                  EmpEngName = x.EmpEngName,
+                                  EmpEngName = x.FullEngName,
                               };
 
             // 進行分頁處理

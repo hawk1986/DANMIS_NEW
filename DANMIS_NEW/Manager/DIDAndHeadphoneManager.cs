@@ -164,8 +164,8 @@ namespace DANMIS_NEW.Manager
             foreach (var item in result.rows)
             {
                 var user = _userRepository.GetAll().FirstOrDefault(x => x.WDID == item.WDID);
-                item.User = string.Concat(user.EmpLocName, "(", user.EmpEngName, ")");
-                item.Email = user.EmpCompEmail;
+                item.User = user.LocEngName;
+                item.Email = user.Email;
             }
 
             return result;

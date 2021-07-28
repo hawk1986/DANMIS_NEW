@@ -449,13 +449,96 @@
           <Property Name="Password" Type="varchar" MaxLength="128" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="ContactTel" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WDID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="StaffEvent" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="EmpNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PersonTitle" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LocalName" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="FullEngName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="LocEngName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="EngFirstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="EngMidName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="EngLastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="WorkAdd1" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WorkAdd2" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WorkAdd3" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WorkAdd4" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WorkAddCountry" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="HireDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="HireReason" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="ContStartDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ConEndDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CompName" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="CompEffDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CostCenterName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="CostCenterCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CostCenterEffDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="BrandEffDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="BossLocEngName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="BossWDID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="EmpType" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="GroupHireDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="EmpStartDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DeptMgrName" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="DeptMgrWDID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DeptEffDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PrimaryAdd1" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="PrimaryAddPostCost" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="PrimaryAddCity" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrimaryAddCountry" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PrimaryAddPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="PrimaryAddEmail" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CitiStatus" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="MilitaryStatus" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PersonDataEffDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="PositionID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TimeType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PositionEffDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="JobID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="JobProfile" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="JobProfileEffDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="BusinessTitle" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="BusinessEffDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ChangeJobReason" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ChangeJobDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TerminationDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TerminationReasonLoc" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="TerminationReasonPri" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="LastWorkDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NationalIDCountry" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="NationalIDType" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NationalIDNo" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="RegionCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="CompCode" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="DeptCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserComputerID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserHomePhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserMobilePhone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserExtNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="UserExtIsShow" Type="bit" Nullable="false" />
+          <Property Name="TaxiAccount" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="BrandCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FloorNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SeatNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MotoNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MotocycleID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ETag" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotoStartDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="FaxNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LeaseLine" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AssestNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThirdCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BossEmpUniqNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NextBossEmpUniqNo" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="IsEnable" Type="bit" Nullable="false" />
-          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
-          <Property Name="LoginTime" Type="datetime" Nullable="false" />
-          <Property Name="ChangePassTime" Type="datetime" Nullable="false" />
           <Property Name="PhotoPath" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="IsToken" Type="bit" Nullable="false" />
           <Property Name="HashToken" Type="varchar" MaxLength="256" Nullable="false" />
@@ -464,63 +547,14 @@
           <Property Name="DefaultIndex" Type="uniqueidentifier" />
           <Property Name="DepartmentID" Type="uniqueidentifier" />
           <Property Name="DepartmentIDs" Type="varchar" MaxLength="512" Nullable="false" />
-          <Property Name="EmpUniqNo" Type="int" />
-          <Property Name="EmpEngName" Type="nvarchar" MaxLength="40" />
-          <Property Name="RegionCode" Type="nvarchar" MaxLength="2" />
-          <Property Name="CompCode" Type="nvarchar" MaxLength="5" />
-          <Property Name="OfficeCode" Type="nvarchar" MaxLength="3" />
-          <Property Name="DeptCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpNo" Type="nvarchar" MaxLength="10" />
-          <Property Name="EmpEngOfficialName" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpLocName" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpGender" Type="nvarchar" MaxLength="1" />
-          <Property Name="JobTitleCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpStartDate" Type="date" />
-          <Property Name="EmpQuitDate" Type="date" />
-          <Property Name="EmpStatusCode" Type="nvarchar" MaxLength="2" />
-          <Property Name="JobStatusCode" Type="nvarchar" MaxLength="2" />
-          <Property Name="EmpCompEmail" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpADLoginID" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpComputerID" Type="nvarchar" MaxLength="15" />
-          <Property Name="EmpPrivateEMail" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpHomePhone" Type="nvarchar" MaxLength="15" />
-          <Property Name="EmpMobilePhone" Type="nvarchar" MaxLength="50" />
-          <Property Name="BossEmpUniqNo" Type="int" />
-          <Property Name="EmpAcctStatus" Type="nvarchar" MaxLength="2" />
-          <Property Name="WritingLanguage" Type="nvarchar" MaxLength="2" />
-          <Property Name="SysLanguage" Type="nvarchar" MaxLength="2" />
-          <Property Name="EmpBankAccount" Type="nvarchar" MaxLength="16" />
-          <Property Name="EmpPhoto" Type="nvarchar" MaxLength="100" />
-          <Property Name="CheckAttendance" Type="nvarchar" MaxLength="1" />
-          <Property Name="ExtDisplayFlag" Type="nvarchar" MaxLength="1" />
-          <Property Name="SpcInTime" Type="nvarchar" MaxLength="10" />
-          <Property Name="SpcOutTime" Type="nvarchar" MaxLength="10" />
-          <Property Name="InputBy" Type="int" />
-          <Property Name="InputDate" Type="smalldatetime" />
-          <Property Name="ChangeBe" Type="int" />
-          <Property Name="ChangeDate" Type="smalldatetime" />
-          <Property Name="Random" Type="nvarchar" MaxLength="50" />
-          <Property Name="NextBossEmpUniqNo" Type="int" />
-          <Property Name="Do_PDP" Type="nvarchar" MaxLength="1" />
-          <Property Name="EmpExtNo" Type="nvarchar" MaxLength="10" />
-          <Property Name="WDID" Type="nvarchar" MaxLength="50" />
-          <Property Name="TaxiAccount" Type="nvarchar" MaxLength="10" />
-          <Property Name="BrandCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="EmpType" Type="nvarchar" MaxLength="1" />
-          <Property Name="CostCenter" Type="nvarchar" MaxLength="20" />
-          <Property Name="ProfitCenter" Type="nvarchar" MaxLength="50" />
-          <Property Name="LastWorkDate" Type="date" />
-          <Property Name="CardNo" Type="nvarchar" MaxLength="10" />
-          <Property Name="FloorNo" Type="nvarchar" MaxLength="3" />
-          <Property Name="SeatNo" Type="nvarchar" MaxLength="10" />
-          <Property Name="MotoNo" Type="nvarchar" MaxLength="20" />
-          <Property Name="MotocycleID" Type="nvarchar" MaxLength="50" />
-          <Property Name="ETag" Type="nvarchar" MaxLength="50" />
-          <Property Name="MotoStartDate" Type="date" />
-          <Property Name="FaxNo" Type="nvarchar" MaxLength="15" />
-          <Property Name="LeaseLine" Type="nvarchar" MaxLength="10" />
-          <Property Name="AssestNo" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThirdCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginTime" Type="datetime" Nullable="false" />
+          <Property Name="ChangePassTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="TransDate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TransTime" Type="nvarchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <EntityType Name="User2Role">
           <Key>
@@ -967,58 +1001,19 @@
     <edmx:ConceptualModels>
       <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Department" EntityType="DbModel.Department" />
           <EntitySet Name="FreeFieldSetting" EntityType="DbModel.FreeFieldSetting" />
-          <EntitySet Name="Function" EntityType="DbModel.Function" />
           <EntitySet Name="Module" EntityType="DbModel.Module" />
           <EntitySet Name="OperateRecord" EntityType="DbModel.OperateRecord" />
           <EntitySet Name="Role" EntityType="DbModel.Role" />
           <EntitySet Name="SystemConfig" EntityType="DbModel.SystemConfig" />
           <EntitySet Name="SystemOption" EntityType="DbModel.SystemOption" />
-          <EntitySet Name="User" EntityType="DbModel.User" />
           <EntitySet Name="UserChangePass" EntityType="DbModel.UserChangePass" />
           <EntitySet Name="UserProfile" EntityType="DbModel.UserProfile" />
           <EntitySet Name="VisualMenu" EntityType="DbModel.VisualMenu" />
           <EntitySet Name="Skill" EntityType="DbModel.Skill" />
-          <AssociationSet Name="FK_Department_Head" Association="DbModel.FK_Department_Head">
-            <End Role="User" EntitySet="User" />
-            <End Role="Department" EntitySet="Department" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Department_Parent" Association="DbModel.FK_Department_Parent">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Department1" EntitySet="Department" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Department" Association="DbModel.FK_User_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Function_Module" Association="DbModel.FK_Function_Module">
-            <End Role="Module" EntitySet="Module" />
-            <End Role="Function" EntitySet="Function" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Function" Association="DbModel.FK_User_Function">
-            <End Role="Function" EntitySet="Function" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserChangePass_User" Association="DbModel.FK_UserChangePass_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserChangePass" EntitySet="UserChangePass" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserProfile_User" Association="DbModel.FK_UserProfile_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserProfile" EntitySet="UserProfile" />
-          </AssociationSet>
           <AssociationSet Name="FK_VisualMenu_VisualMenu" Association="DbModel.FK_VisualMenu_VisualMenu">
             <End Role="VisualMenu" EntitySet="VisualMenu" />
             <End Role="VisualMenu1" EntitySet="VisualMenu" />
-          </AssociationSet>
-          <AssociationSet Name="AccessControl" Association="DbModel.AccessControl">
-            <End Role="Function" EntitySet="Function" />
-            <End Role="Role" EntitySet="Role" />
-          </AssociationSet>
-          <AssociationSet Name="User2Role" Association="DbModel.User2Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="User" EntitySet="User" />
           </AssociationSet>
           <EntitySet Name="Factory" EntityType="DbModel.Factory" />
           <EntitySet Name="ContactPerson" EntityType="DbModel.ContactPerson" />
@@ -1060,39 +1055,46 @@
             <End Role="BrandItemsMgmt" EntitySet="BrandItemsMgmt" />
             <End Role="BrandItemsMgmt1" EntitySet="BrandItemsMgmt" />
           </AssociationSet>
+          <EntitySet Name="User" EntityType="DbModel.User" />
+          <AssociationSet Name="FK_UserChangePass_User" Association="DbModel.FK_UserChangePass_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserChangePass" EntitySet="UserChangePass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_User" Association="DbModel.FK_UserProfile_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="User2Role" Association="DbModel.User2Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <EntitySet Name="Function" EntityType="DbModel.Function" />
+          <AssociationSet Name="FK_Function_Module" Association="DbModel.FK_Function_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Function" EntitySet="Function" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Function" Association="DbModel.FK_User_Function">
+            <End Role="Function" EntitySet="Function" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="AccessControl" Association="DbModel.AccessControl">
+            <End Role="Function" EntitySet="Function" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <EntitySet Name="Department" EntityType="DbModel.Department" />
+          <AssociationSet Name="FK_Department_Head" Association="DbModel.FK_Department_Head">
+            <End Role="User" EntitySet="User" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Parent" Association="DbModel.FK_Department_Parent">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Department1" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Department" Association="DbModel.FK_User_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="Department">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="Sequence" Type="Byte" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Abbreviate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="DepartmentLevel" Type="Byte" Nullable="false" />
-          <Property Name="ContactTel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ContactFax" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="WebSiteUrl" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ImageAlt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ImageWidth" Type="Int16" Nullable="false" />
-          <Property Name="ImageHeight" Type="Int16" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
-          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FreeFields" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="HeadID" Type="Guid" />
-          <Property Name="ParentID" Type="Guid" />
-          <NavigationProperty Name="Head" Relationship="DbModel.FK_Department_Head" FromRole="Department" ToRole="User" />
-          <NavigationProperty Name="Children" Relationship="DbModel.FK_Department_Parent" FromRole="Department" ToRole="Department1" />
-          <NavigationProperty Name="Parent" Relationship="DbModel.FK_Department_Parent" FromRole="Department1" ToRole="Department" />
-          <NavigationProperty Name="User" Relationship="DbModel.FK_User_Department" FromRole="Department" ToRole="User" />
-        </EntityType>
         <EntityType Name="FreeFieldSetting">
           <Key>
             <PropertyRef Name="ID" />
@@ -1103,30 +1105,6 @@
           <Property Name="FieldName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DataType" Type="Boolean" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Function">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="ModuleID" Type="Guid" Nullable="false" />
-          <Property Name="Sequence" Type="Byte" Nullable="false" />
-          <Property Name="GroupSequence" Type="Byte" Nullable="false" />
-          <Property Name="BitCode" Type="Int32" Nullable="false" />
-          <Property Name="Dependency" Type="Int32" Nullable="false" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SimpleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DisplayTree" Type="Boolean" Nullable="false" />
-          <Property Name="DisplayHeader" Type="Boolean" Nullable="false" />
-          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
-          <Property Name="ControllerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ActionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Module" Relationship="DbModel.FK_Function_Module" FromRole="Function" ToRole="Module" />
-          <NavigationProperty Name="User" Relationship="DbModel.FK_User_Function" FromRole="Function" ToRole="User" />
-          <NavigationProperty Name="Role" Relationship="DbModel.AccessControl" FromRole="Function" ToRole="Role" />
         </EntityType>
         <EntityType Name="Module">
           <Key>
@@ -1169,8 +1147,8 @@
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Function" Relationship="DbModel.AccessControl" FromRole="Role" ToRole="Function" />
           <NavigationProperty Name="User" Relationship="DbModel.User2Role" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="Function" Relationship="DbModel.AccessControl" FromRole="Role" ToRole="Function" />
         </EntityType>
         <EntityType Name="SystemConfig">
           <Key>
@@ -1198,95 +1176,6 @@
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Account" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="ContactTel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
-          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LoginTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ChangePassTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="PhotoPath" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="IsToken" Type="Boolean" Nullable="false" />
-          <Property Name="HashToken" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="TokenData" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="FreeFields" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="DefaultIndex" Type="Guid" />
-          <Property Name="DepartmentID" Type="Guid" />
-          <NavigationProperty Name="Department" Relationship="DbModel.FK_Department_Head" FromRole="User" ToRole="Department" />
-          <NavigationProperty Name="Function" Relationship="DbModel.FK_User_Function" FromRole="User" ToRole="Function" />
-          <NavigationProperty Name="UserChangePass" Relationship="DbModel.FK_UserChangePass_User" FromRole="User" ToRole="UserChangePass" />
-          <NavigationProperty Name="UserProfile" Relationship="DbModel.FK_UserProfile_User" FromRole="User" ToRole="UserProfile" />
-          <NavigationProperty Name="Role" Relationship="DbModel.User2Role" FromRole="User" ToRole="Role" />
-          <Property Name="DepartmentIDs" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="EmpUniqNo" Type="Int32" />
-          <Property Name="EmpEngName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="RegionCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="CompCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="OfficeCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="DeptCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="EmpEngOfficialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpLocName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpGender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="JobTitleCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpStartDate" Type="DateTime" Precision="0" />
-          <Property Name="EmpQuitDate" Type="DateTime" Precision="0" />
-          <Property Name="EmpStatusCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="JobStatusCode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="EmpCompEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpADLoginID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpComputerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="EmpPrivateEMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpHomePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="EmpMobilePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BossEmpUniqNo" Type="Int32" />
-          <Property Name="EmpAcctStatus" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="WritingLanguage" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="SysLanguage" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="EmpBankAccount" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="EmpPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CheckAttendance" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="ExtDisplayFlag" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="SpcInTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="SpcOutTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="InputBy" Type="Int32" />
-          <Property Name="InputDate" Type="DateTime" Precision="0" />
-          <Property Name="ChangeBe" Type="Int32" />
-          <Property Name="ChangeDate" Type="DateTime" Precision="0" />
-          <Property Name="Random" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NextBossEmpUniqNo" Type="Int32" />
-          <Property Name="Do_PDP" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="EmpExtNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="WDID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TaxiAccount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="BrandCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmpType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="CostCenter" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="ProfitCenter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastWorkDate" Type="DateTime" Precision="0" />
-          <Property Name="CardNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="FloorNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="SeatNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="MotoNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="MotocycleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ETag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MotoStartDate" Type="DateTime" Precision="0" />
-          <Property Name="FaxNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="LeaseLine" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="AssestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThirdCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UserChangePass">
           <Key>
@@ -1353,96 +1242,6 @@
           <Property Name="type" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="true" />
           <Property Name="abc" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
-        <Association Name="FK_Department_Head">
-          <End Type="DbModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="DbModel.Department" Role="Department" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Department">
-              <PropertyRef Name="HeadID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Department_Parent">
-          <End Type="DbModel.Department" Role="Department" Multiplicity="0..1" />
-          <End Type="DbModel.Department" Role="Department1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Department">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Department1">
-              <PropertyRef Name="ParentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Department">
-          <End Type="DbModel.Department" Role="Department" Multiplicity="0..1" />
-          <End Type="DbModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Department">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="DepartmentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Function_Module">
-          <End Type="DbModel.Module" Role="Module" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DbModel.Function" Role="Function" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Module">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Function">
-              <PropertyRef Name="ModuleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Function">
-          <End Type="DbModel.Function" Role="Function" Multiplicity="0..1" />
-          <End Type="DbModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Function">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="DefaultIndex" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserChangePass_User">
-          <End Type="DbModel.User" Role="User" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DbModel.UserChangePass" Role="UserChangePass" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="UserChangePass">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserProfile_User">
-          <End Type="DbModel.User" Role="User" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DbModel.UserProfile" Role="UserProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="UserProfile">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_VisualMenu_VisualMenu">
           <End Type="DbModel.VisualMenu" Role="VisualMenu" Multiplicity="0..1" />
           <End Type="DbModel.VisualMenu" Role="VisualMenu1" Multiplicity="*" />
@@ -1454,14 +1253,6 @@
               <PropertyRef Name="ParentID" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="AccessControl">
-          <End Type="DbModel.Function" Role="Function" Multiplicity="*" />
-          <End Type="DbModel.Role" Role="Role" Multiplicity="*" />
-        </Association>
-        <Association Name="User2Role">
-          <End Type="DbModel.Role" Role="Role" Multiplicity="*" />
-          <End Type="DbModel.User" Role="User" Multiplicity="*" />
         </Association>
         <EntityType Name="Factory">
           <Key>
@@ -1870,41 +1661,289 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="ContactTel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WDID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StaffEvent" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EmpNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PersonTitle" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LocalName" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="FullEngName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="LocEngName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="EngFirstName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EngMidName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EngLastName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="WorkAdd1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WorkAdd2" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WorkAdd3" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WorkAdd4" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WorkAddCountry" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HireDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HireReason" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="ContStartDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ConEndDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CompName" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="CompEffDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CostCenterName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CostCenterCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CostCenterEffDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BrandEffDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BossLocEngName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BossWDID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EmpType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GroupHireDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EmpStartDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DeptMgrName" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="DeptMgrWDID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DeptEffDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryAdd1" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryAddPostCost" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryAddCity" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryAddCountry" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryAddPhone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryAddEmail" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CitiStatus" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="MilitaryStatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PersonDataEffDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="PositionID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TimeType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PositionEffDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="JobID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="JobProfile" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="JobProfileEffDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessTitle" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessEffDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ChangeJobReason" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ChangeJobDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TerminationDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TerminationReasonLoc" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="TerminationReasonPri" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="LastWorkDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NationalIDCountry" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="NationalIDType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NationalIDNo" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="RegionCode" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="CompCode" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="DeptCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserComputerID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserHomePhone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserMobilePhone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserExtNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UserExtIsShow" Type="Boolean" Nullable="false" />
+          <Property Name="TaxiAccount" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BrandCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CardNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FloorNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SeatNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MotoNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MotocycleID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ETag" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MotoStartDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LeaseLine" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AssestNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThirdCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BossEmpUniqNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NextBossEmpUniqNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="PhotoPath" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="IsToken" Type="Boolean" Nullable="false" />
+          <Property Name="HashToken" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="TokenData" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FreeFields" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultIndex" Type="Guid" />
+          <Property Name="DepartmentID" Type="Guid" />
+          <Property Name="DepartmentIDs" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="LoginTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangePassTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TransDate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TransTime" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserChangePass" Relationship="DbModel.FK_UserChangePass_User" FromRole="User" ToRole="UserChangePass" />
+          <NavigationProperty Name="UserProfile" Relationship="DbModel.FK_UserProfile_User" FromRole="User" ToRole="UserProfile" />
+          <NavigationProperty Name="Role" Relationship="DbModel.User2Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Function" Relationship="DbModel.FK_User_Function" FromRole="User" ToRole="Function" />
+          <NavigationProperty Name="Department" Relationship="DbModel.FK_Department_Head" FromRole="User" ToRole="Department" />
+        </EntityType>
+        <Association Name="FK_UserChangePass_User">
+          <End Type="DbModel.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DbModel.UserChangePass" Role="UserChangePass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserChangePass">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_User">
+          <End Type="DbModel.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DbModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User2Role">
+          <End Type="DbModel.Role" Role="Role" Multiplicity="*" />
+          <End Type="DbModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Function">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ModuleID" Type="Guid" Nullable="false" />
+          <Property Name="Sequence" Type="Byte" Nullable="false" />
+          <Property Name="GroupSequence" Type="Byte" Nullable="false" />
+          <Property Name="BitCode" Type="Int32" Nullable="false" />
+          <Property Name="Dependency" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SimpleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayTree" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayHeader" Type="Boolean" Nullable="false" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="ControllerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Module" Relationship="DbModel.FK_Function_Module" FromRole="Function" ToRole="Module" />
+          <NavigationProperty Name="User" Relationship="DbModel.FK_User_Function" FromRole="Function" ToRole="User" />
+          <NavigationProperty Name="Role" Relationship="DbModel.AccessControl" FromRole="Function" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Function_Module">
+          <End Type="DbModel.Module" Role="Module" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DbModel.Function" Role="Function" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Function">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Function">
+          <End Type="DbModel.Function" Role="Function" Multiplicity="0..1" />
+          <End Type="DbModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Function">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DefaultIndex" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AccessControl">
+          <End Type="DbModel.Function" Role="Function" Multiplicity="*" />
+          <End Type="DbModel.Role" Role="Role" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SequenceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Sequence" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Abbreviate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentLevel" Type="Byte" Nullable="false" />
+          <Property Name="ContactTel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ContactFax" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="WebSiteUrl" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ImageAlt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageWidth" Type="Int16" Nullable="false" />
+          <Property Name="ImageHeight" Type="Int16" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FreeFields" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="HeadID" Type="Guid" />
+          <Property Name="ParentID" Type="Guid" />
+          <NavigationProperty Name="Head" Relationship="DbModel.FK_Department_Head" FromRole="Department" ToRole="User" />
+          <NavigationProperty Name="Children" Relationship="DbModel.FK_Department_Parent" FromRole="Department" ToRole="Department1" />
+          <NavigationProperty Name="Parent" Relationship="DbModel.FK_Department_Parent" FromRole="Department1" ToRole="Department" />
+          <NavigationProperty Name="User" Relationship="DbModel.FK_User_Department" FromRole="Department" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Department_Head">
+          <End Type="DbModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="DbModel.Department" Role="Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="HeadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Parent">
+          <End Type="DbModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="DbModel.Department" Role="Department1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Department">
+          <End Type="DbModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="DbModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MGearModelStoreContainer" CdmEntityContainer="DbEntities">
-          <EntitySetMapping Name="Department">
-            <EntityTypeMapping TypeName="DbModel.Department">
-              <MappingFragment StoreEntitySet="Department">
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="HeadID" ColumnName="HeadID" />
-                <ScalarProperty Name="FreeFields" ColumnName="FreeFields" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ImageHeight" ColumnName="ImageHeight" />
-                <ScalarProperty Name="ImageWidth" ColumnName="ImageWidth" />
-                <ScalarProperty Name="ImageAlt" ColumnName="ImageAlt" />
-                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-                <ScalarProperty Name="WebSiteUrl" ColumnName="WebSiteUrl" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="ContactFax" ColumnName="ContactFax" />
-                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
-                <ScalarProperty Name="DepartmentLevel" ColumnName="DepartmentLevel" />
-                <ScalarProperty Name="Abbreviate" ColumnName="Abbreviate" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FreeFieldSetting">
             <EntityTypeMapping TypeName="DbModel.FreeFieldSetting">
               <MappingFragment StoreEntitySet="FreeFieldSetting">
@@ -1912,28 +1951,6 @@
                 <ScalarProperty Name="DataType" ColumnName="DataType" />
                 <ScalarProperty Name="FieldName" ColumnName="FieldName" />
                 <ScalarProperty Name="TableName" ColumnName="TableName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Function">
-            <EntityTypeMapping TypeName="DbModel.Function">
-              <MappingFragment StoreEntitySet="Function">
-                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
-                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
-                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-                <ScalarProperty Name="DisplayHeader" ColumnName="DisplayHeader" />
-                <ScalarProperty Name="DisplayTree" ColumnName="DisplayTree" />
-                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
-                <ScalarProperty Name="SimpleName" ColumnName="SimpleName" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Dependency" ColumnName="Dependency" />
-                <ScalarProperty Name="BitCode" ColumnName="BitCode" />
-                <ScalarProperty Name="GroupSequence" ColumnName="GroupSequence" />
-                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
-                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>
@@ -2012,91 +2029,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="DbModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="ThirdCode" ColumnName="ThirdCode" />
-                <ScalarProperty Name="AssestNo" ColumnName="AssestNo" />
-                <ScalarProperty Name="LeaseLine" ColumnName="LeaseLine" />
-                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
-                <ScalarProperty Name="MotoStartDate" ColumnName="MotoStartDate" />
-                <ScalarProperty Name="ETag" ColumnName="ETag" />
-                <ScalarProperty Name="MotocycleID" ColumnName="MotocycleID" />
-                <ScalarProperty Name="MotoNo" ColumnName="MotoNo" />
-                <ScalarProperty Name="SeatNo" ColumnName="SeatNo" />
-                <ScalarProperty Name="FloorNo" ColumnName="FloorNo" />
-                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
-                <ScalarProperty Name="LastWorkDate" ColumnName="LastWorkDate" />
-                <ScalarProperty Name="ProfitCenter" ColumnName="ProfitCenter" />
-                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
-                <ScalarProperty Name="EmpType" ColumnName="EmpType" />
-                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
-                <ScalarProperty Name="TaxiAccount" ColumnName="TaxiAccount" />
-                <ScalarProperty Name="WDID" ColumnName="WDID" />
-                <ScalarProperty Name="EmpExtNo" ColumnName="EmpExtNo" />
-                <ScalarProperty Name="Do_PDP" ColumnName="Do_PDP" />
-                <ScalarProperty Name="NextBossEmpUniqNo" ColumnName="NextBossEmpUniqNo" />
-                <ScalarProperty Name="Random" ColumnName="Random" />
-                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
-                <ScalarProperty Name="ChangeBe" ColumnName="ChangeBe" />
-                <ScalarProperty Name="InputDate" ColumnName="InputDate" />
-                <ScalarProperty Name="InputBy" ColumnName="InputBy" />
-                <ScalarProperty Name="SpcOutTime" ColumnName="SpcOutTime" />
-                <ScalarProperty Name="SpcInTime" ColumnName="SpcInTime" />
-                <ScalarProperty Name="ExtDisplayFlag" ColumnName="ExtDisplayFlag" />
-                <ScalarProperty Name="CheckAttendance" ColumnName="CheckAttendance" />
-                <ScalarProperty Name="EmpPhoto" ColumnName="EmpPhoto" />
-                <ScalarProperty Name="EmpBankAccount" ColumnName="EmpBankAccount" />
-                <ScalarProperty Name="SysLanguage" ColumnName="SysLanguage" />
-                <ScalarProperty Name="WritingLanguage" ColumnName="WritingLanguage" />
-                <ScalarProperty Name="EmpAcctStatus" ColumnName="EmpAcctStatus" />
-                <ScalarProperty Name="BossEmpUniqNo" ColumnName="BossEmpUniqNo" />
-                <ScalarProperty Name="EmpMobilePhone" ColumnName="EmpMobilePhone" />
-                <ScalarProperty Name="EmpHomePhone" ColumnName="EmpHomePhone" />
-                <ScalarProperty Name="EmpPrivateEMail" ColumnName="EmpPrivateEMail" />
-                <ScalarProperty Name="EmpComputerID" ColumnName="EmpComputerID" />
-                <ScalarProperty Name="EmpADLoginID" ColumnName="EmpADLoginID" />
-                <ScalarProperty Name="EmpCompEmail" ColumnName="EmpCompEmail" />
-                <ScalarProperty Name="JobStatusCode" ColumnName="JobStatusCode" />
-                <ScalarProperty Name="EmpStatusCode" ColumnName="EmpStatusCode" />
-                <ScalarProperty Name="EmpQuitDate" ColumnName="EmpQuitDate" />
-                <ScalarProperty Name="EmpStartDate" ColumnName="EmpStartDate" />
-                <ScalarProperty Name="JobTitleCode" ColumnName="JobTitleCode" />
-                <ScalarProperty Name="EmpGender" ColumnName="EmpGender" />
-                <ScalarProperty Name="EmpLocName" ColumnName="EmpLocName" />
-                <ScalarProperty Name="EmpEngOfficialName" ColumnName="EmpEngOfficialName" />
-                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
-                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
-                <ScalarProperty Name="OfficeCode" ColumnName="OfficeCode" />
-                <ScalarProperty Name="CompCode" ColumnName="CompCode" />
-                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
-                <ScalarProperty Name="EmpEngName" ColumnName="EmpEngName" />
-                <ScalarProperty Name="EmpUniqNo" ColumnName="EmpUniqNo" />
-                <ScalarProperty Name="DepartmentIDs" ColumnName="DepartmentIDs" />
-                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
-                <ScalarProperty Name="DefaultIndex" ColumnName="DefaultIndex" />
-                <ScalarProperty Name="FreeFields" ColumnName="FreeFields" />
-                <ScalarProperty Name="TokenData" ColumnName="TokenData" />
-                <ScalarProperty Name="HashToken" ColumnName="HashToken" />
-                <ScalarProperty Name="IsToken" ColumnName="IsToken" />
-                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
-                <ScalarProperty Name="ChangePassTime" ColumnName="ChangePassTime" />
-                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
-                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Account" ColumnName="Account" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserChangePass">
             <EntityTypeMapping TypeName="DbModel.UserChangePass">
               <MappingFragment StoreEntitySet="UserChangePass">
@@ -2158,22 +2090,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AccessControl" TypeName="DbModel.AccessControl" StoreEntitySet="AccessControl">
-            <EndProperty Name="Role">
-              <ScalarProperty Name="ID" ColumnName="RoleID" />
-            </EndProperty>
-            <EndProperty Name="Function">
-              <ScalarProperty Name="ID" ColumnName="FunctionID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="User2Role" TypeName="DbModel.User2Role" StoreEntitySet="User2Role">
-            <EndProperty Name="User">
-              <ScalarProperty Name="ID" ColumnName="UserID" />
-            </EndProperty>
-            <EndProperty Name="Role">
-              <ScalarProperty Name="ID" ColumnName="RoleID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="Factory">
             <EntityTypeMapping TypeName="DbModel.Factory">
               <MappingFragment StoreEntitySet="Factory">
@@ -2518,6 +2434,192 @@
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DbModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="TransTime" ColumnName="TransTime" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="ChangePassTime" ColumnName="ChangePassTime" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="DepartmentIDs" ColumnName="DepartmentIDs" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DefaultIndex" ColumnName="DefaultIndex" />
+                <ScalarProperty Name="FreeFields" ColumnName="FreeFields" />
+                <ScalarProperty Name="TokenData" ColumnName="TokenData" />
+                <ScalarProperty Name="HashToken" ColumnName="HashToken" />
+                <ScalarProperty Name="IsToken" ColumnName="IsToken" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="NextBossEmpUniqNo" ColumnName="NextBossEmpUniqNo" />
+                <ScalarProperty Name="BossEmpUniqNo" ColumnName="BossEmpUniqNo" />
+                <ScalarProperty Name="ThirdCode" ColumnName="ThirdCode" />
+                <ScalarProperty Name="AssestNo" ColumnName="AssestNo" />
+                <ScalarProperty Name="LeaseLine" ColumnName="LeaseLine" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="MotoStartDate" ColumnName="MotoStartDate" />
+                <ScalarProperty Name="ETag" ColumnName="ETag" />
+                <ScalarProperty Name="MotocycleID" ColumnName="MotocycleID" />
+                <ScalarProperty Name="MotoNo" ColumnName="MotoNo" />
+                <ScalarProperty Name="SeatNo" ColumnName="SeatNo" />
+                <ScalarProperty Name="FloorNo" ColumnName="FloorNo" />
+                <ScalarProperty Name="CardNo" ColumnName="CardNo" />
+                <ScalarProperty Name="BrandCode" ColumnName="BrandCode" />
+                <ScalarProperty Name="TaxiAccount" ColumnName="TaxiAccount" />
+                <ScalarProperty Name="UserExtIsShow" ColumnName="UserExtIsShow" />
+                <ScalarProperty Name="UserExtNo" ColumnName="UserExtNo" />
+                <ScalarProperty Name="UserMobilePhone" ColumnName="UserMobilePhone" />
+                <ScalarProperty Name="UserHomePhone" ColumnName="UserHomePhone" />
+                <ScalarProperty Name="UserComputerID" ColumnName="UserComputerID" />
+                <ScalarProperty Name="DeptCode" ColumnName="DeptCode" />
+                <ScalarProperty Name="CompCode" ColumnName="CompCode" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="NationalIDNo" ColumnName="NationalIDNo" />
+                <ScalarProperty Name="NationalIDType" ColumnName="NationalIDType" />
+                <ScalarProperty Name="NationalIDCountry" ColumnName="NationalIDCountry" />
+                <ScalarProperty Name="LastWorkDate" ColumnName="LastWorkDate" />
+                <ScalarProperty Name="TerminationReasonPri" ColumnName="TerminationReasonPri" />
+                <ScalarProperty Name="TerminationReasonLoc" ColumnName="TerminationReasonLoc" />
+                <ScalarProperty Name="TerminationDate" ColumnName="TerminationDate" />
+                <ScalarProperty Name="ChangeJobDate" ColumnName="ChangeJobDate" />
+                <ScalarProperty Name="ChangeJobReason" ColumnName="ChangeJobReason" />
+                <ScalarProperty Name="BusinessEffDate" ColumnName="BusinessEffDate" />
+                <ScalarProperty Name="BusinessTitle" ColumnName="BusinessTitle" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="JobProfileEffDate" ColumnName="JobProfileEffDate" />
+                <ScalarProperty Name="JobProfile" ColumnName="JobProfile" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="PositionEffDate" ColumnName="PositionEffDate" />
+                <ScalarProperty Name="TimeType" ColumnName="TimeType" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="PersonDataEffDate" ColumnName="PersonDataEffDate" />
+                <ScalarProperty Name="MilitaryStatus" ColumnName="MilitaryStatus" />
+                <ScalarProperty Name="CitiStatus" ColumnName="CitiStatus" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="PrimaryAddEmail" ColumnName="PrimaryAddEmail" />
+                <ScalarProperty Name="PrimaryAddPhone" ColumnName="PrimaryAddPhone" />
+                <ScalarProperty Name="PrimaryAddCountry" ColumnName="PrimaryAddCountry" />
+                <ScalarProperty Name="PrimaryAddCity" ColumnName="PrimaryAddCity" />
+                <ScalarProperty Name="PrimaryAddPostCost" ColumnName="PrimaryAddPostCost" />
+                <ScalarProperty Name="PrimaryAdd1" ColumnName="PrimaryAdd1" />
+                <ScalarProperty Name="DeptEffDate" ColumnName="DeptEffDate" />
+                <ScalarProperty Name="DeptMgrWDID" ColumnName="DeptMgrWDID" />
+                <ScalarProperty Name="DeptMgrName" ColumnName="DeptMgrName" />
+                <ScalarProperty Name="EmpStartDate" ColumnName="EmpStartDate" />
+                <ScalarProperty Name="GroupHireDate" ColumnName="GroupHireDate" />
+                <ScalarProperty Name="EmpType" ColumnName="EmpType" />
+                <ScalarProperty Name="BossWDID" ColumnName="BossWDID" />
+                <ScalarProperty Name="BossLocEngName" ColumnName="BossLocEngName" />
+                <ScalarProperty Name="BrandEffDate" ColumnName="BrandEffDate" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="CostCenterEffDate" ColumnName="CostCenterEffDate" />
+                <ScalarProperty Name="CostCenterCode" ColumnName="CostCenterCode" />
+                <ScalarProperty Name="CostCenterName" ColumnName="CostCenterName" />
+                <ScalarProperty Name="CompEffDate" ColumnName="CompEffDate" />
+                <ScalarProperty Name="CompName" ColumnName="CompName" />
+                <ScalarProperty Name="ConEndDate" ColumnName="ConEndDate" />
+                <ScalarProperty Name="ContStartDate" ColumnName="ContStartDate" />
+                <ScalarProperty Name="HireReason" ColumnName="HireReason" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="WorkAddCountry" ColumnName="WorkAddCountry" />
+                <ScalarProperty Name="WorkAdd4" ColumnName="WorkAdd4" />
+                <ScalarProperty Name="WorkAdd3" ColumnName="WorkAdd3" />
+                <ScalarProperty Name="WorkAdd2" ColumnName="WorkAdd2" />
+                <ScalarProperty Name="WorkAdd1" ColumnName="WorkAdd1" />
+                <ScalarProperty Name="EngLastName" ColumnName="EngLastName" />
+                <ScalarProperty Name="EngMidName" ColumnName="EngMidName" />
+                <ScalarProperty Name="EngFirstName" ColumnName="EngFirstName" />
+                <ScalarProperty Name="LocEngName" ColumnName="LocEngName" />
+                <ScalarProperty Name="FullEngName" ColumnName="FullEngName" />
+                <ScalarProperty Name="LocalName" ColumnName="LocalName" />
+                <ScalarProperty Name="PersonTitle" ColumnName="PersonTitle" />
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="StaffEvent" ColumnName="StaffEvent" />
+                <ScalarProperty Name="WDID" ColumnName="WDID" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="User2Role" TypeName="DbModel.User2Role" StoreEntitySet="User2Role">
+            <EndProperty Name="User">
+              <ScalarProperty Name="ID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="Role">
+              <ScalarProperty Name="ID" ColumnName="RoleID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Function">
+            <EntityTypeMapping TypeName="DbModel.Function">
+              <MappingFragment StoreEntitySet="Function">
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="DisplayHeader" ColumnName="DisplayHeader" />
+                <ScalarProperty Name="DisplayTree" ColumnName="DisplayTree" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="SimpleName" ColumnName="SimpleName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Dependency" ColumnName="Dependency" />
+                <ScalarProperty Name="BitCode" ColumnName="BitCode" />
+                <ScalarProperty Name="GroupSequence" ColumnName="GroupSequence" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AccessControl" TypeName="DbModel.AccessControl" StoreEntitySet="AccessControl">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="ID" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="Function">
+              <ScalarProperty Name="ID" ColumnName="FunctionID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="DbModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="HeadID" ColumnName="HeadID" />
+                <ScalarProperty Name="FreeFields" ColumnName="FreeFields" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImageHeight" ColumnName="ImageHeight" />
+                <ScalarProperty Name="ImageWidth" ColumnName="ImageWidth" />
+                <ScalarProperty Name="ImageAlt" ColumnName="ImageAlt" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="WebSiteUrl" ColumnName="WebSiteUrl" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactFax" ColumnName="ContactFax" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="DepartmentLevel" ColumnName="DepartmentLevel" />
+                <ScalarProperty Name="Abbreviate" ColumnName="Abbreviate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
               </MappingFragment>

@@ -25,15 +25,12 @@ namespace DANMIS_NEW.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Department> Department { get; set; }
         public virtual DbSet<FreeFieldSetting> FreeFieldSetting { get; set; }
-        public virtual DbSet<Function> Function { get; set; }
         public virtual DbSet<Module> Module { get; set; }
         public virtual DbSet<OperateRecord> OperateRecord { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<SystemConfig> SystemConfig { get; set; }
         public virtual DbSet<SystemOption> SystemOption { get; set; }
-        public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserChangePass> UserChangePass { get; set; }
         public virtual DbSet<UserProfile> UserProfile { get; set; }
         public virtual DbSet<VisualMenu> VisualMenu { get; set; }
@@ -58,5 +55,8 @@ namespace DANMIS_NEW.Models
         public virtual DbSet<ItemsApply> ItemsApply { get; set; }
         public virtual DbSet<BrandItems> BrandItems { get; set; }
         public virtual DbSet<BrandItemsMgmt> BrandItemsMgmt { get; set; }
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Function> Function { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
     }
 }

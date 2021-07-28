@@ -107,7 +107,7 @@ namespace DANMIS_NEW.Manager
         /// <returns></returns>
         public Paging<FloorManagerListResult> Paging(FloorManagerSearchModel searchModel)
         {
-            var users = _userRepository.GetAll().Where(x => x.EmpQuitDate == null && x.WDID != null);
+            var users = _userRepository.GetAll().Where(x => x.LastWorkDate == "" && x.WDID != "");
 
             // 預設集合
             var temp = _floorManagerRepository.GetAll();
@@ -125,7 +125,7 @@ namespace DANMIS_NEW.Manager
                                  ID = x.ID,
                                  WDID = x.WDID,
                                  Brand = x.Brand,
-                                 Name = string.Concat(users.FirstOrDefault(y => x.WDID == y.WDID).EmpLocName, "(", users.FirstOrDefault(y => y.WDID == x.WDID).EmpEngName, ")") ?? string.Empty,
+                                 Name = users.FirstOrDefault(y => x.WDID == y.WDID).LocEngName,
                                  IsEnable = x.IsEnable,
                                  UpdateUser = x.UpdateUser,
                                  UpdateTime = x.UpdateTime,

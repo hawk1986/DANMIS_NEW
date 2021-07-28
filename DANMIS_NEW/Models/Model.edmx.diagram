@@ -5,29 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3fc870a68adc4fa6b37ddc20fd2c0fe2" Name="Diagram1" ZoomLevel="82">
-        <EntityTypeShape EntityType="DbModel.Department" Width="1.5" PointX="9.75" PointY="9.375" />
         <EntityTypeShape EntityType="DbModel.FreeFieldSetting" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DbModel.Function" Width="1.5" PointX="3" PointY="7.25" />
         <EntityTypeShape EntityType="DbModel.Module" Width="1.5" PointX="0.75" PointY="8.375" />
         <EntityTypeShape EntityType="DbModel.OperateRecord" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="DbModel.Role" Width="1.5" PointX="5.25" PointY="8" />
         <EntityTypeShape EntityType="DbModel.SystemConfig" Width="1.5" PointX="11.75" PointY="0.75" />
         <EntityTypeShape EntityType="DbModel.SystemOption" Width="1.5" PointX="11.75" PointY="4.75" />
-        <EntityTypeShape EntityType="DbModel.User" Width="1.5" PointX="7.5" PointY="6.5" />
         <EntityTypeShape EntityType="DbModel.UserChangePass" Width="1.5" PointX="9.75" PointY="3.625" />
         <EntityTypeShape EntityType="DbModel.UserProfile" Width="1.5" PointX="9.75" PointY="6.5" />
         <EntityTypeShape EntityType="DbModel.VisualMenu" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DbModel.Skill" Width="1.5" PointX="8.75" PointY="0.75" />
-        <AssociationConnector Association="DbModel.FK_Department_Head" />
-        <AssociationConnector Association="DbModel.FK_Department_Parent" />
-        <AssociationConnector Association="DbModel.FK_User_Department" />
-        <AssociationConnector Association="DbModel.FK_Function_Module" />
-        <AssociationConnector Association="DbModel.FK_User_Function" />
-        <AssociationConnector Association="DbModel.FK_UserChangePass_User" />
-        <AssociationConnector Association="DbModel.FK_UserProfile_User" />
         <AssociationConnector Association="DbModel.FK_VisualMenu_VisualMenu" />
-        <AssociationConnector Association="DbModel.AccessControl" />
-        <AssociationConnector Association="DbModel.User2Role" />
         <EntityTypeShape EntityType="DbModel.Factory" Width="1.5" PointX="18.25" PointY="0.75" />
         <EntityTypeShape EntityType="DbModel.ContactPerson" Width="1.5" PointX="20.125" PointY="0.75" />
         <AssociationConnector Association="DbModel.FK_ContactPerson_Factory" />
@@ -53,6 +41,18 @@
         <EntityTypeShape EntityType="DbModel.BrandItemsMgmt" Width="1.5" PointX="16.5" PointY="16.875" />
         <AssociationConnector Association="DbModel.FK_BrandItems_BrandItems" />
         <AssociationConnector Association="DbModel.FK_BrandItemsMgmt_BrandItemsMgmt" />
+        <EntityTypeShape EntityType="DbModel.User" Width="1.5" PointX="7.5" PointY="4.125" />
+        <AssociationConnector Association="DbModel.FK_UserChangePass_User" />
+        <AssociationConnector Association="DbModel.FK_UserProfile_User" />
+        <AssociationConnector Association="DbModel.User2Role" />
+        <EntityTypeShape EntityType="DbModel.Function" Width="1.5" PointX="3" PointY="7.375" />
+        <AssociationConnector Association="DbModel.FK_Function_Module" />
+        <AssociationConnector Association="DbModel.FK_User_Function" />
+        <AssociationConnector Association="DbModel.AccessControl" />
+        <EntityTypeShape EntityType="DbModel.Department" Width="1.5" PointX="9.75" PointY="9.75" />
+        <AssociationConnector Association="DbModel.FK_Department_Head" />
+        <AssociationConnector Association="DbModel.FK_Department_Parent" />
+        <AssociationConnector Association="DbModel.FK_User_Department" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

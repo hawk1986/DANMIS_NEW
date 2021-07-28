@@ -44,8 +44,8 @@ namespace DANMIS_NEW.ViewModel.ListResult
         /// <summary>
         /// EmpUniqNo
         /// </summary>        
-        [Display(Name = "EmpUniqNo", ResourceType = typeof(Resource))]
-        public int EmpUniqNo { get; set; }
+        [Display(Name = "WDID", ResourceType = typeof(Resource))]
+        public string WDID { get; set; }
 
         /// <summary>
         /// EmpEngName
@@ -173,7 +173,7 @@ namespace DANMIS_NEW.ViewModel.ListResult
         /// BossEmpUniqNo
         /// </summary>        
         [Display(Name = "BossEmpUniqNo", ResourceType = typeof(Resource))]
-        public int BossEmpUniqNo { get; set; }
+        public string BossEmpUniqNo { get; set; }
 
         /// <summary>
         /// EmpAcctStatus
@@ -214,74 +214,20 @@ namespace DANMIS_NEW.ViewModel.ListResult
         /// <summary>
         /// ExtDisplayFlag
         /// </summary>        
-        [Display(Name = "ExtDisplayFlag", ResourceType = typeof(Resource))]
-        public string ExtDisplayFlag { get; set; }
-
-        /// <summary>
-        /// SpcInTime
-        /// </summary>        
-        [Display(Name = "SpcInTime", ResourceType = typeof(Resource))]
-        public string SpcInTime { get; set; }
-
-        /// <summary>
-        /// SpcOutTime
-        /// </summary>        
-        [Display(Name = "SpcOutTime", ResourceType = typeof(Resource))]
-        public string SpcOutTime { get; set; }
-
-        /// <summary>
-        /// InputBy
-        /// </summary>        
-        [Display(Name = "InputBy", ResourceType = typeof(Resource))]
-        public int InputBy { get; set; }
-
-        /// <summary>
-        /// InputDate
-        /// </summary>        
-        [Display(Name = "InputDate", ResourceType = typeof(Resource))]
-        public DateTime InputDate { get; set; }
-
-        /// <summary>
-        /// ChangeBe
-        /// </summary>        
-        [Display(Name = "ChangeBe", ResourceType = typeof(Resource))]
-        public int ChangeBe { get; set; }
-
-        /// <summary>
-        /// ChangeDate
-        /// </summary>        
-        [Display(Name = "ChangeDate", ResourceType = typeof(Resource))]
-        public DateTime ChangeDate { get; set; }
-
-        /// <summary>
-        /// Random
-        /// </summary>        
-        [Display(Name = "Random", ResourceType = typeof(Resource))]
-        public string Random { get; set; }
+        [Display(Name = "UserExtIsShow", ResourceType = typeof(Resource))]
+        public bool UserExtIsShow { get; set; }
 
         /// <summary>
         /// NextBossEmpUniqNo
         /// </summary>        
         [Display(Name = "NextBossEmpUniqNo", ResourceType = typeof(Resource))]
-        public int NextBossEmpUniqNo { get; set; }
-
-        /// <summary>
-        /// Do_PDP
-        /// </summary>        
-        [Display(Name = "Do_PDP", ResourceType = typeof(Resource))]
-        public string Do_PDP { get; set; }
+        public string NextBossEmpUniqNo { get; set; }
 
         /// <summary>
         /// EmpExtNo
         /// </summary>        
         [Display(Name = "EmpExtNo", ResourceType = typeof(Resource))]
         public string EmpExtNo { get; set; }
-
-        /// <summary>
-        /// WDID
-        /// </summary>        
-        [Display(Name = "WDID", ResourceType = typeof(Resource))]
-        public string WDID { get; set; }
 
         /// <summary>
         /// TaxiAccount
@@ -300,18 +246,6 @@ namespace DANMIS_NEW.ViewModel.ListResult
         /// </summary>        
         [Display(Name = "EmpType", ResourceType = typeof(Resource))]
         public string EmpType { get; set; }
-
-        /// <summary>
-        /// CostCenter
-        /// </summary>        
-        [Display(Name = "CostCenter", ResourceType = typeof(Resource))]
-        public string CostCenter { get; set; }
-
-        /// <summary>
-        /// ProfitCenter
-        /// </summary>        
-        [Display(Name = "ProfitCenter", ResourceType = typeof(Resource))]
-        public string ProfitCenter { get; set; }
 
         /// <summary>
         /// LastWorkDate

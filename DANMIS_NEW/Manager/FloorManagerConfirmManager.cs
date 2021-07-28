@@ -123,7 +123,7 @@ namespace DANMIS_NEW.Manager
                                  ApplyItemID = x.ApplyItemID,
                                  ApplyWDID = x.ApplyWDID,
                                  ApplyBrand = x.ApplyBrand,
-                                 ApplyName = string.Concat(user.FirstOrDefault(y => y.WDID == x.ApplyWDID).EmpLocName, "(", user.FirstOrDefault(y => y.WDID == x.ApplyWDID).EmpEngName, ")"),
+                                 ApplyName =user.FirstOrDefault(y => y.WDID == x.ApplyWDID).LocEngName,
                                  ApplyItemName = items.FirstOrDefault(y => y.ID == x.ApplyItemID).ItemName,
                                  ApplyQty = x.ApplyQty,
                                  Status = x.Status,

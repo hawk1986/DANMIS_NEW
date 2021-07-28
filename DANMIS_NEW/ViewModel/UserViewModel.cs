@@ -84,105 +84,400 @@ namespace DANMIS_NEW.ViewModel
         public string ContactTel { get; set; }
 
         /// <summary>
-        /// IsEnable
-        /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "IsEnable", ResourceType = typeof(Resource))]
-        public bool IsEnable { get; set; }
-
-        /// <summary>
-        /// CreateUser
-        /// </summary>
-        [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "CreateUser", ResourceType = typeof(Resource))]
-        public string CreateUser { get; set; }
-
-        /// <summary>
-        /// CreateTime
-        /// </summary>
-        [Display(Name = "CreateTime", ResourceType = typeof(Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
-        public DateTime CreateTime { get; set; }
-
-        /// <summary>
-        /// UpdateUser
-        /// </summary>
-        [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "UpdateUser", ResourceType = typeof(Resource))]
-        public string UpdateUser { get; set; }
-
-        /// <summary>
-        /// UpdateTime
-        /// </summary>
-        [Display(Name = "UpdateTime", ResourceType = typeof(Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
-        public DateTime UpdateTime { get; set; }
-
-        /// <summary>
-        /// LoginTime
-        /// </summary>
-        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "LoginTime", ResourceType = typeof(Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
-        public DateTime LoginTime { get; set; }
-
-        /// <summary>
-        /// ChnagePassTime
-        /// </summary>
-        [Display(Name = "ChangePassTime", ResourceType = typeof(Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
-        public DateTime ChangePassTime { get; set; }
-
-        /// <summary>
-        /// PhotoPath
-        /// </summary>
-        [StringLength(256, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "PhotoPath", ResourceType = typeof(Resource))]
-        public string PhotoPath { get; set; }
-
-        /// <summary>
-        /// HashToken
-        /// </summary>
-        [StringLength(256, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "HashToken", ResourceType = typeof(Resource))]
-        public string HashToken { get; set; }
-
-        /// <summary>
-        /// FreeFields
-        /// </summary>
-        public TemplateFields FreeFields { get; set; }
-
-        /// <summary>
-        /// DefaultIndex
-        /// </summary>
-        [Display(Name = "DefaultIndex", ResourceType = typeof(Resource))]
-        public Nullable<Guid> DefaultIndex { get; set; }
-
-        /// <summary>
-        /// DepartmentID
-        /// </summary>
-        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "Department", ResourceType = typeof(Resource))]
-        public Nullable<Guid> DepartmentID { get; set; }
-
-        /// <summary>
-        /// DepartmentIDs
-        /// </summary>
-        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
-        [Display(Name = "Department", ResourceType = typeof(Resource))]
-        public List<Guid> DepartmentIDs { get; set; }
-
-        /// <summary>
-        /// EmpUniqNo
+        /// WDID
         /// </summary>        
-        [Display(Name = "EmpUniqNo", ResourceType = typeof(Resource))]
-        public int EmpUniqNo { get; set; }
+        [Display(Name = "WDID", ResourceType = typeof(Resource))]
+        public string WDID { get; set; }
 
         /// <summary>
-        /// EmpEngName
+        /// StaffEvent
         /// </summary>        
-        [Display(Name = "EmpEngName", ResourceType = typeof(Resource))]
-        public string EmpEngName { get; set; }
+        [Display(Name = "StaffEvent", ResourceType = typeof(Resource))]
+        public string StaffEvent { get; set; }
+
+        /// <summary>
+        /// EmpNo
+        /// </summary>        
+        [Display(Name = "EmpNo", ResourceType = typeof(Resource))]
+        public string EmpNo { get; set; }
+
+        /// <summary>
+        /// PersonTitle
+        /// </summary>        
+        [Display(Name = "PersonTitle", ResourceType = typeof(Resource))]
+        public string PersonTitle { get; set; }
+
+        /// <summary>
+        /// LocalName
+        /// </summary>        
+        [Display(Name = "LocalName", ResourceType = typeof(Resource))]
+        public string LocalName { get; set; }
+
+        /// <summary>
+        /// FullEngName
+        /// </summary>        
+        [Display(Name = "FullEngName", ResourceType = typeof(Resource))]
+        public string FullEngName { get; set; }
+
+        /// <summary>
+        /// LocEngName
+        /// </summary>        
+        [Display(Name = "LocEngName", ResourceType = typeof(Resource))]
+        public string LocEngName { get; set; }
+
+        /// <summary>
+        /// EngFirstName
+        /// </summary>        
+        [Display(Name = "EngFirstName", ResourceType = typeof(Resource))]
+        public string EngFirstName { get; set; }
+
+        /// <summary>
+        /// EngMidName
+        /// </summary>        
+        [Display(Name = "EngMidName", ResourceType = typeof(Resource))]
+        public string EngMidName { get; set; }
+
+        /// <summary>
+        /// EngLastName
+        /// </summary>        
+        [Display(Name = "EngLastName", ResourceType = typeof(Resource))]
+        public string EngLastName { get; set; }
+
+        /// <summary>
+        /// WorkAdd1
+        /// </summary>        
+        [Display(Name = "WorkAdd1", ResourceType = typeof(Resource))]
+        public string WorkAdd1 { get; set; }
+
+        /// <summary>
+        /// WorkAdd2
+        /// </summary>        
+        [Display(Name = "WorkAdd2", ResourceType = typeof(Resource))]
+        public string WorkAdd2 { get; set; }
+
+        /// <summary>
+        /// WorkAdd3
+        /// </summary>        
+        [Display(Name = "WorkAdd3", ResourceType = typeof(Resource))]
+        public string WorkAdd3 { get; set; }
+
+        /// <summary>
+        /// WorkAdd4
+        /// </summary>        
+        [Display(Name = "WorkAdd4", ResourceType = typeof(Resource))]
+        public string WorkAdd4 { get; set; }
+
+        /// <summary>
+        /// WorkAddCountry
+        /// </summary>        
+        [Display(Name = "WorkAddCountry", ResourceType = typeof(Resource))]
+        public string WorkAddCountry { get; set; }
+
+        /// <summary>
+        /// HireDate
+        /// </summary>        
+        [Display(Name = "HireDate", ResourceType = typeof(Resource))]
+        public string HireDate { get; set; }
+
+        /// <summary>
+        /// HireReason
+        /// </summary>        
+        [Display(Name = "HireReason", ResourceType = typeof(Resource))]
+        public string HireReason { get; set; }
+
+        /// <summary>
+        /// ContStartDate
+        /// </summary>        
+        [Display(Name = "ContStartDate", ResourceType = typeof(Resource))]
+        public string ContStartDate { get; set; }
+
+        /// <summary>
+        /// ConEndDate
+        /// </summary>        
+        [Display(Name = "ConEndDate", ResourceType = typeof(Resource))]
+        public string ConEndDate { get; set; }
+
+        /// <summary>
+        /// CompName
+        /// </summary>        
+        [Display(Name = "CompName", ResourceType = typeof(Resource))]
+        public string CompName { get; set; }
+
+        /// <summary>
+        /// CompEffDate
+        /// </summary>        
+        [Display(Name = "CompEffDate", ResourceType = typeof(Resource))]
+        public string CompEffDate { get; set; }
+
+        /// <summary>
+        /// CostCenterName
+        /// </summary>        
+        [Display(Name = "CostCenterName", ResourceType = typeof(Resource))]
+        public string CostCenterName { get; set; }
+
+        /// <summary>
+        /// CostCenterCode
+        /// </summary>        
+        [Display(Name = "CostCenterCode", ResourceType = typeof(Resource))]
+        public string CostCenterCode { get; set; }
+
+        /// <summary>
+        /// CostCenterEffDate
+        /// </summary>        
+        [Display(Name = "CostCenterEffDate", ResourceType = typeof(Resource))]
+        public string CostCenterEffDate { get; set; }
+
+        /// <summary>
+        /// Brand
+        /// </summary>        
+        [Display(Name = "Brand", ResourceType = typeof(Resource))]
+        public string Brand { get; set; }
+
+        /// <summary>
+        /// BrandEffDate
+        /// </summary>        
+        [Display(Name = "BrandEffDate", ResourceType = typeof(Resource))]
+        public string BrandEffDate { get; set; }
+
+        /// <summary>
+        /// BossLocEngName
+        /// </summary>        
+        [Display(Name = "BossLocEngName", ResourceType = typeof(Resource))]
+        public string BossLocEngName { get; set; }
+
+        /// <summary>
+        /// BossWDID
+        /// </summary>        
+        [Display(Name = "BossWDID", ResourceType = typeof(Resource))]
+        public string BossWDID { get; set; }
+
+        /// <summary>
+        /// EmpType
+        /// </summary>        
+        [Display(Name = "EmpType", ResourceType = typeof(Resource))]
+        public string EmpType { get; set; }
+
+        /// <summary>
+        /// GroupHireDate
+        /// </summary>        
+        [Display(Name = "GroupHireDate", ResourceType = typeof(Resource))]
+        public string GroupHireDate { get; set; }
+
+        /// <summary>
+        /// EmpStartDate
+        /// </summary>        
+        [Display(Name = "EmpStartDate", ResourceType = typeof(Resource))]
+        public string EmpStartDate { get; set; }
+
+        /// <summary>
+        /// DeptMgrName
+        /// </summary>        
+        [Display(Name = "DeptMgrName", ResourceType = typeof(Resource))]
+        public string DeptMgrName { get; set; }
+
+        /// <summary>
+        /// DeptMgrWDID
+        /// </summary>        
+        [Display(Name = "DeptMgrWDID", ResourceType = typeof(Resource))]
+        public string DeptMgrWDID { get; set; }
+
+        /// <summary>
+        /// DeptEffDate
+        /// </summary>        
+        [Display(Name = "DeptEffDate", ResourceType = typeof(Resource))]
+        public string DeptEffDate { get; set; }
+
+        /// <summary>
+        /// PrimaryAdd1
+        /// </summary>        
+        [Display(Name = "PrimaryAdd1", ResourceType = typeof(Resource))]
+        public string PrimaryAdd1 { get; set; }
+
+        /// <summary>
+        /// PrimaryAddPostCost
+        /// </summary>        
+        [Display(Name = "PrimaryAddPostCost", ResourceType = typeof(Resource))]
+        public string PrimaryAddPostCost { get; set; }
+
+        /// <summary>
+        /// PrimaryAddCity
+        /// </summary>        
+        [Display(Name = "PrimaryAddCity", ResourceType = typeof(Resource))]
+        public string PrimaryAddCity { get; set; }
+
+        /// <summary>
+        /// PrimaryAddCountry
+        /// </summary>        
+        [Display(Name = "PrimaryAddCountry", ResourceType = typeof(Resource))]
+        public string PrimaryAddCountry { get; set; }
+
+        /// <summary>
+        /// PrimaryAddPhone
+        /// </summary>        
+        [Display(Name = "PrimaryAddPhone", ResourceType = typeof(Resource))]
+        public string PrimaryAddPhone { get; set; }
+
+        /// <summary>
+        /// PrimaryAddEmail
+        /// </summary>        
+        [Display(Name = "PrimaryAddEmail", ResourceType = typeof(Resource))]
+        public string PrimaryAddEmail { get; set; }
+
+        /// <summary>
+        /// DateOfBirth
+        /// </summary>        
+        [Display(Name = "DateOfBirth", ResourceType = typeof(Resource))]
+        public string DateOfBirth { get; set; }
+
+        /// <summary>
+        /// Gender
+        /// </summary>        
+        [Display(Name = "Gender", ResourceType = typeof(Resource))]
+        public string Gender { get; set; }
+
+        /// <summary>
+        /// Nationality
+        /// </summary>        
+        [Display(Name = "Nationality", ResourceType = typeof(Resource))]
+        public string Nationality { get; set; }
+
+        /// <summary>
+        /// MaritalStatus
+        /// </summary>        
+        [Display(Name = "MaritalStatus", ResourceType = typeof(Resource))]
+        public string MaritalStatus { get; set; }
+
+        /// <summary>
+        /// CitiStatus
+        /// </summary>        
+        [Display(Name = "CitiStatus", ResourceType = typeof(Resource))]
+        public string CitiStatus { get; set; }
+
+        /// <summary>
+        /// MilitaryStatus
+        /// </summary>        
+        [Display(Name = "MilitaryStatus", ResourceType = typeof(Resource))]
+        public string MilitaryStatus { get; set; }
+
+        /// <summary>
+        /// PersonDataEffDate
+        /// </summary>        
+        [Display(Name = "PersonDataEffDate", ResourceType = typeof(Resource))]
+        public string PersonDataEffDate { get; set; }
+
+        /// <summary>
+        /// Position
+        /// </summary>        
+        [Display(Name = "Position", ResourceType = typeof(Resource))]
+        public string Position { get; set; }
+
+        /// <summary>
+        /// PositionID
+        /// </summary>        
+        [Display(Name = "PositionID", ResourceType = typeof(Resource))]
+        public string PositionID { get; set; }
+
+        /// <summary>
+        /// TimeType
+        /// </summary>        
+        [Display(Name = "TimeType", ResourceType = typeof(Resource))]
+        public string TimeType { get; set; }
+
+        /// <summary>
+        /// PositionEffDate
+        /// </summary>        
+        [Display(Name = "PositionEffDate", ResourceType = typeof(Resource))]
+        public string PositionEffDate { get; set; }
+
+        /// <summary>
+        /// JobID
+        /// </summary>        
+        [Display(Name = "JobID", ResourceType = typeof(Resource))]
+        public string JobID { get; set; }
+
+        /// <summary>
+        /// JobProfile
+        /// </summary>        
+        [Display(Name = "JobProfile", ResourceType = typeof(Resource))]
+        public string JobProfile { get; set; }
+
+        /// <summary>
+        /// JobProfileEffDate
+        /// </summary>        
+        [Display(Name = "JobProfileEffDate", ResourceType = typeof(Resource))]
+        public string JobProfileEffDate { get; set; }
+
+        /// <summary>
+        /// JobTitle
+        /// </summary>        
+        [Display(Name = "JobTitle", ResourceType = typeof(Resource))]
+        public string JobTitle { get; set; }
+
+        /// <summary>
+        /// BusinessTitle
+        /// </summary>        
+        [Display(Name = "BusinessTitle", ResourceType = typeof(Resource))]
+        public string BusinessTitle { get; set; }
+
+        /// <summary>
+        /// BusinessEffDate
+        /// </summary>        
+        [Display(Name = "BusinessEffDate", ResourceType = typeof(Resource))]
+        public string BusinessEffDate { get; set; }
+
+        /// <summary>
+        /// ChangeJobReason
+        /// </summary>        
+        [Display(Name = "ChangeJobReason", ResourceType = typeof(Resource))]
+        public string ChangeJobReason { get; set; }
+
+        /// <summary>
+        /// ChangeJobDate
+        /// </summary>        
+        [Display(Name = "ChangeJobDate", ResourceType = typeof(Resource))]
+        public string ChangeJobDate { get; set; }
+
+        /// <summary>
+        /// TerminationDate
+        /// </summary>        
+        [Display(Name = "TerminationDate", ResourceType = typeof(Resource))]
+        public string TerminationDate { get; set; }
+
+        /// <summary>
+        /// TerminationReasonLoc
+        /// </summary>        
+        [Display(Name = "TerminationReasonLoc", ResourceType = typeof(Resource))]
+        public string TerminationReasonLoc { get; set; }
+
+        /// <summary>
+        /// TerminationReasonPri
+        /// </summary>        
+        [Display(Name = "TerminationReasonPri", ResourceType = typeof(Resource))]
+        public string TerminationReasonPri { get; set; }
+
+        /// <summary>
+        /// LastWorkDate
+        /// </summary>        
+        [Display(Name = "LastWorkDate", ResourceType = typeof(Resource))]
+        public string LastWorkDate { get; set; }
+
+        /// <summary>
+        /// NationalIDCountry
+        /// </summary>        
+        [Display(Name = "NationalIDCountry", ResourceType = typeof(Resource))]
+        public string NationalIDCountry { get; set; }
+
+        /// <summary>
+        /// NationalIDType
+        /// </summary>        
+        [Display(Name = "NationalIDType", ResourceType = typeof(Resource))]
+        public string NationalIDType { get; set; }
+
+        /// <summary>
+        /// NationalIDNo
+        /// </summary>        
+        [Display(Name = "NationalIDNo", ResourceType = typeof(Resource))]
+        public string NationalIDNo { get; set; }
 
         /// <summary>
         /// RegionCode
@@ -197,222 +492,40 @@ namespace DANMIS_NEW.ViewModel
         public string CompCode { get; set; }
 
         /// <summary>
-        /// OfficeCode
-        /// </summary>        
-        [Display(Name = "OfficeCode", ResourceType = typeof(Resource))]
-        public string OfficeCode { get; set; }
-
-        /// <summary>
         /// DeptCode
         /// </summary>        
         [Display(Name = "DeptCode", ResourceType = typeof(Resource))]
         public string DeptCode { get; set; }
 
         /// <summary>
-        /// EmpNo
+        /// UserComputerID
         /// </summary>        
-        [Display(Name = "EmpNo", ResourceType = typeof(Resource))]
-        public string EmpNo { get; set; }
+        [Display(Name = "UserComputerID", ResourceType = typeof(Resource))]
+        public string UserComputerID { get; set; }
 
         /// <summary>
-        /// EmpEngOfficialName
+        /// UserHomePhone
         /// </summary>        
-        [Display(Name = "EmpEngOfficialName", ResourceType = typeof(Resource))]
-        public string EmpEngOfficialName { get; set; }
+        [Display(Name = "UserHomePhone", ResourceType = typeof(Resource))]
+        public string UserHomePhone { get; set; }
 
         /// <summary>
-        /// EmpLocName
+        /// UserMobilePhone
         /// </summary>        
-        [Display(Name = "EmpLocName", ResourceType = typeof(Resource))]
-        public string EmpLocName { get; set; }
+        [Display(Name = "UserMobilePhone", ResourceType = typeof(Resource))]
+        public string UserMobilePhone { get; set; }
 
         /// <summary>
-        /// EmpGender
+        /// UserExtNo
         /// </summary>        
-        [Display(Name = "EmpGender", ResourceType = typeof(Resource))]
-        public string EmpGender { get; set; }
+        [Display(Name = "UserExtNo", ResourceType = typeof(Resource))]
+        public string UserExtNo { get; set; }
 
         /// <summary>
-        /// JobTitleCode
+        /// UserExtIsShow
         /// </summary>        
-        [Display(Name = "JobTitleCode", ResourceType = typeof(Resource))]
-        public string JobTitleCode { get; set; }
-
-        /// <summary>
-        /// EmpStartDate
-        /// </summary>        
-        [Display(Name = "EmpStartDate", ResourceType = typeof(Resource))]
-        public DateTime EmpStartDate { get; set; }
-
-        /// <summary>
-        /// EmpQuitDate
-        /// </summary>        
-        [Display(Name = "EmpQuitDate", ResourceType = typeof(Resource))]
-        public DateTime EmpQuitDate { get; set; }
-
-
-        /// <summary>
-        /// EmpStatusCode
-        /// </summary>        
-        [Display(Name = "EmpStatusCode", ResourceType = typeof(Resource))]
-        public string EmpStatusCode { get; set; }
-
-
-        /// <summary>
-        /// JobStatusCode
-        /// </summary>        
-        [Display(Name = "JobStatusCode", ResourceType = typeof(Resource))]
-        public string JobStatusCode { get; set; }
-
-        /// <summary>
-        /// EmpCompEmail
-        /// </summary>        
-        [Display(Name = "EmpCompEmail", ResourceType = typeof(Resource))]
-        public string EmpCompEmail { get; set; }
-
-        /// <summary>
-        /// EmpADLoginID
-        /// </summary>        
-        [Display(Name = "EmpADLoginID", ResourceType = typeof(Resource))]
-        public string EmpADLoginID { get; set; }
-
-        /// <summary>
-        /// EmpComputerID
-        /// </summary>        
-        [Display(Name = "EmpComputerID", ResourceType = typeof(Resource))]
-        public string EmpComputerID { get; set; }
-
-        /// <summary>
-        /// EmpPrivateEMail
-        /// </summary>        
-        [Display(Name = "EmpPrivateEMail", ResourceType = typeof(Resource))]
-        public string EmpPrivateEMail { get; set; }
-
-        /// <summary>
-        /// EmpHomePhone
-        /// </summary>        
-        [Display(Name = "EmpHomePhone", ResourceType = typeof(Resource))]
-        public string EmpHomePhone { get; set; }
-
-        /// <summary>
-        /// EmpMobilePhone
-        /// </summary>        
-        [Display(Name = "EmpMobilePhone", ResourceType = typeof(Resource))]
-        public string EmpMobilePhone { get; set; }
-
-        /// <summary>
-        /// BossEmpUniqNo
-        /// </summary>        
-        [Display(Name = "BossEmpUniqNo", ResourceType = typeof(Resource))]
-        public int BossEmpUniqNo { get; set; }
-
-        /// <summary>
-        /// EmpAcctStatus
-        /// </summary>        
-        [Display(Name = "EmpAcctStatus", ResourceType = typeof(Resource))]
-        public string EmpAcctStatus { get; set; }
-
-        /// <summary>
-        /// WritingLanguage
-        /// </summary>        
-        [Display(Name = "WritingLanguage", ResourceType = typeof(Resource))]
-        public string WritingLanguage { get; set; }
-
-        /// <summary>
-        /// SysLanguage
-        /// </summary>        
-        [Display(Name = "SysLanguage", ResourceType = typeof(Resource))]
-        public string SysLanguage { get; set; }
-
-        /// <summary>
-        /// EmpBankAccount
-        /// </summary>        
-        [Display(Name = "EmpBankAccount", ResourceType = typeof(Resource))]
-        public string EmpBankAccount { get; set; }
-
-        /// <summary>
-        /// EmpPhoto
-        /// </summary>        
-        [Display(Name = "EmpPhoto", ResourceType = typeof(Resource))]
-        public string EmpPhoto { get; set; }
-
-        /// <summary>
-        /// CheckAttendance
-        /// </summary>        
-        [Display(Name = "CheckAttendance", ResourceType = typeof(Resource))]
-        public string CheckAttendance { get; set; }
-
-        /// <summary>
-        /// ExtDisplayFlag
-        /// </summary>        
-        [Display(Name = "ExtDisplayFlag", ResourceType = typeof(Resource))]
-        public string ExtDisplayFlag { get; set; }
-
-        /// <summary>
-        /// SpcInTime
-        /// </summary>        
-        [Display(Name = "SpcInTime", ResourceType = typeof(Resource))]
-        public string SpcInTime { get; set; }
-
-        /// <summary>
-        /// SpcOutTime
-        /// </summary>        
-        [Display(Name = "SpcOutTime", ResourceType = typeof(Resource))]
-        public string SpcOutTime { get; set; }
-
-        /// <summary>
-        /// InputBy
-        /// </summary>        
-        [Display(Name = "InputBy", ResourceType = typeof(Resource))]
-        public int InputBy { get; set; }
-
-        /// <summary>
-        /// InputDate
-        /// </summary>        
-        [Display(Name = "InputDate", ResourceType = typeof(Resource))]
-        public DateTime InputDate { get; set; }
-
-        /// <summary>
-        /// ChangeBe
-        /// </summary>        
-        [Display(Name = "ChangeBe", ResourceType = typeof(Resource))]
-        public int ChangeBe { get; set; }
-
-        /// <summary>
-        /// ChangeDate
-        /// </summary>        
-        [Display(Name = "ChangeDate", ResourceType = typeof(Resource))]
-        public DateTime ChangeDate { get; set; }
-
-        /// <summary>
-        /// Random
-        /// </summary>        
-        [Display(Name = "Random", ResourceType = typeof(Resource))]
-        public string Random { get; set; }
-
-        /// <summary>
-        /// NextBossEmpUniqNo
-        /// </summary>        
-        [Display(Name = "NextBossEmpUniqNo", ResourceType = typeof(Resource))]
-        public int NextBossEmpUniqNo { get; set; }
-
-        /// <summary>
-        /// Do_PDP
-        /// </summary>        
-        [Display(Name = "Do_PDP", ResourceType = typeof(Resource))]
-        public string Do_PDP { get; set; }
-
-        /// <summary>
-        /// EmpExtNo
-        /// </summary>        
-        [Display(Name = "EmpExtNo", ResourceType = typeof(Resource))]
-        public string EmpExtNo { get; set; }
-
-        /// <summary>
-        /// WDID
-        /// </summary>        
-        [Display(Name = "WDID", ResourceType = typeof(Resource))]
-        public string WDID { get; set; }
+        [Display(Name = "UserExtIsShow", ResourceType = typeof(Resource))]
+        public bool UserExtIsShow { get; set; }
 
         /// <summary>
         /// TaxiAccount
@@ -425,30 +538,6 @@ namespace DANMIS_NEW.ViewModel
         /// </summary>        
         [Display(Name = "BrandCode", ResourceType = typeof(Resource))]
         public string BrandCode { get; set; }
-
-        /// <summary>
-        /// EmpType
-        /// </summary>        
-        [Display(Name = "EmpType", ResourceType = typeof(Resource))]
-        public string EmpType { get; set; }
-
-        /// <summary>
-        /// CostCenter
-        /// </summary>        
-        [Display(Name = "CostCenter", ResourceType = typeof(Resource))]
-        public string CostCenter { get; set; }
-
-        /// <summary>
-        /// ProfitCenter
-        /// </summary>        
-        [Display(Name = "ProfitCenter", ResourceType = typeof(Resource))]
-        public string ProfitCenter { get; set; }
-
-        /// <summary>
-        /// LastWorkDate
-        /// </summary>        
-        [Display(Name = "LastWorkDate", ResourceType = typeof(Resource))]
-        public DateTime LastWorkDate { get; set; }
 
         /// <summary>
         /// CardNo
@@ -490,7 +579,7 @@ namespace DANMIS_NEW.ViewModel
         /// MotoStartDate
         /// </summary>        
         [Display(Name = "MotoStartDate", ResourceType = typeof(Resource))]
-        public DateTime MotoStartDate { get; set; }
+        public string MotoStartDate { get; set; }
 
         /// <summary>
         /// FaxNo
@@ -515,6 +604,119 @@ namespace DANMIS_NEW.ViewModel
         /// </summary>        
         [Display(Name = "ThirdCode", ResourceType = typeof(Resource))]
         public string ThirdCode { get; set; }
+
+        /// <summary>
+        /// BossEmpUniqNo
+        /// </summary>        
+        [Display(Name = "BossEmpUniqNo", ResourceType = typeof(Resource))]
+        public string BossEmpUniqNo { get; set; }
+
+        /// <summary>
+        /// NextBossEmpUniqNo
+        /// </summary>        
+        [Display(Name = "NextBossEmpUniqNo", ResourceType = typeof(Resource))]
+        public string NextBossEmpUniqNo { get; set; }
+
+        /// <summary>
+        /// IsEnable
+        /// </summary>
+        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "IsEnable", ResourceType = typeof(Resource))]
+        public bool IsEnable { get; set; }
+
+        /// <summary>
+        /// PhotoPath
+        /// </summary>
+        [StringLength(256, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "PhotoPath", ResourceType = typeof(Resource))]
+        public string PhotoPath { get; set; }
+
+        /// <summary>
+        /// HashToken
+        /// </summary>
+        [StringLength(256, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "HashToken", ResourceType = typeof(Resource))]
+        public string HashToken { get; set; }
+
+        /// <summary>
+        /// FreeFields
+        /// </summary>
+        public TemplateFields FreeFields { get; set; }
+
+        /// <summary>
+        /// DefaultIndex
+        /// </summary>
+        [Display(Name = "DefaultIndex", ResourceType = typeof(Resource))]
+        public Nullable<Guid> DefaultIndex { get; set; }
+
+        /// <summary>
+        /// DepartmentID
+        /// </summary>
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "Department", ResourceType = typeof(Resource))]
+        public Nullable<Guid> DepartmentID { get; set; }
+
+        /// <summary>
+        /// DepartmentIDs
+        /// </summary>
+        //[Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "Department", ResourceType = typeof(Resource))]
+        public List<Guid> DepartmentIDs { get; set; }
+
+        /// <summary>
+        /// LoginTime
+        /// </summary>
+        [Required(ErrorMessageResourceName = "RequiredError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "LoginTime", ResourceType = typeof(Resource))]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public DateTime LoginTime { get; set; }
+
+        /// <summary>
+        /// ChnagePassTime
+        /// </summary>
+        [Display(Name = "ChangePassTime", ResourceType = typeof(Resource))]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public DateTime ChangePassTime { get; set; }
+
+        /// <summary>
+        /// CreateUser
+        /// </summary>
+        [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "CreateUser", ResourceType = typeof(Resource))]
+        public string CreateUser { get; set; }
+
+        /// <summary>
+        /// CreateTime
+        /// </summary>
+        [Display(Name = "CreateTime", ResourceType = typeof(Resource))]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public DateTime CreateTime { get; set; }
+
+        /// <summary>
+        /// UpdateUser
+        /// </summary>
+        [StringLength(50, ErrorMessageResourceName = "StringLengthError", ErrorMessageResourceType = typeof(Resource))]
+        [Display(Name = "UpdateUser", ResourceType = typeof(Resource))]
+        public string UpdateUser { get; set; }
+
+        /// <summary>
+        /// UpdateTime
+        /// </summary>
+        [Display(Name = "UpdateTime", ResourceType = typeof(Resource))]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public DateTime UpdateTime { get; set; }
+
+        /// <summary>
+        /// TransDate
+        /// </summary>        
+        [Display(Name = "TransDate", ResourceType = typeof(Resource))]
+        public string TransDate { get; set; }
+
+        /// <summary>
+        /// TransTime
+        /// </summary>        
+        [Display(Name = "TransTime", ResourceType = typeof(Resource))]
+        public string TransTime { get; set; }
 
         #endregion == DB Fields ==
     }

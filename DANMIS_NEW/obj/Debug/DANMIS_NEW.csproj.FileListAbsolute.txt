@@ -346,3 +346,5 @@ C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\D
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\DANMIS_NEW.csproj.CopyComplete
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\DANMIS_NEW.dll
 C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\obj\Debug\DANMIS_NEW.pdb
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\Oracle.ManagedDataAccess.dll
+C:\Users\HCheng03\OneDrive - dentsu\桌面\Git\DANMIS_NEW\DANMIS_NEW\bin\Oracle.ManagedDataAccess.EntityFramework.dll
